@@ -1,0 +1,416 @@
+.etm-page {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #f8f4ee !important;
+  color: #303030 !important;
+}
+
+/* Hero image already includes main text */
+.etm-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("/images/ET-M-hero.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.etm-hero::before {
+  display: none !important;
+}
+
+.hero-button-layer {
+  position: absolute;
+  left: 4.5vw;
+  top: 70vh;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Buttons */
+.etm-primary-btn,
+.etm-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 48px;
+  padding: 0 30px;
+  border-radius: 999px;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border: 1px solid #b98a63;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.etm-primary-btn {
+  background: #b98a63;
+  color: #ffffff;
+}
+
+.etm-primary-btn:hover {
+  background: #936842;
+  border-color: #936842;
+  transform: translateY(-2px);
+}
+
+.etm-secondary-btn {
+  background: rgba(255, 255, 255, 0.72);
+  color: #936842;
+}
+
+.etm-secondary-btn:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* General section */
+.etm-section {
+  padding: 100px 6vw;
+  background: #f8f4ee !important;
+}
+
+.etm-function-section,
+.etm-feature-section,
+.etm-scenario-section {
+  background: #f8f4ee !important;
+}
+
+.etm-section-inner {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.section-image-only-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.full-section-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 28px;
+  box-shadow: 0 24px 70px rgba(90, 65, 45, 0.1);
+}
+
+/* Detail card: force light design to avoid dark theme override */
+.etm-detail-card {
+  margin: 34px auto 0;
+  max-width: 900px;
+  padding: 32px 38px;
+  background: rgba(255, 255, 255, 0.94) !important;
+  color: #303030 !important;
+  border: 1px solid rgba(185, 138, 99, 0.24);
+  border-radius: 28px;
+  box-shadow: 0 20px 55px rgba(90, 65, 45, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.etm-detail-card h3 {
+  margin: 0 0 12px;
+  color: #303030 !important;
+  font-family: "Rajdhani", sans-serif;
+  font-size: clamp(2rem, 2.4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.etm-detail-card p {
+  color: #6f6a64 !important;
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.etm-detail-card .lead {
+  color: #303030 !important;
+  margin-bottom: 10px;
+}
+
+.detail-label {
+  margin: 0 0 12px !important;
+  color: #936842 !important;
+  font-family: "Rajdhani", sans-serif !important;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+}
+
+/* Click layers */
+.function-click-layer,
+.feature-click-layer,
+.scenario-click-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.image-hotspot {
+  position: absolute;
+  pointer-events: auto;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.image-hotspot:hover,
+.image-hotspot.active {
+  border-color: #b98a63;
+  background: rgba(185, 138, 99, 0.08);
+  box-shadow: 0 0 0 3px rgba(185, 138, 99, 0.12);
+}
+
+/* Product Functions clickable areas */
+.function-massage {
+  left: 5%;
+  top: 43%;
+  width: 31%;
+  height: 13%;
+}
+
+.function-shockwave {
+  left: 5%;
+  top: 57%;
+  width: 31%;
+  height: 13%;
+}
+
+.function-heat {
+  left: 5%;
+  top: 71%;
+  width: 31%;
+  height: 13%;
+}
+
+/* Intelligent Features clickable areas */
+.hotspot-acupoint {
+  left: 0.5%;
+  top: 44%;
+  width: 14%;
+  height: 7.5%;
+}
+
+.hotspot-control {
+  left: 14.5%;
+  top: 44%;
+  width: 13%;
+  height: 7.5%;
+}
+
+.hotspot-interaction {
+  left: 27.5%;
+  top: 44%;
+  width: 18%;
+  height: 7.5%;
+}
+
+/* Application Scenarios clickable areas */
+.scenario-therapy {
+  left: 3%;
+  top: 27%;
+  width: 29.5%;
+  height: 53%;
+}
+
+.scenario-beauty {
+  left: 34.3%;
+  top: 27%;
+  width: 29.5%;
+  height: 53%;
+}
+
+.scenario-sports {
+  left: 65.6%;
+  top: 27%;
+  width: 29.5%;
+  height: 53%;
+}
+
+/* Feature switch buttons */
+.feature-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.feature-buttons button {
+  border: 1px solid rgba(185, 138, 99, 0.35);
+  background: #ffffff;
+  color: #936842;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.feature-buttons button:hover,
+.feature-buttons button.active {
+  background: #b98a63;
+  color: #ffffff;
+  border-color: #b98a63;
+}
+
+.scenario-detail {
+  text-align: center;
+}
+
+.cta-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+/* Specifications */
+.etm-spec-section {
+  padding: 100px 6vw 120px;
+  background: #f8f4ee !important;
+}
+
+.spec-card {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(2rem, 4vw, 4rem);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(185, 138, 99, 0.24);
+  border-radius: 32px;
+  box-shadow: 0 24px 70px rgba(90, 65, 45, 0.1);
+}
+
+.spec-card h2 {
+  margin: 0 0 34px;
+  color: #303030;
+  font-family: "Rajdhani", sans-serif;
+  font-size: clamp(2.6rem, 4vw, 5rem);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.spec-grid div {
+  padding: 22px 24px;
+  background: #f8f4ee;
+  border: 1px solid rgba(185, 138, 99, 0.18);
+  border-radius: 20px;
+}
+
+.spec-grid span {
+  display: block;
+  margin-bottom: 8px;
+  color: #936842;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.spec-grid strong {
+  display: block;
+  color: #303030;
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .etm-section {
+    padding: 80px 24px;
+  }
+
+  .etm-spec-section {
+    padding: 80px 24px 100px;
+  }
+
+  .hero-button-layer {
+    left: 5vw;
+    top: 72vh;
+  }
+
+  .spec-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .etm-hero {
+    min-height: 720px;
+    background-position: 62% center;
+  }
+
+  .hero-button-layer {
+    left: 24px;
+    right: 24px;
+    top: auto;
+    bottom: 48px;
+  }
+
+  .etm-primary-btn,
+  .etm-secondary-btn {
+    width: 100%;
+  }
+
+  .etm-section {
+    padding: 64px 18px;
+  }
+
+  .full-section-image {
+    border-radius: 18px;
+  }
+
+  .etm-detail-card {
+    padding: 24px;
+    border-radius: 22px;
+  }
+
+  .function-click-layer,
+  .feature-click-layer,
+  .scenario-click-layer {
+    display: none;
+  }
+
+  .feature-buttons {
+    flex-direction: column;
+  }
+
+  .feature-buttons button {
+    width: 100%;
+  }
+
+  .cta-row {
+    flex-direction: column;
+  }
+
+  .spec-card {
+    padding: 26px;
+    border-radius: 24px;
+  }
+}
