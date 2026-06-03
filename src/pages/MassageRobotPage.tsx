@@ -4,7 +4,7 @@
  */
 
 import { useState } from "react";
-import Footer from "@/components/Footer";
+import Footer from "../components/Footer";
 
 const HERO_IMAGE = "/images/massage-robot/ET-M-hero.png";
 
@@ -20,7 +20,32 @@ const FEATURE_IMAGES = {
   interaction: "/images/massage-robot/ET-M-feature3.png",
 };
 
-const APPLICATION_IMAGE = "/images/massage-robot/ET-M-application.png";
+const APPLICATIONS = [
+  {
+    key: "therapy",
+    image: "/images/massage-robot/ET-M-application-therapy-room.png",
+    icon: "☯",
+    title: "Physical Therapy Room",
+    description:
+      "Support recovery and mobility with precise, data-driven robotic massage therapy.",
+  },
+  {
+    key: "beauty",
+    image: "/images/massage-robot/ET-M-application-beauty-clinic.png",
+    icon: "☺",
+    title: "Beauty Clinic",
+    description:
+      "Enhance treatment offerings and elevate client experience with intelligent care.",
+  },
+  {
+    key: "sports",
+    image: "/images/massage-robot/ET-M-application-sports-rehab.png",
+    icon: "♙",
+    title: "Sports Rehabilitation Center",
+    description:
+      "Accelerate athlete recovery and optimize performance with targeted therapy.",
+  },
+] as const;
 
 const SPEC_PDF = "/specifications/ET-M-Specification.pdf";
 
@@ -629,21 +654,87 @@ export default function MassageRobotPage() {
       {/* Application Scenarios */}
       <section
         id="applications"
-        className="massage-image-section"
+        className="massage-application-section"
         style={{
           background: COLORS.pageBg,
+          padding: "clamp(70px, 6vw, 120px) clamp(18px, 3vw, 64px)",
         }}
       >
-        <img
-          src={APPLICATION_IMAGE}
-          alt="ET-M application scenarios for physical therapy rooms, beauty clinics and sports rehabilitation centers"
-          className="block w-full massage-section-image"
+        <div
+          className="massage-application-inner"
           style={{
-            display: "block",
+            maxWidth: "2180px",
             width: "100%",
-            height: "auto",
+            margin: "0 auto",
           }}
-        />
+        >
+          <div
+            className="massage-application-header"
+            style={{
+              textAlign: "center",
+              maxWidth: "960px",
+              margin: "0 auto clamp(44px, 4.4vw, 76px)",
+            }}
+          >
+            <h2
+              style={{
+                margin: 0,
+                color: COLORS.textMain,
+                fontWeight: 500,
+                fontSize: "clamp(3.1rem, 4.6vw, 6.2rem)",
+                lineHeight: 1.05,
+                letterSpacing: "-0.045em",
+              }}
+            >
+              Application Scenarios
+            </h2>
+
+            <div
+              style={{
+                width: "50px",
+                height: "2px",
+                background: COLORS.accentDark,
+                margin:
+                  "clamp(18px, 1.6vw, 28px) auto clamp(18px, 1.8vw, 30px)",
+              }}
+            />
+
+            <p
+              style={{
+                margin: 0,
+                color: COLORS.textSoft,
+                fontWeight: 400,
+                fontSize: "clamp(1.05rem, 1.25vw, 1.55rem)",
+                lineHeight: 1.62,
+                letterSpacing: "-0.01em",
+              }}
+            >
+            </p>
+          </div>
+
+          <div className="massage-application-grid">
+            {APPLICATIONS.map((item) => (
+              <article key={item.key} className="massage-application-card">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="massage-application-image"
+                />
+
+                <div className="massage-application-body">
+                  <div className="massage-application-icon">{item.icon}</div>
+
+                  <div className="massage-application-text">
+                    <h3 className="massage-application-title">{item.title}</h3>
+                    <p className="massage-application-description">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
 
       <Footer />
@@ -683,6 +774,77 @@ export default function MassageRobotPage() {
           background: rgba(255,255,255,0.72) !important;
         }
 
+        .massage-application-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: clamp(22px, 2vw, 40px);
+          width: 100%;
+        }
+
+        .massage-application-card {
+          overflow: hidden;
+          border: 1px solid rgba(255,255,255,0.86);
+          border-radius: clamp(14px, 1vw, 20px);
+          background: rgba(255,255,255,0.58);
+          box-shadow: 0 22px 56px rgba(90,60,40,0.09);
+          backdrop-filter: blur(8px);
+        }
+
+        .massage-application-image {
+          display: block;
+          width: 100%;
+          aspect-ratio: 1.45 / 1;
+          object-fit: cover;
+          object-position: center;
+          user-select: none;
+        }
+
+        .massage-application-body {
+          display: grid;
+          grid-template-columns: clamp(58px, 4.6vw, 92px) 1fr;
+          gap: clamp(18px, 1.6vw, 32px);
+          align-items: center;
+          padding: clamp(28px, 2.4vw, 48px) clamp(28px, 2.6vw, 52px);
+        }
+
+        .massage-application-icon {
+          color: ${COLORS.accentDark};
+          font-size: clamp(2.6rem, 3.1vw, 4.6rem);
+          line-height: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .massage-application-title {
+          margin: 0;
+          color: ${COLORS.textMain};
+          font-weight: 600;
+          font-size: clamp(1.35rem, 1.45vw, 2.15rem);
+          line-height: 1.18;
+          letter-spacing: -0.025em;
+        }
+
+        .massage-application-description {
+          margin: clamp(10px, 0.8vw, 16px) 0 0;
+          color: ${COLORS.textSoft};
+          font-weight: 400;
+          font-size: clamp(1.02rem, 1.06vw, 1.42rem);
+          line-height: 1.56;
+          letter-spacing: -0.01em;
+        }
+
+        @media (max-width: 1440px) {
+          .massage-application-section {
+            padding-left: clamp(18px, 2.8vw, 44px) !important;
+            padding-right: clamp(18px, 2.8vw, 44px) !important;
+          }
+
+          .massage-application-body {
+            padding: clamp(24px, 2vw, 38px) clamp(22px, 2vw, 38px);
+          }
+        }
+
         @media (max-width: 1280px) {
           .massage-hero-content {
             left: 6.5% !important;
@@ -715,6 +877,14 @@ export default function MassageRobotPage() {
           .massage-function-image-text {
             bottom: 7% !important;
             width: 60vw !important;
+          }
+
+          .massage-application-grid {
+            gap: clamp(18px, 1.8vw, 30px);
+          }
+
+          .massage-application-body {
+            grid-template-columns: 54px 1fr;
           }
         }
 
@@ -755,6 +925,20 @@ export default function MassageRobotPage() {
           .massage-function-image-text {
             bottom: 6% !important;
             width: 66vw !important;
+          }
+
+          .massage-application-grid {
+            grid-template-columns: 1fr;
+            max-width: 820px;
+            margin: 0 auto;
+          }
+
+          .massage-application-image {
+            aspect-ratio: 1.6 / 1;
+          }
+
+          .massage-application-body {
+            grid-template-columns: 70px 1fr;
           }
         }
 
@@ -865,10 +1049,31 @@ export default function MassageRobotPage() {
             backdrop-filter: none !important;
           }
 
-          .massage-section-image {
-            min-height: 520px;
-            object-fit: cover;
-            object-position: center;
+          .massage-application-section {
+            padding: 56px clamp(16px, 4vw, 28px) !important;
+          }
+
+          .massage-application-header {
+            text-align: left !important;
+            margin-bottom: 34px !important;
+          }
+
+          .massage-application-header div {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+          }
+
+          .massage-application-grid {
+            max-width: none;
+          }
+
+          .massage-application-image {
+            aspect-ratio: 1.35 / 1;
+          }
+
+          .massage-application-body {
+            grid-template-columns: 54px 1fr;
+            padding: 24px 22px;
           }
         }
 
@@ -881,6 +1086,15 @@ export default function MassageRobotPage() {
             grid-template-columns: 50px 1fr auto !important;
             gap: 14px !important;
             padding: 14px 16px !important;
+          }
+
+          .massage-application-body {
+            grid-template-columns: 1fr;
+            gap: 14px;
+          }
+
+          .massage-application-icon {
+            justify-content: flex-start;
           }
         }
       `}</style>

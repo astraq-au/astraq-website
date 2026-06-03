@@ -4,7 +4,7 @@
  * - Large centered product image
  * - Learn More / Buy Now buttons
  * - Solar charging station section redesigned with 2/3 image + 1/3 compact key cards
- * - Brand About banner
+ * - Brand About banner with separated editable text
  */
 
 import { useEffect, useRef, useState } from "react";
@@ -130,7 +130,6 @@ function ProductSelector() {
           transition: "opacity 0.9s ease, transform 0.9s ease",
         }}
       >
-        {/* Model tabs */}
         <div className="flex justify-center">
           <div className="flex flex-wrap items-start justify-center gap-x-[clamp(2rem,4.2vw,7rem)] gap-y-5">
             {truckModels.map((model, index) => {
@@ -180,7 +179,6 @@ function ProductSelector() {
           </div>
         </div>
 
-        {/* Large truck image */}
         <div
           className="relative mx-auto flex items-center justify-center"
           style={{
@@ -221,7 +219,6 @@ function ProductSelector() {
           </div>
         </div>
 
-        {/* Name + buttons */}
         <div
           className="relative z-10 flex flex-col items-center text-center"
           style={{
@@ -329,7 +326,6 @@ function SolarStationSection() {
           transition: "opacity 0.9s ease, transform 0.9s ease",
         }}
       >
-        {/* Heading */}
         <div className="text-center">
           <h3
             style={{
@@ -363,9 +359,7 @@ function SolarStationSection() {
           </p>
         </div>
 
-        {/* 2/3 image + 1/3 information cards */}
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-[clamp(1rem,1.4vw,1.6rem)]">
-          {/* Left large image */}
           <a
             href={solarStation.learnLink}
             className="group relative block overflow-hidden no-underline"
@@ -412,7 +406,6 @@ function SolarStationSection() {
             </div>
           </a>
 
-          {/* Right compact cards */}
           <div className="grid grid-cols-2 lg:grid-cols-2 gap-[clamp(1rem,1.2vw,1.4rem)]">
             {solarCards.map((card) => {
               return (
@@ -532,7 +525,7 @@ function BrandAboutBanner() {
         }}
       >
         <div
-          className="relative w-full overflow-hidden group"
+          className="relative w-full overflow-hidden group brand-about-banner"
           style={{
             borderRadius: "0",
             border: "none",
@@ -540,8 +533,8 @@ function BrandAboutBanner() {
         >
           <img
             src={BRAND_BANNER}
-            alt="ASTRAQ founded in Australia"
-            className="w-full h-auto transition-transform duration-700 group-hover:scale-[1.01]"
+            alt="ASTRAQ heavy transport clean energy intelligent robotics"
+            className="w-full h-auto transition-transform duration-700 group-hover:scale-[1.01] brand-about-image"
             style={{
               display: "block",
               width: "100%",
@@ -550,41 +543,156 @@ function BrandAboutBanner() {
             }}
           />
 
-          <a
-            href="/about"
-            className="absolute inline-flex items-center justify-center"
-            style={{
-              left: "50%",
-              bottom: "clamp(1.2rem, 3vw, 3.5rem)",
-              transform: "translateX(-50%)",
-              width: "clamp(150px, 10vw, 210px)",
-              height: "clamp(46px, 3vw, 60px)",
-              border: "1px solid rgba(255,255,255,0.72)",
-              borderRadius: "4px",
-              color: "rgba(255,255,255,0.94)",
-              background: "rgba(0,0,0,0.18)",
-              backdropFilter: "blur(8px)",
-              fontFamily: FONT_FAMILY,
-              fontWeight: 600,
-              fontSize: "clamp(0.8rem, 0.85vw, 1rem)",
-              letterSpacing: "0.06em",
-              textTransform: "uppercase",
-              textDecoration: "none",
-              transition: "all 0.3s ease",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "rgba(255,255,255,0.18)";
-              e.currentTarget.style.borderColor = "#FFFFFF";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "rgba(0,0,0,0.18)";
-              e.currentTarget.style.borderColor = "rgba(255,255,255,0.72)";
-            }}
-          >
+          <div className="brand-about-text">
+            <h2>Founded in Australia</h2>
+            <p>Heavy Transport · Clean Energy · Intelligent Robotics</p>
+          </div>
+
+          <a href="/about" className="brand-about-button">
             About Us
           </a>
         </div>
       </div>
+
+      <style>{`
+        .brand-about-banner {
+          min-height: 420px;
+        }
+
+        .brand-about-image {
+          min-height: 420px;
+          object-fit: cover !important;
+          object-position: center center;
+        }
+
+        .brand-about-text {
+          position: absolute;
+          z-index: 5;
+          left: clamp(22%, 23vw, 28%);
+          top: clamp(17%, 18vw, 24%);
+          transform: translateY(-50%);
+          color: rgba(255,255,255,0.94);
+          text-shadow: 0 10px 32px rgba(0,0,0,0.42);
+          pointer-events: none;
+        }
+
+        .brand-about-text h2 {
+          margin: 0;
+          font-family: ${FONT_FAMILY};
+          font-weight: 400;
+          font-size: clamp(2.2rem, 3.9vw, 6rem);
+          line-height: 1.05;
+          letter-spacing: 0.01em;
+          color: rgba(255,255,255,0.96);
+        }
+
+        .brand-about-text p {
+          margin: clamp(0.8rem, 1.1vw, 1.7rem) 0 0;
+          font-family: ${FONT_FAMILY};
+          font-weight: 400;
+          font-size: clamp(0.95rem, 1.35vw, 2rem);
+          line-height: 1.35;
+          letter-spacing: 0.12em;
+          color: rgba(255,255,255,0.82);
+        }
+
+        .brand-about-button {
+          position: absolute;
+          z-index: 6;
+          left: 50%;
+          bottom: clamp(1.2rem, 3vw, 3.5rem);
+          transform: translateX(-50%);
+          width: clamp(150px, 10vw, 210px);
+          height: clamp(46px, 3vw, 60px);
+          border: 1px solid rgba(255,255,255,0.72);
+          border-radius: 4px;
+          color: rgba(255,255,255,0.94);
+          background: rgba(0,0,0,0.18);
+          backdrop-filter: blur(8px);
+          font-family: ${FONT_FAMILY};
+          font-weight: 600;
+          font-size: clamp(0.8rem, 0.85vw, 1rem);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .brand-about-button:hover {
+          background: rgba(255,255,255,0.18);
+          border-color: #FFFFFF;
+        }
+
+        @media (max-width: 1280px) {
+          .brand-about-text {
+            left: clamp(24%, 25vw, 30%);
+            top: 23%;
+          }
+        }
+
+        @media (max-width: 900px) {
+          .brand-about-banner {
+            min-height: 560px;
+          }
+
+          .brand-about-image {
+            min-height: 560px;
+            object-position: 48% center;
+          }
+
+          .brand-about-text {
+            left: clamp(24px, 6vw, 56px);
+            right: clamp(24px, 6vw, 56px);
+            top: 18%;
+            transform: none;
+          }
+
+          .brand-about-text h2 {
+            font-size: clamp(2.4rem, 8vw, 4.6rem);
+          }
+
+          .brand-about-text p {
+            max-width: 520px;
+            font-size: clamp(0.95rem, 2.6vw, 1.35rem);
+            letter-spacing: 0.08em;
+          }
+        }
+
+        @media (max-width: 560px) {
+          .brand-about-banner {
+            min-height: 620px;
+          }
+
+          .brand-about-image {
+            min-height: 620px;
+            object-position: 52% center;
+          }
+
+          .brand-about-text {
+            top: 10%;
+          }
+
+          .brand-about-text h2 {
+            font-size: clamp(2.2rem, 11vw, 3.8rem);
+            line-height: 1.08;
+          }
+
+          .brand-about-text p {
+            font-size: clamp(0.9rem, 4vw, 1.18rem);
+            line-height: 1.55;
+            letter-spacing: 0.055em;
+          }
+
+          .brand-about-button {
+            bottom: 32px;
+            width: calc(100% - 48px);
+            max-width: 260px;
+          }
+        }
+      `}</style>
     </div>
   );
 }
@@ -602,7 +710,6 @@ export default function ProductsSection() {
         fontFamily: FONT_FAMILY,
       }}
     >
-      {/* Section header */}
       <div
         style={{
           background: PRODUCTS_HEADER_BG,
