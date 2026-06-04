@@ -10,7 +10,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 
-//const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663624986257/BerFRCPtLjYjx9pqX5GUkP/hero-bg-melbourne-GuQD9Emmw6QGu8jJEy6BX7.webp";
 
 const FONT_FAMILY =
   "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
@@ -134,7 +133,7 @@ export default function HeroSection() {
             transition: "opacity 1s ease 0.3s, transform 1s ease 0.3s",
           }}
         >
-          REDEFINE FUTURE
+          REDEFINING THE FUTURE OF MOBILITY
         </h1>
 
         {/* Subheadline */}
