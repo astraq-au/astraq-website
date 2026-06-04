@@ -133,7 +133,7 @@ export default function HeroSection() {
             transition: "opacity 1s ease 0.3s, transform 1s ease 0.3s",
           }}
         >
-          REDEFINING THE FUTURE OF MOBILITY
+          Powering Next-Generation Logistics
         </h1>
 
         {/* Subheadline */}
