@@ -1,10 +1,12 @@
 /**
  * MassageRobotPage
  * ET-M Intelligent Massage Robot
+ * English / Chinese supported
  */
 
 import { useState } from "react";
 import Footer from "../components/Footer";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const HERO_IMAGE = "/images/massage-robot/ET-M-hero.png";
 
@@ -25,25 +27,34 @@ const APPLICATIONS = [
     key: "therapy",
     image: "/images/massage-robot/ET-M-application-therapy-room.png",
     icon: "☯",
-    title: "Physical Therapy Room",
+    title: "Therapy Practice Room",
+    zhTitle: "康复理疗室",
     description:
-      "Support recovery and mobility with precise, data-driven robotic massage therapy.",
+      "Support daily treatment work with controlled robotic massage and repeatable therapy settings.",
+    zhDescription:
+      "通过可控的机器人按摩和可重复的治疗设置，辅助日常康复理疗工作。",
   },
   {
     key: "beauty",
     image: "/images/massage-robot/ET-M-application-beauty-clinic.png",
     icon: "☺",
-    title: "Beauty Clinic",
+    title: "Wellness & Beauty Clinic",
+    zhTitle: "康养美容机构",
     description:
-      "Enhance treatment offerings and elevate client experience with intelligent care.",
+      "Add robotic therapy support to wellness services and improve treatment workflow consistency.",
+    zhDescription:
+      "为康养护理服务加入机器人理疗辅助，提高服务流程的一致性。",
   },
   {
     key: "sports",
     image: "/images/massage-robot/ET-M-application-sports-rehab.png",
     icon: "♙",
-    title: "Sports Rehabilitation Center",
+    title: "Sports Recovery Center",
+    zhTitle: "运动恢复中心",
     description:
-      "Accelerate athlete recovery and optimize performance with targeted therapy.",
+      "Assist recovery routines with targeted treatment support for training and rehabilitation settings.",
+    zhDescription:
+      "为训练恢复和运动康复场景提供针对性的理疗辅助支持。",
   },
 ] as const;
 
@@ -65,60 +76,84 @@ const COLORS = {
 const FUNCTIONS = [
   {
     key: "massage",
-    label: "Massage",
+    label: "Robotic Massage",
+    zhLabel: "机器人按摩",
     icon: "〰",
     image: FUNCTION_IMAGES.massage,
-    imageTitle: "Adaptive Robotic Massage",
+    imageTitle: "Controlled Robotic Massage",
+    zhImageTitle: "可控机器人按摩",
     imageDescription:
-      "Targeted robotic massage helps relax muscles and support daily recovery.",
+      "Provides consistent massage movement to support muscle relaxation and daily recovery routines.",
+    zhImageDescription:
+      "通过稳定的按摩动作，辅助肌肉放松和日常恢复流程。",
   },
   {
     key: "shockwave",
     label: "Magneto Shockwave",
+    zhLabel: "磁震波理疗",
     icon: "◎",
     image: FUNCTION_IMAGES.shockwave,
     imageTitle: "Deep Tissue Stimulation",
+    zhImageTitle: "深层组织刺激",
     imageDescription:
-      "High-frequency stimulation supports deep tissue response and advanced recovery.",
+      "High-frequency stimulation supports deeper tissue response under therapist-guided treatment settings.",
+    zhImageDescription:
+      "在治疗师指导下，通过高频刺激辅助深层组织响应。",
   },
   {
     key: "heat",
     label: "Endogenous Heat",
+    zhLabel: "内源热支持",
     icon: "≋",
     image: FUNCTION_IMAGES.heat,
-    imageTitle: "Controlled Thermal Support",
+    imageTitle: "Thermal Treatment Support",
+    zhImageTitle: "热疗辅助支持",
     imageDescription:
-      "Gentle heat therapy helps promote circulation, relaxation and treatment comfort.",
+      "Controlled thermal support helps improve treatment comfort and supports circulation-focused routines.",
+    zhImageDescription:
+      "可控热疗辅助有助于提升治疗舒适度，并支持循环改善类护理流程。",
   },
 ] as const;
 
 const FEATURES = [
   {
     key: "acupoint",
-    label: "Acupoint Recognition",
+    label: "Body Point Mapping",
+    zhLabel: "身体点位识别",
     icon: "◎",
     image: FEATURE_IMAGES.acupoint,
-    title: "AI Acupoint Recognition",
+    title: "AI-Assisted Point Recognition",
+    zhTitle: "AI 辅助点位识别",
     description:
-      "AI-assisted body mapping helps identify treatment points with consistency.",
+      "AI-assisted body mapping helps identify treatment areas with greater consistency across sessions.",
+    zhDescription:
+      "AI 辅助身体映射有助于在不同治疗过程中更稳定地识别目标区域。",
   },
   {
     key: "control",
-    label: "Precise Control",
+    label: "Motion Control",
+    zhLabel: "运动控制",
     icon: "⌖",
     image: FEATURE_IMAGES.control,
-    title: "Precise Motion Control",
+    title: "Stable Force and Motion Control",
+    zhTitle: "稳定的力度与运动控制",
     description:
-      "Stable force and motion control help deliver repeatable treatment performance.",
+      "Controlled force and trajectory execution support repeatable massage performance.",
+    zhDescription:
+      "通过对力度和运动轨迹的控制，支持更可重复的按摩执行效果。",
   },
   {
     key: "interaction",
-    label: "Multi-Modal Interaction",
+    label: "Therapist Interaction",
+    zhLabel: "治疗师交互",
     icon: "☝",
     image: FEATURE_IMAGES.interaction,
-    title: "Intuitive Human-Robot Interaction",
+    title: "Therapist-Guided Operation",
+    zhTitle: "治疗师引导式操作",
     description:
-      "Touch interface and therapist-guided control support a smoother treatment workflow.",
+      "Touch interface and guided control help integrate the robot into existing treatment workflows.",
+    zhDescription:
+      "触控界面和引导式控制，帮助机器人更自然地融入现有治疗流程。",
   },
 ] as const;
 
@@ -126,6 +161,8 @@ type FunctionKey = (typeof FUNCTIONS)[number]["key"];
 type FeatureKey = (typeof FEATURES)[number]["key"];
 
 export default function MassageRobotPage() {
+  const { language } = useLanguage();
+
   const [activeFunction, setActiveFunction] =
     useState<FunctionKey>("massage");
   const [activeFeature, setActiveFeature] =
@@ -135,6 +172,15 @@ export default function MassageRobotPage() {
   const activeFeatureItem = FEATURES.find(
     (item) => item.key === activeFeature
   )!;
+
+  const getLabel = (en: string, zh: string) => {
+    return language === "zh" ? zh : en;
+  };
+
+  const textTransform =
+    language === "zh" ? ("none" as const) : ("uppercase" as const);
+  const titleLetterSpacing = language === "zh" ? "-0.04em" : "-0.055em";
+  const smallLetterSpacing = language === "zh" ? "0.04em" : "0.06em";
 
   return (
     <main
@@ -177,14 +223,27 @@ export default function MassageRobotPage() {
               margin: 0,
               color: COLORS.textMain,
               fontWeight: 600,
-              fontSize: "clamp(2.8rem, 4.8vw, 7rem)",
+              fontSize:
+                language === "zh"
+                  ? "clamp(2.6rem, 4.4vw, 6.4rem)"
+                  : "clamp(2.8rem, 4.8vw, 7rem)",
               lineHeight: 1.04,
-              letterSpacing: "-0.055em",
+              letterSpacing: titleLetterSpacing,
             }}
           >
-            Smarter Massage
-            <br />
-            Better Recovery
+            {language === "zh" ? (
+              <>
+                智能按摩
+                <br />
+                辅助恢复
+              </>
+            ) : (
+              <>
+                Smarter Massage
+                <br />
+                Better Recovery
+              </>
+            )}
           </h1>
 
           <p
@@ -196,12 +255,22 @@ export default function MassageRobotPage() {
               fontWeight: 400,
               fontSize: "clamp(1.05rem, 1.35vw, 2rem)",
               lineHeight: 1.5,
-              letterSpacing: "-0.01em",
+              letterSpacing: language === "zh" ? "0.01em" : "-0.01em",
             }}
           >
-            Advanced robotic therapy for wellness,
-            <br />
-            rehab and recovery.
+            {language === "zh" ? (
+              <>
+                面向康养、理疗和恢复场景的
+                <br />
+                机器人辅助治疗平台。
+              </>
+            ) : (
+              <>
+                Robotic therapy support for wellness,
+                <br />
+                treatment and recovery workflows.
+              </>
+            )}
           </p>
 
           <div
@@ -224,8 +293,8 @@ export default function MassageRobotPage() {
                 background: "rgba(255,255,255,0.62)",
                 fontWeight: 600,
                 fontSize: "clamp(0.82rem, 0.82vw, 1rem)",
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
+                letterSpacing: smallLetterSpacing,
+                textTransform,
                 textDecoration: "none",
                 transition: "all 0.3s ease",
                 boxShadow: "0 14px 38px rgba(90,60,40,0.08)",
@@ -242,7 +311,7 @@ export default function MassageRobotPage() {
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
-              View Specifications
+              {getLabel("View Specifications", "查看参数")}
             </a>
 
             <a
@@ -257,8 +326,8 @@ export default function MassageRobotPage() {
                 background: COLORS.accent,
                 fontWeight: 600,
                 fontSize: "clamp(0.82rem, 0.82vw, 1rem)",
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
+                letterSpacing: smallLetterSpacing,
+                textTransform,
                 textDecoration: "none",
                 transition: "all 0.3s ease",
                 boxShadow: "0 16px 42px rgba(185,138,98,0.24)",
@@ -274,7 +343,7 @@ export default function MassageRobotPage() {
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
-              Buy Now
+              {getLabel("Buy Now", "立即购买")}
             </a>
           </div>
         </div>
@@ -291,7 +360,7 @@ export default function MassageRobotPage() {
         <img
           key={activeItem.image}
           src={activeItem.image}
-          alt={activeItem.label}
+          alt={getLabel(activeItem.label, activeItem.zhLabel)}
           className="massage-function-bg"
           style={{
             display: "block",
@@ -316,13 +385,16 @@ export default function MassageRobotPage() {
               margin: 0,
               color: COLORS.textMain,
               fontWeight: 600,
-              fontSize: "clamp(2.4rem, 3.4vw, 5rem)",
+              fontSize:
+                language === "zh"
+                  ? "clamp(2.2rem, 3.2vw, 4.6rem)"
+                  : "clamp(2.4rem, 3.4vw, 5rem)",
               lineHeight: 1.06,
-              letterSpacing: "-0.045em",
+              letterSpacing: language === "zh" ? "-0.04em" : "-0.045em",
               maxWidth: "clamp(420px, 34vw, 720px)",
             }}
           >
-            Therapy Functions
+            {getLabel("Therapy Functions", "理疗功能")}
           </h2>
 
           <div
@@ -394,10 +466,10 @@ export default function MassageRobotPage() {
                       fontWeight: 600,
                       fontSize: "clamp(1.08rem, 1.22vw, 1.6rem)",
                       lineHeight: 1.15,
-                      letterSpacing: "-0.015em",
+                      letterSpacing: language === "zh" ? "-0.01em" : "-0.015em",
                     }}
                   >
-                    {item.label}
+                    {getLabel(item.label, item.zhLabel)}
                   </span>
 
                   <span
@@ -438,14 +510,17 @@ export default function MassageRobotPage() {
               margin: 0,
               color: COLORS.textMain,
               fontWeight: 600,
-              fontSize: "clamp(2rem, 2.6vw, 4.3rem)",
+              fontSize:
+                language === "zh"
+                  ? "clamp(1.9rem, 2.4vw, 3.9rem)"
+                  : "clamp(2rem, 2.6vw, 4.3rem)",
               lineHeight: 1.08,
-              letterSpacing: "-0.04em",
+              letterSpacing: language === "zh" ? "-0.035em" : "-0.04em",
               maxWidth: "960px",
               textShadow: "0 2px 12px rgba(255,255,255,0.8)",
             }}
           >
-            {activeItem.imageTitle}
+            {getLabel(activeItem.imageTitle, activeItem.zhImageTitle)}
           </h3>
 
           <p
@@ -460,7 +535,10 @@ export default function MassageRobotPage() {
               textShadow: "0 2px 10px rgba(255,255,255,0.78)",
             }}
           >
-            {activeItem.imageDescription}
+            {getLabel(
+              activeItem.imageDescription,
+              activeItem.zhImageDescription
+            )}
           </p>
         </div>
       </section>
@@ -476,7 +554,7 @@ export default function MassageRobotPage() {
         <img
           key={activeFeatureItem.image}
           src={activeFeatureItem.image}
-          alt={activeFeatureItem.label}
+          alt={getLabel(activeFeatureItem.label, activeFeatureItem.zhLabel)}
           className="massage-feature-bg"
           style={{
             display: "block",
@@ -501,14 +579,20 @@ export default function MassageRobotPage() {
               margin: 0,
               color: COLORS.textMain,
               fontWeight: 600,
-              fontSize: "clamp(2.4rem, 3.4vw, 5rem)",
+              fontSize:
+                language === "zh"
+                  ? "clamp(2.2rem, 3.2vw, 4.6rem)"
+                  : "clamp(2.4rem, 3.4vw, 5rem)",
               lineHeight: 1.04,
-              letterSpacing: "-0.05em",
+              letterSpacing: language === "zh" ? "-0.04em" : "-0.05em",
               maxWidth: "none",
               whiteSpace: "nowrap",
             }}
           >
-            Intelligent Therapy Capabilities
+            {getLabel(
+              "Therapy Intelligence and Control",
+              "理疗感知与控制能力"
+            )}
           </h2>
 
           <div
@@ -529,11 +613,13 @@ export default function MassageRobotPage() {
               fontSize: "clamp(1.05rem, 1.15vw, 1.55rem)",
               lineHeight: 1.55,
               maxWidth: "620px",
-              letterSpacing: "-0.01em",
+              letterSpacing: language === "zh" ? "0.01em" : "-0.01em",
             }}
           >
-            AI-powered perception, precise execution and intuitive collaboration
-            for better outcomes.
+            {getLabel(
+              "AI-assisted perception, controlled execution and therapist-guided interaction for structured treatment workflows.",
+              "通过 AI 辅助感知、可控执行和治疗师引导式交互，服务结构化理疗流程。"
+            )}
           </p>
 
           <div
@@ -580,7 +666,7 @@ export default function MassageRobotPage() {
                     fontWeight: isActive ? 600 : 500,
                     fontSize: "clamp(1rem, 1.12vw, 1.5rem)",
                     lineHeight: 1.2,
-                    letterSpacing: "-0.015em",
+                    letterSpacing: language === "zh" ? "-0.01em" : "-0.015em",
                     transition: "all 0.25s ease",
                   }}
                 >
@@ -592,7 +678,7 @@ export default function MassageRobotPage() {
                   >
                     {item.icon}
                   </span>
-                  <span>{item.label}</span>
+                  <span>{getLabel(item.label, item.zhLabel)}</span>
                 </button>
               );
             })}
@@ -618,10 +704,10 @@ export default function MassageRobotPage() {
                 fontWeight: 600,
                 fontSize: "clamp(1.75rem, 2.1vw, 3.2rem)",
                 lineHeight: 1.12,
-                letterSpacing: "-0.035em",
+                letterSpacing: language === "zh" ? "-0.03em" : "-0.035em",
               }}
             >
-              {activeFeatureItem.label}
+              {getLabel(activeFeatureItem.title, activeFeatureItem.zhTitle)}
             </h3>
 
             <div
@@ -642,10 +728,13 @@ export default function MassageRobotPage() {
                 fontSize: "clamp(1.1rem, 1.22vw, 1.65rem)",
                 lineHeight: 1.6,
                 maxWidth: "620px",
-                letterSpacing: "-0.01em",
+                letterSpacing: language === "zh" ? "0.01em" : "-0.01em",
               }}
             >
-              {activeFeatureItem.description}
+              {getLabel(
+                activeFeatureItem.description,
+                activeFeatureItem.zhDescription
+              )}
             </p>
           </div>
         </div>
@@ -681,12 +770,15 @@ export default function MassageRobotPage() {
                 margin: 0,
                 color: COLORS.textMain,
                 fontWeight: 500,
-                fontSize: "clamp(3.1rem, 4.6vw, 6.2rem)",
+                fontSize:
+                  language === "zh"
+                    ? "clamp(2.8rem, 4.2vw, 5.8rem)"
+                    : "clamp(3.1rem, 4.6vw, 6.2rem)",
                 lineHeight: 1.05,
-                letterSpacing: "-0.045em",
+                letterSpacing: language === "zh" ? "-0.04em" : "-0.045em",
               }}
             >
-              Application Scenarios
+              {getLabel("Application Scenarios", "应用场景")}
             </h2>
 
             <div
@@ -698,18 +790,6 @@ export default function MassageRobotPage() {
                   "clamp(18px, 1.6vw, 28px) auto clamp(18px, 1.8vw, 30px)",
               }}
             />
-
-            <p
-              style={{
-                margin: 0,
-                color: COLORS.textSoft,
-                fontWeight: 400,
-                fontSize: "clamp(1.05rem, 1.25vw, 1.55rem)",
-                lineHeight: 1.62,
-                letterSpacing: "-0.01em",
-              }}
-            >
-            </p>
           </div>
 
           <div className="massage-application-grid">
@@ -717,7 +797,7 @@ export default function MassageRobotPage() {
               <article key={item.key} className="massage-application-card">
                 <img
                   src={item.image}
-                  alt={item.title}
+                  alt={getLabel(item.title, item.zhTitle)}
                   className="massage-application-image"
                 />
 
@@ -725,9 +805,11 @@ export default function MassageRobotPage() {
                   <div className="massage-application-icon">{item.icon}</div>
 
                   <div className="massage-application-text">
-                    <h3 className="massage-application-title">{item.title}</h3>
+                    <h3 className="massage-application-title">
+                      {getLabel(item.title, item.zhTitle)}
+                    </h3>
                     <p className="massage-application-description">
-                      {item.description}
+                      {getLabel(item.description, item.zhDescription)}
                     </p>
                   </div>
                 </div>
@@ -822,7 +904,7 @@ export default function MassageRobotPage() {
           font-weight: 600;
           font-size: clamp(1.35rem, 1.45vw, 2.15rem);
           line-height: 1.18;
-          letter-spacing: -0.025em;
+          letter-spacing: ${language === "zh" ? "-0.02em" : "-0.025em"};
         }
 
         .massage-application-description {
@@ -831,7 +913,7 @@ export default function MassageRobotPage() {
           font-weight: 400;
           font-size: clamp(1.02rem, 1.06vw, 1.42rem);
           line-height: 1.56;
-          letter-spacing: -0.01em;
+          letter-spacing: ${language === "zh" ? "0.01em" : "-0.01em"};
         }
 
         @media (max-width: 1440px) {

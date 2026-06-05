@@ -5,26 +5,55 @@
  * - Tagline, CTA buttons
  * - Stats grid (integrated)
  * - Scroll indicator
+ * - English / Chinese supported
  */
 
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
+import { useLanguage } from "../i18n/LanguageContext";
 
+//const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663624986257/BerFRCPtLjYjx9pqX5GUkP/hero-bg-melbourne-GuQD9Emmw6QGu8jJEy6BX7.webp";
 
 const FONT_FAMILY =
   "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
 
 const stats = [
-  { value: "POWER", label: "ENERGY" },
-  { value: "INTELLIGENCE", label: "AI ROBOT" },
-  { value: "SYSTEMS", label: "INTEGRATION" },
-  { value: "FUTURE", label: "MOBILITY" },
+  {
+    value: "POWER",
+    zhValue: "能源",
+    label: "ENERGY",
+    zhLabel: "清洁能源",
+  },
+  {
+    value: "INTELLIGENCE",
+    zhValue: "智能",
+    label: "AI ROBOT",
+    zhLabel: "AI 机器人",
+  },
+  {
+    value: "SYSTEMS",
+    zhValue: "系统",
+    label: "INTEGRATION",
+    zhLabel: "集成方案",
+  },
+  {
+    value: "FUTURE",
+    zhValue: "未来",
+    label: "MOBILITY",
+    zhLabel: "智慧出行",
+  },
 ];
 
 export default function HeroSection() {
+  const { language } = useLanguage();
+
   const [visible, setVisible] = useState(false);
   const [hideHeroContent, setHideHeroContent] = useState(false);
   const [, setLocation] = useLocation();
+
+  const getLabel = (en: string, zh: string) => {
+    return language === "zh" ? zh : en;
+  };
 
   const handleLearnMore = () => {
     setLocation("/about");
@@ -95,66 +124,25 @@ export default function HeroSection() {
           pointerEvents: hideHeroContent ? "none" : "auto",
         }}
       >
-        {/* Label tag */}
-        {/* <div
-          className="inline-flex items-center gap-3 mb-8"
-          style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? "translateY(0)" : "translateY(20px)",
-            transition: "opacity 1.2s ease 0.2s, transform 1.2s ease 0.2s",
-          }}
-        >
-          <span className="block w-8 h-px" style={{ background: "#C9A46A" }} />
-          <span
-            className="label-tag"
-            style={{
-              fontSize: "clamp(0.85rem, 1vw, 1.25rem)",
-              letterSpacing: "clamp(0.12em, 0.35vw, 0.28em)",
-              color: "#C9A46A",
-            }}
-          >
-            The Future of new life
-          </span>
-          <span className="block w-8 h-px" style={{ background: "#C9A46A" }} />
-        </div> */}
-
         {/* Main headline */}
         <h1
           style={{
             fontFamily: FONT_FAMILY,
             fontWeight: 600,
-            fontSize: "clamp(3.2rem, 7vw, 8.5rem)",
+            fontSize: language === "zh"
+              ? "clamp(3rem, 6.2vw, 7.4rem)"
+              : "clamp(3.2rem, 7vw, 8.5rem)",
             lineHeight: 1.02,
-            letterSpacing: "-0.055em",
+            letterSpacing: language === "zh" ? "-0.035em" : "-0.055em",
             color: "#FFFFFF",
-            textTransform: "uppercase",
+            textTransform: language === "zh" ? "none" : "uppercase",
             opacity: visible ? 1 : 0,
             transform: visible ? "translateY(0)" : "translateY(30px)",
             transition: "opacity 1s ease 0.3s, transform 1s ease 0.3s",
           }}
         >
-          Powering Next-Generation Logistics
+          {getLabel("Powering Next-Generation Logistics", "驱动新一代物流")}
         </h1>
-
-        {/* Subheadline */}
-        {/* <p
-          style={{
-            fontFamily: FONT_FAMILY,
-            fontWeight: 400,
-            fontSize: "clamp(1rem, 2vw, 1.25rem)",
-            color: "rgba(255,255,255,0.6)",
-            marginTop: "5px",
-            maxWidth: "600px",
-            marginLeft: "auto",
-            marginRight: "auto",
-            lineHeight: 1.7,
-            opacity: visible ? 1 : 0,
-            transform: visible ? "translateY(0)" : "translateY(20px)",
-            transition: "opacity 1s ease 0.5s, transform 1s ease 0.5s",
-          }}
-        >
-          Astraq is building the next generation of human life for a sustainable world.
-        </p> */}
 
         {/* CTA Buttons */}
         <div
@@ -173,11 +161,11 @@ export default function HeroSection() {
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
           >
-            Explore Products
+            {getLabel("Explore Products", "探索产品")}
           </button>
 
           <button className="btn-outline-glow" onClick={handleLearnMore}>
-            Learn More
+            {getLabel("Learn More", "了解更多")}
           </button>
         </div>
 
@@ -207,28 +195,33 @@ export default function HeroSection() {
                 style={{
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
-                  fontSize: "clamp(1.25rem, 2vw, 2.4rem)",
+                  fontSize:
+                    language === "zh"
+                      ? "clamp(1.35rem, 2vw, 2.5rem)"
+                      : "clamp(1.25rem, 2vw, 2.4rem)",
                   color: "#FFFFFF",
                   lineHeight: 1.04,
-                  letterSpacing: "-0.025em",
+                  letterSpacing: language === "zh" ? "-0.01em" : "-0.025em",
                 }}
               >
-                {stat.value}
-                {/* <span style={{ color: "#e5360b" }}>{stat.suffix}</span> */}
+                {getLabel(stat.value, stat.zhValue)}
               </div>
 
               <div
                 style={{
                   fontFamily: FONT_FAMILY,
                   fontWeight: 400,
-                  fontSize: "clamp(0.65rem, 0.75vw, 0.9rem)",
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
+                  fontSize:
+                    language === "zh"
+                      ? "clamp(0.72rem, 0.8vw, 1rem)"
+                      : "clamp(0.65rem, 0.75vw, 0.9rem)",
+                  letterSpacing: language === "zh" ? "0.06em" : "0.08em",
+                  textTransform: language === "zh" ? "none" : "uppercase",
                   color: "rgba(255, 255, 255, 0.71)",
                   marginTop: "0.5rem",
                 }}
               >
-                {stat.label}
+                {getLabel(stat.label, stat.zhLabel)}
               </div>
             </div>
           ))}

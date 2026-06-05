@@ -1,9 +1,12 @@
 /**
  * ElectricTruckDetail Page
  * ASTRAQ EPM1 6x4 Battery-Electric Prime Mover
- * Futuristic EV-focused product page
+ * Commercial EV heavy transport product page
+ * English / Chinese supported
  */
-import Footer from "@/components/Footer";
+
+import Footer from "../components/Footer";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const FONT_FAMILY =
   "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
@@ -40,139 +43,210 @@ const COLORS = {
 const keyHighlights = [
   {
     value: "6×4",
+    zhValue: "6×4",
     label: "Drive Configuration",
+    zhLabel: "驱动形式",
   },
   {
     value: "60T",
+    zhValue: "60吨",
     label: "Gross Combination Mass",
+    zhLabel: "最大组合总质量",
   },
   {
     value: "420km",
-    label: "Driving Range",
+    zhValue: "420公里",
+    label: "Reference Driving Range",
+    zhLabel: "参考续航里程",
   },
   {
     value: "600kWh",
-    label: "Battery Size",
+    zhValue: "600千瓦时",
+    label: "Battery Capacity",
+    zhLabel: "电池容量",
   },
 ];
 
 const quickSpecs = [
   {
     label: "Vehicle Type",
-    value: "6×4 BEV Prime Mover",
+    zhLabel: "车辆类型",
+    value: "6×4 Battery-Electric Prime Mover",
+    zhValue: "6×4 纯电牵引车",
   },
   {
     label: "Battery",
-    value: "500–600 kWh LFP",
+    zhLabel: "电池系统",
+    value: "500–600 kWh LFP Battery",
+    zhValue: "500–600 kWh 磷酸铁锂电池",
   },
   {
     label: "Range",
-    value: ">400 km line-haul",
+    zhLabel: "续航里程",
+    value: "420 km Reference Range",
+    zhValue: "参考续航 420 km",
   },
   {
     label: "Platform",
-    value: "800 V high-voltage",
+    zhLabel: "高压平台",
+    value: "800 V High-Voltage Platform",
+    zhValue: "800 V 高压电平台",
   },
   {
     label: "Motor",
-    value: "Dual-motor electric drive",
+    zhLabel: "电机系统",
+    value: "Dual-Motor Electric Drive",
+    zhValue: "双电机电驱系统",
   },
   {
     label: "GCM",
+    zhLabel: "组合总质量 GCM",
     value: "Up to 60,000 kg",
+    zhValue: "最高 60,000 kg",
   },
   {
     label: "Wheelbase",
+    zhLabel: "轴距",
     value: "4550 + 1350 mm",
+    zhValue: "4550 + 1350 mm",
   },
   {
     label: "Charging",
-    value: "Fast charge + battery swap",
+    zhLabel: "补能方式",
+    value: "Fast Charging + Battery Swap",
+    zhValue: "快充 + 换电适配",
   },
 ];
 
 const powertrainSpecs = [
   {
     label: "Rated / Peak Power",
+    zhLabel: "额定 / 峰值功率",
     value: "2 × 138 kW / 2 × 290 kW",
+    zhValue: "2 × 138 kW / 2 × 290 kW",
   },
   {
     label: "Rated / Peak Torque",
+    zhLabel: "额定 / 峰值扭矩",
     value: "2 × 300 N·m / 2 × 820 N·m",
+    zhValue: "2 × 300 N·m / 2 × 820 N·m",
   },
   {
     label: "Drive System",
-    value: "Direct electric drive with regenerative braking",
+    zhLabel: "驱动系统",
+    value: "Direct Electric Drive with Regenerative Braking",
+    zhValue: "直驱电驱系统，支持制动能量回收",
   },
   {
     label: "Battery Layout",
-    value: "Underfloor battery system with protection frame",
+    zhLabel: "电池布置",
+    value: "Underfloor Battery System with Protection Frame",
+    zhValue: "底置式电池系统，配备防护框架",
   },
 ];
 
 const capabilitySpecs = [
   {
     label: "Kerb Weight",
+    zhLabel: "整备质量",
     value: "10,900 kg",
+    zhValue: "10,900 kg",
   },
   {
     label: "GCM",
+    zhLabel: "组合总质量 GCM",
     value: "60,000 kg",
+    zhValue: "60,000 kg",
   },
   {
     label: "Battery",
+    zhLabel: "电池容量",
     value: "500–600 kWh",
+    zhValue: "500–600 kWh",
   },
   {
     label: "Range",
-    value: ">400 km",
+    zhLabel: "续航里程",
+    value: "420 km",
+    zhValue: "420 km",
   },
   {
     label: "Gradeability",
+    zhLabel: "最大爬坡度",
     value: "≥20%",
+    zhValue: "≥20%",
   },
   {
     label: "Tyres",
+    zhLabel: "轮胎规格",
     value: "12R22.5",
+    zhValue: "12R22.5",
   },
 ];
 
 const techSafetyFeatures = [
   {
     title: "AEB",
-    desc: "Autonomous emergency braking",
+    zhTitle: "AEB",
+    desc: "Autonomous emergency braking support.",
+    zhDesc: "自动紧急制动辅助，提升复杂道路环境下的安全冗余。",
   },
   {
     title: "LDW / LDWS",
-    desc: "Lane departure warning system",
+    zhTitle: "LDW / LDWS",
+    desc: "Lane departure warning support for fleet operation.",
+    zhDesc: "车道偏离预警，辅助长距离运输和车队日常运营。",
   },
   {
     title: "FCW",
-    desc: "Forward collision warning",
+    zhTitle: "FCW",
+    desc: "Forward collision warning for traffic risk awareness.",
+    zhDesc: "前碰撞预警，帮助驾驶员提前识别前方交通风险。",
   },
   {
     title: "EBS + ESC",
-    desc: "Electronic braking and stability control",
+    zhTitle: "EBS + ESC",
+    desc: "Electronic braking and stability control.",
+    zhDesc: "电子制动与车身稳定控制，提升制动和行驶稳定性。",
   },
   {
     title: "L2+ Ready",
-    desc: "Upgradeable driver-assistance architecture",
+    zhTitle: "L2+ 预留",
+    desc: "Driver-assistance architecture prepared for future upgrades.",
+    zhDesc: "预留驾驶辅助架构，为后续功能升级提供基础。",
   },
   {
     title: "V2X Ready",
-    desc: "Upgradable connected electrical platform",
+    zhTitle: "V2X 预留",
+    desc: "Connected electrical platform prepared for V2X integration.",
+    zhDesc: "预留车路协同接入能力，适配后续联网运营场景。",
   },
   {
     title: "LiDAR Ready",
-    desc: "Sensor layout prepared for advanced perception",
+    zhTitle: "激光雷达预留",
+    desc: "Sensor layout prepared for advanced perception systems.",
+    zhDesc: "预留传感器布置空间，支持后续高级感知系统扩展。",
   },
   {
     title: "By-Wire Chassis",
-    desc: "Brake-by-wire, steer-by-wire and drive-by-wire",
+    zhTitle: "线控底盘",
+    desc: "Brake-by-wire, steer-by-wire and drive-by-wire architecture.",
+    zhDesc: "支持线控制动、线控转向和线控驱动架构。",
   },
 ];
 
 export default function ElectricTruckDetail() {
+  const { language } = useLanguage();
+
+  const getLabel = (en: string, zh: string) => {
+    return language === "zh" ? zh : en;
+  };
+
+  const textTransform =
+    language === "zh" ? ("none" as const) : ("uppercase" as const);
+  const titleLetterSpacing = language === "zh" ? "-0.035em" : "-0.055em";
+  const smallLetterSpacing = language === "zh" ? "0.04em" : "0.06em";
+
   return (
     <main
       className="min-h-screen overflow-hidden"
@@ -193,7 +267,6 @@ export default function ElectricTruckDetail() {
           background: COLORS.pageBg,
         }}
       >
-        {/* Background image */}
         <div
           className="absolute inset-0"
           style={{
@@ -206,7 +279,6 @@ export default function ElectricTruckDetail() {
           }}
         />
 
-        {/* Balanced tech overlay - keep truck visible */}
         <div
           className="absolute inset-0"
           style={{
@@ -215,7 +287,6 @@ export default function ElectricTruckDetail() {
           }}
         />
 
-        {/* Header readability */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -224,7 +295,6 @@ export default function ElectricTruckDetail() {
           }}
         />
 
-        {/* Futuristic blue light */}
         <div
           className="absolute inset-0"
           style={{
@@ -233,7 +303,6 @@ export default function ElectricTruckDetail() {
           }}
         />
 
-        {/* Bottom continuity fade */}
         <div
           className="absolute inset-0"
           style={{
@@ -242,7 +311,6 @@ export default function ElectricTruckDetail() {
           }}
         />
 
-        {/* Electric grid lines */}
         <div
           className="absolute inset-x-0 bottom-[18%] h-[1px]"
           style={{
@@ -261,7 +329,6 @@ export default function ElectricTruckDetail() {
           }}
         />
 
-        {/* Content */}
         <div className="relative z-10 w-full max-w-[96vw] 2xl:max-w-[1900px] mx-auto px-5 sm:px-8 lg:px-14 xl:px-20 2xl:px-28">
           <div
             style={{
@@ -277,8 +344,8 @@ export default function ElectricTruckDetail() {
                 color: COLORS.accentLight,
                 fontFamily: FONT_FAMILY,
                 fontWeight: 600,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
+                letterSpacing: smallLetterSpacing,
+                textTransform,
                 fontSize: "clamp(0.9rem, 0.9vw, 1.18rem)",
               }}
             >
@@ -291,40 +358,52 @@ export default function ElectricTruckDetail() {
                   boxShadow: "0 0 18px rgba(0,174,239,0.65)",
                 }}
               />
-              Battery-Electric Prime Mover
+              {getLabel("Battery-Electric Prime Mover", "纯电牵引车")}
             </div>
 
             <h1
               style={{
                 fontFamily: FONT_FAMILY,
                 fontWeight: 600,
-                fontSize: "clamp(3rem, 5.4vw, 8.6rem)",
+                fontSize:
+                  language === "zh"
+                    ? "clamp(2.8rem, 5vw, 7.6rem)"
+                    : "clamp(3rem, 5.4vw, 8.6rem)",
                 lineHeight: 1.02,
-                letterSpacing: "-0.055em",
-                textTransform: "uppercase",
+                letterSpacing: titleLetterSpacing,
+                textTransform,
                 color: COLORS.textMain,
                 marginTop: 0,
                 marginBottom: "clamp(1.4rem, 2vw, 2.8rem)",
                 textShadow: "0 18px 52px rgba(0,0,0,0.60)",
               }}
             >
-              EPM1 6×4 Electric Prime Mover
+              {getLabel(
+                "EPM1 6×4 Electric Prime Mover",
+                "EPM1 6×4 纯电牵引车"
+              )}
             </h1>
 
             <p
               style={{
                 fontFamily: FONT_FAMILY,
                 fontWeight: 600,
-                fontSize: "clamp(1.8rem, 3.1vw, 4.8rem)",
-                lineHeight: 1.06,
-                letterSpacing: "-0.025em",
-                textTransform: "uppercase",
+                fontSize:
+                  language === "zh"
+                    ? "clamp(1.55rem, 2.7vw, 4rem)"
+                    : "clamp(1.8rem, 3.1vw, 4.8rem)",
+                lineHeight: 1.08,
+                letterSpacing: language === "zh" ? "-0.025em" : "-0.025em",
+                textTransform,
                 color: COLORS.textSoft,
                 marginBottom: "clamp(2rem, 3vw, 3.8rem)",
                 textShadow: "0 14px 38px rgba(0,0,0,0.45)",
               }}
             >
-              Zero Emission · Smart Energy · Line-Haul Ready
+              {getLabel(
+                "Electric Drive · High-Voltage Platform · Heavy Transport",
+                "电驱系统 · 高压平台 · 重载运输"
+              )}
             </p>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
@@ -342,8 +421,8 @@ export default function ElectricTruckDetail() {
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
                   fontSize: "clamp(0.9rem, 0.9vw, 1.12rem)",
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
+                  letterSpacing: smallLetterSpacing,
+                  textTransform,
                   textDecoration: "none",
                   transition: "all 0.3s ease",
                   boxShadow: "0 18px 48px rgba(0,174,239,0.18)",
@@ -360,7 +439,7 @@ export default function ElectricTruckDetail() {
                   e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
-                View Specification
+                {getLabel("View Specification", "查看参数")}
               </a>
 
               <a
@@ -375,8 +454,8 @@ export default function ElectricTruckDetail() {
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
                   fontSize: "clamp(0.9rem, 0.9vw, 1.12rem)",
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
+                  letterSpacing: smallLetterSpacing,
+                  textTransform,
                   textDecoration: "none",
                   transition: "all 0.3s ease",
                   boxShadow: "0 18px 56px rgba(0,174,239,0.34)",
@@ -390,7 +469,7 @@ export default function ElectricTruckDetail() {
                   e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
-                Buy Now
+                {getLabel("Buy Now", "立即购买")}
               </a>
             </div>
           </div>
@@ -420,27 +499,37 @@ export default function ElectricTruckDetail() {
               <div
                 key={item.label}
                 style={{
-                  padding: "clamp(1.4rem, 2vw, 2.4rem)",
+                  padding:
+                    language === "zh"
+                      ? "clamp(1.2rem, 1.6vw, 2rem)"
+                      : "clamp(1.4rem, 2vw, 2.4rem)",
                   background:
                     "linear-gradient(180deg, rgba(255,255,255,0.075) 0%, rgba(255,255,255,0.028) 100%)",
                   boxShadow:
                     "0 24px 70px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.08)",
                   backdropFilter: "blur(14px)",
+                  overflow: "hidden",
                 }}
               >
                 <div
                   style={{
                     fontFamily: FONT_FAMILY,
                     fontWeight: 600,
-                    fontSize: "clamp(2.5rem, 4.2vw, 6rem)",
-                    lineHeight: 1,
+                    fontSize:
+                      language === "zh"
+                        ? "clamp(2rem, 3vw, 4.2rem)"
+                        : "clamp(2.5rem, 4.2vw, 6rem)",
+                    lineHeight: language === "zh" ? 1.12 : 1,
                     color: COLORS.textMain,
-                    letterSpacing: "-0.045em",
-                    whiteSpace: "nowrap",
+                    letterSpacing: language === "zh" ? "-0.02em" : "-0.045em",
+                    whiteSpace: "normal",
+                    wordBreak: "keep-all",
+                    overflowWrap: "break-word",
+                    maxWidth: "100%",
                     textShadow: "0 0 26px rgba(0,174,239,0.24)",
                   }}
                 >
-                  {item.value}
+                  {getLabel(item.value, item.zhValue)}
                 </div>
 
                 <div
@@ -448,13 +537,13 @@ export default function ElectricTruckDetail() {
                     fontFamily: FONT_FAMILY,
                     fontWeight: 600,
                     fontSize: "clamp(0.85rem, 0.9vw, 1.16rem)",
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
+                    letterSpacing: smallLetterSpacing,
+                    textTransform,
                     color: COLORS.accentLight,
                     marginTop: "0.85rem",
                   }}
                 >
-                  {item.label}
+                  {getLabel(item.label, item.zhLabel)}
                 </div>
               </div>
             ))}
@@ -473,7 +562,6 @@ export default function ElectricTruckDetail() {
       >
         <div className="w-full max-w-[94vw] 2xl:max-w-[1800px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
           <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1.15fr)_minmax(420px,0.85fr)] gap-10 xl:gap-16 2xl:gap-20 items-center">
-            {/* Left image feature */}
             <div className="relative">
               <div style={{ marginBottom: "clamp(2rem, 2.8vw, 3.2rem)" }}>
                 <div className="flex items-center gap-4 mb-6">
@@ -491,12 +579,12 @@ export default function ElectricTruckDetail() {
                       fontFamily: FONT_FAMILY,
                       fontWeight: 600,
                       fontSize: "clamp(1.05rem, 1.1vw, 1.45rem)",
-                      letterSpacing: "0.06em",
-                      textTransform: "uppercase",
+                      letterSpacing: smallLetterSpacing,
+                      textTransform,
                       color: COLORS.accentLight,
                     }}
                   >
-                    Energy Architecture
+                    {getLabel("Energy Architecture", "能源架构")}
                   </span>
                 </div>
 
@@ -504,16 +592,22 @@ export default function ElectricTruckDetail() {
                   style={{
                     fontFamily: FONT_FAMILY,
                     fontWeight: 600,
-                    fontSize: "clamp(2.5rem, 3.8vw, 5.6rem)",
+                    fontSize:
+                      language === "zh"
+                        ? "clamp(2.35rem, 3.5vw, 5.1rem)"
+                        : "clamp(2.5rem, 3.8vw, 5.6rem)",
                     lineHeight: 1.04,
-                    letterSpacing: "-0.045em",
-                    textTransform: "uppercase",
+                    letterSpacing: language === "zh" ? "-0.035em" : "-0.045em",
+                    textTransform,
                     color: COLORS.textMain,
                     margin: 0,
                     maxWidth: "clamp(680px, 55vw, 1080px)",
                   }}
                 >
-                  Built Around an 800V Electric Platform
+                  {getLabel(
+                    "Built Around an 800V Electric Platform",
+                    "800V 高压电平台"
+                  )}
                 </h2>
               </div>
 
@@ -559,7 +653,6 @@ export default function ElectricTruckDetail() {
               </div>
             </div>
 
-            {/* Right spec matrix */}
             <div
               style={{
                 padding: "clamp(1.4rem, 2.1vw, 2.8rem)",
@@ -591,14 +684,14 @@ export default function ElectricTruckDetail() {
                         fontFamily: FONT_FAMILY,
                         fontWeight: 600,
                         fontSize: "clamp(0.86rem, 0.9vw, 1.08rem)",
-                        letterSpacing: "0.06em",
-                        textTransform: "uppercase",
+                        letterSpacing: smallLetterSpacing,
+                        textTransform,
                         color: COLORS.accentLight,
                         marginBottom: "clamp(0.45rem, 0.5vw, 0.65rem)",
                         whiteSpace: "nowrap",
                       }}
                     >
-                      {spec.label}
+                      {getLabel(spec.label, spec.zhLabel)}
                     </div>
 
                     <div
@@ -611,7 +704,7 @@ export default function ElectricTruckDetail() {
                         wordBreak: "break-word",
                       }}
                     >
-                      {spec.value}
+                      {getLabel(spec.value, spec.zhValue)}
                     </div>
                   </div>
                 ))}
@@ -632,8 +725,8 @@ export default function ElectricTruckDetail() {
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
                   fontSize: "clamp(0.82rem, 0.86vw, 1.05rem)",
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
+                  letterSpacing: smallLetterSpacing,
+                  textTransform,
                   textDecoration: "none",
                   transition: "all 0.3s ease",
                   boxShadow: "0 16px 46px rgba(0,174,239,0.18)",
@@ -647,7 +740,7 @@ export default function ElectricTruckDetail() {
                   e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
-                View Specification
+                {getLabel("View Specification", "查看参数")}
               </a>
             </div>
           </div>
@@ -681,12 +774,12 @@ export default function ElectricTruckDetail() {
                     fontFamily: FONT_FAMILY,
                     fontWeight: 600,
                     fontSize: "clamp(1.05rem, 1.1vw, 1.45rem)",
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
+                    letterSpacing: smallLetterSpacing,
+                    textTransform,
                     color: COLORS.accentLight,
                   }}
                 >
-                  Electric Powertrain
+                  {getLabel("Electric Powertrain", "电驱系统")}
                 </span>
               </div>
 
@@ -694,15 +787,21 @@ export default function ElectricTruckDetail() {
                 style={{
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
-                  fontSize: "clamp(2.5rem, 3.6vw, 5.4rem)",
+                  fontSize:
+                    language === "zh"
+                      ? "clamp(2.35rem, 3.4vw, 5rem)"
+                      : "clamp(2.5rem, 3.6vw, 5.4rem)",
                   lineHeight: 1.04,
-                  letterSpacing: "-0.045em",
-                  textTransform: "uppercase",
+                  letterSpacing: language === "zh" ? "-0.035em" : "-0.045em",
+                  textTransform,
                   color: COLORS.textMain,
                   marginBottom: "clamp(1.6rem, 2vw, 2.6rem)",
                 }}
               >
-                Fast-Charge and Battery-Swap Ready
+                {getLabel(
+                  "Fast-Charge and Battery-Swap Support",
+                  "支持快充与换电运营"
+                )}
               </h2>
 
               <p
@@ -716,9 +815,10 @@ export default function ElectricTruckDetail() {
                   marginBottom: "clamp(2.2rem, 3vw, 3.8rem)",
                 }}
               >
-                Designed around a high-voltage electric platform, dual-motor
-                drive, regenerative braking and a battery-swap compatible
-                operating model for future heavy-duty line-haul applications.
+                {getLabel(
+                  "The EPM1 combines a high-voltage electric platform, dual-motor drive and regenerative braking to support heavy-duty transport routes with planned charging or battery-swap operation.",
+                  "EPM1 结合高压电平台、双电机驱动和制动能量回收，适配具备规划补能或换电条件的重载运输线路。"
+                )}
               </p>
 
               <div
@@ -744,13 +844,13 @@ export default function ElectricTruckDetail() {
                         fontFamily: FONT_FAMILY,
                         fontWeight: 600,
                         fontSize: "clamp(0.9rem, 0.95vw, 1.12rem)",
-                        letterSpacing: "0.06em",
-                        textTransform: "uppercase",
+                        letterSpacing: smallLetterSpacing,
+                        textTransform,
                         color: COLORS.accentLight,
                         marginBottom: "0.55rem",
                       }}
                     >
-                      {spec.label}
+                      {getLabel(spec.label, spec.zhLabel)}
                     </div>
 
                     <div
@@ -763,7 +863,7 @@ export default function ElectricTruckDetail() {
                         letterSpacing: "-0.035em",
                       }}
                     >
-                      {spec.value}
+                      {getLabel(spec.value, spec.zhValue)}
                     </div>
                   </div>
                 ))}
@@ -815,14 +915,14 @@ export default function ElectricTruckDetail() {
                         fontFamily: FONT_FAMILY,
                         fontWeight: 600,
                         fontSize: "clamp(0.95rem, 1vw, 1.22rem)",
-                        letterSpacing: "0.06em",
-                        textTransform: "uppercase",
+                        letterSpacing: smallLetterSpacing,
+                        textTransform,
                         color:
                           index % 2 === 0 ? COLORS.accentLight : "#A9B3FF",
                         marginBottom: "0.45rem",
                       }}
                     >
-                      {spec.label}
+                      {getLabel(spec.label, spec.zhLabel)}
                     </div>
 
                     <div
@@ -835,7 +935,7 @@ export default function ElectricTruckDetail() {
                         letterSpacing: "-0.02em",
                       }}
                     >
-                      {spec.value}
+                      {getLabel(spec.value, spec.zhValue)}
                     </div>
                   </div>
                 </div>
@@ -870,12 +970,15 @@ export default function ElectricTruckDetail() {
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
                   fontSize: "clamp(1.05rem, 1.1vw, 1.45rem)",
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
+                  letterSpacing: smallLetterSpacing,
+                  textTransform,
                   color: COLORS.accentLight,
                 }}
               >
-                Safety, Intelligence & Comfort
+                {getLabel(
+                  "Safety, Assistance & Connectivity",
+                  "安全、辅助与联网能力"
+                )}
               </span>
 
               <span
@@ -892,15 +995,21 @@ export default function ElectricTruckDetail() {
               style={{
                 fontFamily: FONT_FAMILY,
                 fontWeight: 600,
-                fontSize: "clamp(2.4rem, 3.3vw, 4.8rem)",
+                fontSize:
+                  language === "zh"
+                    ? "clamp(2.3rem, 3.1vw, 4.4rem)"
+                    : "clamp(2.4rem, 3.3vw, 4.8rem)",
                 lineHeight: 1.04,
-                letterSpacing: "-0.045em",
-                textTransform: "uppercase",
+                letterSpacing: language === "zh" ? "-0.035em" : "-0.045em",
+                textTransform,
                 color: COLORS.textMain,
                 margin: 0,
               }}
             >
-              Electric-Ready Intelligent Platform
+              {getLabel(
+                "Prepared for Commercial Fleet Operation",
+                "面向商用车队运营配置"
+              )}
             </h2>
           </div>
 
@@ -935,13 +1044,13 @@ export default function ElectricTruckDetail() {
                     fontFamily: FONT_FAMILY,
                     fontWeight: 600,
                     fontSize: "clamp(1.35rem, 1.35vw, 1.9rem)",
-                    letterSpacing: "-0.02em",
-                    textTransform: "uppercase",
+                    letterSpacing: language === "zh" ? "-0.01em" : "-0.02em",
+                    textTransform,
                     color: COLORS.textMain,
                     marginBottom: "0.55rem",
                   }}
                 >
-                  {feature.title}
+                  {getLabel(feature.title, feature.zhTitle)}
                 </div>
 
                 <div
@@ -953,7 +1062,7 @@ export default function ElectricTruckDetail() {
                     color: COLORS.textSoft,
                   }}
                 >
-                  {feature.desc}
+                  {getLabel(feature.desc, feature.zhDesc)}
                 </div>
               </div>
             ))}

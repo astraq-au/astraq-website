@@ -1,416 +1,1059 @@
-.etm-page {
-  width: 100%;
-  min-height: 100vh;
-  overflow-x: hidden;
-  background: #f8f4ee !important;
-  color: #303030 !important;
-}
+/**
+ * MassageRobotPage
+ * ET-M Intelligent Massage Robot
+ */
 
-/* Hero image already includes main text */
-.etm-hero {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  background-image: url("/images/ET-M-hero.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+import { useState } from "react";
+import Footer from "@/components/Footer";
 
-.etm-hero::before {
-  display: none !important;
-}
+const HERO_IMAGE = "/images/massage-robot/ET-M-hero.png";
 
-.hero-button-layer {
-  position: absolute;
-  left: 4.5vw;
-  top: 70vh;
-  z-index: 5;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
+const FUNCTION_IMAGES = {
+  massage: "/images/massage-robot/ET-M-function1.png",
+  shockwave: "/images/massage-robot/ET-M-function2.png",
+  heat: "/images/massage-robot/ET-M-function3.png",
+};
 
-/* Buttons */
-.etm-primary-btn,
-.etm-secondary-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  min-height: 48px;
-  padding: 0 30px;
-  border-radius: 999px;
-  font-family: "Rajdhani", sans-serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  border: 1px solid #b98a63;
-  transition: all 0.25s ease;
-  cursor: pointer;
-}
+const FEATURE_IMAGES = {
+  acupoint: "/images/massage-robot/ET-M-feature1.png",
+  control: "/images/massage-robot/ET-M-feature2.png",
+  interaction: "/images/massage-robot/ET-M-feature3.png",
+};
 
-.etm-primary-btn {
-  background: #b98a63;
-  color: #ffffff;
-}
+const APPLICATIONS = [
+  {
+    key: "therapy",
+    image: "/images/massage-robot/ET-M-application-therapy-room.png",
+    icon: "☯",
+    title: "Physical Therapy Room",
+    description:
+      "Support recovery and mobility with precise, data-driven robotic massage therapy.",
+  },
+  {
+    key: "beauty",
+    image: "/images/massage-robot/ET-M-application-beauty-clinic.png",
+    icon: "☺",
+    title: "Beauty Clinic",
+    description:
+      "Enhance treatment offerings and elevate client experience with intelligent care.",
+  },
+  {
+    key: "sports",
+    image: "/images/massage-robot/ET-M-application-sports-rehab.png",
+    icon: "♙",
+    title: "Sports Rehabilitation Center",
+    description:
+      "Accelerate athlete recovery and optimize performance with targeted therapy.",
+  },
+] as const;
 
-.etm-primary-btn:hover {
-  background: #936842;
-  border-color: #936842;
-  transform: translateY(-2px);
-}
+const SPEC_PDF = "/specifications/ET-M-Specification.pdf";
 
-.etm-secondary-btn {
-  background: rgba(255, 255, 255, 0.72);
-  color: #936842;
-}
+const FONT_FAMILY =
+  "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
 
-.etm-secondary-btn:hover {
-  background: #ffffff;
-  transform: translateY(-2px);
-}
+const COLORS = {
+  pageBg: "#F7F3EE",
+  textMain: "#303030",
+  textSoft: "rgba(48,48,48,0.72)",
 
-/* General section */
-.etm-section {
-  padding: 100px 6vw;
-  background: #f8f4ee !important;
-}
+  accent: "#B98A62",
+  accentDark: "#A77855",
+  accentBorder: "rgba(185,138,98,0.42)",
+};
 
-.etm-function-section,
-.etm-feature-section,
-.etm-scenario-section {
-  background: #f8f4ee !important;
-}
+const FUNCTIONS = [
+  {
+    key: "massage",
+    label: "Massage",
+    icon: "〰",
+    image: FUNCTION_IMAGES.massage,
+    imageTitle: "Adaptive Robotic Massage",
+    imageDescription:
+      "Targeted robotic massage helps relax muscles and support daily recovery.",
+  },
+  {
+    key: "shockwave",
+    label: "Magneto Shockwave",
+    icon: "◎",
+    image: FUNCTION_IMAGES.shockwave,
+    imageTitle: "Deep Tissue Stimulation",
+    imageDescription:
+      "High-frequency stimulation supports deep tissue response and advanced recovery.",
+  },
+  {
+    key: "heat",
+    label: "Endogenous Heat",
+    icon: "≋",
+    image: FUNCTION_IMAGES.heat,
+    imageTitle: "Controlled Thermal Support",
+    imageDescription:
+      "Gentle heat therapy helps promote circulation, relaxation and treatment comfort.",
+  },
+] as const;
 
-.etm-section-inner {
-  width: 100%;
-  max-width: 1500px;
-  margin: 0 auto;
-}
+const FEATURES = [
+  {
+    key: "acupoint",
+    label: "Acupoint Recognition",
+    icon: "◎",
+    image: FEATURE_IMAGES.acupoint,
+    title: "AI Acupoint Recognition",
+    description:
+      "AI-assisted body mapping helps identify treatment points with consistency.",
+  },
+  {
+    key: "control",
+    label: "Precise Control",
+    icon: "⌖",
+    image: FEATURE_IMAGES.control,
+    title: "Precise Motion Control",
+    description:
+      "Stable force and motion control help deliver repeatable treatment performance.",
+  },
+  {
+    key: "interaction",
+    label: "Multi-Modal Interaction",
+    icon: "☝",
+    image: FEATURE_IMAGES.interaction,
+    title: "Intuitive Human-Robot Interaction",
+    description:
+      "Touch interface and therapist-guided control support a smoother treatment workflow.",
+  },
+] as const;
 
-.section-image-only-wrap {
-  position: relative;
-  width: 100%;
-  max-width: 1500px;
-  margin: 0 auto;
-}
+type FunctionKey = (typeof FUNCTIONS)[number]["key"];
+type FeatureKey = (typeof FEATURES)[number]["key"];
 
-.full-section-image {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 28px;
-  box-shadow: 0 24px 70px rgba(90, 65, 45, 0.1);
-}
+export default function MassageRobotPage() {
+  const [activeFunction, setActiveFunction] =
+    useState<FunctionKey>("massage");
+  const [activeFeature, setActiveFeature] =
+    useState<FeatureKey>("acupoint");
 
-/* Detail card: force light design to avoid dark theme override */
-.etm-detail-card {
-  margin: 34px auto 0;
-  max-width: 900px;
-  padding: 32px 38px;
-  background: rgba(255, 255, 255, 0.94) !important;
-  color: #303030 !important;
-  border: 1px solid rgba(185, 138, 99, 0.24);
-  border-radius: 28px;
-  box-shadow: 0 20px 55px rgba(90, 65, 45, 0.08);
-  backdrop-filter: blur(14px);
-}
+  const activeItem = FUNCTIONS.find((item) => item.key === activeFunction)!;
+  const activeFeatureItem = FEATURES.find(
+    (item) => item.key === activeFeature
+  )!;
 
-.etm-detail-card h3 {
-  margin: 0 0 12px;
-  color: #303030 !important;
-  font-family: "Rajdhani", sans-serif;
-  font-size: clamp(2rem, 2.4vw, 3rem);
-  font-weight: 600;
-  line-height: 1.1;
-}
+  return (
+    <main
+      className="min-h-screen massage-page"
+      style={{
+        background: COLORS.pageBg,
+        color: COLORS.textMain,
+        fontFamily: FONT_FAMILY,
+      }}
+    >
+      {/* Hero Banner */}
+      <section
+        className="relative overflow-hidden massage-hero"
+        style={{
+          background: COLORS.pageBg,
+        }}
+      >
+        <img
+          src={HERO_IMAGE}
+          alt="ET-M intelligent massage robot for wellness and recovery"
+          className="block w-full massage-hero-image"
+          style={{
+            display: "block",
+            width: "100%",
+            height: "auto",
+          }}
+        />
 
-.etm-detail-card p {
-  color: #6f6a64 !important;
-  font-family: "DM Sans", sans-serif;
-  font-size: 1rem;
-  line-height: 1.75;
-  margin: 0;
-}
+        <div
+          className="absolute z-10 flex flex-col items-start massage-hero-content"
+          style={{
+            left: "6.7%",
+            top: "33%",
+            maxWidth: "clamp(460px, 50vw, 960px)",
+          }}
+        >
+          <h1
+            className="massage-hero-title"
+            style={{
+              margin: 0,
+              color: COLORS.textMain,
+              fontWeight: 600,
+              fontSize: "clamp(2.8rem, 4.8vw, 7rem)",
+              lineHeight: 1.04,
+              letterSpacing: "-0.055em",
+            }}
+          >
+            Smarter Massage
+            <br />
+            Better Recovery
+          </h1>
 
-.etm-detail-card .lead {
-  color: #303030 !important;
-  margin-bottom: 10px;
-}
+          <p
+            className="massage-hero-subtitle"
+            style={{
+              marginTop: "clamp(22px, 2vw, 40px)",
+              marginBottom: 0,
+              color: COLORS.textSoft,
+              fontWeight: 400,
+              fontSize: "clamp(1.05rem, 1.35vw, 2rem)",
+              lineHeight: 1.5,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            Advanced robotic therapy for wellness,
+            <br />
+            rehab and recovery.
+          </p>
 
-.detail-label {
-  margin: 0 0 12px !important;
-  color: #936842 !important;
-  font-family: "Rajdhani", sans-serif !important;
-  font-size: 0.8rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.16em !important;
-  text-transform: uppercase !important;
-}
+          <div
+            className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 massage-hero-buttons"
+            style={{
+              marginTop: "clamp(34px, 3vw, 58px)",
+            }}
+          >
+            <a
+              href={SPEC_PDF}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center"
+              style={{
+                width: "clamp(190px, 12vw, 260px)",
+                height: "clamp(48px, 3.2vw, 62px)",
+                border: `1px solid ${COLORS.accentBorder}`,
+                borderRadius: "8px",
+                color: COLORS.accentDark,
+                background: "rgba(255,255,255,0.62)",
+                fontWeight: 600,
+                fontSize: "clamp(0.82rem, 0.82vw, 1rem)",
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+                textDecoration: "none",
+                transition: "all 0.3s ease",
+                boxShadow: "0 14px 38px rgba(90,60,40,0.08)",
+                backdropFilter: "blur(10px)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = COLORS.accent;
+                e.currentTarget.style.background = "rgba(255,255,255,0.92)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = COLORS.accentBorder;
+                e.currentTarget.style.background = "rgba(255,255,255,0.62)";
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
+            >
+              View Specifications
+            </a>
 
-/* Click layers */
-.function-click-layer,
-.feature-click-layer,
-.scenario-click-layer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
+            <a
+              href="/store"
+              className="inline-flex items-center justify-center"
+              style={{
+                width: "clamp(170px, 11vw, 240px)",
+                height: "clamp(48px, 3.2vw, 62px)",
+                border: `1px solid ${COLORS.accent}`,
+                borderRadius: "8px",
+                color: "#FFFFFF",
+                background: COLORS.accent,
+                fontWeight: 600,
+                fontSize: "clamp(0.82rem, 0.82vw, 1rem)",
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+                textDecoration: "none",
+                transition: "all 0.3s ease",
+                boxShadow: "0 16px 42px rgba(185,138,98,0.24)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = COLORS.accentDark;
+                e.currentTarget.style.borderColor = COLORS.accentDark;
+                e.currentTarget.style.transform = "translateY(-2px)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = COLORS.accent;
+                e.currentTarget.style.borderColor = COLORS.accent;
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
+            >
+              Buy Now
+            </a>
+          </div>
+        </div>
+      </section>
 
-.image-hotspot {
-  position: absolute;
-  pointer-events: auto;
-  border: 1px solid transparent;
-  background: transparent;
-  border-radius: 14px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
+      {/* Product Functions - Interactive */}
+      <section
+        id="functions"
+        className="relative overflow-hidden massage-function-section"
+        style={{
+          background: COLORS.pageBg,
+        }}
+      >
+        <img
+          key={activeItem.image}
+          src={activeItem.image}
+          alt={activeItem.label}
+          className="massage-function-bg"
+          style={{
+            display: "block",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center center",
+          }}
+        />
 
-.image-hotspot:hover,
-.image-hotspot.active {
-  border-color: #b98a63;
-  background: rgba(185, 138, 99, 0.08);
-  box-shadow: 0 0 0 3px rgba(185, 138, 99, 0.12);
-}
+        <div
+          className="absolute z-10 massage-function-content"
+          style={{
+            left: "6.2%",
+            top: "7%",
+            width: "clamp(420px, 33vw, 680px)",
+          }}
+        >
+          <h2
+            className="massage-function-title"
+            style={{
+              margin: 0,
+              color: COLORS.textMain,
+              fontWeight: 600,
+              fontSize: "clamp(2.4rem, 3.4vw, 5rem)",
+              lineHeight: 1.06,
+              letterSpacing: "-0.045em",
+              maxWidth: "clamp(420px, 34vw, 720px)",
+            }}
+          >
+            Therapy Functions
+          </h2>
 
-/* Product Functions clickable areas */
-.function-massage {
-  left: 5%;
-  top: 43%;
-  width: 31%;
-  height: 13%;
-}
+          <div
+            className="massage-function-tabs"
+            style={{
+              marginTop: "clamp(32px, 3.2vw, 58px)",
+              display: "flex",
+              flexDirection: "column",
+              gap: "clamp(12px, 1vw, 20px)",
+            }}
+          >
+            {FUNCTIONS.map((item) => {
+              const isActive = item.key === activeFunction;
 
-.function-shockwave {
-  left: 5%;
-  top: 57%;
-  width: 31%;
-  height: 13%;
-}
+              return (
+                <button
+                  key={item.key}
+                  type="button"
+                  onClick={() => setActiveFunction(item.key)}
+                  className="massage-function-tab"
+                  style={{
+                    width: "100%",
+                    minHeight: "clamp(58px, 4.4vw, 84px)",
+                    display: "grid",
+                    gridTemplateColumns: "clamp(46px, 3.6vw, 64px) 1fr auto",
+                    alignItems: "center",
+                    gap: "clamp(14px, 1.3vw, 24px)",
+                    padding:
+                      "clamp(10px, 1vw, 18px) clamp(14px, 1.4vw, 26px)",
+                    borderRadius: "14px",
+                    border: isActive
+                      ? `1px solid ${COLORS.accentBorder}`
+                      : "1px solid transparent",
+                    background: isActive
+                      ? "rgba(255,255,255,0.68)"
+                      : "rgba(255,255,255,0.12)",
+                    boxShadow: isActive
+                      ? "0 12px 32px rgba(90,60,40,0.08)"
+                      : "none",
+                    cursor: "pointer",
+                    textAlign: "left",
+                    transition: "all 0.28s ease",
+                    backdropFilter: isActive ? "blur(8px)" : "none",
+                    fontFamily: FONT_FAMILY,
+                  }}
+                >
+                  <span
+                    style={{
+                      width: "clamp(46px, 3.6vw, 64px)",
+                      height: "clamp(46px, 3.6vw, 64px)",
+                      borderRadius: "999px",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: "rgba(255,255,255,0.86)",
+                      color: COLORS.accentDark,
+                      fontSize: "clamp(1.05rem, 1.25vw, 1.7rem)",
+                      boxShadow: "0 8px 22px rgba(90,60,40,0.08)",
+                      flexShrink: 0,
+                    }}
+                  >
+                    {item.icon}
+                  </span>
 
-.function-heat {
-  left: 5%;
-  top: 71%;
-  width: 31%;
-  height: 13%;
-}
+                  <span
+                    style={{
+                      display: "block",
+                      color: COLORS.textMain,
+                      fontWeight: 600,
+                      fontSize: "clamp(1.08rem, 1.22vw, 1.6rem)",
+                      lineHeight: 1.15,
+                      letterSpacing: "-0.015em",
+                    }}
+                  >
+                    {item.label}
+                  </span>
 
-/* Intelligent Features clickable areas */
-.hotspot-acupoint {
-  left: 0.5%;
-  top: 44%;
-  width: 14%;
-  height: 7.5%;
-}
+                  <span
+                    style={{
+                      color: COLORS.accentDark,
+                      fontSize: "clamp(1.2rem, 1.4vw, 2rem)",
+                      lineHeight: 1,
+                    }}
+                  >
+                    ›
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
-.hotspot-control {
-  left: 14.5%;
-  top: 44%;
-  width: 13%;
-  height: 7.5%;
-}
+        <div
+          className="absolute z-10 massage-function-image-text"
+          style={{
+            left: "50%",
+            bottom: "8%",
+            transform: "translateX(-50%)",
+            width: "clamp(620px, 56vw, 1080px)",
+            padding: "0 clamp(24px, 3vw, 60px)",
+            background: "transparent",
+            boxShadow: "none",
+            backdropFilter: "none",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            textAlign: "center",
+          }}
+        >
+          <h3
+            style={{
+              margin: 0,
+              color: COLORS.textMain,
+              fontWeight: 600,
+              fontSize: "clamp(2rem, 2.6vw, 4.3rem)",
+              lineHeight: 1.08,
+              letterSpacing: "-0.04em",
+              maxWidth: "960px",
+              textShadow: "0 2px 12px rgba(255,255,255,0.8)",
+            }}
+          >
+            {activeItem.imageTitle}
+          </h3>
 
-.hotspot-interaction {
-  left: 27.5%;
-  top: 44%;
-  width: 18%;
-  height: 7.5%;
-}
+          <p
+            style={{
+              marginTop: "clamp(14px, 1vw, 22px)",
+              marginBottom: 0,
+              color: "rgba(48,48,48,0.84)",
+              fontWeight: 400,
+              fontSize: "clamp(1.08rem, 1.3vw, 1.8rem)",
+              lineHeight: 1.5,
+              maxWidth: "860px",
+              textShadow: "0 2px 10px rgba(255,255,255,0.78)",
+            }}
+          >
+            {activeItem.imageDescription}
+          </p>
+        </div>
+      </section>
 
-/* Application Scenarios clickable areas */
-.scenario-therapy {
-  left: 3%;
-  top: 27%;
-  width: 29.5%;
-  height: 53%;
-}
+      {/* Intelligent Therapy Capabilities - Interactive */}
+      <section
+        id="technology"
+        className="relative overflow-hidden massage-feature-section"
+        style={{
+          background: COLORS.pageBg,
+        }}
+      >
+        <img
+          key={activeFeatureItem.image}
+          src={activeFeatureItem.image}
+          alt={activeFeatureItem.label}
+          className="massage-feature-bg"
+          style={{
+            display: "block",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center center",
+          }}
+        />
 
-.scenario-beauty {
-  left: 34.3%;
-  top: 27%;
-  width: 29.5%;
-  height: 53%;
-}
+        <div
+          className="absolute z-10 massage-feature-content"
+          style={{
+            left: "6.2%",
+            top: "5.5%",
+            width: "clamp(560px, 44vw, 820px)",
+          }}
+        >
+          <h2
+            className="massage-feature-title"
+            style={{
+              margin: 0,
+              color: COLORS.textMain,
+              fontWeight: 600,
+              fontSize: "clamp(2.4rem, 3.4vw, 5rem)",
+              lineHeight: 1.04,
+              letterSpacing: "-0.05em",
+              maxWidth: "none",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Intelligent Therapy Capabilities
+          </h2>
 
-.scenario-sports {
-  left: 65.6%;
-  top: 27%;
-  width: 29.5%;
-  height: 53%;
-}
+          <div
+            style={{
+              width: "54px",
+              height: "2px",
+              background: COLORS.accentDark,
+              marginTop: "clamp(20px, 1.8vw, 34px)",
+              marginBottom: "clamp(20px, 1.8vw, 34px)",
+            }}
+          />
 
-/* Feature switch buttons */
-.feature-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 28px;
-}
+          <p
+            style={{
+              margin: 0,
+              color: COLORS.textSoft,
+              fontWeight: 400,
+              fontSize: "clamp(1.05rem, 1.15vw, 1.55rem)",
+              lineHeight: 1.55,
+              maxWidth: "620px",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            AI-powered perception, precise execution and intuitive collaboration
+            for better outcomes.
+          </p>
 
-.feature-buttons button {
-  border: 1px solid rgba(185, 138, 99, 0.35);
-  background: #ffffff;
-  color: #936842;
-  border-radius: 999px;
-  padding: 12px 18px;
-  font-family: "Rajdhani", sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
+          <div
+            className="massage-feature-tabs"
+            style={{
+              marginTop: "clamp(46px, 4.5vw, 88px)",
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              border: `1px solid ${COLORS.accentBorder}`,
+              borderRadius: "20px 20px 0 0",
+              overflow: "hidden",
+              background: "rgba(255,255,255,0.42)",
+              backdropFilter: "blur(12px)",
+              boxShadow: "0 18px 46px rgba(90,60,40,0.10)",
+            }}
+          >
+            {FEATURES.map((item) => {
+              const isActive = item.key === activeFeature;
 
-.feature-buttons button:hover,
-.feature-buttons button.active {
-  background: #b98a63;
-  color: #ffffff;
-  border-color: #b98a63;
-}
+              return (
+                <button
+                  key={item.key}
+                  type="button"
+                  onClick={() => setActiveFeature(item.key)}
+                  className="massage-feature-tab"
+                  style={{
+                    minHeight: "clamp(78px, 5.4vw, 118px)",
+                    padding: "clamp(18px, 1.6vw, 30px)",
+                    border: "none",
+                    borderRight:
+                      item.key !== "interaction"
+                        ? `1px solid rgba(185,138,98,0.24)`
+                        : "none",
+                    background: isActive
+                      ? "rgba(255,255,255,0.78)"
+                      : "rgba(255,255,255,0.26)",
+                    color: isActive ? COLORS.accentDark : COLORS.textMain,
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "clamp(12px, 1vw, 20px)",
+                    fontFamily: FONT_FAMILY,
+                    fontWeight: isActive ? 600 : 500,
+                    fontSize: "clamp(1rem, 1.12vw, 1.5rem)",
+                    lineHeight: 1.2,
+                    letterSpacing: "-0.015em",
+                    transition: "all 0.25s ease",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: "clamp(1.25rem, 1.5vw, 2rem)",
+                      lineHeight: 1,
+                    }}
+                  >
+                    {item.icon}
+                  </span>
+                  <span>{item.label}</span>
+                </button>
+              );
+            })}
+          </div>
 
-.scenario-detail {
-  text-align: center;
-}
+          <div
+            className="massage-feature-info"
+            style={{
+              padding: "clamp(38px, 3.2vw, 68px)",
+              minHeight: "clamp(210px, 15vw, 330px)",
+              border: `1px solid ${COLORS.accentBorder}`,
+              borderTop: "none",
+              borderRadius: "0 0 20px 20px",
+              background: "rgba(255,255,255,0.54)",
+              backdropFilter: "blur(12px)",
+              boxShadow: "0 18px 46px rgba(90,60,40,0.08)",
+            }}
+          >
+            <h3
+              style={{
+                margin: 0,
+                color: COLORS.textMain,
+                fontWeight: 600,
+                fontSize: "clamp(1.75rem, 2.1vw, 3.2rem)",
+                lineHeight: 1.12,
+                letterSpacing: "-0.035em",
+              }}
+            >
+              {activeFeatureItem.label}
+            </h3>
 
-.cta-row {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 28px;
-}
+            <div
+              style={{
+                width: "42px",
+                height: "2px",
+                background: COLORS.accentDark,
+                marginTop: "clamp(14px, 1.1vw, 22px)",
+                marginBottom: "clamp(14px, 1.1vw, 22px)",
+              }}
+            />
 
-/* Specifications */
-.etm-spec-section {
-  padding: 100px 6vw 120px;
-  background: #f8f4ee !important;
-}
+            <p
+              style={{
+                margin: 0,
+                color: COLORS.textSoft,
+                fontWeight: 400,
+                fontSize: "clamp(1.1rem, 1.22vw, 1.65rem)",
+                lineHeight: 1.6,
+                maxWidth: "620px",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              {activeFeatureItem.description}
+            </p>
+          </div>
+        </div>
+      </section>
 
-.spec-card {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: clamp(2rem, 4vw, 4rem);
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(185, 138, 99, 0.24);
-  border-radius: 32px;
-  box-shadow: 0 24px 70px rgba(90, 65, 45, 0.1);
-}
+      {/* Application Scenarios - Text separated for future Chinese version */}
+      <section
+        id="applications"
+        className="massage-application-section"
+        style={{
+          background: COLORS.pageBg,
+          padding: "clamp(72px, 7vw, 132px) clamp(24px, 5.6vw, 96px)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1720px",
+            margin: "0 auto",
+          }}
+        >
+          <div
+            className="massage-application-header"
+            style={{
+              textAlign: "center",
+              maxWidth: "820px",
+              margin: "0 auto clamp(42px, 4.2vw, 72px)",
+            }}
+          >
+            <h2
+              style={{
+                margin: 0,
+                color: COLORS.textMain,
+                fontWeight: 500,
+                fontSize: "clamp(2.8rem, 4.2vw, 5.8rem)",
+                lineHeight: 1.06,
+                letterSpacing: "-0.045em",
+              }}
+            >
+              Application Scenarios
+            </h2>
 
-.spec-card h2 {
-  margin: 0 0 34px;
-  color: #303030;
-  font-family: "Rajdhani", sans-serif;
-  font-size: clamp(2.6rem, 4vw, 5rem);
-  font-weight: 600;
-  line-height: 1;
-}
+            <div
+              style={{
+                width: "48px",
+                height: "2px",
+                background: COLORS.accentDark,
+                margin:
+                  "clamp(18px, 1.6vw, 28px) auto clamp(18px, 1.8vw, 30px)",
+              }}
+            />
 
-.spec-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
+            <p
+              style={{
+                margin: 0,
+                color: COLORS.textSoft,
+                fontWeight: 400,
+                fontSize: "clamp(1rem, 1.16vw, 1.42rem)",
+                lineHeight: 1.62,
+                letterSpacing: "-0.01em",
+              }}
+            >
+              ET-M adapts to a wide range of professional environments,
+              delivering consistent, intelligent therapy that elevates care and
+              drives business growth.
+            </p>
+          </div>
 
-.spec-grid div {
-  padding: 22px 24px;
-  background: #f8f4ee;
-  border: 1px solid rgba(185, 138, 99, 0.18);
-  border-radius: 20px;
-}
+          <div className="massage-application-grid">
+            {APPLICATIONS.map((item) => (
+              <article key={item.key} className="massage-application-card">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="massage-application-image"
+                />
 
-.spec-grid span {
-  display: block;
-  margin-bottom: 8px;
-  color: #936842;
-  font-family: "Rajdhani", sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
+                <div className="massage-application-body">
+                  <div className="massage-application-icon">{item.icon}</div>
 
-.spec-grid strong {
-  display: block;
-  color: #303030;
-  font-family: "DM Sans", sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.55;
-}
+                  <div>
+                    <h3 className="massage-application-title">{item.title}</h3>
+                    <p className="massage-application-description">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .etm-section {
-    padding: 80px 24px;
-  }
+      <Footer />
 
-  .etm-spec-section {
-    padding: 80px 24px 100px;
-  }
+      <style>{`
+        .massage-page {
+          width: 100%;
+          overflow-x: hidden;
+        }
 
-  .hero-button-layer {
-    left: 5vw;
-    top: 72vh;
-  }
+        .massage-hero,
+        .massage-function-section,
+        .massage-feature-section {
+          width: 100%;
+        }
 
-  .spec-grid {
-    grid-template-columns: 1fr;
-  }
-}
+        .massage-hero-image,
+        .massage-function-bg,
+        .massage-feature-bg,
+        .massage-section-image {
+          user-select: none;
+        }
 
-@media (max-width: 768px) {
-  .etm-hero {
-    min-height: 720px;
-    background-position: 62% center;
-  }
+        .massage-function-section {
+          height: min(100vh, 980px);
+          min-height: 720px;
+        }
 
-  .hero-button-layer {
-    left: 24px;
-    right: 24px;
-    top: auto;
-    bottom: 48px;
-  }
+        .massage-feature-section {
+          height: min(110vh, 1080px);
+          min-height: 820px;
+        }
 
-  .etm-primary-btn,
-  .etm-secondary-btn {
-    width: 100%;
-  }
+        .massage-function-tab:hover,
+        .massage-feature-tab:hover {
+          transform: translateY(-2px);
+          background: rgba(255,255,255,0.72) !important;
+        }
 
-  .etm-section {
-    padding: 64px 18px;
-  }
+        .massage-application-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: clamp(24px, 2vw, 38px);
+        }
 
-  .full-section-image {
-    border-radius: 18px;
-  }
+        .massage-application-card {
+          overflow: hidden;
+          border: 1px solid rgba(255,255,255,0.86);
+          border-radius: 16px;
+          background: rgba(255,255,255,0.56);
+          box-shadow: 0 20px 52px rgba(90,60,40,0.08);
+          backdrop-filter: blur(8px);
+        }
 
-  .etm-detail-card {
-    padding: 24px;
-    border-radius: 22px;
-  }
+        .massage-application-image {
+          display: block;
+          width: 100%;
+          aspect-ratio: 1.38 / 1;
+          object-fit: cover;
+          object-position: center;
+          user-select: none;
+        }
 
-  .function-click-layer,
-  .feature-click-layer,
-  .scenario-click-layer {
-    display: none;
-  }
+        .massage-application-body {
+          display: grid;
+          grid-template-columns: clamp(56px, 4.2vw, 82px) 1fr;
+          gap: clamp(18px, 1.6vw, 30px);
+          align-items: center;
+          padding: clamp(26px, 2.3vw, 44px) clamp(26px, 2.5vw, 48px);
+        }
 
-  .feature-buttons {
-    flex-direction: column;
-  }
+        .massage-application-icon {
+          color: ${COLORS.accentDark};
+          font-size: clamp(2.4rem, 3vw, 4.2rem);
+          line-height: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
 
-  .feature-buttons button {
-    width: 100%;
-  }
+        .massage-application-title {
+          margin: 0;
+          color: ${COLORS.textMain};
+          font-weight: 600;
+          font-size: clamp(1.25rem, 1.38vw, 2rem);
+          line-height: 1.18;
+          letter-spacing: -0.025em;
+        }
 
-  .cta-row {
-    flex-direction: column;
-  }
+        .massage-application-description {
+          margin: clamp(10px, 0.8vw, 16px) 0 0;
+          color: ${COLORS.textSoft};
+          font-weight: 400;
+          font-size: clamp(0.98rem, 1vw, 1.38rem);
+          line-height: 1.55;
+          letter-spacing: -0.01em;
+        }
 
-  .spec-card {
-    padding: 26px;
-    border-radius: 24px;
-  }
+        @media (max-width: 1280px) {
+          .massage-hero-content {
+            left: 6.5% !important;
+            top: 31% !important;
+            max-width: 42vw !important;
+          }
+
+          .massage-function-section {
+            height: min(100vh, 860px);
+            min-height: 660px;
+          }
+
+          .massage-feature-section {
+            height: min(110vh, 980px);
+            min-height: 780px;
+          }
+
+          .massage-function-content {
+            left: 5.6% !important;
+            top: 6.5% !important;
+            width: 34vw !important;
+          }
+
+          .massage-feature-content {
+            left: 5.6% !important;
+            top: 5.2% !important;
+            width: 46vw !important;
+          }
+
+          .massage-function-image-text {
+            bottom: 7% !important;
+            width: 60vw !important;
+          }
+        }
+
+        @media (max-width: 1024px) {
+          .massage-hero-content {
+            left: 6% !important;
+            top: 28% !important;
+            max-width: 46vw !important;
+          }
+
+          .massage-function-section {
+            height: min(100vh, 780px);
+            min-height: 620px;
+          }
+
+          .massage-feature-section {
+            height: min(112vh, 900px);
+            min-height: 760px;
+          }
+
+          .massage-function-content {
+            left: 5% !important;
+            top: 6% !important;
+            width: 38vw !important;
+          }
+
+          .massage-feature-content {
+            left: 5% !important;
+            top: 5% !important;
+            width: 52vw !important;
+          }
+
+          .massage-function-title,
+          .massage-feature-title {
+            font-size: clamp(2.1rem, 3.4vw, 3.6rem) !important;
+          }
+
+          .massage-function-image-text {
+            bottom: 6% !important;
+            width: 66vw !important;
+          }
+
+          .massage-application-grid {
+            grid-template-columns: 1fr;
+            max-width: 760px;
+            margin: 0 auto;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .massage-hero,
+          .massage-function-section,
+          .massage-feature-section {
+            display: flex;
+            flex-direction: column;
+          }
+
+          .massage-hero-image {
+            min-height: 520px;
+            object-fit: cover;
+            object-position: 68% center;
+          }
+
+          .massage-hero-content {
+            position: static !important;
+            max-width: none !important;
+            padding: 34px 24px 48px;
+            background: ${COLORS.pageBg};
+            justify-content: center;
+            align-items: stretch;
+          }
+
+          .massage-hero-title {
+            font-size: clamp(2.6rem, 12vw, 4.2rem) !important;
+          }
+
+          .massage-hero-subtitle {
+            font-size: clamp(1.05rem, 5vw, 1.4rem) !important;
+          }
+
+          .massage-hero-buttons {
+            width: 100%;
+          }
+
+          .massage-hero-buttons a {
+            width: 100% !important;
+          }
+
+          .massage-function-section,
+          .massage-feature-section {
+            height: auto;
+            min-height: 0;
+          }
+
+          .massage-function-bg,
+          .massage-feature-bg {
+            order: 2;
+            height: 520px !important;
+            object-fit: cover !important;
+            object-position: 62% center !important;
+          }
+
+          .massage-function-content,
+          .massage-feature-content {
+            order: 1;
+            position: static !important;
+            width: auto !important;
+            padding: 40px 24px 32px;
+            background: ${COLORS.pageBg};
+          }
+
+          .massage-function-title,
+          .massage-feature-title {
+            font-size: clamp(2.4rem, 10vw, 4rem) !important;
+            white-space: normal !important;
+          }
+
+          .massage-function-tabs,
+          .massage-feature-tabs {
+            margin-top: 30px !important;
+          }
+
+          .massage-function-tab {
+            min-height: 76px !important;
+          }
+
+          .massage-feature-tabs {
+            grid-template-columns: 1fr !important;
+            border-radius: 20px !important;
+          }
+
+          .massage-feature-tab {
+            min-height: 82px !important;
+            border-right: none !important;
+            border-bottom: 1px solid rgba(185,138,98,0.22) !important;
+            justify-content: flex-start !important;
+          }
+
+          .massage-feature-info {
+            margin-top: 18px !important;
+            min-height: auto !important;
+            border: 1px solid ${COLORS.accentBorder} !important;
+            border-radius: 20px !important;
+          }
+
+          .massage-function-image-text {
+            order: 3;
+            position: static !important;
+            width: auto !important;
+            padding: 34px 24px 56px !important;
+            transform: none !important;
+            background: ${COLORS.pageBg} !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+          }
+
+          .massage-application-section {
+            padding: 56px 20px !important;
+          }
+
+          .massage-application-header {
+            text-align: left !important;
+            margin-bottom: 34px !important;
+          }
+
+          .massage-application-header div {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+          }
+
+          .massage-application-body {
+            grid-template-columns: 54px 1fr;
+            padding: 24px 22px;
+          }
+        }
+
+        @media (max-width: 520px) {
+          .massage-hero-buttons {
+            flex-direction: column;
+          }
+
+          .massage-function-tab {
+            grid-template-columns: 50px 1fr auto !important;
+            gap: 14px !important;
+            padding: 14px 16px !important;
+          }
+        }
+      `}</style>
+    </main>
+  );
 }

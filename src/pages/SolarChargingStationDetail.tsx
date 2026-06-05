@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const FONT_FAMILY =
   "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
@@ -22,9 +22,20 @@ const useWindowWidth = () => {
 
 const SolarStorageChargingStation: React.FC = () => {
   const width = useWindowWidth();
+  const { language } = useLanguage();
 
   const isMobile = width < 768;
   const isTablet = width >= 768 && width < 1100;
+
+  const getLabel = (en: string, zh: string) => {
+    return language === "zh" ? zh : en;
+  };
+
+  const textTransform =
+    language === "zh" ? ("none" as const) : ("uppercase" as const);
+
+  const titleLetterSpacing = language === "zh" ? "-0.04em" : "-0.055em";
+  const smallLetterSpacing = language === "zh" ? "0.04em" : "0.12em";
 
   const heroImage =
     "/images/Solar-Storage-Charging Integrated Station/Solar-Storage-Charging Integrated Station-hero.png";
@@ -32,53 +43,70 @@ const SolarStorageChargingStation: React.FC = () => {
   const keyNumbers = [
     {
       number: "5MW",
-      label: "Solar Power Capacity",
+      zhNumber: "5兆瓦",
+      label: "Solar Generation Capacity",
+      zhLabel: "太阳能发电容量",
     },
     {
       number: "11MWh",
-      label: "Battery Energy Storage",
+      zhNumber: "11兆瓦时",
+      label: "Battery Storage Capacity",
+      zhLabel: "电池储能容量",
     },
     {
       number: "DC",
+      zhNumber: "直流耦合",
       label: "Solar-Storage Coupled System",
+      zhLabel: "光伏储能耦合系统",
     },
     {
       number: "EV",
+      zhNumber: "充电接口",
       label: "Charging Station Integration",
+      zhLabel: "电动车充电接入",
     },
     {
       number: "2026",
-      label: "Preliminary Project Stage",
+      zhNumber: "2026",
+      label: "Early Project Communication",
+      zhLabel: "项目沟通启动阶段",
     },
   ];
 
   const statusSteps = [
     {
       title: "Initial Discussion",
+      zhTitle: "项目初步沟通",
       active: true,
     },
     {
-      title: "Preliminary Communication",
+      title: "Scenario Review",
+      zhTitle: "应用场景梳理",
       active: true,
     },
     {
       title: "Site & Grid Assessment",
+      zhTitle: "选址与电网评估",
       active: false,
     },
     {
       title: "Technical Proposal",
+      zhTitle: "技术方案准备",
       active: false,
     },
     {
       title: "Engineering Design",
+      zhTitle: "工程设计",
       active: false,
     },
     {
       title: "Construction",
+      zhTitle: "项目建设",
       active: false,
     },
     {
       title: "Operation",
+      zhTitle: "运营投放",
       active: false,
     },
   ];
@@ -86,53 +114,82 @@ const SolarStorageChargingStation: React.FC = () => {
   const technicalParameters = [
     {
       label: "Project Name",
-      value: "Astraq Clean Energy System Project",
+      zhLabel: "项目名称",
+      value: "ASTRAQ Clean Energy System Project",
+      zhValue: "ASTRAQ 清洁能源系统项目",
     },
     {
       label: "Project Type",
-      value: "Solar Power + Battery Energy Storage + EV Charging Station",
+      zhLabel: "项目类型",
+      value: "Solar Generation + Battery Storage + EV Charging Station",
+      zhValue: "太阳能发电 + 电池储能 + 电动车充电站",
     },
     {
       label: "Location",
+      zhLabel: "项目区域",
       value: "New South Wales, Australia",
+      zhValue: "澳大利亚新南威尔士州",
     },
     {
       label: "Installed Capacity",
-      value: "5MW solar power generation / 11MWh battery energy storage",
+      zhLabel: "装机规模",
+      value: "5MW solar generation / 11MWh battery energy storage",
+      zhValue: "5MW 太阳能发电 / 11MWh 电池储能",
     },
     {
       label: "System Configuration",
+      zhLabel: "系统组成",
       value:
-        "Photovoltaic generation, DC-coupled battery storage, inverter system, smart energy management and EV charging interface.",
+        "Photovoltaic generation, DC-coupled battery storage, inverter system, energy management system and EV charging interface.",
+      zhValue:
+        "光伏发电、直流耦合储能、逆变系统、能源管理系统及电动车充电接口。",
     },
     {
       label: "Application Scenario",
+      zhLabel: "应用场景",
       value:
-        "Suitable for EV charging stations, commercial fleet charging, industrial parks, logistics bases and distributed renewable energy projects.",
+        "Suitable for EV charging stations, commercial fleet charging, logistics bases, industrial parks and distributed renewable energy projects.",
+      zhValue:
+        "适用于电动车充电站、商用车队补能、物流基地、工业园区及分布式新能源项目。",
     },
     {
       label: "Project Positioning",
+      zhLabel: "项目定位",
       value:
-        "A representative clean energy solution combining solar generation, storage flexibility and electric mobility support.",
+        "A clean energy infrastructure project connecting renewable generation, storage flexibility and electric transport support.",
+      zhValue:
+        "连接可再生能源发电、储能调节能力和电动交通补能需求的清洁能源基础设施项目。",
     },
   ];
 
   const coreModules = [
     {
       title: "Solar Generation",
-      text: "Photovoltaic generation provides clean electricity for direct charging, battery storage and daily site operation.",
+      zhTitle: "太阳能发电",
+      text: "Photovoltaic generation supplies renewable electricity for charging demand, battery storage and daily site operation.",
+      zhText:
+        "光伏系统为充电需求、电池储能和场站日常运行提供可再生电力来源。",
     },
     {
       title: "Battery Energy Storage",
-      text: "The battery system improves power flexibility and helps balance energy demand during peak or low-solar periods.",
+      zhTitle: "电池储能系统",
+      text: "The battery system improves power flexibility and helps balance energy demand during peak load or low-solar periods.",
+      zhText:
+        "电池储能系统提升场站用电灵活性，并在高负荷或低日照时段平衡能源需求。",
     },
     {
       title: "EV Charging Integration",
-      text: "The station supports electric vehicle charging and can be expanded for commercial fleet charging scenarios.",
+      zhTitle: "电动车充电接入",
+      text: "The station can support EV charging demand and can be expanded for commercial fleet charging scenarios.",
+      zhText:
+        "场站可支持电动车补能需求，并可根据运营需要扩展至商用车队充电场景。",
     },
     {
-      title: "Smart Energy Management",
+      title: "Energy Management System",
+      zhTitle: "能源管理系统",
       text: "The control system coordinates solar generation, storage capacity, charging demand and grid interaction.",
+      zhText:
+        "能源管理系统协调光伏发电、储能容量、充电负荷和电网交互。",
     },
   ];
 
@@ -193,10 +250,12 @@ const SolarStorageChargingStation: React.FC = () => {
         ? "clamp(38px, 11vw, 68px)"
         : isTablet
         ? "clamp(56px, 8vw, 86px)"
+        : language === "zh"
+        ? "clamp(58px, 5vw, 100px)"
         : "clamp(60px, 5.2vw, 108px)",
       lineHeight: 1.02,
       fontWeight: 600,
-      letterSpacing: "-0.055em",
+      letterSpacing: titleLetterSpacing,
     },
 
     heroTitleLine: {
@@ -213,7 +272,7 @@ const SolarStorageChargingStation: React.FC = () => {
         : "clamp(20px, 1.55vw, 31px)",
       lineHeight: 1.58,
       fontWeight: 400,
-      letterSpacing: "-0.01em",
+      letterSpacing: language === "zh" ? "0.01em" : "-0.01em",
     },
 
     main: {
@@ -240,8 +299,8 @@ const SolarStorageChargingStation: React.FC = () => {
         : "clamp(22px, 1.45vw, 32px)",
       lineHeight: 1.15,
       fontWeight: 600,
-      letterSpacing: "0.12em",
-      textTransform: "uppercase",
+      letterSpacing: smallLetterSpacing,
+      textTransform,
     },
 
     divider: {
@@ -269,11 +328,15 @@ const SolarStorageChargingStation: React.FC = () => {
       margin: "0 0 14px",
       color: "#ffffff",
       fontSize: isMobile
-        ? "clamp(34px, 9vw, 54px)"
+        ? "clamp(32px, 8vw, 52px)"
+        : language === "zh"
+        ? "clamp(34px, 3.2vw, 66px)"
         : "clamp(38px, 3.8vw, 76px)",
-      lineHeight: 1,
+      lineHeight: language === "zh" ? 1.12 : 1,
       fontWeight: 600,
-      letterSpacing: "-0.045em",
+      letterSpacing: language === "zh" ? "-0.025em" : "-0.045em",
+      whiteSpace: "normal",
+      wordBreak: "keep-all",
     },
 
     keyLabel: {
@@ -357,10 +420,12 @@ const SolarStorageChargingStation: React.FC = () => {
         ? "clamp(34px, 9vw, 54px)"
         : isTablet
         ? "clamp(46px, 6vw, 72px)"
+        : language === "zh"
+        ? "clamp(42px, 4.2vw, 82px)"
         : "clamp(46px, 4.8vw, 92px)",
       lineHeight: 1.04,
       fontWeight: 600,
-      letterSpacing: "-0.055em",
+      letterSpacing: language === "zh" ? "-0.04em" : "-0.055em",
     },
 
     parameterCard: {
@@ -427,16 +492,6 @@ const SolarStorageChargingStation: React.FC = () => {
       fontWeight: 400,
     },
 
-    highlightParagraph: {
-      margin: "32px 0 0",
-      color: "#ffffff",
-      fontSize: isMobile
-        ? "clamp(17px, 4.2vw, 21px)"
-        : "clamp(19px, 1.3vw, 27px)",
-      lineHeight: 1.65,
-      fontWeight: 500,
-    },
-
     overviewImageBox: {
       width: "100%",
       borderRadius: isMobile ? "22px" : "30px",
@@ -497,10 +552,12 @@ const SolarStorageChargingStation: React.FC = () => {
       color: "#ffffff",
       fontSize: isMobile
         ? "clamp(24px, 6vw, 34px)"
+        : language === "zh"
+        ? "clamp(22px, 1.65vw, 34px)"
         : "clamp(24px, 1.8vw, 36px)",
       lineHeight: 1.14,
       fontWeight: 600,
-      letterSpacing: "-0.035em",
+      letterSpacing: language === "zh" ? "-0.025em" : "-0.035em",
     },
 
     moduleText: {
@@ -516,12 +573,13 @@ const SolarStorageChargingStation: React.FC = () => {
 
   return (
     <div style={styles.page}>
-      <Navbar />
-
       <section style={styles.hero}>
         <img
           src={heroImage}
-          alt="Solar Storage Charging Integrated Station"
+          alt={getLabel(
+            "Solar storage charging integrated station",
+            "光储充一体化站"
+          )}
           style={styles.heroImage}
         />
 
@@ -529,35 +587,53 @@ const SolarStorageChargingStation: React.FC = () => {
 
         <div style={styles.heroContent}>
           <h1 style={styles.heroTitle}>
-            <span style={styles.heroTitleLine}>Solar-Storage-Charging</span>
-            <span style={styles.heroTitleLine}>Integrated Station</span>
+            {language === "zh" ? (
+              <>
+                <span style={styles.heroTitleLine}>光储充一体化站</span>
+              </>
+            ) : (
+              <>
+                <span style={styles.heroTitleLine}>Solar-Storage-Charging</span>
+                <span style={styles.heroTitleLine}>Integrated Station</span>
+              </>
+            )}
           </h1>
 
           <p style={styles.heroDescription}>
-            A future-ready energy infrastructure solution integrating solar
-            power generation, battery energy storage and EV charging services.
+            {getLabel(
+              "An energy infrastructure concept combining solar generation, battery storage and EV charging for transport and commercial sites.",
+              "面向交通和商业场站的能源基础设施方案，结合太阳能发电、电池储能与电动车充电能力。"
+            )}
           </p>
         </div>
       </section>
 
       <main style={styles.main}>
         <section style={styles.section}>
-          <p style={styles.sectionLabel}>KEY NUMBERS</p>
+          <p style={styles.sectionLabel}>
+            {getLabel("Key Numbers", "关键数据")}
+          </p>
 
           <div style={styles.divider} />
 
           <div style={styles.keyGrid}>
             {keyNumbers.map((item, index) => (
               <div key={index} style={styles.keyItem}>
-                <h3 style={styles.keyNumber}>{item.number}</h3>
-                <p style={styles.keyLabel}>{item.label}</p>
+                <h3 style={styles.keyNumber}>
+                  {getLabel(item.number, item.zhNumber)}
+                </h3>
+                <p style={styles.keyLabel}>
+                  {getLabel(item.label, item.zhLabel)}
+                </p>
               </div>
             ))}
           </div>
         </section>
 
         <section style={styles.section}>
-          <p style={styles.sectionLabel}>CURRENT STATUS</p>
+          <p style={styles.sectionLabel}>
+            {getLabel("Current Status", "当前进展")}
+          </p>
 
           <div style={styles.divider} />
 
@@ -590,33 +666,43 @@ const SolarStorageChargingStation: React.FC = () => {
                       : "rgba(255,255,255,0.46)",
                   }}
                 >
-                  {step.title}
+                  {getLabel(step.title, step.zhTitle)}
                 </p>
               </div>
             ))}
           </div>
 
           <p style={styles.statusNote}>
-            The project is currently at an early communication stage. The focus
-            is on confirming the project concept, application scenario, site
-            feasibility, energy demand and preliminary system configuration.
+            {getLabel(
+              "The project is currently in the early communication stage. The current focus is to confirm the project concept, application scenario, site feasibility, energy demand and preliminary system configuration.",
+              "项目目前处于前期沟通阶段，当前重点是确认项目概念、应用场景、选址可行性、能源需求和初步系统配置。"
+            )}
           </p>
         </section>
 
         <section style={styles.technicalSection}>
           <div style={styles.technicalHeader}>
-            <p style={styles.sectionLabel}>TECHNICAL PARAMETERS</p>
+            <p style={styles.sectionLabel}>
+              {getLabel("Technical Parameters", "技术参数")}
+            </p>
 
             <h2 style={styles.sectionTitle}>
-              5MW / 11MWh Solar + Storage + Charging Project
+              {getLabel(
+                "5MW / 11MWh Solar + Storage + Charging Project",
+                "5MW / 11MWh 光储充项目"
+              )}
             </h2>
           </div>
 
           <div style={styles.parameterCard}>
             {technicalParameters.map((item, index) => (
               <div key={index} style={styles.parameterRow}>
-                <div style={styles.parameterLabel}>{item.label}</div>
-                <div style={styles.parameterValue}>{item.value}</div>
+                <div style={styles.parameterLabel}>
+                  {getLabel(item.label, item.zhLabel)}
+                </div>
+                <div style={styles.parameterValue}>
+                  {getLabel(item.value, item.zhValue)}
+                </div>
               </div>
             ))}
           </div>
@@ -624,42 +710,55 @@ const SolarStorageChargingStation: React.FC = () => {
 
         <section style={styles.overviewSection}>
           <div style={styles.overviewContent}>
-            <p style={styles.sectionLabel}>PROJECT OVERVIEW</p>
+            <p style={styles.sectionLabel}>
+              {getLabel("Project Overview", "项目概述")}
+            </p>
 
             <h2 style={styles.sectionTitle}>
-              Clean Power, Energy Storage and EV Charging in One Platform
+              {getLabel(
+                "Solar, Storage and Charging in One Energy Platform",
+                "集成发电、储能与充电的一体化能源平台"
+              )}
             </h2>
 
             <p style={styles.paragraph}>
-              The Solar-Storage-Charging Integrated Station is designed as a
-              distributed clean energy platform. It combines photovoltaic power
-              generation, battery energy storage and EV charging facilities into
-              a coordinated system, improving renewable energy utilisation and
-              supporting the transition toward low-carbon transport.
+              {getLabel(
+                "The Solar-Storage-Charging Integrated Station is designed as a distributed clean energy platform for commercial sites and transport operations. It combines photovoltaic generation, battery storage and charging infrastructure into a coordinated system.",
+                "光储充一体化站面向商业场站和交通运营场景设计，是一种分布式清洁能源平台。项目将光伏发电、电池储能和充电基础设施整合为协同运行的系统。"
+              )}
             </p>
 
-            {/*<p style={styles.paragraph}>
-              During daylight hours, solar power can be used directly for
-              charging demand or stored in the battery system. The stored energy
-              can then be released during high-demand periods, helping reduce
-              grid pressure and improve the flexibility of renewable power
-              applications.
-            </p>*/}
+            <p style={styles.paragraph}>
+              {getLabel(
+                "The system can use solar generation for direct charging or store electricity for later use, helping improve renewable energy utilisation and site-level energy flexibility.",
+                "系统可将太阳能发电用于直接充电，也可将电能储存后在需要时释放，从而提升可再生能源利用率和场站用能灵活性。"
+              )}
+            </p>
           </div>
 
           <div style={styles.overviewImageBox}>
             <img
               src={heroImage}
-              alt="Solar storage charging project"
+              alt={getLabel(
+                "Solar storage charging project",
+                "光储充项目"
+              )}
               style={styles.overviewImage}
             />
           </div>
         </section>
 
         <section style={styles.moduleSection}>
-          <p style={styles.sectionLabel}>CORE SYSTEM MODULES</p>
+          <p style={styles.sectionLabel}>
+            {getLabel("Core System Modules", "核心系统模块")}
+          </p>
 
-          <h2 style={styles.sectionTitle}>Integrated System Architecture</h2>
+          <h2 style={styles.sectionTitle}>
+            {getLabel(
+              "Integrated System Architecture",
+              "一体化系统架构"
+            )}
+          </h2>
 
           <div style={styles.moduleGrid}>
             {coreModules.map((item, index) => (
@@ -668,9 +767,13 @@ const SolarStorageChargingStation: React.FC = () => {
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
-                <h3 style={styles.moduleTitle}>{item.title}</h3>
+                <h3 style={styles.moduleTitle}>
+                  {getLabel(item.title, item.zhTitle)}
+                </h3>
 
-                <p style={styles.moduleText}>{item.text}</p>
+                <p style={styles.moduleText}>
+                  {getLabel(item.text, item.zhText)}
+                </p>
               </div>
             ))}
           </div>

@@ -1,8 +1,11 @@
 /**
  * DieselTruck2Detail Page
  * ASTRAQ DPM1 6x4 Diesel Prime Mover — Light Homepage Matched Style
+ * English / Chinese supported
  */
-import Footer from "@/components/Footer";
+
+import Footer from "../components/Footer";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const FONT_FAMILY =
   "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
@@ -35,94 +38,159 @@ const COLORS = {
 const keyHighlights = [
   {
     value: "6×4",
+    zhValue: "6×4",
     label: "Drive Configuration",
+    zhLabel: "驱动形式",
   },
   {
     value: "90T",
+    zhValue: "90吨",
     label: "Gross Combination Mass",
+    zhLabel: "最大组合总质量",
   },
   {
     value: "400kW",
+    zhValue: "400千瓦",
     label: "MC13 Diesel Engine",
+    zhLabel: "MC13 柴油发动机",
   },
   {
     value: "12-Speed",
+    zhValue: "12挡",
     label: "Automated Transmission",
+    zhLabel: "自动变速箱",
   },
 ];
 
 const quickSpecs = [
   {
     label: "Application",
+    zhLabel: "应用场景",
     value: "6×4 Prime Mover",
+    zhValue: "6×4 柴油牵引车",
   },
   {
     label: "Engine",
+    zhLabel: "发动机",
     value: "MC13.54-61 12.42L Diesel",
+    zhValue: "MC13.54-61 12.42L 柴油发动机",
   },
   {
     label: "Power",
+    zhLabel: "最大功率",
     value: "400 kW @ 1800 rpm",
+    zhValue: "400 千瓦 @ 1800 rpm",
   },
   {
     label: "Torque",
+    zhLabel: "最大扭矩",
     value: "2500 N·m @ 950–1400 rpm",
+    zhValue: "2500 N·m @ 950–1400 rpm",
   },
   {
     label: "Transmission",
+    zhLabel: "变速箱",
     value: "12-Speed AMT",
+    zhValue: "12挡 AMT 自动变速箱",
   },
   {
     label: "Wheelbase",
+    zhLabel: "轴距",
     value: "3200 + 1400 mm",
+    zhValue: "3200 + 1400 mm",
   },
   {
     label: "Dimensions",
+    zhLabel: "整车尺寸",
     value: "7025 × 2490 × 3317 mm",
+    zhValue: "7025 × 2490 × 3317 mm",
   },
   {
     label: "Fifth-Wheel Height",
+    zhLabel: "鞍座高度",
     value: "1260 mm unloaded",
+    zhValue: "1260 mm，空载状态",
   },
 ];
 
 const capabilitySpecs = [
   {
     label: "GVM",
+    zhLabel: "最大总质量 GVM",
     value: "25,000 kg",
+    zhValue: "25,000 kg",
   },
   {
     label: "GCM",
+    zhLabel: "最大组合总质量 GCM",
     value: "90,000 kg",
+    zhValue: "90,000 kg",
   },
   {
     label: "Kerb Weight",
+    zhLabel: "整备质量",
     value: "8,800 kg",
+    zhValue: "8,800 kg",
   },
   {
     label: "Fuel Tank",
+    zhLabel: "油箱容量",
     value: "700 + 240 L",
+    zhValue: "700 + 240 L",
   },
   {
     label: "Max Speed",
+    zhLabel: "最高车速",
     value: "100 km/h",
+    zhValue: "100 km/h",
   },
   {
     label: "Gradeability",
-    value: "≥34%",
+    zhLabel: "最大爬坡度",
+    value: "≥25%",
+    zhValue: "≥25%",
   },
 ];
 
 const safetyFeatures = [
-  "EBS + ESC + HSA",
-  "ACC",
-  "AEBS",
-  "LDW",
-  "Reverse Camera",
-  "Dual-Circuit Air Brake",
+  {
+    value: "EBS + ESC + HSA",
+    zhValue: "EBS 电子制动 + ESC 车身稳定 + HSA 坡道辅助",
+  },
+  {
+    value: "ACC",
+    zhValue: "ACC 自适应巡航",
+  },
+  {
+    value: "AEBS",
+    zhValue: "AEBS 自动紧急制动",
+  },
+  {
+    value: "LDW",
+    zhValue: "LDW 车道偏离预警",
+  },
+  {
+    value: "Reverse Camera",
+    zhValue: "倒车影像",
+  },
+  {
+    value: "Dual-Circuit Air Brake",
+    zhValue: "双回路气压制动",
+  },
 ];
 
 export default function DieselTruck2Detail() {
+  const { language } = useLanguage();
+
+  const getLabel = (en: string, zh: string) => {
+    return language === "zh" ? zh : en;
+  };
+
+  const textTransform =
+    language === "zh" ? ("none" as const) : ("uppercase" as const);
+  const buttonLetterSpacing = language === "zh" ? "0.04em" : "0.06em";
+  const titleLetterSpacing = language === "zh" ? "-0.035em" : "-0.045em";
+
   return (
     <main
       className="min-h-screen"
@@ -142,7 +210,6 @@ export default function DieselTruck2Detail() {
           background: COLORS.sectionBg,
         }}
       >
-        {/* Background image */}
         <div
           className="absolute inset-0"
           style={{
@@ -154,7 +221,6 @@ export default function DieselTruck2Detail() {
           }}
         />
 
-        {/* Balanced light overlay - keep background image visible */}
         <div
           className="absolute inset-0"
           style={{
@@ -163,7 +229,6 @@ export default function DieselTruck2Detail() {
           }}
         />
 
-        {/* Bottom fade overlay */}
         <div
           className="absolute inset-0"
           style={{
@@ -172,7 +237,6 @@ export default function DieselTruck2Detail() {
           }}
         />
 
-        {/* Header readability overlay */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -181,7 +245,6 @@ export default function DieselTruck2Detail() {
           }}
         />
 
-        {/* Blue highlight */}
         <div
           className="absolute inset-0"
           style={{
@@ -190,16 +253,18 @@ export default function DieselTruck2Detail() {
           }}
         />
 
-        {/* Content */}
         <div className="relative z-10 w-full max-w-[96vw] 2xl:max-w-[1900px] mx-auto px-5 sm:px-8 lg:px-14 xl:px-20 2xl:px-28">
           <h1
             style={{
               fontFamily: FONT_FAMILY,
               fontWeight: 600,
-              fontSize: "clamp(2.8rem, 5.6vw, 8.6rem)",
+              fontSize:
+                language === "zh"
+                  ? "clamp(2.7rem, 5.2vw, 7.8rem)"
+                  : "clamp(2.8rem, 5.6vw, 8.6rem)",
               lineHeight: 1.02,
-              letterSpacing: "-0.045em",
-              textTransform: "uppercase",
+              letterSpacing: titleLetterSpacing,
+              textTransform,
               color: COLORS.textMain,
               maxWidth: "none",
               whiteSpace: "nowrap",
@@ -208,22 +273,25 @@ export default function DieselTruck2Detail() {
               textShadow: "0 12px 32px rgba(255,255,255,0.45)",
             }}
           >
-            DPM1 6×4 Prime Mover
+            {getLabel("DPM1 6×4 Prime Mover", "DPM1 6×4 柴油牵引车")}
           </h1>
 
           <p
             style={{
               fontFamily: FONT_FAMILY,
               fontWeight: 600,
-              fontSize: "clamp(2.2rem, 4.2vw, 6.2rem)",
+              fontSize:
+                language === "zh"
+                  ? "clamp(2rem, 3.8vw, 5.6rem)"
+                  : "clamp(2.2rem, 4.2vw, 6.2rem)",
               lineHeight: 1,
-              letterSpacing: "-0.02em",
-              textTransform: "uppercase",
+              letterSpacing: language === "zh" ? "-0.015em" : "-0.02em",
+              textTransform,
               color: COLORS.textMain,
               marginBottom: "clamp(2rem, 3vw, 3.8rem)",
             }}
           >
-            Euro 6
+            {getLabel("Euro 6", "欧六排放")}
           </p>
 
           <div
@@ -246,8 +314,8 @@ export default function DieselTruck2Detail() {
                 fontFamily: FONT_FAMILY,
                 fontWeight: 600,
                 fontSize: "clamp(0.9rem, 0.9vw, 1.12rem)",
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
+                letterSpacing: buttonLetterSpacing,
+                textTransform,
                 textDecoration: "none",
                 transition: "all 0.3s ease",
                 boxShadow: "0 18px 48px rgba(15,23,42,0.10)",
@@ -264,7 +332,7 @@ export default function DieselTruck2Detail() {
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
-              View Specification
+              {getLabel("View Specification", "查看参数")}
             </a>
 
             <a
@@ -279,8 +347,8 @@ export default function DieselTruck2Detail() {
                 fontFamily: FONT_FAMILY,
                 fontWeight: 600,
                 fontSize: "clamp(0.9rem, 0.9vw, 1.12rem)",
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
+                letterSpacing: buttonLetterSpacing,
+                textTransform,
                 textDecoration: "none",
                 transition: "all 0.3s ease",
                 boxShadow: "0 18px 48px rgba(22,113,178,0.24)",
@@ -296,7 +364,7 @@ export default function DieselTruck2Detail() {
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
-              Buy Now
+              {getLabel("Buy Now", "立即购买")}
             </a>
           </div>
         </div>
@@ -333,14 +401,17 @@ export default function DieselTruck2Detail() {
                   style={{
                     fontFamily: FONT_FAMILY,
                     fontWeight: 600,
-                    fontSize: "clamp(2.6rem, 4vw, 5.8rem)",
+                    fontSize:
+                      language === "zh"
+                        ? "clamp(2.3rem, 3.4vw, 5rem)"
+                        : "clamp(2.6rem, 4vw, 5.8rem)",
                     lineHeight: 1,
                     color: COLORS.textMain,
-                    letterSpacing: "-0.045em",
+                    letterSpacing: language === "zh" ? "-0.025em" : "-0.045em",
                     whiteSpace: "nowrap",
                   }}
                 >
-                  {item.value}
+                  {getLabel(item.value, item.zhValue)}
                 </div>
 
                 <div
@@ -348,13 +419,13 @@ export default function DieselTruck2Detail() {
                     fontFamily: FONT_FAMILY,
                     fontWeight: 600,
                     fontSize: "clamp(0.9rem, 0.9vw, 1.18rem)",
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
+                    letterSpacing: language === "zh" ? "0.04em" : "0.08em",
+                    textTransform,
                     color: COLORS.accent,
                     marginTop: "0.75rem",
                   }}
                 >
-                  {item.label}
+                  {getLabel(item.label, item.zhLabel)}
                 </div>
               </div>
             ))}
@@ -372,7 +443,6 @@ export default function DieselTruck2Detail() {
       >
         <div className="w-full max-w-[92vw] 2xl:max-w-[1760px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_420px] xl:grid-cols-[minmax(0,1fr)_460px] 2xl:grid-cols-[minmax(0,1fr)_500px] gap-10 lg:gap-12 xl:gap-16 2xl:gap-20 items-stretch">
-            {/* Left content: title + image */}
             <div
               className="flex flex-col"
               style={{
@@ -394,12 +464,12 @@ export default function DieselTruck2Detail() {
                       fontFamily: FONT_FAMILY,
                       fontWeight: 600,
                       fontSize: "clamp(0.95rem, 1vw, 1.25rem)",
-                      letterSpacing: "0.06em",
-                      textTransform: "uppercase",
+                      letterSpacing: buttonLetterSpacing,
+                      textTransform,
                       color: COLORS.accent,
                     }}
                   >
-                    Key Specification
+                    {getLabel("Key Specification", "核心参数")}
                   </span>
                 </div>
 
@@ -407,16 +477,22 @@ export default function DieselTruck2Detail() {
                   style={{
                     fontFamily: FONT_FAMILY,
                     fontWeight: 600,
-                    fontSize: "clamp(3rem, 4.8vw, 7rem)",
+                    fontSize:
+                      language === "zh"
+                        ? "clamp(2.8rem, 4.4vw, 6.2rem)"
+                        : "clamp(3rem, 4.8vw, 7rem)",
                     lineHeight: 1.04,
-                    letterSpacing: "-0.045em",
-                    textTransform: "uppercase",
+                    letterSpacing: titleLetterSpacing,
+                    textTransform,
                     color: COLORS.textMain,
                     margin: 0,
                     maxWidth: "100%",
                   }}
                 >
-                  Built for Trailer Operation
+                  {getLabel(
+                    "Built for Trailer Operation",
+                    "为牵引运输场景打造"
+                  )}
                 </h2>
               </div>
 
@@ -460,7 +536,6 @@ export default function DieselTruck2Detail() {
               </div>
             </div>
 
-            {/* Right specification card */}
             <div
               style={{
                 border: `1px solid ${COLORS.border}`,
@@ -497,14 +572,14 @@ export default function DieselTruck2Detail() {
                         fontFamily: FONT_FAMILY,
                         fontWeight: 600,
                         fontSize: "clamp(0.95rem, 0.95vw, 1.18rem)",
-                        letterSpacing: "0.06em",
-                        textTransform: "uppercase",
+                        letterSpacing: language === "zh" ? "0.04em" : "0.06em",
+                        textTransform,
                         color: COLORS.accent,
                         marginBottom: "clamp(0.4rem, 0.5vw, 0.65rem)",
                         whiteSpace: "nowrap",
                       }}
                     >
-                      {spec.label}
+                      {getLabel(spec.label, spec.zhLabel)}
                     </div>
 
                     <div
@@ -517,7 +592,7 @@ export default function DieselTruck2Detail() {
                         wordBreak: "break-word",
                       }}
                     >
-                      {spec.value}
+                      {getLabel(spec.value, spec.zhValue)}
                     </div>
                   </div>
                 ))}
@@ -538,8 +613,8 @@ export default function DieselTruck2Detail() {
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
                   fontSize: "clamp(0.82rem, 0.86vw, 1.05rem)",
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
+                  letterSpacing: buttonLetterSpacing,
+                  textTransform,
                   textDecoration: "none",
                   transition: "all 0.3s ease",
                   boxShadow: "0 14px 36px rgba(15,23,42,0.08)",
@@ -555,7 +630,7 @@ export default function DieselTruck2Detail() {
                   e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
-                View Specification
+                {getLabel("View Specification", "查看参数")}
               </a>
             </div>
           </div>
@@ -587,12 +662,12 @@ export default function DieselTruck2Detail() {
                     fontFamily: FONT_FAMILY,
                     fontWeight: 600,
                     fontSize: "clamp(1rem, 1.05vw, 1.35rem)",
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
+                    letterSpacing: buttonLetterSpacing,
+                    textTransform,
                     color: COLORS.accent,
                   }}
                 >
-                  Prime Mover Capability
+                  {getLabel("Prime Mover Capability", "牵引车运营能力")}
                 </span>
               </div>
 
@@ -600,16 +675,22 @@ export default function DieselTruck2Detail() {
                 style={{
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
-                  fontSize: "clamp(3rem, 4.8vw, 7rem)",
+                  fontSize:
+                    language === "zh"
+                      ? "clamp(2.8rem, 4.4vw, 6.2rem)"
+                      : "clamp(3rem, 4.8vw, 7rem)",
                   lineHeight: 1,
-                  letterSpacing: "-0.045em",
-                  textTransform: "uppercase",
+                  letterSpacing: titleLetterSpacing,
+                  textTransform,
                   color: COLORS.textMain,
                   maxWidth: "clamp(520px, 48vw, 820px)",
                   whiteSpace: "normal",
                 }}
               >
-                Long-Haul Ready Platform
+                {getLabel(
+                  "Long-Haul Ready Platform",
+                  "面向长途干线运输的高效平台"
+                )}
               </h2>
             </div>
 
@@ -631,13 +712,13 @@ export default function DieselTruck2Detail() {
                       fontFamily: FONT_FAMILY,
                       fontWeight: 600,
                       fontSize: "clamp(0.9rem, 0.9vw, 1.1rem)",
-                      letterSpacing: "0.08em",
-                      textTransform: "uppercase",
+                      letterSpacing: language === "zh" ? "0.04em" : "0.08em",
+                      textTransform,
                       color: COLORS.accent,
                       marginBottom: "0.6rem",
                     }}
                   >
-                    {spec.label}
+                    {getLabel(spec.label, spec.zhLabel)}
                   </div>
 
                   <span
@@ -649,7 +730,7 @@ export default function DieselTruck2Detail() {
                       color: COLORS.textMain,
                     }}
                   >
-                    {spec.value}
+                    {getLabel(spec.value, spec.zhValue)}
                   </span>
                 </div>
               ))}
@@ -684,12 +765,12 @@ export default function DieselTruck2Detail() {
                     fontFamily: FONT_FAMILY,
                     fontWeight: 600,
                     fontSize: "clamp(1rem, 1.05vw, 1.35rem)",
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
+                    letterSpacing: buttonLetterSpacing,
+                    textTransform,
                     color: COLORS.accent,
                   }}
                 >
-                  Safety Systems
+                  {getLabel("Safety Systems", "安全系统")}
                 </span>
               </div>
 
@@ -697,23 +778,29 @@ export default function DieselTruck2Detail() {
                 style={{
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
-                  fontSize: "clamp(3rem, 4.8vw, 7rem)",
+                  fontSize:
+                    language === "zh"
+                      ? "clamp(2.8rem, 4.4vw, 6.2rem)"
+                      : "clamp(3rem, 4.8vw, 7rem)",
                   lineHeight: 1,
-                  letterSpacing: "-0.045em",
-                  textTransform: "uppercase",
+                  letterSpacing: titleLetterSpacing,
+                  textTransform,
                   color: COLORS.textMain,
                   maxWidth: "clamp(520px, 48vw, 820px)",
                   whiteSpace: "normal",
                 }}
               >
-                Ready for Modern Fleets
+                {getLabel(
+                  "Ready for Modern Fleets",
+                  "满足现代车队安全运营需求"
+                )}
               </h2>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 2xl:gap-x-6 gap-y-5 2xl:gap-y-6">
               {safetyFeatures.map((feature) => (
                 <div
-                  key={feature}
+                  key={feature.value}
                   style={{
                     border: `1px solid ${COLORS.accentBorder}`,
                     padding: "clamp(1.2rem, 2vw, 2rem)",
@@ -727,11 +814,11 @@ export default function DieselTruck2Detail() {
                       fontFamily: FONT_FAMILY,
                       fontWeight: 600,
                       fontSize: "clamp(1.15rem, 1.22vw, 1.65rem)",
-                      letterSpacing: "0.06em",
+                      letterSpacing: language === "zh" ? "0.02em" : "0.06em",
                       color: COLORS.textMain,
                     }}
                   >
-                    {feature}
+                    {getLabel(feature.value, feature.zhValue)}
                   </span>
                 </div>
               ))}

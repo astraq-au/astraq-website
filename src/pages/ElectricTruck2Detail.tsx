@@ -1,9 +1,12 @@
 /**
  * ElectricLightTruckDetail Page
- * ASTRAQ ELC1 Battery-Electric Light Truck
- * Futuristic EV-focused city and distribution truck page
+ * ASTRAQ EL1 Battery-Electric Light Truck
+ * Commercial EV city distribution page
+ * English / Chinese supported
  */
-import Footer from "@/components/Footer";
+
+import Footer from "../components/Footer";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const FONT_FAMILY =
   "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
@@ -39,138 +42,241 @@ const COLORS = {
 const keyHighlights = [
   {
     value: "4×2",
-    label: "Urban Delivery Platform",
+    zhValue: "4×2",
+    label: "City Route Chassis",
+    zhLabel: "城市配送底盘",
   },
   {
     value: "EV",
-    label: "Zero-Emission Operation",
+    zhValue: "纯电",
+    label: "Battery-Electric Drive",
+    zhLabel: "电池电驱平台",
   },
   {
-    value: "DC",
-    label: "Fast Charging Ready",
+    value: "AC + DC",
+    zhValue: "快充",
+    label: "Fleet Charging Support",
+    zhLabel: "车队充电适配",
   },
   {
-    value: "City",
-    label: "Light-Duty Distribution",
+    value: "Urban",
+    zhValue: "城市",
+    label: "Distribution Operation",
+    zhLabel: "配送运营场景",
   },
 ];
 
 const keyFeatures = [
-  "Zero-emission electric platform for urban delivery and local logistics.",
-  "Designed for city routes, depot-based charging and frequent stop-start operation.",
-  "Electric power take-off ready for refrigerated, van, service and utility body applications.",
-  "Digital cockpit interface with driver-focused visibility and simple operation.",
-  "Battery-electric architecture suitable for fleet operators transitioning from diesel.",
-  "Compact cab-over layout for manoeuvrability in urban streets and loading areas.",
-  "Low-noise operation for early morning, night-time and residential delivery tasks.",
-  "ASTRAQ branding, clean white body design and future-ready EV visual identity.",
+  {
+    text: "Battery-electric platform developed for city delivery, service routes and local logistics tasks.",
+    zhText:
+      "面向城市配送、服务车辆和本地物流场景开发的电池电动平台。",
+  },
+  {
+    text: "Optimised for predictable daily routes, depot charging and frequent stop-start operation.",
+    zhText:
+      "适合固定线路、场站补能和频繁启停的城市运营工况。",
+  },
+  {
+    text: "Body-ready architecture for van, refrigerated, service and utility applications.",
+    zhText:
+      "支持厢式、冷链、服务保障和市政工具车等多种上装形式。",
+  },
+  {
+    text: "Driver interface designed around visibility, simple controls and daily fleet usability.",
+    zhText:
+      "驾驶界面围绕视野、易用控制和车队日常使用习惯进行设计。",
+  },
+  {
+    text: "Electric architecture helps fleets reduce noise and tailpipe emissions on urban routes.",
+    zhText:
+      "电动架构有助于降低城市线路中的噪声和尾气排放。",
+  },
+  {
+    text: "Compact cab-over layout supports manoeuvrability in streets, depots and loading areas.",
+    zhText:
+      "紧凑型平头布局有利于城市道路、仓库和装卸区域内的转弯与调度。",
+  },
+  {
+    text: "Low-noise operation supports early morning, night-time and residential delivery schedules.",
+    zhText:
+      "低噪声运行更适合清晨、夜间以及居民区周边配送任务。",
+  },
+  {
+    text: "Clean body design and ASTRAQ visual identity for commercial electric fleets.",
+    zhText:
+      "简洁车身设计结合 ASTRAQ 视觉识别，适配商用电动车队形象。",
+  },
 ];
 
 const quickSpecs = [
   {
     label: "Vehicle Type",
+    zhLabel: "车辆类型",
     value: "Battery-Electric Light Truck",
+    zhValue: "纯电轻型卡车",
   },
   {
     label: "Application",
-    value: "City Delivery / Urban Logistics",
+    zhLabel: "应用场景",
+    value: "City Delivery / Local Logistics",
+    zhValue: "城市配送 / 本地物流",
   },
   {
-    label: "Drive",
+    label: "Drive System",
+    zhLabel: "驱动系统",
     value: "Electric Motor Drive",
+    zhValue: "电机驱动系统",
   },
   {
     label: "Charging",
-    value: "AC + DC Fast Charging Ready",
+    zhLabel: "充电方式",
+    value: "AC Charging + DC Fast Charging",
+    zhValue: "交流充电 + 直流快充",
   },
   {
     label: "Cabin",
-    value: "City Cab Configuration",
+    zhLabel: "驾驶室",
+    value: "Urban Cab Configuration",
+    zhValue: "城市配送驾驶室配置",
   },
   {
     label: "Body Options",
+    zhLabel: "上装选择",
     value: "Van / Refrigerated / Utility",
+    zhValue: "厢式 / 冷链 / 工具车",
   },
 ];
 
 const powerPullSpecs = [
   {
     label: "Powertrain",
-    value: "Battery-electric drive system",
-    note: "Designed for smooth acceleration and low-speed delivery duty cycles.",
+    zhLabel: "动力系统",
+    value: "Battery-electric drive",
+    zhValue: "电池电驱系统",
+    note: "Calibrated for smooth launch and low-speed delivery duty cycles.",
+    zhNote:
+      "面向平顺起步和低速配送工况进行匹配，适合城市车辆频繁启停。",
   },
   {
-    label: "Regeneration",
+    label: "Energy Recovery",
+    zhLabel: "能量回收",
     value: "Regenerative braking",
-    note: "Energy recovery support for stop-start city routes.",
+    zhValue: "制动能量回收",
+    note: "Supports energy recovery during repeated braking on city routes.",
+    zhNote:
+      "在城市线路反复制动过程中回收部分能量，提升日常运营效率。",
   },
   {
     label: "Payload Use",
-    value: "Urban distribution",
+    zhLabel: "载货应用",
+    value: "Urban distribution bodies",
+    zhValue: "城市配送上装",
     note: "Suitable for delivery body, service body and refrigerated applications.",
+    zhNote:
+      "可用于配送厢体、服务保障车体及冷链运输上装。",
   },
   {
-    label: "Charging Mode",
-    value: "Depot + fast charge",
-    note: "Built around fleet charging and predictable daily routes.",
+    label: "Charging Pattern",
+    zhLabel: "补能模式",
+    value: "Depot plus fast charge",
+    zhValue: "场站充电 + 快充补能",
+    note: "Designed around fleet charging plans and predictable route scheduling.",
+    zhNote:
+      "适配车队场站充电计划，并支持固定线路中的快速补能需求。",
   },
 ];
 
 const safetyFeatures = [
   {
     title: "AEB",
-    desc: "Autonomous emergency braking support for city traffic.",
+    zhTitle: "AEB",
+    desc: "Autonomous emergency braking support for dense city traffic.",
+    zhDesc: "自动紧急制动辅助，提升城市密集交通中的安全冗余。",
   },
   {
     title: "LDW",
+    zhTitle: "LDW",
     desc: "Lane departure warning for daily fleet operation.",
+    zhDesc: "车道偏离预警，辅助车队日常运营中的驾驶安全。",
   },
   {
     title: "ESC",
-    desc: "Electronic stability control for safer handling.",
+    zhTitle: "ESC",
+    desc: "Electronic stability control for more predictable handling.",
+    zhDesc: "电子稳定控制系统，提升车辆行驶稳定性。",
   },
   {
     title: "AVAS",
+    zhTitle: "AVAS",
     desc: "Low-speed acoustic warning for pedestrian awareness.",
+    zhDesc: "低速行人提示音系统，提高低速行驶时的行人感知。",
   },
   {
     title: "Camera",
+    zhTitle: "倒车影像",
     desc: "Reverse camera support for loading areas and depots.",
+    zhDesc: "倒车影像辅助，适用于仓库、装卸区和场站调度。",
   },
   {
     title: "Digital",
-    desc: "Digital cockpit interface for simple driver operation.",
+    zhTitle: "数字座舱",
+    desc: "Digital cockpit interface for straightforward driver operation.",
+    zhDesc: "数字化驾驶界面，减少驾驶员学习成本并提升操作直观性。",
   },
   {
     title: "Battery",
-    desc: "Battery protection strategy for commercial use.",
+    zhTitle: "电池防护",
+    desc: "Battery protection strategy for commercial route use.",
+    zhDesc: "面向商用运营工况的电池防护策略。",
   },
   {
     title: "Fleet",
-    desc: "Connectivity-ready architecture for future fleet systems.",
+    zhTitle: "车队接口",
+    desc: "Connectivity-ready architecture for future fleet management systems.",
+    zhDesc: "预留车队管理系统接入能力，便于后续运营数据管理。",
   },
 ];
 
 const configurations = [
   {
     label: "City Cab",
-    value: "Short-wheelbase urban delivery configuration",
+    zhLabel: "城市驾驶室",
+    value: "Short-wheelbase configuration for urban delivery routes",
+    zhValue: "适合城市配送路线的短轴距配置",
   },
   {
     label: "Van Body",
+    zhLabel: "厢式上装",
     value: "Dry freight, parcel delivery and service fleet use",
+    zhValue: "适用于干货运输、包裹配送和服务车队",
   },
   {
     label: "Refrigerated Body",
-    value: "Cold-chain logistics and food distribution",
+    zhLabel: "冷链上装",
+    value: "Cold-chain logistics and food distribution applications",
+    zhValue: "适用于冷链物流和食品配送场景",
   },
   {
     label: "Utility Body",
-    value: "Service, maintenance and municipal applications",
+    zhLabel: "工具车上装",
+    value: "Service, maintenance and municipal operation tasks",
+    zhValue: "适用于服务保障、维修维护和市政作业任务",
   },
 ];
 
 export default function ElectricLightTruckDetail() {
+  const { language } = useLanguage();
+
+  const getLabel = (en: string, zh: string) => {
+    return language === "zh" ? zh : en;
+  };
+
+  const textTransform =
+    language === "zh" ? ("none" as const) : ("uppercase" as const);
+  const titleLetterSpacing = language === "zh" ? "-0.035em" : "-0.055em";
+  const smallLetterSpacing = language === "zh" ? "0.04em" : "0.06em";
+
   return (
     <main
       className="min-h-screen overflow-hidden"
@@ -191,7 +297,6 @@ export default function ElectricLightTruckDetail() {
           background: COLORS.pageBg,
         }}
       >
-        {/* Background image */}
         <div
           className="absolute inset-0"
           style={{
@@ -204,7 +309,6 @@ export default function ElectricLightTruckDetail() {
           }}
         />
 
-        {/* Balanced overlay */}
         <div
           className="absolute inset-0"
           style={{
@@ -213,7 +317,6 @@ export default function ElectricLightTruckDetail() {
           }}
         />
 
-        {/* Header readability */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -222,7 +325,6 @@ export default function ElectricLightTruckDetail() {
           }}
         />
 
-        {/* Blue light effect */}
         <div
           className="absolute inset-0"
           style={{
@@ -231,7 +333,6 @@ export default function ElectricLightTruckDetail() {
           }}
         />
 
-        {/* Bottom continuity fade */}
         <div
           className="absolute inset-0"
           style={{
@@ -240,7 +341,6 @@ export default function ElectricLightTruckDetail() {
           }}
         />
 
-        {/* Electric grid lines */}
         <div
           className="absolute inset-x-0 bottom-[18%] h-[1px]"
           style={{
@@ -259,7 +359,6 @@ export default function ElectricLightTruckDetail() {
           }}
         />
 
-        {/* Content */}
         <div className="relative z-10 w-full max-w-[96vw] 2xl:max-w-[1900px] mx-auto px-5 sm:px-8 lg:px-14 xl:px-20 2xl:px-28">
           <div
             style={{
@@ -275,8 +374,8 @@ export default function ElectricLightTruckDetail() {
                 color: COLORS.accentLight,
                 fontFamily: FONT_FAMILY,
                 fontWeight: 600,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
+                letterSpacing: smallLetterSpacing,
+                textTransform,
                 fontSize: "clamp(0.9rem, 0.9vw, 1.18rem)",
               }}
             >
@@ -289,40 +388,49 @@ export default function ElectricLightTruckDetail() {
                   boxShadow: "0 0 18px rgba(0,174,239,0.65)",
                 }}
               />
-              Battery-Electric Light Truck
+              {getLabel("Battery-Electric Light Truck", "纯电轻型卡车")}
             </div>
 
             <h1
               style={{
                 fontFamily: FONT_FAMILY,
                 fontWeight: 600,
-                fontSize: "clamp(3rem, 5.3vw, 8.4rem)",
+                fontSize:
+                  language === "zh"
+                    ? "clamp(2.8rem, 5vw, 7.4rem)"
+                    : "clamp(3rem, 5.3vw, 8.4rem)",
                 lineHeight: 1.02,
-                letterSpacing: "-0.055em",
-                textTransform: "uppercase",
+                letterSpacing: titleLetterSpacing,
+                textTransform,
                 color: COLORS.textMain,
                 marginTop: 0,
                 marginBottom: "clamp(1.4rem, 2vw, 2.8rem)",
                 textShadow: "0 18px 52px rgba(0,0,0,0.60)",
               }}
             >
-              EL1 Electric City Cab
+              {getLabel("EL1 Electric City Cab", "EL1 城市纯电轻卡")}
             </h1>
 
             <p
               style={{
                 fontFamily: FONT_FAMILY,
                 fontWeight: 600,
-                fontSize: "clamp(1.7rem, 3vw, 4.6rem)",
-                lineHeight: 1.06,
-                letterSpacing: "-0.025em",
-                textTransform: "uppercase",
+                fontSize:
+                  language === "zh"
+                    ? "clamp(1.55rem, 2.7vw, 4rem)"
+                    : "clamp(1.7rem, 3vw, 4.6rem)",
+                lineHeight: 1.08,
+                letterSpacing: language === "zh" ? "-0.025em" : "-0.025em",
+                textTransform,
                 color: COLORS.textSoft,
                 marginBottom: "clamp(2rem, 3vw, 3.8rem)",
                 textShadow: "0 14px 38px rgba(0,0,0,0.45)",
               }}
             >
-              Urban Delivery · Zero Emission · Fleet Ready
+              {getLabel(
+                "City Delivery · Quiet Operation · Fleet Use",
+                "城市配送 · 低噪运行 · 车队运营"
+              )}
             </p>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
@@ -340,8 +448,8 @@ export default function ElectricLightTruckDetail() {
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
                   fontSize: "clamp(0.9rem, 0.9vw, 1.12rem)",
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
+                  letterSpacing: smallLetterSpacing,
+                  textTransform,
                   textDecoration: "none",
                   transition: "all 0.3s ease",
                   boxShadow: "0 18px 48px rgba(0,174,239,0.18)",
@@ -358,7 +466,7 @@ export default function ElectricLightTruckDetail() {
                   e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
-                View Specification
+                {getLabel("View Specification", "查看参数")}
               </a>
 
               <a
@@ -373,8 +481,8 @@ export default function ElectricLightTruckDetail() {
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
                   fontSize: "clamp(0.9rem, 0.9vw, 1.12rem)",
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
+                  letterSpacing: smallLetterSpacing,
+                  textTransform,
                   textDecoration: "none",
                   transition: "all 0.3s ease",
                   boxShadow: "0 18px 56px rgba(0,174,239,0.34)",
@@ -388,7 +496,7 @@ export default function ElectricLightTruckDetail() {
                   e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
-                Buy Now
+                {getLabel("Buy Now", "立即购买")}
               </a>
             </div>
           </div>
@@ -430,15 +538,18 @@ export default function ElectricLightTruckDetail() {
                   style={{
                     fontFamily: FONT_FAMILY,
                     fontWeight: 600,
-                    fontSize: "clamp(2.5rem, 4.2vw, 6rem)",
+                    fontSize:
+                      language === "zh"
+                        ? "clamp(2.25rem, 3.6vw, 5.2rem)"
+                        : "clamp(2.5rem, 4.2vw, 6rem)",
                     lineHeight: 1,
                     color: COLORS.textMain,
-                    letterSpacing: "-0.045em",
+                    letterSpacing: language === "zh" ? "-0.025em" : "-0.045em",
                     whiteSpace: "nowrap",
                     textShadow: "0 0 26px rgba(0,174,239,0.24)",
                   }}
                 >
-                  {item.value}
+                  {getLabel(item.value, item.zhValue)}
                 </div>
 
                 <div
@@ -446,13 +557,13 @@ export default function ElectricLightTruckDetail() {
                     fontFamily: FONT_FAMILY,
                     fontWeight: 600,
                     fontSize: "clamp(0.85rem, 0.9vw, 1.16rem)",
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
+                    letterSpacing: smallLetterSpacing,
+                    textTransform,
                     color: COLORS.accentLight,
                     marginTop: "0.85rem",
                   }}
                 >
-                  {item.label}
+                  {getLabel(item.label, item.zhLabel)}
                 </div>
               </div>
             ))}
@@ -487,12 +598,12 @@ export default function ElectricLightTruckDetail() {
                     fontFamily: FONT_FAMILY,
                     fontWeight: 600,
                     fontSize: "clamp(1.05rem, 1.1vw, 1.45rem)",
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
+                    letterSpacing: smallLetterSpacing,
+                    textTransform,
                     color: COLORS.accentLight,
                   }}
                 >
-                  Key Features
+                  {getLabel("Key Features", "核心特点")}
                 </span>
               </div>
 
@@ -500,16 +611,22 @@ export default function ElectricLightTruckDetail() {
                 style={{
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
-                  fontSize: "clamp(2.5rem, 3.8vw, 5.6rem)",
+                  fontSize:
+                    language === "zh"
+                      ? "clamp(2.35rem, 3.5vw, 5.1rem)"
+                      : "clamp(2.5rem, 3.8vw, 5.6rem)",
                   lineHeight: 1.04,
-                  letterSpacing: "-0.045em",
-                  textTransform: "uppercase",
+                  letterSpacing: language === "zh" ? "-0.035em" : "-0.045em",
+                  textTransform,
                   color: COLORS.textMain,
                   margin: 0,
                   maxWidth: "clamp(680px, 55vw, 1080px)",
                 }}
               >
-                Built for Urban Electric Distribution
+                {getLabel(
+                  "Built for Urban Electric Distribution",
+                  "面向城市电动配送场景打造"
+                )}
               </h2>
 
               <p
@@ -523,9 +640,10 @@ export default function ElectricLightTruckDetail() {
                   marginTop: "clamp(1.4rem, 2vw, 2.4rem)",
                 }}
               >
-                The ELC1 is positioned as a city-focused battery-electric light
-                truck for delivery fleets, service operators and body builders
-                moving toward quieter, cleaner and smarter urban logistics.
+                {getLabel(
+                  "The EL1 is a city-focused battery-electric light truck for delivery fleets, service operators and body builders that need a quieter and cleaner urban vehicle platform.",
+                  "EL1 是面向城市配送车队、服务运营商和上装厂的纯电轻卡平台，适合需要低噪声、低排放城市车辆的商用场景。"
+                )}
               </p>
             </div>
 
@@ -537,7 +655,7 @@ export default function ElectricLightTruckDetail() {
             >
               {keyFeatures.map((feature, index) => (
                 <div
-                  key={feature}
+                  key={feature.text}
                   style={{
                     display: "grid",
                     gridTemplateColumns: "auto 1fr",
@@ -577,7 +695,7 @@ export default function ElectricLightTruckDetail() {
                       color: COLORS.textSoft,
                     }}
                   >
-                    {feature}
+                    {getLabel(feature.text, feature.zhText)}
                   </div>
                 </div>
               ))}
@@ -613,12 +731,12 @@ export default function ElectricLightTruckDetail() {
                     fontFamily: FONT_FAMILY,
                     fontWeight: 600,
                     fontSize: "clamp(1.05rem, 1.1vw, 1.45rem)",
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
+                    letterSpacing: smallLetterSpacing,
+                    textTransform,
                     color: COLORS.accentLight,
                   }}
                 >
-                  Product Specification
+                  {getLabel("Product Specification", "产品参数")}
                 </span>
               </div>
 
@@ -626,15 +744,21 @@ export default function ElectricLightTruckDetail() {
                 style={{
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
-                  fontSize: "clamp(2.5rem, 3.6vw, 5.4rem)",
+                  fontSize:
+                    language === "zh"
+                      ? "clamp(2.35rem, 3.4vw, 5rem)"
+                      : "clamp(2.5rem, 3.6vw, 5.4rem)",
                   lineHeight: 1.04,
-                  letterSpacing: "-0.045em",
-                  textTransform: "uppercase",
+                  letterSpacing: language === "zh" ? "-0.035em" : "-0.045em",
+                  textTransform,
                   color: COLORS.textMain,
                   marginBottom: "clamp(1.5rem, 2vw, 2.4rem)",
                 }}
               >
-                Practical EV Platform for City Fleets
+                {getLabel(
+                  "Practical EV Platform for City Fleets",
+                  "适合城市车队运营的电动平台"
+                )}
               </h2>
 
               <p
@@ -647,9 +771,10 @@ export default function ElectricLightTruckDetail() {
                   color: COLORS.textSoft,
                 }}
               >
-                The product configuration focuses on urban usability, body
-                adaptability, charging flexibility and a clean electric brand
-                identity for commercial fleets.
+                {getLabel(
+                  "The configuration focuses on daily usability, body adaptability, charging flexibility and a clean electric fleet image for commercial operators.",
+                  "该车型配置重点围绕日常可用性、上装适配、充电灵活性以及商用电动车队形象展开。"
+                )}
               </p>
             </div>
 
@@ -684,14 +809,14 @@ export default function ElectricLightTruckDetail() {
                         fontFamily: FONT_FAMILY,
                         fontWeight: 600,
                         fontSize: "clamp(0.86rem, 0.9vw, 1.08rem)",
-                        letterSpacing: "0.06em",
-                        textTransform: "uppercase",
+                        letterSpacing: smallLetterSpacing,
+                        textTransform,
                         color: COLORS.accentLight,
                         marginBottom: "clamp(0.45rem, 0.5vw, 0.65rem)",
                         whiteSpace: "nowrap",
                       }}
                     >
-                      {spec.label}
+                      {getLabel(spec.label, spec.zhLabel)}
                     </div>
 
                     <div
@@ -704,7 +829,7 @@ export default function ElectricLightTruckDetail() {
                         wordBreak: "break-word",
                       }}
                     >
-                      {spec.value}
+                      {getLabel(spec.value, spec.zhValue)}
                     </div>
                   </div>
                 ))}
@@ -725,8 +850,8 @@ export default function ElectricLightTruckDetail() {
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
                   fontSize: "clamp(0.82rem, 0.86vw, 1.05rem)",
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
+                  letterSpacing: smallLetterSpacing,
+                  textTransform,
                   textDecoration: "none",
                   transition: "all 0.3s ease",
                   boxShadow: "0 16px 46px rgba(0,174,239,0.18)",
@@ -740,7 +865,7 @@ export default function ElectricLightTruckDetail() {
                   e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
-                View Specification
+                {getLabel("View Specification", "查看参数")}
               </a>
             </div>
           </div>
@@ -772,12 +897,12 @@ export default function ElectricLightTruckDetail() {
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
                   fontSize: "clamp(1.05rem, 1.1vw, 1.45rem)",
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
+                  letterSpacing: smallLetterSpacing,
+                  textTransform,
                   color: COLORS.accentLight,
                 }}
               >
-                Safety Features Included
+                {getLabel("Safety Features Included", "安全配置")}
               </span>
 
               <span
@@ -794,15 +919,21 @@ export default function ElectricLightTruckDetail() {
               style={{
                 fontFamily: FONT_FAMILY,
                 fontWeight: 600,
-                fontSize: "clamp(2.4rem, 3.3vw, 4.8rem)",
+                fontSize:
+                  language === "zh"
+                    ? "clamp(2.3rem, 3.1vw, 4.4rem)"
+                    : "clamp(2.4rem, 3.3vw, 4.8rem)",
                 lineHeight: 1.04,
-                letterSpacing: "-0.045em",
-                textTransform: "uppercase",
+                letterSpacing: language === "zh" ? "-0.035em" : "-0.045em",
+                textTransform,
                 color: COLORS.textMain,
                 margin: 0,
               }}
             >
-              Confidence for Daily Fleet Operation
+              {getLabel(
+                "Confidence for Daily Fleet Operation",
+                "服务车队日常运营的安全支持"
+              )}
             </h2>
           </div>
 
@@ -837,13 +968,13 @@ export default function ElectricLightTruckDetail() {
                     fontFamily: FONT_FAMILY,
                     fontWeight: 600,
                     fontSize: "clamp(1.35rem, 1.35vw, 1.9rem)",
-                    letterSpacing: "-0.02em",
-                    textTransform: "uppercase",
+                    letterSpacing: language === "zh" ? "-0.01em" : "-0.02em",
+                    textTransform,
                     color: COLORS.textMain,
                     marginBottom: "0.55rem",
                   }}
                 >
-                  {feature.title}
+                  {getLabel(feature.title, feature.zhTitle)}
                 </div>
 
                 <div
@@ -855,7 +986,7 @@ export default function ElectricLightTruckDetail() {
                     color: COLORS.textSoft,
                   }}
                 >
-                  {feature.desc}
+                  {getLabel(feature.desc, feature.zhDesc)}
                 </div>
               </div>
             ))}
@@ -890,12 +1021,12 @@ export default function ElectricLightTruckDetail() {
                     fontFamily: FONT_FAMILY,
                     fontWeight: 600,
                     fontSize: "clamp(1.05rem, 1.1vw, 1.45rem)",
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
+                    letterSpacing: smallLetterSpacing,
+                    textTransform,
                     color: COLORS.accentLight,
                   }}
                 >
-                  Power & Pull
+                  {getLabel("Power & Control", "动力与控制")}
                 </span>
               </div>
 
@@ -903,15 +1034,21 @@ export default function ElectricLightTruckDetail() {
                 style={{
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
-                  fontSize: "clamp(2.5rem, 3.6vw, 5.4rem)",
+                  fontSize:
+                    language === "zh"
+                      ? "clamp(2.35rem, 3.4vw, 5rem)"
+                      : "clamp(2.5rem, 3.6vw, 5.4rem)",
                   lineHeight: 1.04,
-                  letterSpacing: "-0.045em",
-                  textTransform: "uppercase",
+                  letterSpacing: language === "zh" ? "-0.035em" : "-0.045em",
+                  textTransform,
                   color: COLORS.textMain,
                   marginBottom: "clamp(1.6rem, 2vw, 2.6rem)",
                 }}
               >
-                Quiet Power for Urban Routes
+                {getLabel(
+                  "Electric Drive for City Routes",
+                  "面向城市路线的电驱系统"
+                )}
               </h2>
 
               <p
@@ -925,9 +1062,10 @@ export default function ElectricLightTruckDetail() {
                   marginBottom: "clamp(2.2rem, 3vw, 3.8rem)",
                 }}
               >
-                Electric drive supports smooth launch, predictable city
-                performance and regenerative braking for frequent stop-start
-                traffic.
+                {getLabel(
+                  "Electric drive supports smooth launch, predictable low-speed operation and energy recovery in stop-start city traffic.",
+                  "电驱系统支持平顺起步、稳定的低速控制，并可在城市频繁启停工况中进行能量回收。"
+                )}
               </p>
             </div>
 
@@ -973,13 +1111,13 @@ export default function ElectricLightTruckDetail() {
                       fontFamily: FONT_FAMILY,
                       fontWeight: 600,
                       fontSize: "clamp(1.2rem, 1.25vw, 1.7rem)",
-                      letterSpacing: "-0.02em",
-                      textTransform: "uppercase",
+                      letterSpacing: language === "zh" ? "-0.01em" : "-0.02em",
+                      textTransform,
                       color: COLORS.textMain,
                       marginBottom: "0.55rem",
                     }}
                   >
-                    {spec.label}
+                    {getLabel(spec.label, spec.zhLabel)}
                   </div>
 
                   <div
@@ -991,7 +1129,7 @@ export default function ElectricLightTruckDetail() {
                       marginBottom: "0.55rem",
                     }}
                   >
-                    {spec.value}
+                    {getLabel(spec.value, spec.zhValue)}
                   </div>
 
                   <div
@@ -1003,7 +1141,7 @@ export default function ElectricLightTruckDetail() {
                       color: COLORS.textSoft,
                     }}
                   >
-                    {spec.note}
+                    {getLabel(spec.note, spec.zhNote)}
                   </div>
                 </div>
               ))}
@@ -1039,12 +1177,12 @@ export default function ElectricLightTruckDetail() {
                     fontFamily: FONT_FAMILY,
                     fontWeight: 600,
                     fontSize: "clamp(1.05rem, 1.1vw, 1.45rem)",
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
+                    letterSpacing: smallLetterSpacing,
+                    textTransform,
                     color: COLORS.accentLight,
                   }}
                 >
-                  Available Configurations
+                  {getLabel("Body Configurations", "上装配置")}
                 </span>
               </div>
 
@@ -1052,15 +1190,21 @@ export default function ElectricLightTruckDetail() {
                 style={{
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
-                  fontSize: "clamp(2.5rem, 3.6vw, 5.4rem)",
+                  fontSize:
+                    language === "zh"
+                      ? "clamp(2.35rem, 3.4vw, 5rem)"
+                      : "clamp(2.5rem, 3.6vw, 5.4rem)",
                   lineHeight: 1.04,
-                  letterSpacing: "-0.045em",
-                  textTransform: "uppercase",
+                  letterSpacing: language === "zh" ? "-0.035em" : "-0.045em",
+                  textTransform,
                   color: COLORS.textMain,
                   marginBottom: "clamp(1.6rem, 2vw, 2.6rem)",
                 }}
               >
-                Ready for Different Urban Bodies
+                {getLabel(
+                  "One Platform for Multiple Urban Bodies",
+                  "一个平台适配多种城市上装"
+                )}
               </h2>
 
               <p
@@ -1073,9 +1217,10 @@ export default function ElectricLightTruckDetail() {
                   color: COLORS.textSoft,
                 }}
               >
-                The ELC1 platform can support multiple commercial body styles,
-                helping fleet operators use one electric platform across
-                several urban service scenarios.
+                {getLabel(
+                  "The EL1 platform can support several commercial body styles, helping operators manage different city service tasks with a common electric chassis.",
+                  "EL1 平台可支持多种商用上装，帮助运营方用同一电动底盘覆盖不同城市服务任务。"
+                )}
               </p>
             </div>
 
@@ -1099,13 +1244,13 @@ export default function ElectricLightTruckDetail() {
                       fontFamily: FONT_FAMILY,
                       fontWeight: 600,
                       fontSize: "clamp(1.25rem, 1.3vw, 1.75rem)",
-                      letterSpacing: "-0.02em",
-                      textTransform: "uppercase",
+                      letterSpacing: language === "zh" ? "-0.01em" : "-0.02em",
+                      textTransform,
                       color: COLORS.textMain,
                       marginBottom: "0.65rem",
                     }}
                   >
-                    {item.label}
+                    {getLabel(item.label, item.zhLabel)}
                   </div>
 
                   <div
@@ -1117,7 +1262,7 @@ export default function ElectricLightTruckDetail() {
                       color: COLORS.textSoft,
                     }}
                   >
-                    {item.value}
+                    {getLabel(item.value, item.zhValue)}
                   </div>
                 </div>
               ))}
@@ -1134,8 +1279,8 @@ export default function ElectricLightTruckDetail() {
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
                   fontSize: "clamp(0.9rem, 0.9vw, 1.12rem)",
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
+                  letterSpacing: smallLetterSpacing,
+                  textTransform,
                   textDecoration: "none",
                   transition: "all 0.3s ease",
                   boxShadow: "0 18px 56px rgba(0,174,239,0.30)",
@@ -1149,7 +1294,7 @@ export default function ElectricLightTruckDetail() {
                   e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
-                Buy Now
+                {getLabel("Buy Now", "立即购买")}
               </a>
             </div>
           </div>

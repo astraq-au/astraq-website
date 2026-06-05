@@ -1,9 +1,10 @@
-import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
+import { Toaster } from "./components/ui/sonner";
+import { TooltipProvider } from "./components/ui/tooltip";
+import NotFound from "./pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { LanguageProvider } from "./i18n/LanguageContext";
 import Home from "./pages/Home";
 import DieselTruckDetail from "./pages/DieselTruckDetail";
 import DieselTruck2Detail from "./pages/DieselTruck2Detail";
@@ -57,20 +58,22 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="dark">
-        <TooltipProvider>
-          <Toaster
-            theme="dark"
-            toastOptions={{
-              style: {
-                background: "#111111",
-                border: "1px solid rgba(255,255,255,0.08)",
-                color: "#ffffff",
-                fontFamily: "'DM Sans', sans-serif",
-              },
-            }}
-          />
-          <Router />
-        </TooltipProvider>
+        <LanguageProvider>
+          <TooltipProvider>
+            <Toaster
+              theme="dark"
+              toastOptions={{
+                style: {
+                  background: "#111111",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  color: "#ffffff",
+                  fontFamily: "'DM Sans', sans-serif",
+                },
+              }}
+            />
+            <Router />
+          </TooltipProvider>
+        </LanguageProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );

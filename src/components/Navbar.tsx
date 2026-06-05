@@ -1,41 +1,64 @@
 /**
  * ASTRAQ Navbar — Dark Sci-Fi Design
+ * With English / Chinese language switch
  */
 
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const FONT_FAMILY =
   "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
 
 const navLinks = [
-  { name: "HOME", href: "/" },
-  { name: "HEAVY TRUCK", href: "/#products" },
-  { name: "ENERGY SYSTEM", href: "/products/solar-charging-station" },
-  { name: "AI TECHNOLOGY", href: "/products/humanoid-robot" },
-  { name: "STORE", href: "/store" },
-  { name: "ABOUT", href: "/about" },
+  { key: "home", name: "HOME", zhName: "首页", href: "/" },
+  { key: "heavyTruck", name: "HEAVY TRUCK", zhName: "重型卡车", href: "/#products" },
+  {
+    key: "energySystem",
+    name: "ENERGY SYSTEM",
+    zhName: "能源系统",
+    href: "/products/solar-charging-station",
+  },
+  {
+    key: "aiTechnology",
+    name: "AI TECHNOLOGY",
+    zhName: "AI 科技",
+    href: "/products/humanoid-robot",
+  },
+  { key: "store", name: "STORE", zhName: "商店", href: "/store" },
+  { key: "about", name: "ABOUT", zhName: "关于我们", href: "/about" },
 ];
 
 const mobileNavLinks = [
-  { name: "HOME", href: "/" },
-  { name: "HEAVY TRUCK", href: "/#products" },
-  { name: "ENERGY SYSTEM", href: "/products/solar-charging-station" },
-  { name: "HUMANOID ROBOT", href: "/products/humanoid-robot" },
-  { name: "MASSAGE AI", href: "/massage-ai" },
-  { name: "STORE", href: "/store" },
-  { name: "ABOUT", href: "/about" },
+  { key: "home", name: "HOME", zhName: "首页", href: "/" },
+  { key: "heavyTruck", name: "HEAVY TRUCK", zhName: "重型卡车", href: "/#products" },
+  {
+    key: "energySystem",
+    name: "ENERGY SYSTEM",
+    zhName: "能源系统",
+    href: "/products/solar-charging-station",
+  },
+  {
+    key: "humanoidRobot",
+    name: "HUMANOID ROBOT",
+    zhName: "人形机器人",
+    href: "/products/humanoid-robot",
+  },
+  { key: "massageAi", name: "MASSAGE AI", zhName: "按摩 AI", href: "/massage-ai" },
+  { key: "store", name: "STORE", zhName: "商店", href: "/store" },
+  { key: "about", name: "ABOUT", zhName: "关于我们", href: "/about" },
 ];
 
 const aboutLinks = [
-  { name: "ABOUT US", href: "/about" },
-  { name: "NEWS", href: "/news" },
-  { name: "INVESTOR RELATIONS", href: "#" },
-  { name: "JOIN US", href: "#" },
+  { name: "ABOUT US", zhName: "关于我们", href: "/about" },
+  { name: "NEWS", zhName: "新闻", href: "/news" },
+  { name: "INVESTOR RELATIONS", zhName: "投资者关系", href: "#" },
+  { name: "JOIN US", zhName: "加入我们", href: "#" },
 ];
 
 const heavyTruckGroups = [
   {
     name: "DIESEL TRUCK",
+    zhName: "柴油卡车",
     href: "/products/diesel-truck",
     models: [
       {
@@ -56,6 +79,7 @@ const heavyTruckGroups = [
   },
   {
     name: "ELECTRIC TRUCK",
+    zhName: "电动卡车",
     href: "/products/electric-truck",
     models: [
       {
@@ -78,16 +102,19 @@ const heavyTruckGroups = [
 
 const aiTechnologyGroups = [
   {
-    name: "AI ROBOT",
+    name: "ROBOT",
+    zhName: "机器人",
     href: "/products/humanoid-robot",
     models: [
       {
         name: "Humanoid Robot",
+        zhName: "人形机器人",
         href: "/products/humanoid-robot",
         image: "/robot1.png",
       },
       {
         name: "Massage Robot",
+        zhName: "按摩机器人",
         href: "/massage-ai",
         image: "/robot2.png",
       },
@@ -122,6 +149,8 @@ const modelNameTextStyle = {
 };
 
 export default function Navbar() {
+  const { language, setLanguage } = useLanguage();
+
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -133,6 +162,14 @@ export default function Navbar() {
 
   const closeTruckMenuTimer = useRef<number | null>(null);
   const closeAiMenuTimer = useRef<number | null>(null);
+
+  const getLabel = (en: string, zh?: string) => {
+    return language === "zh" && zh ? zh : en;
+  };
+
+  const toggleLanguage = () => {
+    setLanguage(language === "en" ? "zh" : "en");
+  };
 
   const openTruckMenu = () => {
     if (closeTruckMenuTimer.current) {
@@ -207,12 +244,12 @@ export default function Navbar() {
           </a>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-[clamp(1.2rem,2.2vw,4.2rem)] ml-auto">
+          <div className="hidden md:flex items-center gap-[clamp(1.2rem,2vw,3.6rem)] ml-auto">
             {navLinks.map((link) => {
-              if (link.name === "HEAVY TRUCK") {
+              if (link.key === "heavyTruck") {
                 return (
                   <div
-                    key={link.name}
+                    key={link.key}
                     className="relative"
                     onMouseEnter={openTruckMenu}
                     onMouseLeave={closeTruckMenu}
@@ -227,7 +264,7 @@ export default function Navbar() {
                         cursor: "pointer",
                       }}
                     >
-                      {link.name}
+                      {getLabel(link.name, link.zhName)}
                     </button>
 
                     {/* Heavy Truck Mega Menu */}
@@ -265,7 +302,7 @@ export default function Navbar() {
                                   cursor: "pointer",
                                 }}
                               >
-                                {group.name}
+                                {getLabel(group.name, group.zhName)}
 
                                 <span
                                   className="absolute left-1/2 bottom-0 h-[2px] -translate-x-1/2 transition-all duration-300"
@@ -328,10 +365,10 @@ export default function Navbar() {
                 );
               }
 
-              if (link.name === "AI TECHNOLOGY") {
+              if (link.key === "aiTechnology") {
                 return (
                   <div
-                    key={link.name}
+                    key={link.key}
                     className="relative"
                     onMouseEnter={openAiMenu}
                     onMouseLeave={closeAiMenu}
@@ -346,7 +383,7 @@ export default function Navbar() {
                         cursor: "pointer",
                       }}
                     >
-                      {link.name}
+                      {getLabel(link.name, link.zhName)}
                     </button>
 
                     {/* AI Technology Mega Menu */}
@@ -384,7 +421,7 @@ export default function Navbar() {
                                   cursor: "pointer",
                                 }}
                               >
-                                {group.name}
+                                {getLabel(group.name, group.zhName)}
 
                                 <span
                                   className="absolute left-1/2 bottom-0 h-[2px] -translate-x-1/2 transition-all duration-300"
@@ -425,7 +462,7 @@ export default function Navbar() {
                                           className="mt-2 text-black/80 group-hover/card:text-black transition-colors"
                                           style={modelNameTextStyle}
                                         >
-                                          {model.name}
+                                          {getLabel(model.name, model.zhName)}
                                         </div>
                                       </a>
                                     ))}
@@ -440,9 +477,9 @@ export default function Navbar() {
                 );
               }
 
-              if (link.name === "ABOUT") {
+              if (link.key === "about") {
                 return (
-                  <div key={link.name} className="relative group">
+                  <div key={link.key} className="relative group">
                     <button
                       type="button"
                       className="relative hover:text-[#C9A46A] transition-colors"
@@ -453,7 +490,7 @@ export default function Navbar() {
                         cursor: "pointer",
                       }}
                     >
-                      {link.name}
+                      {getLabel(link.name, link.zhName)}
                     </button>
 
                     <div className="absolute left-1/2 top-full hidden min-w-[clamp(240px,16vw,340px)] -translate-x-1/2 pt-5 group-hover:block">
@@ -489,7 +526,7 @@ export default function Navbar() {
                               cursor: item.href === "#" ? "default" : "pointer",
                             }}
                           >
-                            {item.name}
+                            {getLabel(item.name, item.zhName)}
                           </a>
                         ))}
                       </div>
@@ -500,29 +537,77 @@ export default function Navbar() {
 
               return (
                 <a
-                  key={link.name}
+                  key={link.key}
                   href={link.href}
                   className="relative hover:text-[#C9A46A] transition-colors"
                   style={navTextStyle}
                 >
-                  {link.name}
+                  {getLabel(link.name, link.zhName)}
                 </a>
               );
             })}
+
+            {/* Desktop Language Switch */}
+            <button
+              type="button"
+              onClick={toggleLanguage}
+              aria-label="Switch language"
+              className="relative hover:text-[#C9A46A] transition-colors"
+              style={{
+                fontFamily: FONT_FAMILY,
+                fontWeight: 600,
+                fontSize: "clamp(0.78rem, 0.9vw, 1.15rem)",
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,0.9)",
+                background: "rgba(255,255,255,0.08)",
+                border: "1px solid rgba(255,255,255,0.28)",
+                borderRadius: "999px",
+                padding: "clamp(7px, 0.6vw, 10px) clamp(12px, 1vw, 18px)",
+                cursor: "pointer",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {language === "en" ? "中文" : "EN"}
+            </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            type="button"
-            className="md:hidden text-white text-2xl"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-            style={{
-              fontFamily: FONT_FAMILY,
-            }}
-          >
-            ☰
-          </button>
+          {/* Mobile Right Controls */}
+          <div className="md:hidden flex items-center gap-3">
+            <button
+              type="button"
+              onClick={toggleLanguage}
+              aria-label="Switch language"
+              style={{
+                fontFamily: FONT_FAMILY,
+                fontWeight: 600,
+                fontSize: "0.82rem",
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,0.92)",
+                background: "rgba(255,255,255,0.08)",
+                border: "1px solid rgba(255,255,255,0.28)",
+                borderRadius: "999px",
+                padding: "7px 12px",
+                cursor: "pointer",
+              }}
+            >
+              {language === "en" ? "中文" : "EN"}
+            </button>
+
+            {/* Mobile Menu Button */}
+            <button
+              type="button"
+              className="text-white text-2xl"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
+              style={{
+                fontFamily: FONT_FAMILY,
+              }}
+            >
+              ☰
+            </button>
+          </div>
         </div>
       </div>
 
@@ -530,7 +615,7 @@ export default function Navbar() {
       <div
         className="md:hidden transition-all duration-300 overflow-hidden"
         style={{
-          maxHeight: mobileOpen ? "520px" : "0",
+          maxHeight: mobileOpen ? "560px" : "0",
           background: "rgba(5,5,5,0.95)",
           backdropFilter: "blur(16px)",
         }}
@@ -538,7 +623,7 @@ export default function Navbar() {
         <div className="px-6 py-6 flex flex-col gap-6 border-t border-white/5">
           {mobileNavLinks.map((link) => (
             <a
-              key={link.name}
+              key={link.key}
               href={link.href}
               onClick={() => setMobileOpen(false)}
               style={{
@@ -551,7 +636,7 @@ export default function Navbar() {
                 textDecoration: "none",
               }}
             >
-              {link.name}
+              {getLabel(link.name, link.zhName)}
             </a>
           ))}
         </div>
