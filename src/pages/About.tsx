@@ -12,49 +12,85 @@ const milestones = [
     year: "2025",
     title: "Prototype Development",
     zhTitle: "样车开发",
+    esTitle: "Desarrollo del prototipo",
+    arTitle: "تطوير النموذج الأولي",
     text: "Complete diesel platform preparation, ADR pathway review and initial market validation. This stage focuses on building the foundation for Australian market entry.",
     zhText:
       "完成柴油重卡平台准备、ADR 认证路径梳理和初步市场验证。本阶段重点是为进入澳大利亚市场打好产品、合规和商业基础。",
+    esText:
+      "Completar la preparación de la plataforma diésel, revisar la ruta de cumplimiento ADR y realizar la validación inicial del mercado. Esta etapa se centra en construir la base para entrar en el mercado australiano.",
+    arText:
+      "استكمال إعداد منصة الشاحنات العاملة بالديزل، ومراجعة مسار الامتثال لمتطلبات ADR، وتنفيذ التحقق الأولي من السوق. تركز هذه المرحلة على بناء الأساس لدخول السوق الأسترالية.",
   },
   {
     year: "2026",
     title: "Australia Launch & Energy Project Discussion",
     zhTitle: "澳洲启动与能源项目沟通",
+    esTitle: "Lanzamiento en Australia y diálogo sobre proyectos energéticos",
+    arTitle: "الإطلاق في أستراليا ومناقشة مشاريع الطاقة",
     text: "Introduce the first diesel heavy truck platform in Australia and establish local service readiness, dealer communication and fleet customer engagement. In parallel, begin early discussions for solar-storage-charging integrated station opportunities to support future electric heavy transport.",
     zhText:
       "在澳大利亚导入首款柴油重卡平台，并逐步建立本地服务准备、经销商沟通和车队客户对接能力。同时，启动光储充一体化站项目的前期沟通，为未来电动重卡的能源补给能力做准备。",
+    esText:
+      "Introducir la primera plataforma de camiones pesados diésel en Australia y establecer la preparación del servicio local, la comunicación con distribuidores y la conexión con clientes de flotas. Al mismo tiempo, iniciar conversaciones tempranas sobre estaciones integradas de energía solar, almacenamiento y carga para respaldar el futuro transporte pesado eléctrico.",
+    arText:
+      "إدخال أول منصة للشاحنات الثقيلة العاملة بالديزل في أستراليا، وبناء جاهزية الخدمة المحلية، والتواصل مع الموزعين، والتفاعل مع عملاء الأساطيل. وبالتوازي، بدء مناقشات أولية حول فرص محطات الطاقة الشمسية والتخزين والشحن المتكاملة لدعم النقل الثقيل الكهربائي مستقبلًا.",
   },
   {
     year: "2027",
     title: "Dealer Network Expansion & Site Selection",
     zhTitle: "渠道拓展与选址启动",
+    esTitle: "Expansión de distribuidores y selección de ubicaciones",
+    arTitle: "توسيع شبكة الموزعين واختيار المواقع",
     text: "Expand across key Australian states through channel partners, local fleet customers and after-sales service capability. For the clean energy infrastructure project, begin site selection, commercial scenario assessment and preliminary technical planning.",
     zhText:
       "通过渠道合作伙伴、本地车队客户和售后服务能力建设，逐步覆盖澳大利亚主要州和重点运输市场。光储充项目同步进入选址、商业场景评估和初步技术方案规划阶段。",
+    esText:
+      "Expandirse en los principales estados australianos mediante socios de canal, clientes locales de flotas y capacidades de servicio posventa. Para el proyecto de infraestructura de energía limpia, iniciar la selección de ubicaciones, la evaluación de escenarios comerciales y la planificación técnica preliminar.",
+    arText:
+      "التوسع في الولايات الأسترالية الرئيسية من خلال شركاء القنوات، وعملاء الأساطيل المحليين، وقدرات خدمة ما بعد البيع. وبالنسبة لمشروع البنية التحتية للطاقة النظيفة، تبدأ مرحلة اختيار المواقع، وتقييم السيناريوهات التجارية، والتخطيط الفني الأولي.",
   },
   {
     year: "2028",
     title: "Global Expansion & Electric Platform Validation",
     zhTitle: "全球拓展与电动平台验证",
+    esTitle: "Expansión global y validación de la plataforma eléctrica",
+    arTitle: "التوسع العالمي والتحقق من المنصة الكهربائية",
     text: "Extend the Australian-validated diesel truck model into selected overseas markets, including Southeast Asia, the Middle East and the Americas. Diesel platforms will lead the first stage of global expansion, while electric truck platforms continue validation in suitable Australian operating scenarios.",
     zhText:
       "将经过澳大利亚市场验证的柴油重卡产品和运营模式拓展至东南亚、中东和美洲等海外市场。全球化布局将以柴油平台先行，电动平台则在适合的澳洲运营场景中继续验证。",
+    esText:
+      "Extender el modelo de camiones diésel validado en Australia hacia mercados internacionales seleccionados, incluidos el Sudeste Asiático, Oriente Medio y las Américas. Las plataformas diésel liderarán la primera etapa de expansión global, mientras que las plataformas eléctricas seguirán validándose en escenarios operativos adecuados en Australia.",
+    arText:
+      "توسيع نموذج الشاحنات العاملة بالديزل، الذي تم التحقق منه في أستراليا، إلى أسواق دولية مختارة تشمل جنوب شرق آسيا والشرق الأوسط والأمريكتين. ستقود منصات الديزل المرحلة الأولى من التوسع العالمي، بينما تستمر منصات الشاحنات الكهربائية في التحقق ضمن سيناريوهات تشغيل مناسبة في أستراليا.",
   },
   {
     year: "2029",
     title: "Energy Infrastructure Demonstration",
     zhTitle: "能源基础设施示范",
+    esTitle: "Demostración de infraestructura energética",
+    arTitle: "نموذج تجريبي للبنية التحتية للطاقة",
     text: "Develop the first demonstration model for solar-storage-charging infrastructure, connecting renewable energy generation, battery storage and heavy vehicle charging. This stage supports the transition from product sales to an integrated transport and energy solution.",
     zhText:
       "推进首个光储充基础设施示范项目，将太阳能发电、电池储能和重型车辆充电能力连接起来。本阶段将支持 ASTRAQ 从单一产品销售，逐步走向运输与能源一体化解决方案。",
+    esText:
+      "Desarrollar el primer modelo demostrativo de infraestructura solar, almacenamiento y carga, conectando la generación de energía renovable, el almacenamiento en baterías y la carga de vehículos pesados. Esta etapa apoya la transición desde la venta de productos hacia una solución integrada de transporte y energía.",
+    arText:
+      "تطوير أول نموذج تجريبي للبنية التحتية المتكاملة للطاقة الشمسية والتخزين والشحن، من خلال ربط توليد الطاقة المتجددة، وتخزين البطاريات، وشحن المركبات الثقيلة. تدعم هذه المرحلة الانتقال من بيع المنتجات إلى حل متكامل للنقل والطاقة.",
   },
   {
     year: "2030",
     title: "Integrated Global Mobility Platform",
     zhTitle: "全球化综合运输平台",
+    esTitle: "Plataforma global integrada de movilidad",
+    arTitle: "منصة عالمية متكاملة للتنقل",
     text: "Build a complete global growth model with diesel trucks leading market entry, electric trucks following operational readiness, and clean energy infrastructure supporting long-term transition. ASTRAQ aims to become an integrated platform connecting heavy transport, clean energy and intelligent technology.",
     zhText:
       "形成以柴油重卡先行进入市场、电动重卡逐步跟进、清洁能源基础设施提供长期支撑的全球化发展模式。ASTRAQ 将逐步发展为连接重型运输、清洁能源和智能技术的综合平台。",
+    esText:
+      "Construir un modelo completo de crecimiento global, con camiones diésel liderando la entrada al mercado, camiones eléctricos avanzando conforme maduren las condiciones operativas e infraestructura de energía limpia apoyando la transición a largo plazo. ASTRAQ busca convertirse en una plataforma integrada que conecte transporte pesado, energía limpia y tecnología inteligente.",
+    arText:
+      "بناء نموذج نمو عالمي متكامل، تقود فيه الشاحنات العاملة بالديزل دخول الأسواق، وتتبعها الشاحنات الكهربائية عند نضج الجاهزية التشغيلية، بينما تدعم البنية التحتية للطاقة النظيفة التحول طويل الأجل. تهدف ASTRAQ إلى أن تصبح منصة متكاملة تربط النقل الثقيل بالطاقة النظيفة والتقنيات الذكية.",
   },
 ];
 
@@ -64,30 +100,40 @@ const teamMembers = [
     role: "CEO",
     image: "/images/about/Lawrence.png",
     imageCn: "/images/about/Lawrence-cn.png",
+    imageEs: "/images/about/Lawrence-es.png",
+    imageAr: "/images/about/Lawrence-ar.png",
   },
   {
     name: "Wei Zhang",
     role: "CTO",
     image: "/images/about/Wei.png",
     imageCn: "/images/about/Wei-cn.png",
+    imageEs: "/images/about/Wei-es.png",
+    imageAr: "/images/about/Wei-ar.png",
   },
   {
     name: "Daniel Ferreira",
     role: "COO",
     image: "/images/about/Daniel.png",
     imageCn: "/images/about/Daniel-cn.png",
+    imageEs: "/images/about/Daniel-es.png",
+    imageAr: "/images/about/Daniel-ar.png",
   },
   {
     name: "Matthew Israel",
     role: "CMO",
     image: "/images/about/Matthew.png",
     imageCn: "/images/about/Matthew-cn.png",
+    imageEs: "/images/about/Matthew-es.png",
+    imageAr: "/images/about/Matthew-ar.png",
   },
   {
     name: "Ming Ng",
     role: "CFO",
     image: "/images/about/Ming.png",
     imageCn: "/images/about/Ming-cn.png",
+    imageEs: "/images/about/Ming-es.png",
+    imageAr: "/images/about/Ming-ar.png",
   },
 ];
 
@@ -98,12 +144,33 @@ export default function About() {
   const activeMilestone =
     milestones.find((item) => item.year === activeYear) || milestones[0];
 
-  const getLabel = (en: string, zh: string) => {
-    return language === "zh" ? zh : en;
+  const isZh = language === "zh";
+  const isEs = language === "es";
+  const isAr = language === "ar";
+  const isRtl = isAr;
+
+  const getLabel = (en: string, zh: string, es: string, ar: string) => {
+    if (isZh) return zh;
+    if (isEs) return es;
+    if (isAr) return ar;
+    return en;
+  };
+
+  const getTeamImage = (
+    image: string,
+    imageCn: string,
+    imageEs: string,
+    imageAr: string
+  ) => {
+    if (isZh) return imageCn;
+    if (isEs) return imageEs;
+    if (isAr) return imageAr;
+    return image;
   };
 
   return (
     <main
+      dir={isRtl ? "rtl" : "ltr"}
       className="min-h-screen overflow-hidden text-white"
       style={{
         background: "#233032",
@@ -128,8 +195,9 @@ export default function About() {
         <div
           className="absolute inset-0"
           style={{
-            background:
-              "linear-gradient(90deg, rgba(10,18,20,0.74) 0%, rgba(18,28,30,0.48) 45%, rgba(18,28,30,0.12) 100%)",
+            background: isRtl
+              ? "linear-gradient(270deg, rgba(10,18,20,0.74) 0%, rgba(18,28,30,0.48) 45%, rgba(18,28,30,0.12) 100%)"
+              : "linear-gradient(90deg, rgba(10,18,20,0.74) 0%, rgba(18,28,30,0.48) 45%, rgba(18,28,30,0.12) 100%)",
           }}
         />
 
@@ -146,27 +214,36 @@ export default function About() {
             href="/"
             className="mb-8 inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.26em] text-[#C9A46A] no-underline transition hover:text-white sm:text-base lg:text-lg"
             style={{
-              letterSpacing: language === "zh" ? "0.12em" : "0.26em",
-              textTransform: language === "zh" ? "none" : "uppercase",
+              letterSpacing: isZh || isAr ? "0.12em" : "0.26em",
+              textTransform: isZh || isAr ? "none" : "uppercase",
             }}
           >
-            ← {getLabel("Back to Home", "返回首页")}
+            {isRtl
+              ? "العودة إلى الرئيسية →"
+              : `← ${getLabel(
+                  "Back to Home",
+                  "返回首页",
+                  "Volver al inicio",
+                  "العودة إلى الرئيسية"
+                )}`}
           </Link>
 
           <h1
             className="max-w-[1100px] font-semibold leading-[0.98] tracking-tight text-white"
             style={{
               fontSize:
-                language === "zh"
+                isZh || isAr
                   ? "clamp(3.1rem,5.1vw,6.6rem)"
                   : "clamp(3.2rem,5.6vw,7.2rem)",
-              textTransform: language === "zh" ? "none" : "none",
-              letterSpacing: language === "zh" ? "-0.04em" : "-0.025em",
+              textTransform: "none",
+              letterSpacing: isZh || isAr ? "-0.04em" : "-0.025em",
             }}
           >
             {getLabel(
               "Engineering Heavy Mobility for World",
-              "为全球重型运输打造工程化解决方案"
+              "为全球重型运输打造工程化解决方案",
+              "Ingeniería para la movilidad pesada global",
+              "هندسة حلول النقل الثقيل للعالم"
             )}
           </h1>
         </div>
@@ -195,11 +272,16 @@ export default function About() {
                 className="font-semibold leading-none tracking-tight text-[#C9A46A]"
                 style={{
                   fontSize: "clamp(2.3rem,3.7vw,5rem)",
-                  textTransform: language === "zh" ? "none" : "uppercase",
-                  letterSpacing: language === "zh" ? "-0.03em" : "-0.025em",
+                  textTransform: isZh || isAr ? "none" : "uppercase",
+                  letterSpacing: isZh || isAr ? "-0.03em" : "-0.025em",
                 }}
               >
-                {getLabel("Global Expansion", "全球拓展")}
+                {getLabel(
+                  "Global Expansion",
+                  "全球拓展",
+                  "Expansión global",
+                  "التوسع العالمي"
+                )}
               </span>
             </div>
 
@@ -207,13 +289,15 @@ export default function About() {
               className="max-w-[1200px] font-light leading-tight tracking-wide text-white/90"
               style={{
                 fontSize: "clamp(1.5rem,2vw,2.7rem)",
-                textTransform: language === "zh" ? "none" : "uppercase",
-                letterSpacing: language === "zh" ? "0.02em" : "0.04em",
+                textTransform: isZh || isAr ? "none" : "uppercase",
+                letterSpacing: isZh || isAr ? "0.02em" : "0.04em",
               }}
             >
               {getLabel(
                 "Australia · Southeast Asia · Middle East · Americas",
-                "澳大利亚 · 东南亚 · 中东 · 美洲"
+                "澳大利亚 · 东南亚 · 中东 · 美洲",
+                "Australia · Sudeste Asiático · Oriente Medio · Américas",
+                "أستراليا · جنوب شرق آسيا · الشرق الأوسط · الأمريكتان"
               )}
             </h2>
           </div>
@@ -256,11 +340,16 @@ export default function About() {
               className="mb-4 font-semibold leading-[1.02] tracking-tight text-[#142426]"
               style={{
                 fontSize: "clamp(2.8rem,4.8vw,6rem)",
-                textTransform: language === "zh" ? "none" : "uppercase",
-                letterSpacing: language === "zh" ? "-0.04em" : "-0.03em",
+                textTransform: isZh || isAr ? "none" : "uppercase",
+                letterSpacing: isZh || isAr ? "-0.04em" : "-0.03em",
               }}
             >
-              {getLabel("ASTRAQ Milestones", "ASTRAQ 发展里程碑")}
+              {getLabel(
+                "ASTRAQ Milestones",
+                "ASTRAQ 发展里程碑",
+                "Hitos de ASTRAQ",
+                "محطات ASTRAQ"
+              )}
             </h2>
           </div>
 
@@ -302,11 +391,16 @@ export default function About() {
               className="mb-3 font-semibold leading-tight tracking-tight text-[#142426]"
               style={{
                 fontSize: "clamp(1.6rem,2.2vw,3rem)",
-                textTransform: language === "zh" ? "none" : "uppercase",
-                letterSpacing: language === "zh" ? "-0.02em" : "-0.025em",
+                textTransform: isZh || isAr ? "none" : "uppercase",
+                letterSpacing: isZh || isAr ? "-0.02em" : "-0.025em",
               }}
             >
-              {getLabel(activeMilestone.title, activeMilestone.zhTitle)}
+              {getLabel(
+                activeMilestone.title,
+                activeMilestone.zhTitle,
+                activeMilestone.esTitle,
+                activeMilestone.arTitle
+              )}
             </div>
 
             <p
@@ -315,7 +409,12 @@ export default function About() {
                 fontSize: "clamp(1.25rem,1.55vw,2rem)",
               }}
             >
-              {getLabel(activeMilestone.text, activeMilestone.zhText)}
+              {getLabel(
+                activeMilestone.text,
+                activeMilestone.zhText,
+                activeMilestone.esText,
+                activeMilestone.arText
+              )}
             </p>
           </div>
         </div>
@@ -344,11 +443,16 @@ export default function About() {
                 className="font-semibold leading-none tracking-tight text-[#C9A46A]"
                 style={{
                   fontSize: "clamp(2.5rem,3.8vw,5rem)",
-                  textTransform: language === "zh" ? "none" : "uppercase",
-                  letterSpacing: language === "zh" ? "-0.03em" : "-0.025em",
+                  textTransform: isZh || isAr ? "none" : "uppercase",
+                  letterSpacing: isZh || isAr ? "-0.03em" : "-0.025em",
                 }}
               >
-                {getLabel("Company Vision", "公司愿景")}
+                {getLabel(
+                  "Company Vision",
+                  "公司愿景",
+                  "Visión de la empresa",
+                  "رؤية الشركة"
+                )}
               </span>
             </div>
 
@@ -356,13 +460,15 @@ export default function About() {
               className="max-w-[1800px] font-semibold leading-[1.05] tracking-tight text-white"
               style={{
                 fontSize: "clamp(2.1rem,3.3vw,4.8rem)",
-                textTransform: language === "zh" ? "none" : "uppercase",
-                letterSpacing: language === "zh" ? "-0.04em" : "-0.03em",
+                textTransform: isZh || isAr ? "none" : "uppercase",
+                letterSpacing: isZh || isAr ? "-0.04em" : "-0.03em",
               }}
             >
               {getLabel(
                 "Built from Australia, Connected to Global Manufacturing.",
-                "立足澳大利亚，连接全球制造能力。"
+                "立足澳大利亚，连接全球制造能力。",
+                "Construida desde Australia, conectada con la fabricación global.",
+                "انطلاقًا من أستراليا، وارتباطًا بقدرات التصنيع العالمية."
               )}
             </h2>
           </div>
@@ -391,11 +497,16 @@ export default function About() {
               className="font-semibold leading-none tracking-tight text-[#C9A46A]"
               style={{
                 fontSize: "clamp(2.5rem,3.8vw,5rem)",
-                textTransform: language === "zh" ? "none" : "uppercase",
-                letterSpacing: language === "zh" ? "-0.03em" : "-0.025em",
+                textTransform: isZh || isAr ? "none" : "uppercase",
+                letterSpacing: isZh || isAr ? "-0.03em" : "-0.025em",
               }}
             >
-              {getLabel("Core Team", "核心团队")}
+              {getLabel(
+                "Core Team",
+                "核心团队",
+                "Equipo principal",
+                "الفريق الأساسي"
+              )}
             </span>
           </div>
 
@@ -403,13 +514,15 @@ export default function About() {
             className="mb-[clamp(3rem,4vw,5rem)] max-w-[1250px] font-semibold leading-[1.05] tracking-tight text-white"
             style={{
               fontSize: "clamp(2.1rem,3.3vw,4.8rem)",
-              textTransform: language === "zh" ? "none" : "uppercase",
-              letterSpacing: language === "zh" ? "-0.04em" : "-0.03em",
+              textTransform: isZh || isAr ? "none" : "uppercase",
+              letterSpacing: isZh || isAr ? "-0.04em" : "-0.03em",
             }}
           >
             {getLabel(
               "Built by industry experience. Driven by execution.",
-              "由行业经验打造，以执行能力驱动。"
+              "由行业经验打造，以执行能力驱动。",
+              "Construido con experiencia industrial. Impulsado por la ejecución.",
+              "بُني بخبرة صناعية، ويقوده التنفيذ."
             )}
           </h2>
         </div>
@@ -422,9 +535,17 @@ export default function About() {
                 className="relative overflow-hidden bg-transparent shadow-2xl"
               >
                 <img
-                  src={language === "zh" ? member.imageCn : member.image}
+                  src={getTeamImage(
+                    member.image,
+                    member.imageCn,
+                    member.imageEs,
+                    member.imageAr
+                  )}
                   alt={member.name}
                   className="block h-auto w-full object-contain object-center"
+                  onError={(e) => {
+                    e.currentTarget.src = member.image;
+                  }}
                 />
               </div>
             ))}

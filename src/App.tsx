@@ -26,21 +26,30 @@ function Router() {
       <Switch>
         <Route path="/products/diesel-truck" component={DieselTruckDetail} />
         <Route path="/products/diesel-truck-2" component={DieselTruck2Detail} />
+
         <Route path="/products/electric-truck" component={ElectricTruckDetail} />
         <Route
           path="/products/electric-truck-2"
           component={ElectricTruck2Detail}
         />
+
         <Route
           path="/products/solar-charging-station"
           component={SolarChargingStationDetail}
         />
+
         <Route
           path="/products/humanoid-robot"
           component={HumanoidRobotDetail}
         />
 
-        {/* Massage AI Page */}
+        {/* Massage Robot Page */}
+        <Route
+          path="/products/massage-robot"
+          component={MassageRobotPage}
+        />
+
+        {/* Keep old path available to avoid broken old links */}
         <Route path="/massage-ai" component={MassageRobotPage} />
 
         <Route path="/about" component={About} />

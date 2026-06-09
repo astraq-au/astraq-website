@@ -1,59 +1,133 @@
 /**
  * ASTRAQ Hero Section — Dark Sci-Fi Design
  * - Full viewport height, cinematic background
- * - Animated headline entrance (translateY + opacity)
- * - Tagline, CTA buttons
- * - Stats grid (integrated)
- * - Scroll indicator
- * - English / Chinese supported
+ * - Mobile / WeChat video fallback with hero-poster.png
+ * - Animated headline entrance
+ * - CTA buttons
+ * - Stats grid
+ * - English / Chinese / Spanish / Arabic supported
  */
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { useLanguage } from "../i18n/LanguageContext";
-
-//const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663624986257/BerFRCPtLjYjx9pqX5GUkP/hero-bg-melbourne-GuQD9Emmw6QGu8jJEy6BX7.webp";
 
 const FONT_FAMILY =
   "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
 
-const stats = [
+type LangCode = "en" | "zh" | "es" | "ar";
+
+const heroText: Record<
+  LangCode,
   {
-    value: "POWER",
-    zhValue: "能源",
-    label: "ENERGY",
-    zhLabel: "清洁能源",
+    title: string;
+    exploreProducts: string;
+    learnMore: string;
+  }
+> = {
+  en: {
+    title: "Redefining Future",
+    exploreProducts: "Explore Products",
+    learnMore: "Learn More",
+  },
+  zh: {
+    title: "重塑未来",
+    exploreProducts: "探索产品",
+    learnMore: "了解更多",
+  },
+  es: {
+    title: "Redefiniendo el Futuro",
+    exploreProducts: "Explorar Productos",
+    learnMore: "Más Información",
+  },
+  ar: {
+    title: "إعادة تعريف المستقبل",
+    exploreProducts: "استكشف المنتجات",
+    learnMore: "اعرف المزيد",
+  },
+};
+
+const stats: Array<{
+  value: Record<LangCode, string>;
+  label: Record<LangCode, string>;
+}> = [
+  {
+    value: {
+      en: "POWER",
+      zh: "能源",
+      es: "ENERGÍA",
+      ar: "الطاقة",
+    },
+    label: {
+      en: "ENERGY",
+      zh: "清洁能源",
+      es: "ENERGÍA LIMPIA",
+      ar: "طاقة نظيفة",
+    },
   },
   {
-    value: "INTELLIGENCE",
-    zhValue: "智能",
-    label: "AI ROBOT",
-    zhLabel: "AI 机器人",
+    value: {
+      en: "INTELLIGENCE",
+      zh: "智能",
+      es: "INTELIGENCIA",
+      ar: "الذكاء",
+    },
+    label: {
+      en: "AI ROBOT",
+      zh: "AI 机器人",
+      es: "ROBOT IA",
+      ar: "روبوت ذكي",
+    },
   },
   {
-    value: "SYSTEMS",
-    zhValue: "系统",
-    label: "INTEGRATION",
-    zhLabel: "集成方案",
+    value: {
+      en: "SYSTEMS",
+      zh: "系统",
+      es: "SISTEMAS",
+      ar: "الأنظمة",
+    },
+    label: {
+      en: "INTEGRATION",
+      zh: "集成方案",
+      es: "INTEGRACIÓN",
+      ar: "حلول متكاملة",
+    },
   },
   {
-    value: "FUTURE",
-    zhValue: "未来",
-    label: "MOBILITY",
-    zhLabel: "智慧出行",
+    value: {
+      en: "FUTURE",
+      zh: "未来",
+      es: "FUTURO",
+      ar: "المستقبل",
+    },
+    label: {
+      en: "MOBILITY",
+      zh: "智慧出行",
+      es: "MOVILIDAD",
+      ar: "التنقل الذكي",
+    },
   },
 ];
 
 export default function HeroSection() {
   const { language } = useLanguage();
 
+  const currentLanguage: LangCode =
+    language === "zh" || language === "es" || language === "ar"
+      ? language
+      : "en";
+
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
   const [visible, setVisible] = useState(false);
   const [hideHeroContent, setHideHeroContent] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
+  const [videoError, setVideoError] = useState(false);
+
   const [, setLocation] = useLocation();
 
-  const getLabel = (en: string, zh: string) => {
-    return language === "zh" ? zh : en;
-  };
+  const isZh = currentLanguage === "zh";
+  const isAr = currentLanguage === "ar";
 
   const handleLearnMore = () => {
     setLocation("/about");
@@ -72,6 +146,34 @@ export default function HeroSection() {
     };
   }, []);
 
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video) return;
+
+    video.setAttribute("playsinline", "true");
+    video.setAttribute("webkit-playsinline", "true");
+    video.setAttribute("x5-playsinline", "true");
+    video.setAttribute("x5-video-player-type", "h5");
+    video.setAttribute("x5-video-player-fullscreen", "false");
+
+    video.muted = true;
+    video.defaultMuted = true;
+
+    const playPromise = video.play();
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          setVideoReady(true);
+          setVideoError(false);
+        })
+        .catch(() => {
+          setVideoError(true);
+        });
+    }
+  }, []);
+
   return (
     <section
       id="home"
@@ -81,14 +183,42 @@ export default function HeroSection() {
         fontFamily: FONT_FAMILY,
       }}
     >
+      {/* Background fallback image for mobile / WeChat */}
+      <img
+        src="/hero-poster.png"
+        alt="ASTRAQ background"
+        className="absolute inset-0 z-0 w-full h-full object-cover"
+        style={{
+          opacity: videoReady && !videoError ? 0 : 1,
+          transition: "opacity 0.6s ease",
+        }}
+      />
+
       {/* Background video */}
       <video
+        ref={videoRef}
         className="absolute inset-0 z-0 w-full h-full object-cover"
         autoPlay
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
+        poster="/hero-poster.png"
+        onCanPlay={() => {
+          setVideoReady(true);
+          setVideoError(false);
+        }}
+        onLoadedData={() => {
+          setVideoReady(true);
+          setVideoError(false);
+        }}
+        onError={() => {
+          setVideoError(true);
+        }}
+        style={{
+          opacity: videoReady && !videoError ? 1 : 0,
+          transition: "opacity 0.6s ease",
+        }}
       >
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>
@@ -122,6 +252,7 @@ export default function HeroSection() {
               : "translateY(24px)",
           transition: "opacity 1.2s ease, transform 1.2s ease",
           pointerEvents: hideHeroContent ? "none" : "auto",
+          direction: "ltr",
         }}
       >
         {/* Main headline */}
@@ -129,19 +260,20 @@ export default function HeroSection() {
           style={{
             fontFamily: FONT_FAMILY,
             fontWeight: 600,
-            fontSize: language === "zh"
-              ? "clamp(3rem, 6.2vw, 7.4rem)"
-              : "clamp(3.2rem, 7vw, 8.5rem)",
+            fontSize:
+              isZh || isAr
+                ? "clamp(3rem, 6.2vw, 7.4rem)"
+                : "clamp(3.2rem, 7vw, 8.5rem)",
             lineHeight: 1.02,
-            letterSpacing: language === "zh" ? "-0.035em" : "-0.055em",
+            letterSpacing: isZh || isAr ? "-0.025em" : "-0.055em",
             color: "#FFFFFF",
-            textTransform: language === "zh" ? "none" : "uppercase",
+            textTransform: isZh || isAr ? "none" : "uppercase",
             opacity: visible ? 1 : 0,
             transform: visible ? "translateY(0)" : "translateY(30px)",
             transition: "opacity 1s ease 0.3s, transform 1s ease 0.3s",
           }}
         >
-          {getLabel("Powering Next-Generation Logistics", "驱动新一代物流")}
+          {heroText[currentLanguage].title}
         </h1>
 
         {/* CTA Buttons */}
@@ -161,11 +293,11 @@ export default function HeroSection() {
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
           >
-            {getLabel("Explore Products", "探索产品")}
+            {heroText[currentLanguage].exploreProducts}
           </button>
 
           <button className="btn-outline-glow" onClick={handleLearnMore}>
-            {getLabel("Learn More", "了解更多")}
+            {heroText[currentLanguage].learnMore}
           </button>
         </div>
 
@@ -180,7 +312,7 @@ export default function HeroSection() {
         >
           {stats.map((stat, i) => (
             <div
-              key={stat.label}
+              key={stat.label.en}
               className="relative text-center"
               style={{
                 borderRight:
@@ -196,15 +328,15 @@ export default function HeroSection() {
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
                   fontSize:
-                    language === "zh"
+                    isZh || isAr
                       ? "clamp(1.35rem, 2vw, 2.5rem)"
                       : "clamp(1.25rem, 2vw, 2.4rem)",
                   color: "#FFFFFF",
                   lineHeight: 1.04,
-                  letterSpacing: language === "zh" ? "-0.01em" : "-0.025em",
+                  letterSpacing: isZh || isAr ? "-0.01em" : "-0.025em",
                 }}
               >
-                {getLabel(stat.value, stat.zhValue)}
+                {stat.value[currentLanguage]}
               </div>
 
               <div
@@ -212,16 +344,16 @@ export default function HeroSection() {
                   fontFamily: FONT_FAMILY,
                   fontWeight: 400,
                   fontSize:
-                    language === "zh"
+                    isZh || isAr
                       ? "clamp(0.72rem, 0.8vw, 1rem)"
                       : "clamp(0.65rem, 0.75vw, 0.9rem)",
-                  letterSpacing: language === "zh" ? "0.06em" : "0.08em",
-                  textTransform: language === "zh" ? "none" : "uppercase",
+                  letterSpacing: isZh || isAr ? "0.04em" : "0.08em",
+                  textTransform: isZh || isAr ? "none" : "uppercase",
                   color: "rgba(255, 255, 255, 0.71)",
                   marginTop: "0.5rem",
                 }}
               >
-                {getLabel(stat.label, stat.zhLabel)}
+                {stat.label[currentLanguage]}
               </div>
             </div>
           ))}

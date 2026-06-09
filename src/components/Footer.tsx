@@ -1,7 +1,7 @@
 /**
  * ASTRAQ Footer — Light Premium Design
  * Heavy Truck links directly to Products section
- * English / Chinese supported
+ * English / Chinese / Spanish / Arabic supported
  */
 
 import { useState } from "react";
@@ -19,78 +19,200 @@ const FOOTER_LINE = "rgba(35,35,35,0.14)";
 const FOOTER_DROPDOWN_BG = "rgba(238,233,224,0.96)";
 const ACCENT_COLOR = "#9B7A45";
 
-const footerLinks = [
-  { label: "Home", zhLabel: "首页", href: "/", active: true },
-  { label: "Heavy Truck", zhLabel: "重型卡车", href: "/#products", active: true },
+type LangCode = "en" | "zh" | "es" | "ar";
+
+type FooterLink = {
+  label: Record<LangCode, string>;
+  href: string;
+  active?: boolean;
+};
+
+const footerLinks: FooterLink[] = [
   {
-    label: "Energy System",
-    zhLabel: "能源系统",
+    label: {
+      en: "Home",
+      zh: "首页",
+      es: "Inicio",
+      ar: "الرئيسية",
+    },
+    href: "/",
+    active: true,
+  },
+  {
+    label: {
+      en: "Heavy Truck",
+      zh: "重型卡车",
+      es: "Camiones Pesados",
+      ar: "الشاحنات الثقيلة",
+    },
+    href: "/#products",
+    active: true,
+  },
+  {
+    label: {
+      en: "Energy System",
+      zh: "能源系统",
+      es: "Sistema Energético",
+      ar: "نظام الطاقة",
+    },
     href: "/products/solar-charging-station",
     active: true,
   },
   {
-    label: "AI Technology",
-    zhLabel: "AI 科技",
+    label: {
+      en: "AI Technology",
+      zh: "AI 科技",
+      es: "Tecnología IA",
+      ar: "تقنية الذكاء الاصطناعي",
+    },
     href: "/products/humanoid-robot",
     active: true,
   },
-  { label: "Store", zhLabel: "商店", href: "/store", active: true },
-  { label: "About", zhLabel: "关于我们", href: "/about", active: true },
+  {
+    label: {
+      en: "Store",
+      zh: "商店",
+      es: "Tienda",
+      ar: "المتجر",
+    },
+    href: "/store",
+    active: true,
+  },
+  {
+    label: {
+      en: "About",
+      zh: "关于我们",
+      es: "Sobre Nosotros",
+      ar: "من نحن",
+    },
+    href: "/about",
+    active: true,
+  },
 ];
 
-const aiTechnologyLinks = [
+const aiTechnologyLinks: FooterLink[] = [
   {
-    label: "Humanoid Robot",
-    zhLabel: "人形机器人",
+    label: {
+      en: "Humanoid Robot",
+      zh: "人形机器人",
+      es: "Robot Humanoide",
+      ar: "روبوت بشري",
+    },
     href: "/products/humanoid-robot",
     active: true,
   },
   {
-    label: "Massage Robot",
-    zhLabel: "按摩机器人",
+    label: {
+      en: "Massage Robot",
+      zh: "按摩机器人",
+      es: "Robot de Masaje",
+      ar: "روبوت مساج",
+    },
     href: "/massage-ai",
     active: true,
   },
 ];
 
-const aboutLinks = [
-  { label: "About Us", zhLabel: "关于我们", href: "/about", active: true },
-  { label: "News", zhLabel: "新闻", href: "/news", active: true },
+const aboutLinks: FooterLink[] = [
   {
-    label: "Investor Relations",
-    zhLabel: "投资者关系",
+    label: {
+      en: "About Us",
+      zh: "关于我们",
+      es: "Sobre Nosotros",
+      ar: "من نحن",
+    },
+    href: "/about",
+    active: true,
+  },
+  {
+    label: {
+      en: "News",
+      zh: "新闻",
+      es: "Noticias",
+      ar: "الأخبار",
+    },
+    href: "/news",
+    active: true,
+  },
+  {
+    label: {
+      en: "Investor Relations",
+      zh: "投资者关系",
+      es: "Relación con Inversores",
+      ar: "علاقات المستثمرين",
+    },
     href: "#",
     active: false,
   },
-  { label: "Join Us", zhLabel: "加入我们", href: "#", active: false },
+  {
+    label: {
+      en: "Join Us",
+      zh: "加入我们",
+      es: "Únete a Nosotros",
+      ar: "انضم إلينا",
+    },
+    href: "#",
+    active: false,
+  },
 ];
 
-type FooterLink = {
-  label: string;
-  zhLabel: string;
-  href: string;
-  active?: boolean;
+const footerText = {
+  en: {
+    comingSoon: "Coming soon",
+    underDevelopment: "page is under development.",
+    rights: "All rights reserved.",
+    slogan: "Future Mobility",
+  },
+  zh: {
+    comingSoon: "即将上线",
+    underDevelopment: "页面正在开发中。",
+    rights: "版权所有。",
+    slogan: "未来出行",
+  },
+  es: {
+    comingSoon: "Próximamente",
+    underDevelopment: "página en desarrollo.",
+    rights: "Todos los derechos reservados.",
+    slogan: "Movilidad del Futuro",
+  },
+  ar: {
+    comingSoon: "قريبًا",
+    underDevelopment: "الصفحة قيد التطوير.",
+    rights: "جميع الحقوق محفوظة.",
+    slogan: "تنقل المستقبل",
+  },
 };
+
+function normalizeLanguage(language: string): LangCode {
+  if (language === "zh" || language === "es" || language === "ar") {
+    return language;
+  }
+
+  return "en";
+}
 
 export default function Footer() {
   const { language } = useLanguage();
+  const currentLanguage = normalizeLanguage(language);
 
   const [aiOpen, setAiOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
 
-  const getLabel = (en: string, zh: string) => {
-    return language === "zh" ? zh : en;
+  const isZh = currentLanguage === "zh";
+  const isAr = currentLanguage === "ar";
+
+  const getLabel = (label: Record<LangCode, string>) => {
+    return label[currentLanguage] || label.en;
   };
 
   const handleClick = (link: FooterLink, e: React.MouseEvent) => {
     if (link.active === false || link.href === "#") {
       e.preventDefault();
 
-      toast(language === "zh" ? "即将上线" : "Coming soon", {
-        description:
-          language === "zh"
-            ? `${link.zhLabel}页面正在开发中。`
-            : `${link.label} page is under development.`,
+      toast(footerText[currentLanguage].comingSoon, {
+        description: `${getLabel(link.label)} ${
+          footerText[currentLanguage].underDevelopment
+        }`,
       });
 
       return;
@@ -118,8 +240,8 @@ export default function Footer() {
     fontFamily: FONT_FAMILY,
     fontWeight: 600,
     fontSize: "clamp(0.85rem, 0.95vw, 1.3rem)",
-    letterSpacing: language === "zh" ? "0.04em" : "0.06em",
-    textTransform: language === "zh" ? ("none" as const) : ("uppercase" as const),
+    letterSpacing: isZh || isAr ? "0.04em" : "0.06em",
+    textTransform: isZh || isAr ? ("none" as const) : ("uppercase" as const),
     color: FOOTER_TEXT,
     textDecoration: "none",
     transition: "color 0.3s ease",
@@ -128,18 +250,19 @@ export default function Footer() {
   };
 
   const dropdownLinkStyle = {
-    display: "block",
-    padding: "0.85rem 1.4rem",
-    fontFamily: FONT_FAMILY,
-    fontWeight: 600,
-    fontSize: "clamp(0.8rem, 0.85vw, 1.08rem)",
-    letterSpacing: language === "zh" ? "0.04em" : "0.06em",
-    textTransform: language === "zh" ? ("none" as const) : ("uppercase" as const),
-    color: FOOTER_TEXT,
-    textDecoration: "none",
-    transition: "all 0.25s ease",
-    whiteSpace: "nowrap" as const,
-  };
+  display: "block",
+  padding: "0.55rem 0",
+  fontFamily: FONT_FAMILY,
+  fontWeight: 600,
+  fontSize: "clamp(0.78rem, 0.82vw, 1.02rem)",
+  letterSpacing: isZh || isAr ? "0.04em" : "0.06em",
+  textTransform: isZh || isAr ? ("none" as const) : ("uppercase" as const),
+  color: FOOTER_TEXT,
+  textDecoration: "none",
+  transition: "all 0.25s ease",
+  whiteSpace: "nowrap" as const,
+  textAlign: "center" as const,
+};
 
   const dropdownWrapperStyle = {
     position: "relative" as const,
@@ -149,26 +272,26 @@ export default function Footer() {
     marginBottom: "-0.75rem",
   };
 
-  const renderDropdown = (links: FooterLink[]) => (
-    <div
-      style={{
-        position: "absolute",
-        left: "50%",
-        top: "100%",
-        transform: "translateX(-50%)",
-        minWidth: "clamp(240px, 15vw, 340px)",
-        background: FOOTER_DROPDOWN_BG,
-        padding: "1rem 0",
-        marginTop: "0.45rem",
-        zIndex: 999,
-        backdropFilter: "blur(14px)",
-        boxShadow: "none",
-        fontFamily: FONT_FAMILY,
-      }}
-    >
+    const renderDropdown = (links: FooterLink[]) => (
+  <div
+    style={{
+      position: "absolute",
+      left: "50%",
+      top: "100%",
+      transform: "translateX(-50%)",
+      minWidth: "clamp(220px, 13vw, 300px)",
+      background: "transparent",
+      padding: "0.7rem 0 0",
+      marginTop: "0.2rem",
+      zIndex: 999,
+      backdropFilter: "none",
+      boxShadow: "none",
+      fontFamily: FONT_FAMILY,
+    }}
+  >
       {links.map((item) => (
         <a
-          key={item.label}
+          key={item.label.en}
           href={item.href}
           onClick={(e) => handleClick(item, e)}
           style={{
@@ -183,7 +306,7 @@ export default function Footer() {
           onMouseEnter={(e) => {
             if (item.active === false || item.href === "#") return;
             e.currentTarget.style.color = FOOTER_TEXT_STRONG;
-            e.currentTarget.style.background = "rgba(35,35,35,0.06)";
+            e.currentTarget.style.background = "transparent";
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.color =
@@ -193,7 +316,7 @@ export default function Footer() {
             e.currentTarget.style.background = "transparent";
           }}
         >
-          {getLabel(item.label, item.zhLabel)}
+          {getLabel(item.label)}
         </a>
       ))}
     </div>
@@ -208,6 +331,7 @@ export default function Footer() {
         paddingBottom: "clamp(2.5rem, 4vw, 4.5rem)",
         overflow: "visible",
         fontFamily: FONT_FAMILY,
+        direction: "ltr",
       }}
     >
       <div className="w-full max-w-[92vw] 2xl:max-w-[1760px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 2xl:px-24">
@@ -241,10 +365,10 @@ export default function Footer() {
           {/* Nav links */}
           <div className="flex flex-nowrap items-center gap-x-[clamp(1.2rem,2vw,3rem)] whitespace-nowrap">
             {footerLinks.map((link) => {
-              if (link.label === "AI Technology") {
+              if (link.label.en === "AI Technology") {
                 return (
                   <div
-                    key={link.label}
+                    key={link.label.en}
                     style={dropdownWrapperStyle}
                     onMouseEnter={() => setAiOpen(true)}
                     onMouseLeave={() => setAiOpen(false)}
@@ -260,7 +384,7 @@ export default function Footer() {
                         e.currentTarget.style.color = FOOTER_TEXT;
                       }}
                     >
-                      {getLabel(link.label, link.zhLabel)}
+                      {getLabel(link.label)}
                     </a>
 
                     {aiOpen && renderDropdown(aiTechnologyLinks)}
@@ -268,10 +392,10 @@ export default function Footer() {
                 );
               }
 
-              if (link.label === "About") {
+              if (link.label.en === "About") {
                 return (
                   <div
-                    key={link.label}
+                    key={link.label.en}
                     style={dropdownWrapperStyle}
                     onMouseEnter={() => setAboutOpen(true)}
                     onMouseLeave={() => setAboutOpen(false)}
@@ -287,7 +411,7 @@ export default function Footer() {
                         e.currentTarget.style.color = FOOTER_TEXT;
                       }}
                     >
-                      {getLabel(link.label, link.zhLabel)}
+                      {getLabel(link.label)}
                     </a>
 
                     {aboutOpen && renderDropdown(aboutLinks)}
@@ -297,7 +421,7 @@ export default function Footer() {
 
               return (
                 <a
-                  key={link.label}
+                  key={link.label.en}
                   href={link.href}
                   onClick={(e) => handleClick(link, e)}
                   style={footerLinkStyle}
@@ -308,7 +432,7 @@ export default function Footer() {
                     e.currentTarget.style.color = FOOTER_TEXT;
                   }}
                 >
-                  {getLabel(link.label, link.zhLabel)}
+                  {getLabel(link.label)}
                 </a>
               );
             })}
@@ -337,7 +461,7 @@ export default function Footer() {
             }}
           >
             © {new Date().getFullYear()} ASTRAQ.{" "}
-            {getLabel("All rights reserved.", "版权所有。")}
+            {footerText[currentLanguage].rights}
           </p>
 
           <div className="flex items-center gap-2">
@@ -350,14 +474,18 @@ export default function Footer() {
               style={{
                 fontFamily: FONT_FAMILY,
                 fontWeight: 600,
-                fontSize: "clamp(2rem, 2.2vw, 2.5rem)",
-                letterSpacing: language === "zh" ? "0.05em" : "0.08em",
+                fontSize:
+                  currentLanguage === "ar"
+                    ? "clamp(1.6rem, 1.9vw, 2.25rem)"
+                    : "clamp(2rem, 2.2vw, 2.5rem)",
+                letterSpacing: isZh || isAr ? "0.05em" : "0.08em",
                 textTransform:
-                  language === "zh" ? ("none" as const) : ("uppercase" as const),
+                  isZh || isAr ? ("none" as const) : ("uppercase" as const),
                 color: ACCENT_COLOR,
+                whiteSpace: "nowrap",
               }}
             >
-              {getLabel("Logistics, Reimagining", "物流，重新定义")}
+              {footerText[currentLanguage].slogan}
             </span>
 
             <span

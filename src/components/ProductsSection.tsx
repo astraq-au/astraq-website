@@ -1,11 +1,11 @@
 /**
- * ASTRAQ Products Section — XPeng-style product selector
+ * ASTRAQ Products Section 
  * - Model tabs at the top
  * - Large centered product image
  * - Learn More / Buy Now buttons
  * - Solar charging station section redesigned with 2/3 image + 1/3 compact key cards
  * - Brand About banner with separated editable text
- * - English / Chinese supported
+ * - English / Chinese / Spanish / Arabic supported
  */
 
 import { useEffect, useRef, useState } from "react";
@@ -21,11 +21,57 @@ const LIGHT_BG = "#FFFFFF";
 const PRODUCTS_HEADER_BG =
   "linear-gradient(to bottom, #0B0D0F 0%, #1B2024 28%, #EDEBE7 100%)";
 
+type LangCode = "en" | "zh" | "es" | "ar";
+
+const commonText: Record<
+  LangCode,
+  {
+    learnMore: string;
+    buyNow: string;
+    aboutUs: string;
+    brandTitle: string;
+    brandSubtitle: string;
+  }
+> = {
+  en: {
+    learnMore: "Learn More",
+    buyNow: "Buy Now",
+    aboutUs: "About Us",
+    brandTitle: "Built for the Next Era",
+    brandSubtitle: "CLEAN ENERGY · INTELLIGENT MOBILITY · AI SYSTEMS",
+  },
+  zh: {
+    learnMore: "了解更多",
+    buyNow: "立即购买",
+    aboutUs: "关于我们",
+    brandTitle: "面向下一个时代",
+    brandSubtitle: "清洁能源 · 智能交通 · AI 系统",
+  },
+  es: {
+    learnMore: "Más Información",
+    buyNow: "Comprar Ahora",
+    aboutUs: "Sobre Nosotros",
+    brandTitle: "Diseñado para la Próxima Era",
+    brandSubtitle: "ENERGÍA LIMPIA · MOVILIDAD INTELIGENTE · SISTEMAS IA",
+  },
+  ar: {
+    learnMore: "اعرف المزيد",
+    buyNow: "اشتر الآن",
+    aboutUs: "من نحن",
+    brandTitle: "مصمم للعصر القادم",
+    brandSubtitle: "طاقة نظيفة · تنقل ذكي · أنظمة ذكاء اصطناعي",
+  },
+};
+
 const truckModels = [
   {
     name: "DM1",
-    shortName: "Diesel Mixer",
-    zhShortName: "柴油搅拌车",
+    shortName: {
+      en: "Diesel Mixer",
+      zh: "柴油搅拌车",
+      es: "Hormigonera Diésel",
+      ar: "خلاطة ديزل",
+    },
     image: "/diesel1.png",
     learnLink: "/products/diesel-truck",
     buyLink: "/store",
@@ -33,8 +79,12 @@ const truckModels = [
   },
   {
     name: "DPM1",
-    shortName: "Diesel Prime Mover",
-    zhShortName: "柴油牵引车",
+    shortName: {
+      en: "Diesel Prime Mover",
+      zh: "柴油牵引车",
+      es: "Tractocamión Diésel",
+      ar: "جرار ديزل",
+    },
     image: "/diesel2.png",
     learnLink: "/products/diesel-truck-2",
     buyLink: "/store",
@@ -42,8 +92,12 @@ const truckModels = [
   },
   {
     name: "EPM1",
-    shortName: "Electric Prime Mover",
-    zhShortName: "电动牵引车",
+    shortName: {
+      en: "Electric Prime Mover",
+      zh: "电动牵引车",
+      es: "Tractocamión Eléctrico",
+      ar: "جرار كهربائي",
+    },
     image: "/electric1.png",
     learnLink: "/products/electric-truck",
     buyLink: "/store",
@@ -51,8 +105,12 @@ const truckModels = [
   },
   {
     name: "EL1",
-    shortName: "Electric Light Truck",
-    zhShortName: "电动轻卡",
+    shortName: {
+      en: "Electric Light Truck",
+      zh: "电动轻卡",
+      es: "Camión Ligero Eléctrico",
+      ar: "شاحنة خفيفة كهربائية",
+    },
     image: "/electric2.png",
     learnLink: "/products/electric-truck-2",
     buyLink: "/store",
@@ -61,42 +119,84 @@ const truckModels = [
 ];
 
 const solarStation = {
-  name: "Clean Energy Infrastructure",
-  zhName: "清洁能源基础设施",
-  description:
-    "Integrated solar generation, battery storage, and charging services for commercial transport.",
-  zhDescription:
-    "集成太阳能发电、储能与商用交通充电服务，为未来运输场景提供能源支持。",
-  title: "Solar-Storage-Charging Integrated Station",
-  zhTitle: "光储充一体化电站",
+  name: {
+    en: "Clean Energy Infrastructure",
+    zh: "清洁能源基础设施",
+    es: "Infraestructura de Energía Limpia",
+    ar: "بنية تحتية للطاقة النظيفة",
+  },
+  description: {
+    en: "Integrated solar generation, battery storage, and charging services for commercial transport.",
+    zh: "集成太阳能发电、储能与商用交通充电服务，为未来运输场景提供能源支持。",
+    es: "Generación solar, almacenamiento en baterías y servicios de carga integrados para el transporte comercial.",
+    ar: "توليد شمسي وتخزين بطاريات وخدمات شحن متكاملة لدعم النقل التجاري.",
+  },
+  title: {
+    en: "Solar-Storage-Charging Integrated Station",
+    zh: "光储充一体化电站",
+    es: "Estación Integrada de Energía Solar, Almacenamiento y Carga",
+    ar: "محطة متكاملة للطاقة الشمسية والتخزين والشحن",
+  },
   image: "/Solar-Charging-Station.png",
   learnLink: "/products/solar-charging-station",
 };
 
 const solarCards = [
   {
-    metric: "5MW",
-    zhMetric: "5兆瓦",
-    label: "Solar Generation Capacity",
-    zhLabel: "太阳能发电容量",
+    metric: {
+      en: "5MW",
+      zh: "5兆瓦",
+      es: "5MW",
+      ar: "5 ميجاواط",
+    },
+    label: {
+      en: "Solar Generation Capacity",
+      zh: "太阳能发电容量",
+      es: "Capacidad de Generación Solar",
+      ar: "قدرة التوليد الشمسي",
+    },
   },
   {
-    metric: "11MWh",
-    zhMetric: "11兆瓦时",
-    label: "Battery Storage Capacity",
-    zhLabel: "电池储能容量",
+    metric: {
+      en: "11MWh",
+      zh: "11兆瓦时",
+      es: "11MWh",
+      ar: "11 ميجاواط ساعة",
+    },
+    label: {
+      en: "Battery Storage Capacity",
+      zh: "电池储能容量",
+      es: "Capacidad de Almacenamiento",
+      ar: "سعة تخزين البطارية",
+    },
   },
   {
-    metric: "20Y",
-    zhMetric: "20年",
-    label: "Design Life",
-    zhLabel: "设计寿命",
+    metric: {
+      en: "20Y",
+      zh: "20年",
+      es: "20 años",
+      ar: "20 سنة",
+    },
+    label: {
+      en: "Design Life",
+      zh: "设计寿命",
+      es: "Vida Útil de Diseño",
+      ar: "العمر التصميمي",
+    },
   },
   {
-    metric: "PV + BESS",
-    zhMetric: "光伏 + 储能",
-    label: "Integrated Energy System",
-    zhLabel: "光伏 + 储能系统",
+    metric: {
+      en: "PV + BESS",
+      zh: "光伏 + 储能",
+      es: "FV + BESS",
+      ar: "PV + BESS",
+    },
+    label: {
+      en: "Integrated Energy System",
+      zh: "光伏 + 储能系统",
+      es: "Sistema Energético Integrado",
+      ar: "نظام طاقة متكامل",
+    },
   },
 ];
 
@@ -125,15 +225,24 @@ function useInView(threshold = 0.15) {
   return { ref, inView };
 }
 
+function normalizeLanguage(language: string): LangCode {
+  if (language === "zh" || language === "es" || language === "ar") {
+    return language;
+  }
+
+  return "en";
+}
+
 function ProductSelector() {
-  const { language, t } = useLanguage();
+  const { language } = useLanguage();
+  const currentLanguage = normalizeLanguage(language);
+
   const { ref, inView } = useInView(0.15);
   const [activeIndex, setActiveIndex] = useState(0);
   const activeModel = truckModels[activeIndex];
 
-  const getLabel = (en: string, zh: string) => {
-    return language === "zh" ? zh : en;
-  };
+  const isZh = currentLanguage === "zh";
+  const isAr = currentLanguage === "ar";
 
   return (
     <div
@@ -184,12 +293,12 @@ function ProductSelector() {
                       fontFamily: FONT_FAMILY,
                       fontWeight: 600,
                       fontSize: "clamp(1.1rem, 1.35vw, 2rem)",
-                      letterSpacing: language === "zh" ? "0.02em" : "0.04em",
-                      textTransform: language === "zh" ? "none" : "uppercase",
+                      letterSpacing: isZh || isAr ? "0.02em" : "0.04em",
+                      textTransform: isZh || isAr ? "none" : "uppercase",
                       lineHeight: 1.1,
                     }}
                   >
-                    {getLabel(model.shortName, model.zhShortName)}
+                    {model.shortName[currentLanguage]}
                   </div>
 
                   <span
@@ -278,8 +387,8 @@ function ProductSelector() {
                 fontFamily: FONT_FAMILY,
                 fontWeight: 600,
                 fontSize: "clamp(0.8rem, 0.8vw, 1rem)",
-                letterSpacing: language === "zh" ? "0.04em" : "0.06em",
-                textTransform: language === "zh" ? "none" : "uppercase",
+                letterSpacing: isZh || isAr ? "0.04em" : "0.06em",
+                textTransform: isZh || isAr ? "none" : "uppercase",
                 textDecoration: "none",
                 transition: "all 0.3s ease",
               }}
@@ -292,7 +401,7 @@ function ProductSelector() {
                 e.currentTarget.style.borderColor = "rgba(0,0,0,0.42)";
               }}
             >
-              {t.products.learnMore}
+              {commonText[currentLanguage].learnMore}
             </a>
 
             <a
@@ -307,8 +416,8 @@ function ProductSelector() {
                 fontFamily: FONT_FAMILY,
                 fontWeight: 600,
                 fontSize: "clamp(0.8rem, 0.8vw, 1rem)",
-                letterSpacing: language === "zh" ? "0.04em" : "0.06em",
-                textTransform: language === "zh" ? "none" : "uppercase",
+                letterSpacing: isZh || isAr ? "0.04em" : "0.06em",
+                textTransform: isZh || isAr ? "none" : "uppercase",
                 textDecoration: "none",
                 transition: "all 0.3s ease",
               }}
@@ -319,7 +428,7 @@ function ProductSelector() {
                 e.currentTarget.style.background = "rgba(201,164,106,0.88)";
               }}
             >
-              {t.products.buyNow}
+              {commonText[currentLanguage].buyNow}
             </a>
           </div>
         </div>
@@ -329,12 +438,13 @@ function ProductSelector() {
 }
 
 function SolarStationSection() {
-  const { language, t } = useLanguage();
+  const { language } = useLanguage();
+  const currentLanguage = normalizeLanguage(language);
+
   const { ref, inView } = useInView(0.15);
 
-  const getLabel = (en: string, zh: string) => {
-    return language === "zh" ? zh : en;
-  };
+  const isZh = currentLanguage === "zh";
+  const isAr = currentLanguage === "ar";
 
   return (
     <div
@@ -363,13 +473,13 @@ function SolarStationSection() {
               fontFamily: FONT_FAMILY,
               fontWeight: 600,
               fontSize: "clamp(2.1rem, 3.2vw, 4.8rem)",
-              letterSpacing: language === "zh" ? "-0.02em" : "-0.04em",
-              textTransform: language === "zh" ? "none" : "uppercase",
+              letterSpacing: isZh || isAr ? "-0.02em" : "-0.04em",
+              textTransform: isZh || isAr ? "none" : "uppercase",
               color: "rgba(0,0,0,0.88)",
               marginBottom: "clamp(0.8rem, 1.2vw, 1.5rem)",
             }}
           >
-            {getLabel(solarStation.name, solarStation.zhName)}
+            {solarStation.name[currentLanguage]}
           </h3>
 
           <p
@@ -385,7 +495,7 @@ function SolarStationSection() {
               marginBottom: "clamp(2.5rem, 3.5vw, 4rem)",
             }}
           >
-            {getLabel(solarStation.description, solarStation.zhDescription)}
+            {solarStation.description[currentLanguage]}
           </p>
         </div>
 
@@ -424,14 +534,14 @@ function SolarStationSection() {
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
                   fontSize: "clamp(2.4rem, 3vw, 4rem)",
-                  letterSpacing: language === "zh" ? "-0.02em" : "-0.04em",
-                  textTransform: language === "zh" ? "none" : "uppercase",
+                  letterSpacing: isZh || isAr ? "-0.02em" : "-0.04em",
+                  textTransform: isZh || isAr ? "none" : "uppercase",
                   color: "#FFFFFF",
                   lineHeight: 1.15,
-                  maxWidth: "760px",
+                  maxWidth: "850px",
                 }}
               >
-                {getLabel(solarStation.title, solarStation.zhTitle)}
+                {solarStation.title[currentLanguage]}
               </div>
             </div>
           </a>
@@ -440,7 +550,7 @@ function SolarStationSection() {
             {solarCards.map((card) => {
               return (
                 <a
-                  key={card.metric}
+                  key={card.metric.en}
                   href={solarStation.learnLink}
                   className="group relative block overflow-hidden no-underline"
                   style={{
@@ -466,18 +576,16 @@ function SolarStationSection() {
                         fontFamily: FONT_FAMILY,
                         fontWeight: 600,
                         fontSize:
-                          language === "zh"
+                          isZh || isAr
                             ? "clamp(1.85rem, 2.35vw, 3.45rem)"
                             : "clamp(2.2rem, 2.8vw, 4.2rem)",
-                        letterSpacing:
-                          language === "zh" ? "-0.025em" : "-0.045em",
-                        textTransform:
-                          language === "zh" ? "none" : "uppercase",
+                        letterSpacing: isZh || isAr ? "-0.025em" : "-0.045em",
+                        textTransform: isZh || isAr ? "none" : "uppercase",
                         color: "rgba(0,0,0,0.84)",
                         lineHeight: 1.08,
                       }}
                     >
-                      {getLabel(card.metric, card.zhMetric)}
+                      {card.metric[currentLanguage]}
                     </div>
 
                     <div
@@ -485,14 +593,13 @@ function SolarStationSection() {
                         fontFamily: FONT_FAMILY,
                         fontWeight: 600,
                         fontSize: "clamp(0.95rem, 1vw, 1.28rem)",
-                        letterSpacing: language === "zh" ? "0.03em" : "0.04em",
-                        textTransform:
-                          language === "zh" ? "none" : "uppercase",
+                        letterSpacing: isZh || isAr ? "0.03em" : "0.04em",
+                        textTransform: isZh || isAr ? "none" : "uppercase",
                         color: ACCENT_COLOR,
                         lineHeight: 1.35,
                       }}
                     >
-                      {getLabel(card.label, card.zhLabel)}
+                      {card.label[currentLanguage]}
                     </div>
                   </div>
                 </a>
@@ -515,8 +622,8 @@ function SolarStationSection() {
               fontFamily: FONT_FAMILY,
               fontWeight: 600,
               fontSize: "clamp(0.8rem, 0.8vw, 1rem)",
-              letterSpacing: language === "zh" ? "0.04em" : "0.06em",
-              textTransform: language === "zh" ? "none" : "uppercase",
+              letterSpacing: isZh || isAr ? "0.04em" : "0.06em",
+              textTransform: isZh || isAr ? "none" : "uppercase",
               textDecoration: "none",
               transition: "all 0.3s ease",
             }}
@@ -529,7 +636,7 @@ function SolarStationSection() {
               e.currentTarget.style.borderColor = "rgba(0,0,0,0.42)";
             }}
           >
-            {t.products.learnMore}
+            {commonText[currentLanguage].learnMore}
           </a>
         </div>
       </div>
@@ -538,8 +645,13 @@ function SolarStationSection() {
 }
 
 function BrandAboutBanner() {
-  const { language, t } = useLanguage();
+  const { language } = useLanguage();
+  const currentLanguage = normalizeLanguage(language);
+
   const { ref, inView } = useInView(0.15);
+
+  const isZh = currentLanguage === "zh";
+  const isAr = currentLanguage === "ar";
 
   return (
     <div
@@ -581,12 +693,12 @@ function BrandAboutBanner() {
           />
 
           <div className="brand-about-text">
-            <h2>{t.products.brandTitle}</h2>
-            <p>{t.products.brandSubtitle}</p>
+            <h2>{commonText[currentLanguage].brandTitle}</h2>
+            <p>{commonText[currentLanguage].brandSubtitle}</p>
           </div>
 
           <a href="/about" className="brand-about-button">
-            {t.products.aboutUs}
+            {commonText[currentLanguage].aboutUs}
           </a>
         </div>
       </div>
@@ -611,6 +723,7 @@ function BrandAboutBanner() {
           color: rgba(255,255,255,0.94);
           text-shadow: 0 10px 32px rgba(0,0,0,0.42);
           pointer-events: none;
+          direction: ltr;
         }
 
         .brand-about-text h2 {
@@ -619,7 +732,7 @@ function BrandAboutBanner() {
           font-weight: 400;
           font-size: clamp(2.2rem, 3.9vw, 6rem);
           line-height: 1.05;
-          letter-spacing: ${language === "zh" ? "-0.02em" : "0.01em"};
+          letter-spacing: ${isZh || isAr ? "-0.02em" : "0.01em"};
           color: rgba(255,255,255,0.96);
         }
 
@@ -629,7 +742,7 @@ function BrandAboutBanner() {
           font-weight: 400;
           font-size: clamp(0.95rem, 1.35vw, 2rem);
           line-height: 1.35;
-          letter-spacing: ${language === "zh" ? "0.06em" : "0.12em"};
+          letter-spacing: ${isZh || isAr ? "0.04em" : "0.12em"};
           color: rgba(255,255,255,0.82);
         }
 
@@ -649,8 +762,8 @@ function BrandAboutBanner() {
           font-family: ${FONT_FAMILY};
           font-weight: 600;
           font-size: clamp(0.8rem, 0.85vw, 1rem);
-          letter-spacing: ${language === "zh" ? "0.04em" : "0.06em"};
-          text-transform: ${language === "zh" ? "none" : "uppercase"};
+          letter-spacing: ${isZh || isAr ? "0.04em" : "0.06em"};
+          text-transform: ${isZh || isAr ? "none" : "uppercase"};
           text-decoration: none;
           transition: all 0.3s ease;
           display: inline-flex;
@@ -694,7 +807,7 @@ function BrandAboutBanner() {
           .brand-about-text p {
             max-width: 520px;
             font-size: clamp(0.95rem, 2.6vw, 1.35rem);
-            letter-spacing: ${language === "zh" ? "0.04em" : "0.08em"};
+            letter-spacing: ${isZh || isAr ? "0.04em" : "0.08em"};
           }
         }
 
@@ -720,7 +833,7 @@ function BrandAboutBanner() {
           .brand-about-text p {
             font-size: clamp(0.9rem, 4vw, 1.18rem);
             line-height: 1.55;
-            letter-spacing: ${language === "zh" ? "0.035em" : "0.055em"};
+            letter-spacing: ${isZh || isAr ? "0.035em" : "0.055em"};
           }
 
           .brand-about-button {
@@ -762,7 +875,7 @@ export default function ProductsSection() {
             transform: headerInView ? "translateY(0)" : "translateY(30px)",
             transition: "opacity 0.8s ease, transform 0.8s ease",
           }}
-        ></div>
+        />
       </div>
 
       <ProductSelector />

@@ -1,17 +1,34 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "../components/ui/button";
+import { Card, CardContent } from "../components/ui/card";
 import { AlertCircle, Home } from "lucide-react";
 import { useLocation } from "wouter";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function NotFound() {
   const [, setLocation] = useLocation();
+  const { language } = useLanguage();
+
+  const isZh = language === "zh";
+  const isEs = language === "es";
+  const isAr = language === "ar";
+  const isRtl = isAr;
+
+  const getLabel = (en: string, zh: string, es: string, ar: string) => {
+    if (isZh) return zh;
+    if (isEs) return es;
+    if (isAr) return ar;
+    return en;
+  };
 
   const handleGoHome = () => {
     setLocation("/");
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+    <div
+      dir={isRtl ? "rtl" : "ltr"}
+      className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100"
+    >
       <Card className="w-full max-w-lg mx-4 shadow-lg border-0 bg-white/80 backdrop-blur-sm">
         <CardContent className="pt-8 pb-8 text-center">
           <div className="flex justify-center mb-6">
@@ -24,13 +41,28 @@ export default function NotFound() {
           <h1 className="text-4xl font-bold text-slate-900 mb-2">404</h1>
 
           <h2 className="text-xl font-semibold text-slate-700 mb-4">
-            Page Not Found
+            {getLabel(
+              "Page Not Found",
+              "页面未找到",
+              "Página no encontrada",
+              "الصفحة غير موجودة"
+            )}
           </h2>
 
           <p className="text-slate-600 mb-8 leading-relaxed">
-            Sorry, the page you are looking for doesn't exist.
+            {getLabel(
+              "Sorry, the page you are looking for doesn't exist.",
+              "抱歉，您访问的页面不存在。",
+              "Lo sentimos, la página que busca no existe.",
+              "عذرًا، الصفحة التي تبحث عنها غير موجودة."
+            )}
             <br />
-            It may have been moved or deleted.
+            {getLabel(
+              "It may have been moved or deleted.",
+              "该页面可能已被移动或删除。",
+              "Es posible que se haya movido o eliminado.",
+              "ربما تم نقلها أو حذفها."
+            )}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -38,8 +70,13 @@ export default function NotFound() {
               onClick={handleGoHome}
               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
             >
-              <Home className="w-4 h-4 mr-2" />
-              Go Home
+              <Home className={isRtl ? "w-4 h-4 ml-2" : "w-4 h-4 mr-2"} />
+              {getLabel(
+                "Go Home",
+                "返回首页",
+                "Ir al inicio",
+                "العودة إلى الرئيسية"
+              )}
             </Button>
           </div>
         </CardContent>

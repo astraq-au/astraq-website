@@ -1,7 +1,7 @@
 /**
  * DieselTruck2Detail Page
  * ASTRAQ DPM1 6x4 Diesel Prime Mover — Light Homepage Matched Style
- * English / Chinese supported
+ * English / Chinese / Spanish / Arabic supported
  */
 
 import Footer from "../components/Footer";
@@ -39,26 +39,42 @@ const keyHighlights = [
   {
     value: "6×4",
     zhValue: "6×4",
+    esValue: "6×4",
+    arValue: "6×4",
     label: "Drive Configuration",
     zhLabel: "驱动形式",
+    esLabel: "Configuración de tracción",
+    arLabel: "نظام الدفع",
   },
   {
     value: "90T",
     zhValue: "90吨",
+    esValue: "90 t",
+    arValue: "90 طن",
     label: "Gross Combination Mass",
     zhLabel: "最大组合总质量",
+    esLabel: "Masa máxima combinada",
+    arLabel: "الكتلة الإجمالية المركبة",
   },
   {
     value: "400kW",
     zhValue: "400千瓦",
+    esValue: "400 kW",
+    arValue: "400 كيلوواط",
     label: "MC13 Diesel Engine",
     zhLabel: "MC13 柴油发动机",
+    esLabel: "Motor diésel MC13",
+    arLabel: "محرك ديزل MC13",
   },
   {
     value: "12-Speed",
     zhValue: "12挡",
+    esValue: "12 marchas",
+    arValue: "12 سرعة",
     label: "Automated Transmission",
     zhLabel: "自动变速箱",
+    esLabel: "Transmisión automatizada",
+    arLabel: "ناقل حركة آلي",
   },
 ];
 
@@ -66,50 +82,82 @@ const quickSpecs = [
   {
     label: "Application",
     zhLabel: "应用场景",
+    esLabel: "Aplicación",
+    arLabel: "الاستخدام",
     value: "6×4 Prime Mover",
     zhValue: "6×4 柴油牵引车",
+    esValue: "Tractocamión 6×4",
+    arValue: "قاطرة 6×4",
   },
   {
     label: "Engine",
     zhLabel: "发动机",
+    esLabel: "Motor",
+    arLabel: "المحرك",
     value: "MC13.54-61 12.42L Diesel",
     zhValue: "MC13.54-61 12.42L 柴油发动机",
+    esValue: "MC13.54-61 diésel de 12.42 L",
+    arValue: "MC13.54-61 ديزل 12.42 لتر",
   },
   {
     label: "Power",
     zhLabel: "最大功率",
+    esLabel: "Potencia",
+    arLabel: "القوة",
     value: "400 kW @ 1800 rpm",
     zhValue: "400 千瓦 @ 1800 rpm",
+    esValue: "400 kW @ 1800 rpm",
+    arValue: "400 كيلوواط @ 1800 دورة/دقيقة",
   },
   {
     label: "Torque",
     zhLabel: "最大扭矩",
+    esLabel: "Par máximo",
+    arLabel: "العزم",
     value: "2500 N·m @ 950–1400 rpm",
     zhValue: "2500 N·m @ 950–1400 rpm",
+    esValue: "2500 N·m @ 950–1400 rpm",
+    arValue: "2500 نيوتن·متر @ 950–1400 دورة/دقيقة",
   },
   {
     label: "Transmission",
     zhLabel: "变速箱",
+    esLabel: "Transmisión",
+    arLabel: "ناقل الحركة",
     value: "12-Speed AMT",
     zhValue: "12挡 AMT 自动变速箱",
+    esValue: "AMT de 12 marchas",
+    arValue: "AMT بـ 12 سرعة",
   },
   {
     label: "Wheelbase",
     zhLabel: "轴距",
+    esLabel: "Distancia entre ejes",
+    arLabel: "قاعدة العجلات",
     value: "3200 + 1400 mm",
     zhValue: "3200 + 1400 mm",
+    esValue: "3200 + 1400 mm",
+    arValue: "3200 + 1400 مم",
   },
   {
     label: "Dimensions",
     zhLabel: "整车尺寸",
+    esLabel: "Dimensiones",
+    arLabel: "الأبعاد",
     value: "7025 × 2490 × 3317 mm",
     zhValue: "7025 × 2490 × 3317 mm",
+    esValue: "7025 × 2490 × 3317 mm",
+    arValue: "7025 × 2490 × 3317 مم",
   },
   {
     label: "Fifth-Wheel Height",
     zhLabel: "鞍座高度",
+    esLabel: "Altura de quinta rueda",
+    arLabel: "ارتفاع صينية القطر",
     value: "1260 mm unloaded",
     zhValue: "1260 mm，空载状态",
+    esValue: "1260 mm sin carga",
+    arValue: "1260 مم بدون حمولة",
   },
 ];
 
@@ -117,38 +165,62 @@ const capabilitySpecs = [
   {
     label: "GVM",
     zhLabel: "最大总质量 GVM",
+    esLabel: "GVM",
+    arLabel: "GVM",
     value: "25,000 kg",
     zhValue: "25,000 kg",
+    esValue: "25,000 kg",
+    arValue: "25,000 كجم",
   },
   {
     label: "GCM",
     zhLabel: "最大组合总质量 GCM",
+    esLabel: "GCM",
+    arLabel: "GCM",
     value: "90,000 kg",
     zhValue: "90,000 kg",
+    esValue: "90,000 kg",
+    arValue: "90,000 كجم",
   },
   {
     label: "Kerb Weight",
     zhLabel: "整备质量",
+    esLabel: "Peso en vacío",
+    arLabel: "الوزن الفارغ",
     value: "8,800 kg",
     zhValue: "8,800 kg",
+    esValue: "8,800 kg",
+    arValue: "8,800 كجم",
   },
   {
     label: "Fuel Tank",
     zhLabel: "油箱容量",
+    esLabel: "Depósito de combustible",
+    arLabel: "خزان الوقود",
     value: "700 + 240 L",
     zhValue: "700 + 240 L",
+    esValue: "700 + 240 L",
+    arValue: "700 + 240 لتر",
   },
   {
     label: "Max Speed",
     zhLabel: "最高车速",
+    esLabel: "Velocidad máxima",
+    arLabel: "السرعة القصوى",
     value: "100 km/h",
     zhValue: "100 km/h",
+    esValue: "100 km/h",
+    arValue: "100 كم/س",
   },
   {
     label: "Gradeability",
     zhLabel: "最大爬坡度",
+    esLabel: "Capacidad de ascenso",
+    arLabel: "قدرة الصعود",
     value: "≥25%",
     zhValue: "≥25%",
+    esValue: "≥25%",
+    arValue: "≥25%",
   },
 ];
 
@@ -156,43 +228,63 @@ const safetyFeatures = [
   {
     value: "EBS + ESC + HSA",
     zhValue: "EBS 电子制动 + ESC 车身稳定 + HSA 坡道辅助",
+    esValue: "EBS + ESC + HSA",
+    arValue: "EBS + ESC + HSA",
   },
   {
     value: "ACC",
     zhValue: "ACC 自适应巡航",
+    esValue: "ACC",
+    arValue: "ACC",
   },
   {
     value: "AEBS",
     zhValue: "AEBS 自动紧急制动",
+    esValue: "AEBS",
+    arValue: "AEBS",
   },
   {
     value: "LDW",
     zhValue: "LDW 车道偏离预警",
+    esValue: "LDW",
+    arValue: "LDW",
   },
   {
     value: "Reverse Camera",
     zhValue: "倒车影像",
+    esValue: "Cámara de reversa",
+    arValue: "كاميرا خلفية",
   },
   {
     value: "Dual-Circuit Air Brake",
     zhValue: "双回路气压制动",
+    esValue: "Freno neumático de doble circuito",
+    arValue: "فرامل هوائية مزدوجة الدائرة",
   },
 ];
 
 export default function DieselTruck2Detail() {
   const { language } = useLanguage();
 
-  const getLabel = (en: string, zh: string) => {
-    return language === "zh" ? zh : en;
+  const isZh = language === "zh";
+  const isEs = language === "es";
+  const isAr = language === "ar";
+  const isRtl = isAr;
+
+  const getLabel = (en: string, zh: string, es: string, ar: string) => {
+    if (isZh) return zh;
+    if (isEs) return es;
+    if (isAr) return ar;
+    return en;
   };
 
-  const textTransform =
-    language === "zh" ? ("none" as const) : ("uppercase" as const);
-  const buttonLetterSpacing = language === "zh" ? "0.04em" : "0.06em";
-  const titleLetterSpacing = language === "zh" ? "-0.035em" : "-0.045em";
+  const textTransform = isZh || isAr ? ("none" as const) : ("uppercase" as const);
+  const buttonLetterSpacing = isZh || isAr ? "0.04em" : "0.06em";
+  const titleLetterSpacing = isZh || isAr ? "-0.035em" : "-0.045em";
 
   return (
     <main
+      dir={isRtl ? "rtl" : "ltr"}
       className="min-h-screen"
       style={{
         background: COLORS.pageBg,
@@ -224,8 +316,9 @@ export default function DieselTruck2Detail() {
         <div
           className="absolute inset-0"
           style={{
-            background:
-              "linear-gradient(90deg, rgba(245,247,250,0.76) 0%, rgba(245,247,250,0.38) 46%, rgba(245,247,250,0.56) 100%)",
+            background: isRtl
+              ? "linear-gradient(270deg, rgba(245,247,250,0.76) 0%, rgba(245,247,250,0.38) 46%, rgba(245,247,250,0.56) 100%)"
+              : "linear-gradient(90deg, rgba(245,247,250,0.76) 0%, rgba(245,247,250,0.38) 46%, rgba(245,247,250,0.56) 100%)",
           }}
         />
 
@@ -259,7 +352,7 @@ export default function DieselTruck2Detail() {
               fontFamily: FONT_FAMILY,
               fontWeight: 600,
               fontSize:
-                language === "zh"
+                isZh || isAr
                   ? "clamp(2.7rem, 5.2vw, 7.8rem)"
                   : "clamp(2.8rem, 5.6vw, 8.6rem)",
               lineHeight: 1.02,
@@ -273,7 +366,12 @@ export default function DieselTruck2Detail() {
               textShadow: "0 12px 32px rgba(255,255,255,0.45)",
             }}
           >
-            {getLabel("DPM1 6×4 Prime Mover", "DPM1 6×4 柴油牵引车")}
+            {getLabel(
+              "DPM1 6×4 Prime Mover",
+              "DPM1 6×4 柴油牵引车",
+              "DPM1 tractocamión 6×4",
+              "DPM1 قاطرة 6×4"
+            )}
           </h1>
 
           <p
@@ -281,17 +379,17 @@ export default function DieselTruck2Detail() {
               fontFamily: FONT_FAMILY,
               fontWeight: 600,
               fontSize:
-                language === "zh"
+                isZh || isAr
                   ? "clamp(2rem, 3.8vw, 5.6rem)"
                   : "clamp(2.2rem, 4.2vw, 6.2rem)",
               lineHeight: 1,
-              letterSpacing: language === "zh" ? "-0.015em" : "-0.02em",
+              letterSpacing: isZh || isAr ? "-0.015em" : "-0.02em",
               textTransform,
               color: COLORS.textMain,
               marginBottom: "clamp(2rem, 3vw, 3.8rem)",
             }}
           >
-            {getLabel("Euro 6", "欧六排放")}
+            {getLabel("Euro 6", "欧六排放", "Euro 6", "يورو 6")}
           </p>
 
           <div
@@ -332,7 +430,12 @@ export default function DieselTruck2Detail() {
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
-              {getLabel("View Specification", "查看参数")}
+              {getLabel(
+                "View Specification",
+                "查看参数",
+                "Ver especificaciones",
+                "عرض المواصفات"
+              )}
             </a>
 
             <a
@@ -364,7 +467,7 @@ export default function DieselTruck2Detail() {
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
-              {getLabel("Buy Now", "立即购买")}
+              {getLabel("Buy Now", "立即购买", "Comprar ahora", "اشتر الآن")}
             </a>
           </div>
         </div>
@@ -384,10 +487,15 @@ export default function DieselTruck2Detail() {
             {keyHighlights.map((item, index) => (
               <div
                 key={item.label}
-                className="text-center lg:text-left"
+                className="text-center"
                 style={{
+                  textAlign: isRtl ? "right" : "left",
                   borderRight:
-                    index < keyHighlights.length - 1
+                    !isRtl && index < keyHighlights.length - 1
+                      ? `1px solid ${COLORS.borderSoft}`
+                      : "none",
+                  borderLeft:
+                    isRtl && index < keyHighlights.length - 1
                       ? `1px solid ${COLORS.borderSoft}`
                       : "none",
                   paddingLeft: index > 0 ? "clamp(0rem, 2.2vw, 4rem)" : "0",
@@ -402,16 +510,16 @@ export default function DieselTruck2Detail() {
                     fontFamily: FONT_FAMILY,
                     fontWeight: 600,
                     fontSize:
-                      language === "zh"
+                      isZh || isAr
                         ? "clamp(2.3rem, 3.4vw, 5rem)"
                         : "clamp(2.6rem, 4vw, 5.8rem)",
                     lineHeight: 1,
                     color: COLORS.textMain,
-                    letterSpacing: language === "zh" ? "-0.025em" : "-0.045em",
+                    letterSpacing: isZh || isAr ? "-0.025em" : "-0.045em",
                     whiteSpace: "nowrap",
                   }}
                 >
-                  {getLabel(item.value, item.zhValue)}
+                  {getLabel(item.value, item.zhValue, item.esValue, item.arValue)}
                 </div>
 
                 <div
@@ -419,13 +527,13 @@ export default function DieselTruck2Detail() {
                     fontFamily: FONT_FAMILY,
                     fontWeight: 600,
                     fontSize: "clamp(0.9rem, 0.9vw, 1.18rem)",
-                    letterSpacing: language === "zh" ? "0.04em" : "0.08em",
+                    letterSpacing: isZh || isAr ? "0.04em" : "0.08em",
                     textTransform,
                     color: COLORS.accent,
                     marginTop: "0.75rem",
                   }}
                 >
-                  {getLabel(item.label, item.zhLabel)}
+                  {getLabel(item.label, item.zhLabel, item.esLabel, item.arLabel)}
                 </div>
               </div>
             ))}
@@ -469,7 +577,12 @@ export default function DieselTruck2Detail() {
                       color: COLORS.accent,
                     }}
                   >
-                    {getLabel("Key Specification", "核心参数")}
+                    {getLabel(
+                      "Key Specification",
+                      "核心参数",
+                      "Especificaciones clave",
+                      "المواصفات الرئيسية"
+                    )}
                   </span>
                 </div>
 
@@ -478,7 +591,7 @@ export default function DieselTruck2Detail() {
                     fontFamily: FONT_FAMILY,
                     fontWeight: 600,
                     fontSize:
-                      language === "zh"
+                      isZh || isAr
                         ? "clamp(2.8rem, 4.4vw, 6.2rem)"
                         : "clamp(3rem, 4.8vw, 7rem)",
                     lineHeight: 1.04,
@@ -491,7 +604,9 @@ export default function DieselTruck2Detail() {
                 >
                   {getLabel(
                     "Built for Trailer Operation",
-                    "为牵引运输场景打造"
+                    "为牵引运输场景打造",
+                    "Diseñado para operaciones con remolque",
+                    "مصمم لعمليات القطر بالمقطورات"
                   )}
                 </h2>
               </div>
@@ -572,14 +687,19 @@ export default function DieselTruck2Detail() {
                         fontFamily: FONT_FAMILY,
                         fontWeight: 600,
                         fontSize: "clamp(0.95rem, 0.95vw, 1.18rem)",
-                        letterSpacing: language === "zh" ? "0.04em" : "0.06em",
+                        letterSpacing: isZh || isAr ? "0.04em" : "0.06em",
                         textTransform,
                         color: COLORS.accent,
                         marginBottom: "clamp(0.4rem, 0.5vw, 0.65rem)",
                         whiteSpace: "nowrap",
                       }}
                     >
-                      {getLabel(spec.label, spec.zhLabel)}
+                      {getLabel(
+                        spec.label,
+                        spec.zhLabel,
+                        spec.esLabel,
+                        spec.arLabel
+                      )}
                     </div>
 
                     <div
@@ -592,7 +712,12 @@ export default function DieselTruck2Detail() {
                         wordBreak: "break-word",
                       }}
                     >
-                      {getLabel(spec.value, spec.zhValue)}
+                      {getLabel(
+                        spec.value,
+                        spec.zhValue,
+                        spec.esValue,
+                        spec.arValue
+                      )}
                     </div>
                   </div>
                 ))}
@@ -630,7 +755,12 @@ export default function DieselTruck2Detail() {
                   e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
-                {getLabel("View Specification", "查看参数")}
+                {getLabel(
+                  "View Specification",
+                  "查看参数",
+                  "Ver especificaciones",
+                  "عرض المواصفات"
+                )}
               </a>
             </div>
           </div>
@@ -667,7 +797,12 @@ export default function DieselTruck2Detail() {
                     color: COLORS.accent,
                   }}
                 >
-                  {getLabel("Prime Mover Capability", "牵引车运营能力")}
+                  {getLabel(
+                    "Prime Mover Capability",
+                    "牵引车运营能力",
+                    "Capacidad del tractocamión",
+                    "قدرات القاطرة"
+                  )}
                 </span>
               </div>
 
@@ -676,7 +811,7 @@ export default function DieselTruck2Detail() {
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
                   fontSize:
-                    language === "zh"
+                    isZh || isAr
                       ? "clamp(2.8rem, 4.4vw, 6.2rem)"
                       : "clamp(3rem, 4.8vw, 7rem)",
                   lineHeight: 1,
@@ -689,7 +824,9 @@ export default function DieselTruck2Detail() {
               >
                 {getLabel(
                   "Long-Haul Ready Platform",
-                  "面向长途干线运输的高效平台"
+                  "面向长途干线运输的高效平台",
+                  "Plataforma preparada para larga distancia",
+                  "منصة جاهزة للنقل لمسافات طويلة"
                 )}
               </h2>
             </div>
@@ -712,13 +849,18 @@ export default function DieselTruck2Detail() {
                       fontFamily: FONT_FAMILY,
                       fontWeight: 600,
                       fontSize: "clamp(0.9rem, 0.9vw, 1.1rem)",
-                      letterSpacing: language === "zh" ? "0.04em" : "0.08em",
+                      letterSpacing: isZh || isAr ? "0.04em" : "0.08em",
                       textTransform,
                       color: COLORS.accent,
                       marginBottom: "0.6rem",
                     }}
                   >
-                    {getLabel(spec.label, spec.zhLabel)}
+                    {getLabel(
+                      spec.label,
+                      spec.zhLabel,
+                      spec.esLabel,
+                      spec.arLabel
+                    )}
                   </div>
 
                   <span
@@ -730,7 +872,12 @@ export default function DieselTruck2Detail() {
                       color: COLORS.textMain,
                     }}
                   >
-                    {getLabel(spec.value, spec.zhValue)}
+                    {getLabel(
+                      spec.value,
+                      spec.zhValue,
+                      spec.esValue,
+                      spec.arValue
+                    )}
                   </span>
                 </div>
               ))}
@@ -770,7 +917,12 @@ export default function DieselTruck2Detail() {
                     color: COLORS.accent,
                   }}
                 >
-                  {getLabel("Safety Systems", "安全系统")}
+                  {getLabel(
+                    "Safety Systems",
+                    "安全系统",
+                    "Sistemas de seguridad",
+                    "أنظمة السلامة"
+                  )}
                 </span>
               </div>
 
@@ -779,7 +931,7 @@ export default function DieselTruck2Detail() {
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
                   fontSize:
-                    language === "zh"
+                    isZh || isAr
                       ? "clamp(2.8rem, 4.4vw, 6.2rem)"
                       : "clamp(3rem, 4.8vw, 7rem)",
                   lineHeight: 1,
@@ -792,7 +944,9 @@ export default function DieselTruck2Detail() {
               >
                 {getLabel(
                   "Ready for Modern Fleets",
-                  "满足现代车队安全运营需求"
+                  "满足现代车队安全运营需求",
+                  "Preparado para flotas modernas",
+                  "جاهز لأساطيل النقل الحديثة"
                 )}
               </h2>
             </div>
@@ -814,11 +968,16 @@ export default function DieselTruck2Detail() {
                       fontFamily: FONT_FAMILY,
                       fontWeight: 600,
                       fontSize: "clamp(1.15rem, 1.22vw, 1.65rem)",
-                      letterSpacing: language === "zh" ? "0.02em" : "0.06em",
+                      letterSpacing: isZh || isAr ? "0.02em" : "0.06em",
                       color: COLORS.textMain,
                     }}
                   >
-                    {getLabel(feature.value, feature.zhValue)}
+                    {getLabel(
+                      feature.value,
+                      feature.zhValue,
+                      feature.esValue,
+                      feature.arValue
+                    )}
                   </span>
                 </div>
               ))}

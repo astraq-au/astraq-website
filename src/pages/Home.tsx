@@ -1,11 +1,12 @@
 /**
  * ASTRAQ Home Page
- * Sections: Hero → Products → Footer
+ * Sections: Hero → Products → Stats → Footer
  */
 
 import Footer from "../components/Footer";
 import HeroSection from "../components/HeroSection";
 import ProductsSection from "../components/ProductsSection";
+/*import StatsSection from "../components/StatsSection";*/
 
 export default function Home() {
   return (
