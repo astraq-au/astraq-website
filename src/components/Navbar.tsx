@@ -1,4 +1,4 @@
- /**
+/**
  * ASTRAQ Navbar — Dark Sci-Fi Design
  * With globe language selector: English / Chinese / Spanish / Arabic
  */
@@ -11,12 +11,13 @@ const FONT_FAMILY =
 
 type LangCode = "en" | "zh" | "es" | "ar";
 
-const languageOptions: { code: LangCode; label: string; shortLabel: string }[] = [
-  { code: "en", label: "English", shortLabel: "EN" },
-  { code: "zh", label: "中文", shortLabel: "中" },
-  { code: "es", label: "Español", shortLabel: "ES" },
-  { code: "ar", label: "العربية", shortLabel: "AR" },
-];
+const languageOptions: { code: LangCode; label: string; shortLabel: string }[] =
+  [
+    { code: "en", label: "English", shortLabel: "EN" },
+    { code: "zh", label: "中文", shortLabel: "中" },
+    { code: "es", label: "Español", shortLabel: "ES" },
+    { code: "ar", label: "العربية", shortLabel: "AR" },
+  ];
 
 const navLinks = [
   {
@@ -123,15 +124,15 @@ const mobileNavLinks = [
     href: "/products/humanoid-robot",
   },
   {
-  key: "massageRobot",
-  labels: {
-    en: "MASSAGE ROBOT",
-    zh: "按摩机器人",
-    es: "ROBOT DE MASAJE",
-    ar: "روبوت مساج",
+    key: "massageRobot",
+    labels: {
+      en: "MASSAGE ROBOT",
+      zh: "按摩机器人",
+      es: "ROBOT DE MASAJE",
+      ar: "روبوت مساج",
+    },
+    href: "/products/massage-robot",
   },
-  href: "/products/massage-robot",
-},
   {
     key: "store",
     labels: {
@@ -270,15 +271,15 @@ const aiTechnologyGroups = [
         image: "/robot1.png",
       },
       {
-  labels: {
-    en: "Massage Robot",
-    zh: "按摩机器人",
-    es: "Robot de Masaje",
-    ar: "روبوت مساج",
-  },
-  href: "/products/massage-robot",
-  image: "/robot2.png",
-},
+        labels: {
+          en: "Massage Robot",
+          zh: "按摩机器人",
+          es: "Robot de Masaje",
+          ar: "روبوت مساج",
+        },
+        href: "/products/massage-robot",
+        image: "/robot2.png",
+      },
     ],
   },
 ];
@@ -287,17 +288,22 @@ const navTextStyle = {
   fontFamily: FONT_FAMILY,
   fontWeight: 600,
   fontSize: "clamp(0.82rem, 1vw, 1.45rem)",
+  lineHeight: 1,
   letterSpacing: "clamp(0.035em, 0.07vw, 0.08em)",
   textTransform: "uppercase" as const,
   color: "rgba(255,255,255,0.85)",
   textDecoration: "none",
   whiteSpace: "nowrap" as const,
+  display: "inline-flex",
+  alignItems: "center",
+  height: "44px",
 };
 
 const menuTabTextStyle = {
   fontFamily: FONT_FAMILY,
   fontWeight: 600,
   fontSize: "clamp(0.95rem, 1.1vw, 1.45rem)",
+  lineHeight: 1,
   letterSpacing: "0.06em",
   textTransform: "uppercase" as const,
 };
@@ -306,6 +312,7 @@ const modelNameTextStyle = {
   fontFamily: FONT_FAMILY,
   fontWeight: 600,
   fontSize: "clamp(0.9rem, 1vw, 1.3rem)",
+  lineHeight: 1.1,
   letterSpacing: "0.04em",
   textTransform: "uppercase" as const,
 };
@@ -395,25 +402,25 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-  const handleClickOutside = (event: MouseEvent) => {
-    const target = event.target as Node;
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
 
-    const clickedDesktopMenu =
-      desktopLanguageMenuRef.current &&
-      desktopLanguageMenuRef.current.contains(target);
+      const clickedDesktopMenu =
+        desktopLanguageMenuRef.current &&
+        desktopLanguageMenuRef.current.contains(target);
 
-    const clickedMobileMenu =
-      mobileLanguageMenuRef.current &&
-      mobileLanguageMenuRef.current.contains(target);
+      const clickedMobileMenu =
+        mobileLanguageMenuRef.current &&
+        mobileLanguageMenuRef.current.contains(target);
 
-    if (!clickedDesktopMenu && !clickedMobileMenu) {
-      setLanguageMenuOpen(false);
-    }
-  };
+      if (!clickedDesktopMenu && !clickedMobileMenu) {
+        setLanguageMenuOpen(false);
+      }
+    };
 
-  document.addEventListener("mousedown", handleClickOutside);
-  return () => document.removeEventListener("mousedown", handleClickOutside);
-}, []);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   useEffect(() => {
     document.documentElement.lang = currentLanguage;
@@ -452,13 +459,13 @@ export default function Navbar() {
           </a>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-[clamp(0.9rem,1.55vw,3rem)] ml-auto">
+          <div className="hidden md:flex items-center gap-[clamp(0.9rem,1.55vw,3rem)] ml-auto h-[44px]">
             {navLinks.map((link) => {
               if (link.key === "heavyTruck") {
                 return (
                   <div
                     key={link.key}
-                    className="relative"
+                    className="relative h-[44px] flex items-center"
                     onMouseEnter={openTruckMenu}
                     onMouseLeave={closeTruckMenu}
                   >
@@ -469,6 +476,8 @@ export default function Navbar() {
                         ...navTextStyle,
                         background: "transparent",
                         border: "none",
+                        padding: 0,
+                        margin: 0,
                         cursor: "pointer",
                       }}
                     >
@@ -581,7 +590,7 @@ export default function Navbar() {
                 return (
                   <div
                     key={link.key}
-                    className="relative"
+                    className="relative h-[44px] flex items-center"
                     onMouseEnter={openAiMenu}
                     onMouseLeave={closeAiMenu}
                   >
@@ -592,6 +601,8 @@ export default function Navbar() {
                         ...navTextStyle,
                         background: "transparent",
                         border: "none",
+                        padding: 0,
+                        margin: 0,
                         cursor: "pointer",
                       }}
                     >
@@ -695,7 +706,10 @@ export default function Navbar() {
 
               if (link.key === "about") {
                 return (
-                  <div key={link.key} className="relative group">
+                  <div
+                    key={link.key}
+                    className="relative group h-[44px] flex items-center"
+                  >
                     <button
                       type="button"
                       className="relative hover:text-[#C9A46A] transition-colors"
@@ -703,6 +717,8 @@ export default function Navbar() {
                         ...navTextStyle,
                         background: "transparent",
                         border: "none",
+                        padding: 0,
+                        margin: 0,
                         cursor: "pointer",
                       }}
                     >
@@ -732,6 +748,7 @@ export default function Navbar() {
                               fontFamily: FONT_FAMILY,
                               fontWeight: 600,
                               fontSize: "clamp(0.8rem, 0.85vw, 1.15rem)",
+                              lineHeight: 1,
                               letterSpacing: "0.06em",
                               textTransform: "uppercase",
                               color:
@@ -766,7 +783,10 @@ export default function Navbar() {
             })}
 
             {/* Desktop Globe Language Selector */}
-            <div className="relative" ref={desktopLanguageMenuRef}>
+            <div
+              className="relative h-[44px] flex items-center"
+              ref={desktopLanguageMenuRef}
+            >
               <button
                 type="button"
                 onClick={() => setLanguageMenuOpen(!languageMenuOpen)}
@@ -776,17 +796,19 @@ export default function Navbar() {
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
                   fontSize: "clamp(0.82rem, 0.9vw, 1.15rem)",
+                  lineHeight: 1,
                   letterSpacing: "0.04em",
                   color: "rgba(255,255,255,0.92)",
                   background: "rgba(255,255,255,0.08)",
                   border: "1px solid rgba(255,255,255,0.28)",
                   borderRadius: "999px",
-                  padding:
-                    "clamp(7px, 0.6vw, 10px) clamp(12px, 1vw, 18px)",
+                  padding: "0 clamp(12px, 1vw, 18px)",
+                  height: "44px",
                   cursor: "pointer",
                   whiteSpace: "nowrap",
-                  display: "flex",
+                  display: "inline-flex",
                   alignItems: "center",
+                  justifyContent: "center",
                   gap: "8px",
                 }}
               >
@@ -795,6 +817,9 @@ export default function Navbar() {
                 <span
                   style={{
                     fontSize: "0.7em",
+                    lineHeight: 1,
+                    display: "inline-flex",
+                    alignItems: "center",
                     transform: languageMenuOpen
                       ? "rotate(180deg)"
                       : "rotate(0)",
@@ -816,6 +841,7 @@ export default function Navbar() {
                     backdropFilter: "blur(18px)",
                     boxShadow: "0 18px 45px rgba(0,0,0,0.38)",
                     zIndex: 80,
+                    top: "100%",
                   }}
                 >
                   {languageOptions.map((item) => (
@@ -841,6 +867,7 @@ export default function Navbar() {
                         fontFamily: FONT_FAMILY,
                         fontWeight: currentLanguage === item.code ? 700 : 500,
                         fontSize: "0.95rem",
+                        lineHeight: 1.2,
                         cursor: "pointer",
                       }}
                     >
@@ -864,19 +891,22 @@ export default function Navbar() {
                   fontFamily: FONT_FAMILY,
                   fontWeight: 600,
                   fontSize: "0.82rem",
+                  lineHeight: 1,
                   letterSpacing: "0.04em",
                   color: "rgba(255,255,255,0.92)",
                   background: "rgba(255,255,255,0.08)",
                   border: "1px solid rgba(255,255,255,0.28)",
                   borderRadius: "999px",
-                  padding: "7px 11px",
+                  padding: "0 11px",
+                  height: "36px",
                   cursor: "pointer",
-                  display: "flex",
+                  display: "inline-flex",
                   alignItems: "center",
+                  justifyContent: "center",
                   gap: "6px",
                 }}
               >
-                <span>🌐</span>
+                <span style={{ lineHeight: 1 }}>🌐</span>
                 <span>{currentLanguageOption.shortLabel}</span>
               </button>
 
@@ -916,6 +946,7 @@ export default function Navbar() {
                         fontFamily: FONT_FAMILY,
                         fontWeight: currentLanguage === item.code ? 700 : 500,
                         fontSize: "0.95rem",
+                        lineHeight: 1.2,
                         cursor: "pointer",
                       }}
                     >
@@ -934,6 +965,7 @@ export default function Navbar() {
               aria-label="Toggle menu"
               style={{
                 fontFamily: FONT_FAMILY,
+                lineHeight: 1,
               }}
             >
               ☰
@@ -961,6 +993,7 @@ export default function Navbar() {
                 fontFamily: FONT_FAMILY,
                 fontWeight: 600,
                 fontSize: "1rem",
+                lineHeight: 1,
                 letterSpacing: "0.06em",
                 textTransform: "uppercase",
                 color: "rgba(255,255,255,0.85)",
