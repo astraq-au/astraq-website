@@ -58,16 +58,16 @@ const footerLinks: FooterLink[] = [
     href: "/products/solar-charging-station",
     active: true,
   },
-  {
-    label: {
-      en: "AI Technology",
-      zh: "AI 科技",
-      es: "Tecnología IA",
-      ar: "تقنية الذكاء الاصطناعي",
-    },
-    href: "/products/humanoid-robot",
-    active: true,
-  },
+  // {
+//   label: {
+//     en: "AI Technology",
+//     zh: "AI 科技",
+//     es: "Tecnología IA",
+//     ar: "تقنية الذكاء الاصطناعي",
+//   },
+//   href: "/products/humanoid-robot",
+//   active: true,
+// },
   {
     label: {
       en: "Store",

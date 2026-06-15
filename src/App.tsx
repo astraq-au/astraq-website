@@ -11,8 +11,8 @@ import DieselTruck2Detail from "./pages/DieselTruck2Detail";
 import ElectricTruckDetail from "./pages/ElectricTruckDetail";
 import ElectricTruck2Detail from "./pages/ElectricTruck2Detail";
 import SolarChargingStationDetail from "./pages/SolarChargingStationDetail";
-import HumanoidRobotDetail from "./pages/HumanoidRobotDetail";
-import MassageRobotPage from "./pages/MassageRobotPage";
+// import HumanoidRobotDetail from "./pages/HumanoidRobotDetail";
+// import MassageRobotPage from "./pages/MassageRobotPage";
 import Navbar from "./components/Navbar";
 import About from "./pages/About";
 import Store from "./pages/Store";
@@ -38,19 +38,20 @@ function Router() {
           component={SolarChargingStationDetail}
         />
 
-        <Route
-          path="/products/humanoid-robot"
-          component={HumanoidRobotDetail}
-        />
+        {/* AI Robot pages temporarily hidden */}
+{/* 
+<Route
+  path="/products/humanoid-robot"
+  component={HumanoidRobotDetail}
+/>
 
-        {/* Massage Robot Page */}
-        <Route
-          path="/products/massage-robot"
-          component={MassageRobotPage}
-        />
+<Route
+  path="/products/massage-robot"
+  component={MassageRobotPage}
+/>
 
-        {/* Keep old path available to avoid broken old links */}
-        <Route path="/massage-ai" component={MassageRobotPage} />
+<Route path="/massage-ai" component={MassageRobotPage} />
+*/}
 
         <Route path="/about" component={About} />
         <Route path="/store" component={Store} />

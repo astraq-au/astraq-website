@@ -50,16 +50,16 @@ const navLinks = [
     },
     href: "/products/solar-charging-station",
   },
-  {
-    key: "aiTechnology",
-    labels: {
-      en: "AI TECHNOLOGY",
-      zh: "AI 科技",
-      es: "TECNOLOGÍA IA",
-      ar: "تقنية الذكاء الاصطناعي",
-    },
-    href: "/products/humanoid-robot",
-  },
+  // {
+//   key: "aiTechnology",
+//   labels: {
+//     en: "AI TECHNOLOGY",
+//     zh: "AI 科技",
+//     es: "TECNOLOGÍA IA",
+//     ar: "تقنية الذكاء الاصطناعي",
+//   },
+//   href: "/products/humanoid-robot",
+// },
   {
     key: "store",
     labels: {
@@ -113,26 +113,26 @@ const mobileNavLinks = [
     },
     href: "/products/solar-charging-station",
   },
-  {
-    key: "humanoidRobot",
-    labels: {
-      en: "HUMANOID ROBOT",
-      zh: "人形机器人",
-      es: "ROBOT HUMANOIDE",
-      ar: "روبوت بشري",
-    },
-    href: "/products/humanoid-robot",
-  },
-  {
-    key: "massageRobot",
-    labels: {
-      en: "MASSAGE ROBOT",
-      zh: "按摩机器人",
-      es: "ROBOT DE MASAJE",
-      ar: "روبوت مساج",
-    },
-    href: "/products/massage-robot",
-  },
+  // {
+//   key: "humanoidRobot",
+//   labels: {
+//     en: "HUMANOID ROBOT",
+//     zh: "人形机器人",
+//     es: "ROBOT HUMANOIDE",
+//     ar: "روبوت بشري",
+//   },
+//   href: "/products/humanoid-robot",
+// },
+// {
+//   key: "massageRobot",
+//   labels: {
+//     en: "MASSAGE ROBOT",
+//     zh: "按摩机器人",
+//     es: "ROBOT DE MASAJE",
+//     ar: "روبوت مساج",
+//   },
+//   href: "/products/massage-robot",
+// },
   {
     key: "store",
     labels: {
