@@ -14,6 +14,8 @@ const milestones = [
     zhTitle: "样车开发",
     esTitle: "Desarrollo del prototipo",
     arTitle: "تطوير النموذج الأولي",
+    frTitle: "Développement du prototype",
+    ptTitle: "Desenvolvimento do protótipo",
     text: "Complete diesel platform preparation, ADR pathway review and initial market validation. This stage focuses on building the foundation for Australian market entry.",
     zhText:
       "完成柴油重卡平台准备、ADR 认证路径梳理和初步市场验证。本阶段重点是为进入澳大利亚市场打好产品、合规和商业基础。",
@@ -21,6 +23,10 @@ const milestones = [
       "Completar la preparación de la plataforma diésel, revisar la ruta de cumplimiento ADR y realizar la validación inicial del mercado. Esta etapa se centra en construir la base para entrar en el mercado australiano.",
     arText:
       "استكمال إعداد منصة الشاحنات العاملة بالديزل، ومراجعة مسار الامتثال لمتطلبات ADR، وتنفيذ التحقق الأولي من السوق. تركز هذه المرحلة على بناء الأساس لدخول السوق الأسترالية.",
+    frText:
+      "Finaliser la préparation de la plateforme diesel, l'examen du parcours ADR et la validation initiale du marché. Cette étape vise à établir les bases de l'entrée sur le marché australien.",
+    ptText:
+      "Concluir a preparação da plataforma diesel, a revisão do caminho ADR e a validação inicial de mercado. Esta etapa foca em construir a base para a entrada no mercado australiano.",
   },
   {
     year: "2026",
@@ -28,6 +34,8 @@ const milestones = [
     zhTitle: "澳洲启动与能源项目沟通",
     esTitle: "Lanzamiento en Australia y diálogo sobre proyectos energéticos",
     arTitle: "الإطلاق في أستراليا ومناقشة مشاريع الطاقة",
+    frTitle: "Lancement en Australie et discussion sur les projets énergétiques",
+    ptTitle: "Lançamento na Austrália e discussão de projetos de energia",
     text: "Introduce the first diesel heavy truck platform in Australia and establish local service readiness, dealer communication and fleet customer engagement. In parallel, begin early discussions for solar-storage-charging integrated station opportunities to support future electric heavy transport.",
     zhText:
       "在澳大利亚导入首款柴油重卡平台，并逐步建立本地服务准备、经销商沟通和车队客户对接能力。同时，启动光储充一体化站项目的前期沟通，为未来电动重卡的能源补给能力做准备。",
@@ -35,6 +43,10 @@ const milestones = [
       "Introducir la primera plataforma de camiones pesados diésel en Australia y establecer la preparación del servicio local, la comunicación con distribuidores y la conexión con clientes de flotas. Al mismo tiempo, iniciar conversaciones tempranas sobre estaciones integradas de energía solar, almacenamiento y carga para respaldar el futuro transporte pesado eléctrico.",
     arText:
       "إدخال أول منصة للشاحنات الثقيلة العاملة بالديزل في أستراليا، وبناء جاهزية الخدمة المحلية، والتواصل مع الموزعين، والتفاعل مع عملاء الأساطيل. وبالتوازي، بدء مناقشات أولية حول فرص محطات الطاقة الشمسية والتخزين والشحن المتكاملة لدعم النقل الثقيل الكهربائي مستقبلًا.",
+    frText:
+      "Introduire la première plateforme de poids lourds diesel en Australie et établir la préparation du service local, la communication avec les distributeurs et l'engagement des clients de flottes. En parallèle, lancer les premières discussions sur les opportunités de stations solaires-stockage-recharge intégrées afin de soutenir le futur transport lourd électrique.",
+    ptText:
+      "Introduzir a primeira plataforma de caminhões pesados a diesel na Austrália e estabelecer prontidão de serviço local, comunicação com revendedores e relacionamento com clientes de frotas. Em paralelo, iniciar discussões sobre oportunidades de estações integradas de energia solar, armazenamento e recarga para apoiar o futuro transporte pesado elétrico.",
   },
   {
     year: "2027",
@@ -42,6 +54,8 @@ const milestones = [
     zhTitle: "渠道拓展与选址启动",
     esTitle: "Expansión de distribuidores y selección de ubicaciones",
     arTitle: "توسيع شبكة الموزعين واختيار المواقع",
+    frTitle: "Expansion du réseau de distributeurs et sélection de sites",
+    ptTitle: "Expansão da rede de revendedores e seleção de locais",
     text: "Expand across key Australian states through channel partners, local fleet customers and after-sales service capability. For the clean energy infrastructure project, begin site selection, commercial scenario assessment and preliminary technical planning.",
     zhText:
       "通过渠道合作伙伴、本地车队客户和售后服务能力建设，逐步覆盖澳大利亚主要州和重点运输市场。光储充项目同步进入选址、商业场景评估和初步技术方案规划阶段。",
@@ -49,6 +63,10 @@ const milestones = [
       "Expandirse en los principales estados australianos mediante socios de canal, clientes locales de flotas y capacidades de servicio posventa. Para el proyecto de infraestructura de energía limpia, iniciar la selección de ubicaciones, la evaluación de escenarios comerciales y la planificación técnica preliminar.",
     arText:
       "التوسع في الولايات الأسترالية الرئيسية من خلال شركاء القنوات، وعملاء الأساطيل المحليين، وقدرات خدمة ما بعد البيع. وبالنسبة لمشروع البنية التحتية للطاقة النظيفة، تبدأ مرحلة اختيار المواقع، وتقييم السيناريوهات التجارية، والتخطيط الفني الأولي.",
+    frText:
+      "Se développer dans les principaux États australiens grâce aux partenaires de distribution, aux clients de flottes locales et aux capacités de service après-vente. Pour le projet d'infrastructure d'énergie propre, lancer la sélection des sites, l'évaluation des scénarios commerciaux et la planification technique préliminaire.",
+    ptText:
+      "Expandir pelos principais estados australianos por meio de parceiros de canal, clientes locais de frotas e capacidade de pós-venda. Para o projeto de infraestrutura de energia limpa, iniciar a seleção de locais, avaliação de cenários comerciais e planejamento técnico preliminar.",
   },
   {
     year: "2028",
@@ -56,6 +74,8 @@ const milestones = [
     zhTitle: "全球拓展与电动平台验证",
     esTitle: "Expansión global y validación de la plataforma eléctrica",
     arTitle: "التوسع العالمي والتحقق من المنصة الكهربائية",
+    frTitle: "Expansion mondiale et validation de la plateforme électrique",
+    ptTitle: "Expansão global e validação da plataforma elétrica",
     text: "Extend the Australian-validated diesel truck model into selected overseas markets, including Southeast Asia, the Middle East and the Americas. Diesel platforms will lead the first stage of global expansion, while electric truck platforms continue validation in suitable Australian operating scenarios.",
     zhText:
       "将经过澳大利亚市场验证的柴油重卡产品和运营模式拓展至东南亚、中东和美洲等海外市场。全球化布局将以柴油平台先行，电动平台则在适合的澳洲运营场景中继续验证。",
@@ -63,6 +83,10 @@ const milestones = [
       "Extender el modelo de camiones diésel validado en Australia hacia mercados internacionales seleccionados, incluidos el Sudeste Asiático, Oriente Medio y las Américas. Las plataformas diésel liderarán la primera etapa de expansión global, mientras que las plataformas eléctricas seguirán validándose en escenarios operativos adecuados en Australia.",
     arText:
       "توسيع نموذج الشاحنات العاملة بالديزل، الذي تم التحقق منه في أستراليا، إلى أسواق دولية مختارة تشمل جنوب شرق آسيا والشرق الأوسط والأمريكتين. ستقود منصات الديزل المرحلة الأولى من التوسع العالمي، بينما تستمر منصات الشاحنات الكهربائية في التحقق ضمن سيناريوهات تشغيل مناسبة في أستراليا.",
+    frText:
+      "Étendre le modèle de camions diesel validé en Australie vers des marchés internationaux sélectionnés, notamment l'Asie du Sud-Est, le Moyen-Orient et les Amériques. Les plateformes diesel mèneront la première phase d'expansion mondiale, tandis que les plateformes électriques poursuivront leur validation dans des scénarios opérationnels adaptés en Australie.",
+    ptText:
+      "Levar o modelo de caminhões a diesel validado na Austrália para mercados internacionais selecionados, incluindo Sudeste Asiático, Oriente Médio e Américas. As plataformas diesel liderarão a primeira etapa da expansão global, enquanto as plataformas elétricas continuarão a validação em cenários operacionais adequados na Austrália.",
   },
   {
     year: "2029",
@@ -70,6 +94,8 @@ const milestones = [
     zhTitle: "能源基础设施示范",
     esTitle: "Demostración de infraestructura energética",
     arTitle: "نموذج تجريبي للبنية التحتية للطاقة",
+    frTitle: "Démonstration d'infrastructure énergétique",
+    ptTitle: "Demonstração de infraestrutura energética",
     text: "Develop the first demonstration model for solar-storage-charging infrastructure, connecting renewable energy generation, battery storage and heavy vehicle charging. This stage supports the transition from product sales to an integrated transport and energy solution.",
     zhText:
       "推进首个光储充基础设施示范项目，将太阳能发电、电池储能和重型车辆充电能力连接起来。本阶段将支持 ASTRAQ 从单一产品销售，逐步走向运输与能源一体化解决方案。",
@@ -77,6 +103,10 @@ const milestones = [
       "Desarrollar el primer modelo demostrativo de infraestructura solar, almacenamiento y carga, conectando la generación de energía renovable, el almacenamiento en baterías y la carga de vehículos pesados. Esta etapa apoya la transición desde la venta de productos hacia una solución integrada de transporte y energía.",
     arText:
       "تطوير أول نموذج تجريبي للبنية التحتية المتكاملة للطاقة الشمسية والتخزين والشحن، من خلال ربط توليد الطاقة المتجددة، وتخزين البطاريات، وشحن المركبات الثقيلة. تدعم هذه المرحلة الانتقال من بيع المنتجات إلى حل متكامل للنقل والطاقة.",
+    frText:
+      "Développer le premier modèle de démonstration d'infrastructure solaire-stockage-recharge, reliant la production d'énergie renouvelable, le stockage par batterie et la recharge des véhicules lourds. Cette étape soutient la transition de la vente de produits vers une solution intégrée de transport et d'énergie.",
+    ptText:
+      "Desenvolver o primeiro modelo demonstrativo de infraestrutura solar, armazenamento e recarga, conectando geração de energia renovável, armazenamento em baterias e recarga de veículos pesados. Esta etapa apoia a transição da venda de produtos para uma solução integrada de transporte e energia.",
   },
   {
     year: "2030",
@@ -84,6 +114,8 @@ const milestones = [
     zhTitle: "全球化综合运输平台",
     esTitle: "Plataforma global integrada de movilidad",
     arTitle: "منصة عالمية متكاملة للتنقل",
+    frTitle: "Plateforme mondiale intégrée de mobilité",
+    ptTitle: "Plataforma global integrada de mobilidade",
     text: "Build a complete global growth model with diesel trucks leading market entry, electric trucks following operational readiness, and clean energy infrastructure supporting long-term transition. ASTRAQ aims to become an integrated platform connecting heavy transport, clean energy and intelligent technology.",
     zhText:
       "形成以柴油重卡先行进入市场、电动重卡逐步跟进、清洁能源基础设施提供长期支撑的全球化发展模式。ASTRAQ 将逐步发展为连接重型运输、清洁能源和智能技术的综合平台。",
@@ -91,6 +123,10 @@ const milestones = [
       "Construir un modelo completo de crecimiento global, con camiones diésel liderando la entrada al mercado, camiones eléctricos avanzando conforme maduren las condiciones operativas e infraestructura de energía limpia apoyando la transición a largo plazo. ASTRAQ busca convertirse en una plataforma integrada que conecte transporte pesado, energía limpia y tecnología inteligente.",
     arText:
       "بناء نموذج نمو عالمي متكامل، تقود فيه الشاحنات العاملة بالديزل دخول الأسواق، وتتبعها الشاحنات الكهربائية عند نضج الجاهزية التشغيلية، بينما تدعم البنية التحتية للطاقة النظيفة التحول طويل الأجل. تهدف ASTRAQ إلى أن تصبح منصة متكاملة تربط النقل الثقيل بالطاقة النظيفة والتقنيات الذكية.",
+    frText:
+      "Construire un modèle complet de croissance mondiale, avec les camions diesel en première phase d'entrée sur le marché, les camions électriques suivant la maturité opérationnelle, et l'infrastructure d'énergie propre soutenant la transition à long terme. ASTRAQ vise à devenir une plateforme intégrée reliant le transport lourd, l'énergie propre et la technologie intelligente.",
+    ptText:
+      "Construir um modelo completo de crescimento global, com caminhões a diesel liderando a entrada no mercado, caminhões elétricos avançando conforme a prontidão operacional, e infraestrutura de energia limpa apoiando a transição de longo prazo. A ASTRAQ busca se tornar uma plataforma integrada que conecta transporte pesado, energia limpa e tecnologia inteligente.",
   },
 ];
 
@@ -147,12 +183,23 @@ export default function About() {
   const isZh = language === "zh";
   const isEs = language === "es";
   const isAr = language === "ar";
+  const isFr = language === "fr";
+  const isPt = language === "pt";
   const isRtl = isAr;
 
-  const getLabel = (en: string, zh: string, es: string, ar: string) => {
+  const getLabel = (
+    en: string,
+    zh: string,
+    es: string,
+    ar: string,
+    fr: string,
+    pt: string
+  ) => {
     if (isZh) return zh;
     if (isEs) return es;
     if (isAr) return ar;
+    if (isFr) return fr;
+    if (isPt) return pt;
     return en;
   };
 
@@ -224,7 +271,9 @@ export default function About() {
                   "Back to Home",
                   "返回首页",
                   "Volver al inicio",
-                  "العودة إلى الرئيسية"
+                  "العودة إلى الرئيسية",
+                  "Retour à l'accueil",
+                  "Voltar ao início"
                 )}`}
           </Link>
 
@@ -243,7 +292,9 @@ export default function About() {
               "Engineering Heavy Mobility for World",
               "为全球重型运输打造工程化解决方案",
               "Ingeniería para la movilidad pesada global",
-              "هندسة حلول النقل الثقيل للعالم"
+              "هندسة حلول النقل الثقيل للعالم",
+              "Ingénierie de la Mobilité Lourde Mondiale",
+              "Engenharia para a Mobilidade Pesada Global"
             )}
           </h1>
         </div>
@@ -280,7 +331,9 @@ export default function About() {
                   "Global Expansion",
                   "全球拓展",
                   "Expansión global",
-                  "التوسع العالمي"
+                  "التوسع العالمي",
+                  "Expansion Mondiale",
+                  "Expansão Global"
                 )}
               </span>
             </div>
@@ -297,7 +350,9 @@ export default function About() {
                 "Australia · Southeast Asia · Middle East · Americas",
                 "澳大利亚 · 东南亚 · 中东 · 美洲",
                 "Australia · Sudeste Asiático · Oriente Medio · Américas",
-                "أستراليا · جنوب شرق آسيا · الشرق الأوسط · الأمريكتان"
+                "أستراليا · جنوب شرق آسيا · الشرق الأوسط · الأمريكتان",
+                "Australie · Asie du Sud-Est · Moyen-Orient · Amériques",
+                "Austrália · Sudeste Asiático · Oriente Médio · Américas"
               )}
             </h2>
           </div>
@@ -348,7 +403,9 @@ export default function About() {
                 "ASTRAQ Milestones",
                 "ASTRAQ 发展里程碑",
                 "Hitos de ASTRAQ",
-                "محطات ASTRAQ"
+                "محطات ASTRAQ",
+                "Étapes Clés d'ASTRAQ",
+                "Marcos da ASTRAQ"
               )}
             </h2>
           </div>
@@ -399,7 +456,9 @@ export default function About() {
                 activeMilestone.title,
                 activeMilestone.zhTitle,
                 activeMilestone.esTitle,
-                activeMilestone.arTitle
+                activeMilestone.arTitle,
+                activeMilestone.frTitle,
+                activeMilestone.ptTitle
               )}
             </div>
 
@@ -413,7 +472,9 @@ export default function About() {
                 activeMilestone.text,
                 activeMilestone.zhText,
                 activeMilestone.esText,
-                activeMilestone.arText
+                activeMilestone.arText,
+                activeMilestone.frText,
+                activeMilestone.ptText
               )}
             </p>
           </div>
@@ -451,7 +512,9 @@ export default function About() {
                   "Company Vision",
                   "公司愿景",
                   "Visión de la empresa",
-                  "رؤية الشركة"
+                  "رؤية الشركة",
+                  "Vision de l'Entreprise",
+                  "Visão da Empresa"
                 )}
               </span>
             </div>
@@ -468,7 +531,9 @@ export default function About() {
                 "Built from Australia, Connected to Global Manufacturing.",
                 "立足澳大利亚，连接全球制造能力。",
                 "Construida desde Australia, conectada con la fabricación global.",
-                "انطلاقًا من أستراليا، وارتباطًا بقدرات التصنيع العالمية."
+                "انطلاقًا من أستراليا، وارتباطًا بقدرات التصنيع العالمية.",
+                "Née en Australie, connectée à la fabrication mondiale.",
+                "Construída a partir da Austrália, conectada à manufatura global."
               )}
             </h2>
           </div>
@@ -505,7 +570,9 @@ export default function About() {
                 "Core Team",
                 "核心团队",
                 "Equipo principal",
-                "الفريق الأساسي"
+                "الفريق الأساسي",
+                "Équipe Dirigeante",
+                "Equipe Principal"
               )}
             </span>
           </div>
@@ -522,7 +589,9 @@ export default function About() {
               "Built by industry experience. Driven by execution.",
               "由行业经验打造，以执行能力驱动。",
               "Construido con experiencia industrial. Impulsado por la ejecución.",
-              "بُني بخبرة صناعية، ويقوده التنفيذ."
+              "بُني بخبرة صناعية، ويقوده التنفيذ.",
+              "Construit par l'expérience industrielle. Porté par l'exécution.",
+              "Construído com experiência do setor. Impulsionado pela execução."
             )}
           </h2>
         </div>

@@ -50,36 +50,50 @@ const keyHighlights = [
     zhLabel: "驱动形式",
     esLabel: "Configuración de tracción",
     arLabel: "نظام الدفع",
+    frLabel: "Configuration de transmission",
+    ptLabel: "Configuração de tração",
   },
   {
     value: "60T",
     zhValue: "60吨",
     esValue: "60 t",
     arValue: "60 طن",
+    frValue: "60 t",
+    ptValue: "60 t",
     label: "Gross Combination Mass",
     zhLabel: "最大组合总质量",
     esLabel: "Masa máxima combinada",
     arLabel: "الكتلة الإجمالية المركبة",
+    frLabel: "Masse totale combinée",
+    ptLabel: "Massa bruta combinada",
   },
   {
     value: "420km",
     zhValue: "420公里",
     esValue: "420 km",
     arValue: "420 كم",
+    frValue: "420 km",
+    ptValue: "420 km",
     label: "Reference Driving Range",
     zhLabel: "参考续航里程",
     esLabel: "Autonomía de referencia",
     arLabel: "مدى القيادة المرجعي",
+    frLabel: "Autonomie de référence",
+    ptLabel: "Autonomia de referência",
   },
   {
     value: "600kWh",
     zhValue: "600千瓦时",
     esValue: "600 kWh",
     arValue: "600 ك.و.س",
+    frValue: "600 kWh",
+    ptValue: "600 kWh",
     label: "Battery Capacity",
     zhLabel: "电池容量",
     esLabel: "Capacidad de batería",
     arLabel: "سعة البطارية",
+    frLabel: "Capacité de batterie",
+    ptLabel: "Capacidade da bateria",
   },
 ];
 
@@ -89,50 +103,70 @@ const quickSpecs = [
     zhLabel: "车辆类型",
     esLabel: "Tipo de vehículo",
     arLabel: "نوع المركبة",
+    frLabel: "Type de véhicule",
+    ptLabel: "Tipo de veículo",
     value: "6×4 Battery-Electric Prime Mover",
     zhValue: "6×4 纯电牵引车",
     esValue: "Tractocamión eléctrico a batería 6×4",
     arValue: "قاطرة كهربائية بالبطارية 6×4",
+    frValue: "Tracteur routier électrique à batterie 6×4",
+    ptValue: "Cavalo mecânico elétrico a bateria 6×4",
   },
   {
     label: "Battery",
     zhLabel: "电池系统",
     esLabel: "Batería",
     arLabel: "البطارية",
+    frLabel: "Batterie",
+    ptLabel: "Bateria",
     value: "500–600 kWh LFP Battery",
     zhValue: "500–600 kWh 磷酸铁锂电池",
     esValue: "Batería LFP de 500–600 kWh",
     arValue: "بطارية LFP بسعة 500–600 ك.و.س",
+    frValue: "Batterie LFP de 500–600 kWh",
+    ptValue: "Bateria LFP de 500–600 kWh",
   },
   {
     label: "Range",
     zhLabel: "续航里程",
     esLabel: "Autonomía",
     arLabel: "المدى",
+    frLabel: "Autonomie",
+    ptLabel: "Autonomia",
     value: "420 km Reference Range",
     zhValue: "参考续航 420 km",
     esValue: "Autonomía de referencia de 420 km",
     arValue: "مدى مرجعي 420 كم",
+    frValue: "Autonomie de référence de 420 km",
+    ptValue: "Autonomia de referência de 420 km",
   },
   {
     label: "Platform",
     zhLabel: "高压平台",
     esLabel: "Plataforma",
     arLabel: "المنصة",
+    frLabel: "Plateforme",
+    ptLabel: "Plataforma",
     value: "800 V High-Voltage Platform",
     zhValue: "800 V 高压电平台",
     esValue: "Plataforma de alto voltaje de 800 V",
     arValue: "منصة عالية الجهد 800 فولت",
+    frValue: "Plateforme haute tension 800 V",
+    ptValue: "Plataforma de alta tensão de 800 V",
   },
   {
     label: "Motor",
     zhLabel: "电机系统",
     esLabel: "Motor",
     arLabel: "المحرك",
+    frLabel: "Moteur",
+    ptLabel: "Motor",
     value: "Dual-Motor Electric Drive",
     zhValue: "双电机电驱系统",
     esValue: "Propulsión eléctrica de doble motor",
     arValue: "دفع كهربائي بمحركين",
+    frValue: "Transmission électrique à deux moteurs",
+    ptValue: "Tração elétrica com dois motores",
   },
   {
     label: "GCM",
@@ -143,12 +177,16 @@ const quickSpecs = [
     zhValue: "最高 60,000 kg",
     esValue: "Hasta 60,000 kg",
     arValue: "حتى 60,000 كجم",
+    frValue: "Jusqu'à 60,000 kg",
+    ptValue: "Até 60,000 kg",
   },
   {
     label: "Wheelbase",
     zhLabel: "轴距",
     esLabel: "Distancia entre ejes",
     arLabel: "قاعدة العجلات",
+    frLabel: "Empattement",
+    ptLabel: "Entre-eixos",
     value: "4550 + 1350 mm",
     zhValue: "4550 + 1350 mm",
     esValue: "4550 + 1350 mm",
@@ -159,10 +197,14 @@ const quickSpecs = [
     zhLabel: "补能方式",
     esLabel: "Carga",
     arLabel: "الشحن",
+    frLabel: "Recharge",
+    ptLabel: "Recarga",
     value: "Fast Charging + Battery Swap",
     zhValue: "快充 + 换电适配",
     esValue: "Carga rápida + intercambio de batería",
     arValue: "شحن سريع + تبديل البطارية",
+    frValue: "Recharge rapide + échange de batterie",
+    ptValue: "Recarga rápida + troca de bateria",
   },
 ];
 
@@ -172,6 +214,8 @@ const powertrainSpecs = [
     zhLabel: "额定 / 峰值功率",
     esLabel: "Potencia nominal / pico",
     arLabel: "القوة الاسمية / القصوى",
+    frLabel: "Puissance nominale / de pointe",
+    ptLabel: "Potência nominal / pico",
     value: "2 × 138 kW / 2 × 290 kW",
     zhValue: "2 × 138 kW / 2 × 290 kW",
     esValue: "2 × 138 kW / 2 × 290 kW",
@@ -182,6 +226,8 @@ const powertrainSpecs = [
     zhLabel: "额定 / 峰值扭矩",
     esLabel: "Par nominal / pico",
     arLabel: "العزم الاسمي / الأقصى",
+    frLabel: "Couple nominal / de pointe",
+    ptLabel: "Torque nominal / pico",
     value: "2 × 300 N·m / 2 × 820 N·m",
     zhValue: "2 × 300 N·m / 2 × 820 N·m",
     esValue: "2 × 300 N·m / 2 × 820 N·m",
@@ -192,20 +238,28 @@ const powertrainSpecs = [
     zhLabel: "驱动系统",
     esLabel: "Sistema de propulsión",
     arLabel: "نظام الدفع",
+    frLabel: "Système de transmission",
+    ptLabel: "Sistema de tração",
     value: "Direct Electric Drive with Regenerative Braking",
     zhValue: "直驱电驱系统，支持制动能量回收",
     esValue: "Propulsión eléctrica directa con frenado regenerativo",
     arValue: "دفع كهربائي مباشر مع فرملة تجديدية",
+    frValue: "Transmission électrique directe avec freinage régénératif",
+    ptValue: "Tração elétrica direta com frenagem regenerativa",
   },
   {
     label: "Battery Layout",
     zhLabel: "电池布置",
     esLabel: "Disposición de batería",
     arLabel: "توزيع البطارية",
+    frLabel: "Disposition de la batterie",
+    ptLabel: "Layout da bateria",
     value: "Underfloor Battery System with Protection Frame",
     zhValue: "底置式电池系统，配备防护框架",
     esValue: "Sistema de batería bajo el piso con marco protector",
     arValue: "نظام بطارية سفلي مع إطار حماية",
+    frValue: "Système de batterie sous plancher avec cadre de protection",
+    ptValue: "Sistema de bateria sob o piso com estrutura de proteção",
   },
 ];
 
@@ -215,6 +269,8 @@ const capabilitySpecs = [
     zhLabel: "整备质量",
     esLabel: "Peso en vacío",
     arLabel: "الوزن الفارغ",
+    frLabel: "Poids à vide",
+    ptLabel: "Peso em ordem de marcha",
     value: "10,900 kg",
     zhValue: "10,900 kg",
     esValue: "10,900 kg",
@@ -235,6 +291,8 @@ const capabilitySpecs = [
     zhLabel: "电池容量",
     esLabel: "Batería",
     arLabel: "البطارية",
+    frLabel: "Batterie",
+    ptLabel: "Bateria",
     value: "500–600 kWh",
     zhValue: "500–600 kWh",
     esValue: "500–600 kWh",
@@ -245,6 +303,8 @@ const capabilitySpecs = [
     zhLabel: "续航里程",
     esLabel: "Autonomía",
     arLabel: "المدى",
+    frLabel: "Autonomie",
+    ptLabel: "Autonomia",
     value: "420 km",
     zhValue: "420 km",
     esValue: "420 km",
@@ -255,6 +315,8 @@ const capabilitySpecs = [
     zhLabel: "最大爬坡度",
     esLabel: "Capacidad de ascenso",
     arLabel: "قدرة الصعود",
+    frLabel: "Capacité de montée",
+    ptLabel: "Capacidade de subida",
     value: "≥20%",
     zhValue: "≥20%",
     esValue: "≥20%",
@@ -265,6 +327,8 @@ const capabilitySpecs = [
     zhLabel: "轮胎规格",
     esLabel: "Neumáticos",
     arLabel: "الإطارات",
+    frLabel: "Pneus",
+    ptLabel: "Pneus",
     value: "12R22.5",
     zhValue: "12R22.5",
     esValue: "12R22.5",
@@ -282,6 +346,8 @@ const techSafetyFeatures = [
     zhDesc: "自动紧急制动辅助，提升复杂道路环境下的安全冗余。",
     esDesc: "Asistencia de frenado autónomo de emergencia.",
     arDesc: "دعم الفرملة الطارئة الذاتية.",
+    frDesc: "Assistance au freinage d'urgence autonome.",
+    ptDesc: "Assistência de frenagem autônoma de emergência.",
   },
   {
     title: "LDW / LDWS",
@@ -292,6 +358,8 @@ const techSafetyFeatures = [
     zhDesc: "车道偏离预警，辅助长距离运输和车队日常运营。",
     esDesc: "Alerta de salida de carril para operaciones de flota.",
     arDesc: "تحذير مغادرة المسار لدعم تشغيل الأساطيل.",
+    frDesc: "Alerte de franchissement de ligne pour l'exploitation des flottes.",
+    ptDesc: "Alerta de saída de faixa para operações de frota.",
   },
   {
     title: "FCW",
@@ -302,6 +370,8 @@ const techSafetyFeatures = [
     zhDesc: "前碰撞预警，帮助驾驶员提前识别前方交通风险。",
     esDesc: "Alerta de colisión frontal para identificar riesgos de tráfico.",
     arDesc: "تحذير من الاصطدام الأمامي للتنبيه إلى مخاطر الطريق.",
+    frDesc: "Alerte de collision frontale pour mieux identifier les risques de circulation.",
+    ptDesc: "Alerta de colisão frontal para percepção de riscos no tráfego.",
   },
   {
     title: "EBS + ESC",
@@ -312,46 +382,64 @@ const techSafetyFeatures = [
     zhDesc: "电子制动与车身稳定控制，提升制动和行驶稳定性。",
     esDesc: "Frenado electrónico y control de estabilidad.",
     arDesc: "فرملة إلكترونية وتحكم بالثبات.",
+    frDesc: "Freinage électronique et contrôle de stabilité.",
+    ptDesc: "Frenagem eletrônica e controle de estabilidade.",
   },
   {
     title: "L2+ Ready",
     zhTitle: "L2+ 预留",
     esTitle: "L2+ listo",
     arTitle: "جاهز L2+",
+    frTitle: "Prêt L2+",
+    ptTitle: "Pronto para L2+",
     desc: "Driver-assistance architecture prepared for future upgrades.",
     zhDesc: "预留驾驶辅助架构，为后续功能升级提供基础。",
     esDesc: "Arquitectura de asistencia al conductor preparada para futuras mejoras.",
     arDesc: "بنية مساعدة السائق جاهزة للتحديثات المستقبلية.",
+    frDesc: "Architecture d'aide à la conduite préparée pour les futures mises à niveau.",
+    ptDesc: "Arquitetura de assistência ao motorista preparada para futuras atualizações.",
   },
   {
     title: "V2X Ready",
     zhTitle: "V2X 预留",
     esTitle: "V2X listo",
     arTitle: "جاهز V2X",
+    frTitle: "Prêt V2X",
+    ptTitle: "Pronto para V2X",
     desc: "Connected electrical platform prepared for V2X integration.",
     zhDesc: "预留车路协同接入能力，适配后续联网运营场景。",
     esDesc: "Plataforma eléctrica conectada preparada para integración V2X.",
     arDesc: "منصة كهربائية متصلة جاهزة لتكامل V2X.",
+    frDesc: "Plateforme électrique connectée préparée pour l'intégration V2X.",
+    ptDesc: "Plataforma elétrica conectada preparada para integração V2X.",
   },
   {
     title: "LiDAR Ready",
     zhTitle: "激光雷达预留",
     esTitle: "LiDAR listo",
     arTitle: "جاهز LiDAR",
+    frTitle: "Prêt LiDAR",
+    ptTitle: "Pronto para LiDAR",
     desc: "Sensor layout prepared for advanced perception systems.",
     zhDesc: "预留传感器布置空间，支持后续高级感知系统扩展。",
     esDesc: "Diseño de sensores preparado para sistemas avanzados de percepción.",
     arDesc: "تخطيط حساسات جاهز لأنظمة إدراك متقدمة.",
+    frDesc: "Implantation de capteurs préparée pour les systèmes de perception avancés.",
+    ptDesc: "Layout de sensores preparado para sistemas avançados de percepção.",
   },
   {
     title: "By-Wire Chassis",
     zhTitle: "线控底盘",
     esTitle: "Chasis by-wire",
     arTitle: "شاسيه بالتحكم السلكي",
+    frTitle: "Châssis by-wire",
+    ptTitle: "Chassi by-wire",
     desc: "Brake-by-wire, steer-by-wire and drive-by-wire architecture.",
     zhDesc: "支持线控制动、线控转向和线控驱动架构。",
     esDesc: "Arquitectura de freno, dirección y propulsión por control electrónico.",
     arDesc: "بنية فرملة وتوجيه ودفع بالتحكم السلكي.",
+    frDesc: "Architecture de freinage, direction et transmission par commande électronique.",
+    ptDesc: "Arquitetura de freio, direção e tração por controle eletrônico.",
   },
 ];
 
@@ -361,12 +449,23 @@ export default function ElectricTruckDetail() {
   const isZh = language === "zh";
   const isEs = language === "es";
   const isAr = language === "ar";
+  const isFr = language === "fr";
+  const isPt = language === "pt";
   const isRtl = isAr;
 
-  const getLabel = (en: string, zh: string, es: string, ar: string) => {
+  const getLabel = (
+    en: string,
+    zh: string,
+    es: string,
+    ar: string,
+    fr = en,
+    pt = en
+  ) => {
     if (isZh) return zh;
     if (isEs) return es;
     if (isAr) return ar;
+    if (isFr) return fr;
+    if (isPt) return pt;
     return en;
   };
 
@@ -497,7 +596,9 @@ export default function ElectricTruckDetail() {
                 "Battery-Electric Prime Mover",
                 "纯电牵引车",
                 "Tractocamión eléctrico a batería",
-                "قاطرة كهربائية بالبطارية"
+                "قاطرة كهربائية بالبطارية",
+                "Tracteur routier électrique à batterie",
+                "Cavalo mecânico elétrico a bateria"
               )}
             </div>
 
@@ -525,7 +626,9 @@ export default function ElectricTruckDetail() {
                 "EPM1 6×4 Electric Prime Mover",
                 "EPM1 6×4 纯电牵引车",
                 "EPM1 tractocamión eléctrico 6×4",
-                "EPM1 قاطرة كهربائية 6×4"
+                "EPM1 قاطرة كهربائية 6×4",
+                "EPM1 tracteur routier électrique 6×4",
+                "EPM1 cavalo mecânico elétrico 6×4"
               )}
             </h1>
 
@@ -552,7 +655,9 @@ export default function ElectricTruckDetail() {
                 "Electric Drive · High-Voltage Platform · Heavy Transport",
                 "电驱系统 · 高压平台 · 重载运输",
                 "Propulsión eléctrica · Plataforma de alto voltaje · Transporte pesado",
-                "دفع كهربائي · منصة عالية الجهد · نقل ثقيل"
+                "دفع كهربائي · منصة عالية الجهد · نقل ثقيل",
+                "Transmission électrique · Plateforme haute tension · Transport lourd",
+                "Tração elétrica · Plataforma de alta tensão · Transporte pesado"
               )}
             </p>
 
@@ -598,7 +703,9 @@ export default function ElectricTruckDetail() {
                   "View Specification",
                   "查看参数",
                   "Ver especificaciones",
-                  "عرض المواصفات"
+                  "عرض المواصفات",
+                  "Voir les spécifications",
+                  "Ver especificações"
                 )}
               </a>
 
@@ -630,7 +737,7 @@ export default function ElectricTruckDetail() {
                   e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
-                {getLabel("Buy Now", "立即购买", "Comprar ahora", "اشتر الآن")}
+                {getLabel("Buy Now", "立即购买", "Comprar ahora", "اشتر الآن", "Acheter", "Comprar agora")}
               </a>
             </div>
           </div>
@@ -691,7 +798,14 @@ export default function ElectricTruckDetail() {
                     textShadow: "0 0 26px rgba(0,174,239,0.24)",
                   }}
                 >
-                  {getLabel(item.value, item.zhValue, item.esValue, item.arValue)}
+                  {getLabel(
+                    item.value,
+                    item.zhValue,
+                    item.esValue,
+                    item.arValue,
+                    item.frValue,
+                    item.ptValue
+                  )}
                 </div>
 
                 <div
@@ -709,7 +823,14 @@ export default function ElectricTruckDetail() {
                     overflowWrap: "break-word",
                   }}
                 >
-                  {getLabel(item.label, item.zhLabel, item.esLabel, item.arLabel)}
+                  {getLabel(
+                    item.label,
+                    item.zhLabel,
+                    item.esLabel,
+                    item.arLabel,
+                    item.frLabel,
+                    item.ptLabel
+                  )}
                 </div>
               </div>
             ))}
@@ -757,7 +878,9 @@ export default function ElectricTruckDetail() {
                       "Energy Architecture",
                       "能源架构",
                       "Arquitectura energética",
-                      "بنية الطاقة"
+                      "بنية الطاقة",
+                      "Architecture énergétique",
+                      "Arquitetura de energia"
                     )}
                   </span>
                 </div>
@@ -785,7 +908,9 @@ export default function ElectricTruckDetail() {
                     "Built Around an 800V Electric Platform",
                     "800V 高压电平台",
                     "Construido sobre una plataforma eléctrica de 800V",
-                    "مصمم حول منصة كهربائية 800 فولت"
+                    "مصمم حول منصة كهربائية 800 فولت",
+                    "Conçu autour d'une plateforme électrique 800V",
+                    "Construído sobre uma plataforma elétrica de 800V"
                   )}
                 </h2>
               </div>
@@ -874,7 +999,14 @@ export default function ElectricTruckDetail() {
                         overflowWrap: "break-word",
                       }}
                     >
-                      {getLabel(spec.label, spec.zhLabel, spec.esLabel, spec.arLabel)}
+                      {getLabel(
+                        spec.label,
+                        spec.zhLabel,
+                        spec.esLabel,
+                        spec.arLabel,
+                        spec.frLabel,
+                        spec.ptLabel
+                      )}
                     </div>
 
                     <div
@@ -889,7 +1021,18 @@ export default function ElectricTruckDetail() {
                         wordBreak: "break-word",
                       }}
                     >
-                      {getLabel(spec.value, spec.zhValue, spec.esValue, spec.arValue)}
+                      {getLabel(
+                        spec.value,
+                        spec.zhValue,
+                        spec.esValue,
+                        spec.arValue,
+                        "frValue" in spec
+                          ? (spec as { frValue: string }).frValue
+                          : spec.value,
+                        "ptValue" in spec
+                          ? (spec as { ptValue: string }).ptValue
+                          : spec.value
+                      )}
                     </div>
                   </div>
                 ))}
@@ -932,7 +1075,9 @@ export default function ElectricTruckDetail() {
                   "View Specification",
                   "查看参数",
                   "Ver especificaciones",
-                  "عرض المواصفات"
+                  "عرض المواصفات",
+                  "Voir les spécifications",
+                  "Ver especificações"
                 )}
               </a>
             </div>
@@ -979,7 +1124,9 @@ export default function ElectricTruckDetail() {
                     "Electric Powertrain",
                     "电驱系统",
                     "Tren motriz eléctrico",
-                    "منظومة الدفع الكهربائية"
+                    "منظومة الدفع الكهربائية",
+                    "Groupe motopropulseur électrique",
+                    "Trem de força elétrico"
                   )}
                 </span>
               </div>
@@ -1006,7 +1153,9 @@ export default function ElectricTruckDetail() {
                   "Fast-Charge and Battery-Swap Support",
                   "支持快充与换电运营",
                   "Soporte para carga rápida e intercambio de batería",
-                  "دعم الشحن السريع وتبديل البطارية"
+                  "دعم الشحن السريع وتبديل البطارية",
+                  "Prise en charge de la recharge rapide et de l'échange de batterie",
+                  "Suporte para recarga rápida e troca de bateria"
                 )}
               </h2>
 
@@ -1027,7 +1176,9 @@ export default function ElectricTruckDetail() {
                   "The EPM1 combines a high-voltage electric platform, dual-motor drive and regenerative braking to support heavy-duty transport routes with planned charging or battery-swap operation.",
                   "EPM1 结合高压电平台、双电机驱动和制动能量回收，适配具备规划补能或换电条件的重载运输线路。",
                   "El EPM1 combina una plataforma eléctrica de alto voltaje, propulsión de doble motor y frenado regenerativo para apoyar rutas de transporte pesado con carga planificada o intercambio de batería.",
-                  "يجمع EPM1 بين منصة كهربائية عالية الجهد، ودفع بمحركين، وفرملة تجديدية لدعم مسارات النقل الثقيل التي تعتمد على الشحن المخطط أو تبديل البطارية."
+                  "يجمع EPM1 بين منصة كهربائية عالية الجهد، ودفع بمحركين، وفرملة تجديدية لدعم مسارات النقل الثقيل التي تعتمد على الشحن المخطط أو تبديل البطارية.",
+                  "L'EPM1 associe une plateforme électrique haute tension, une transmission à deux moteurs et le freinage régénératif pour soutenir les itinéraires de transport lourd avec recharge planifiée ou échange de batterie.",
+                  "O EPM1 combina uma plataforma elétrica de alta tensão, tração com dois motores e frenagem regenerativa para apoiar rotas de transporte pesado com recarga planejada ou troca de bateria."
                 )}
               </p>
 
@@ -1065,7 +1216,14 @@ export default function ElectricTruckDetail() {
                         overflowWrap: "break-word",
                       }}
                     >
-                      {getLabel(spec.label, spec.zhLabel, spec.esLabel, spec.arLabel)}
+                      {getLabel(
+                        spec.label,
+                        spec.zhLabel,
+                        spec.esLabel,
+                        spec.arLabel,
+                        spec.frLabel,
+                        spec.ptLabel
+                      )}
                     </div>
 
                     <div
@@ -1081,7 +1239,18 @@ export default function ElectricTruckDetail() {
                         overflowWrap: "break-word",
                       }}
                     >
-                      {getLabel(spec.value, spec.zhValue, spec.esValue, spec.arValue)}
+                      {getLabel(
+                        spec.value,
+                        spec.zhValue,
+                        spec.esValue,
+                        spec.arValue,
+                        "frValue" in spec
+                          ? (spec as { frValue: string }).frValue
+                          : spec.value,
+                        "ptValue" in spec
+                          ? (spec as { ptValue: string }).ptValue
+                          : spec.value
+                      )}
                     </div>
                   </div>
                 ))}
@@ -1145,7 +1314,14 @@ export default function ElectricTruckDetail() {
                         overflowWrap: "break-word",
                       }}
                     >
-                      {getLabel(spec.label, spec.zhLabel, spec.esLabel, spec.arLabel)}
+                      {getLabel(
+                        spec.label,
+                        spec.zhLabel,
+                        spec.esLabel,
+                        spec.arLabel,
+                        spec.frLabel,
+                        spec.ptLabel
+                      )}
                     </div>
 
                     <div
@@ -1161,7 +1337,14 @@ export default function ElectricTruckDetail() {
                         overflowWrap: "break-word",
                       }}
                     >
-                      {getLabel(spec.value, spec.zhValue, spec.esValue, spec.arValue)}
+                      {getLabel(
+                        spec.value,
+                        spec.zhValue,
+                        spec.esValue,
+                        spec.arValue,
+                        spec.frValue,
+                        spec.ptValue
+                      )}
                     </div>
                   </div>
                 </div>
@@ -1208,7 +1391,9 @@ export default function ElectricTruckDetail() {
                   "Safety, Assistance & Connectivity",
                   "安全、辅助与联网能力",
                   "Seguridad, asistencia y conectividad",
-                  "السلامة والمساعدة والاتصال"
+                  "السلامة والمساعدة والاتصال",
+                  "Sécurité, assistance et connectivité",
+                  "Segurança, assistência e conectividade"
                 )}
               </span>
 
@@ -1244,7 +1429,9 @@ export default function ElectricTruckDetail() {
                 "Prepared for Commercial Fleet Operation",
                 "面向商用车队运营配置",
                 "Preparado para la operación de flotas comerciales",
-                "مهيأ لتشغيل الأساطيل التجارية"
+                "مهيأ لتشغيل الأساطيل التجارية",
+                "Préparé pour l'exploitation de flottes commerciales",
+                "Preparado para operação de frotas comerciais"
               )}
             </h2>
           </div>
@@ -1292,7 +1479,14 @@ export default function ElectricTruckDetail() {
                     overflowWrap: "break-word",
                   }}
                 >
-                  {getLabel(feature.title, feature.zhTitle, feature.esTitle, feature.arTitle)}
+                  {getLabel(
+                    feature.title,
+                    feature.zhTitle,
+                    feature.esTitle,
+                    feature.arTitle,
+                    feature.frTitle,
+                    feature.ptTitle
+                  )}
                 </div>
 
                 <div
@@ -1307,7 +1501,14 @@ export default function ElectricTruckDetail() {
                     overflowWrap: "break-word",
                   }}
                 >
-                  {getLabel(feature.desc, feature.zhDesc, feature.esDesc, feature.arDesc)}
+                  {getLabel(
+                    feature.desc,
+                    feature.zhDesc,
+                    feature.esDesc,
+                    feature.arDesc,
+                    feature.frDesc,
+                    feature.ptDesc
+                  )}
                 </div>
               </div>
             ))}

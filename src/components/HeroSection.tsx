@@ -15,7 +15,7 @@ import { useLanguage } from "../i18n/LanguageContext";
 const FONT_FAMILY =
   "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
 
-type LangCode = "en" | "zh" | "es" | "ar";
+type LangCode = "en" | "zh" | "es" | "ar" | "fr" | "pt";
 
 const heroText: Record<
   LangCode,
@@ -45,6 +45,16 @@ const heroText: Record<
     exploreProducts: "استكشف المنتجات",
     learnMore: "اعرف المزيد",
   },
+  fr: {
+    title: "Redéfinir l'Avenir",
+    exploreProducts: "Explorer les Produits",
+    learnMore: "En Savoir Plus",
+  },
+  pt: {
+    title: "Redefinindo o Futuro",
+    exploreProducts: "Explorar Produtos",
+    learnMore: "Saiba Mais",
+  },
 };
 
 const stats: Array<{
@@ -57,12 +67,16 @@ const stats: Array<{
       zh: "能源",
       es: "ENERGÍA",
       ar: "الطاقة",
+      fr: "ÉNERGIE",
+      pt: "ENERGIA",
     },
     label: {
       en: "ENERGY",
       zh: "清洁能源",
       es: "ENERGÍA LIMPIA",
       ar: "طاقة نظيفة",
+      fr: "ÉNERGIE PROPRE",
+      pt: "ENERGIA LIMPA",
     },
   },
   {
@@ -71,12 +85,16 @@ const stats: Array<{
       zh: "智能",
       es: "INTELIGENCIA",
       ar: "الذكاء",
+      fr: "INTELLIGENCE",
+      pt: "INTELIGÊNCIA",
     },
     label: {
       en: "AI ROBOT",
       zh: "AI 机器人",
       es: "ROBOT IA",
       ar: "روبوت ذكي",
+      fr: "ROBOT IA",
+      pt: "ROBÔ IA",
     },
   },
   {
@@ -85,12 +103,16 @@ const stats: Array<{
       zh: "系统",
       es: "SISTEMAS",
       ar: "الأنظمة",
+      fr: "SYSTÈMES",
+      pt: "SISTEMAS",
     },
     label: {
       en: "INTEGRATION",
       zh: "集成方案",
       es: "INTEGRACIÓN",
       ar: "حلول متكاملة",
+      fr: "INTÉGRATION",
+      pt: "INTEGRAÇÃO",
     },
   },
   {
@@ -99,12 +121,16 @@ const stats: Array<{
       zh: "未来",
       es: "FUTURO",
       ar: "المستقبل",
+      fr: "AVENIR",
+      pt: "FUTURO",
     },
     label: {
       en: "MOBILITY",
       zh: "智慧出行",
       es: "MOVILIDAD",
       ar: "التنقل الذكي",
+      fr: "MOBILITÉ",
+      pt: "MOBILIDADE",
     },
   },
 ];
@@ -113,7 +139,11 @@ export default function HeroSection() {
   const { language } = useLanguage();
 
   const currentLanguage: LangCode =
-    language === "zh" || language === "es" || language === "ar"
+    language === "zh" ||
+    language === "es" ||
+    language === "ar" ||
+    language === "fr" ||
+    language === "pt"
       ? language
       : "en";
 

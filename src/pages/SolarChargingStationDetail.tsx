@@ -30,12 +30,23 @@ const SolarStorageChargingStation: React.FC = () => {
   const isZh = language === "zh";
   const isEs = language === "es";
   const isAr = language === "ar";
+  const isFr = language === "fr";
+  const isPt = language === "pt";
   const isRtl = isAr;
 
-  const getLabel = (en: string, zh: string, es: string, ar: string) => {
+  const getLabel = (
+    en: string,
+    zh: string,
+    es: string,
+    ar: string,
+    fr = en,
+    pt = en
+  ) => {
     if (isZh) return zh;
     if (isEs) return es;
     if (isAr) return ar;
+    if (isFr) return fr;
+    if (isPt) return pt;
     return en;
   };
 
@@ -54,20 +65,28 @@ const SolarStorageChargingStation: React.FC = () => {
       zhNumber: "5兆瓦",
       esNumber: "5 MW",
       arNumber: "5 ميجاواط",
+      frNumber: "5 MW",
+      ptNumber: "5 MW",
       label: "Solar Generation Capacity",
       zhLabel: "太阳能发电容量",
       esLabel: "Capacidad de generación solar",
       arLabel: "قدرة توليد الطاقة الشمسية",
+      frLabel: "Capacité de production solaire",
+      ptLabel: "Capacidade de geração solar",
     },
     {
       number: "11MWh",
       zhNumber: "11兆瓦时",
       esNumber: "11 MWh",
       arNumber: "11 ميجاواط ساعة",
+      frNumber: "11 MWh",
+      ptNumber: "11 MWh",
       label: "Battery Storage Capacity",
       zhLabel: "电池储能容量",
       esLabel: "Capacidad de almacenamiento en baterías",
       arLabel: "سعة تخزين البطاريات",
+      frLabel: "Capacité de stockage par batterie",
+      ptLabel: "Capacidade de armazenamento em baterias",
     },
     {
       number: "DC",
@@ -78,16 +97,22 @@ const SolarStorageChargingStation: React.FC = () => {
       zhLabel: "光伏储能耦合系统",
       esLabel: "Sistema solar-almacenamiento acoplado",
       arLabel: "نظام مقترن للطاقة الشمسية والتخزين",
+      frLabel: "Système solaire-stockage couplé",
+      ptLabel: "Sistema solar-armazenamento acoplado",
     },
     {
       number: "EV",
       zhNumber: "充电接口",
       esNumber: "EV",
       arNumber: "EV",
+      frNumber: "VE",
+      ptNumber: "VE",
       label: "Charging Station Integration",
       zhLabel: "电动车充电接入",
       esLabel: "Integración de estación de carga",
       arLabel: "تكامل محطة الشحن",
+      frLabel: "Intégration de station de recharge",
+      ptLabel: "Integração de estação de recarga",
     },
     {
       number: "2026",
@@ -98,6 +123,8 @@ const SolarStorageChargingStation: React.FC = () => {
       zhLabel: "项目沟通启动阶段",
       esLabel: "Comunicación inicial del proyecto",
       arLabel: "مرحلة التواصل الأولي للمشروع",
+      frLabel: "Communication initiale du projet",
+      ptLabel: "Comunicação inicial do projeto",
     },
   ];
 
@@ -107,6 +134,8 @@ const SolarStorageChargingStation: React.FC = () => {
       zhTitle: "项目初步沟通",
       esTitle: "Discusión inicial",
       arTitle: "مناقشة أولية",
+      frTitle: "Discussion initiale",
+      ptTitle: "Discussão inicial",
       active: true,
     },
     {
@@ -114,6 +143,8 @@ const SolarStorageChargingStation: React.FC = () => {
       zhTitle: "应用场景梳理",
       esTitle: "Revisión de escenarios",
       arTitle: "مراجعة السيناريوهات",
+      frTitle: "Revue des scénarios",
+      ptTitle: "Revisão de cenários",
       active: true,
     },
     {
@@ -121,6 +152,8 @@ const SolarStorageChargingStation: React.FC = () => {
       zhTitle: "选址与电网评估",
       esTitle: "Evaluación de sitio y red",
       arTitle: "تقييم الموقع والشبكة",
+      frTitle: "Évaluation du site et du réseau",
+      ptTitle: "Avaliação do local e da rede",
       active: false,
     },
     {
@@ -128,6 +161,8 @@ const SolarStorageChargingStation: React.FC = () => {
       zhTitle: "技术方案准备",
       esTitle: "Propuesta técnica",
       arTitle: "المقترح الفني",
+      frTitle: "Proposition technique",
+      ptTitle: "Proposta técnica",
       active: false,
     },
     {
@@ -135,6 +170,8 @@ const SolarStorageChargingStation: React.FC = () => {
       zhTitle: "工程设计",
       esTitle: "Diseño de ingeniería",
       arTitle: "التصميم الهندسي",
+      frTitle: "Conception d'ingénierie",
+      ptTitle: "Projeto de engenharia",
       active: false,
     },
     {
@@ -142,6 +179,8 @@ const SolarStorageChargingStation: React.FC = () => {
       zhTitle: "项目建设",
       esTitle: "Construcción",
       arTitle: "البناء",
+      frTitle: "Construction",
+      ptTitle: "Construção",
       active: false,
     },
     {
@@ -149,6 +188,8 @@ const SolarStorageChargingStation: React.FC = () => {
       zhTitle: "运营投放",
       esTitle: "Operación",
       arTitle: "التشغيل",
+      frTitle: "Exploitation",
+      ptTitle: "Operação",
       active: false,
     },
   ];
@@ -159,46 +200,64 @@ const SolarStorageChargingStation: React.FC = () => {
       zhLabel: "项目名称",
       esLabel: "Nombre del proyecto",
       arLabel: "اسم المشروع",
+      frLabel: "Nom du projet",
+      ptLabel: "Nome do projeto",
       value: "ASTRAQ Clean Energy System Project",
       zhValue: "ASTRAQ 清洁能源系统项目",
       esValue: "Proyecto de sistema de energía limpia ASTRAQ",
       arValue: "مشروع نظام الطاقة النظيفة من ASTRAQ",
+      frValue: "Projet de système d'énergie propre ASTRAQ",
+      ptValue: "Projeto de sistema de energia limpa ASTRAQ",
     },
     {
       label: "Project Type",
       zhLabel: "项目类型",
       esLabel: "Tipo de proyecto",
       arLabel: "نوع المشروع",
+      frLabel: "Type de projet",
+      ptLabel: "Tipo de projeto",
       value: "Solar Generation + Battery Storage + EV Charging Station",
       zhValue: "太阳能发电 + 电池储能 + 电动车充电站",
       esValue: "Generación solar + almacenamiento en baterías + estación de carga EV",
       arValue: "توليد شمسي + تخزين بالبطاريات + محطة شحن للمركبات الكهربائية",
+      frValue: "Production solaire + stockage par batterie + station de recharge VE",
+      ptValue: "Geração solar + armazenamento em baterias + estação de recarga VE",
     },
     {
       label: "Location",
       zhLabel: "项目区域",
       esLabel: "Ubicación",
       arLabel: "الموقع",
+      frLabel: "Emplacement",
+      ptLabel: "Localização",
       value: "New South Wales, Australia",
       zhValue: "澳大利亚新南威尔士州",
       esValue: "Nueva Gales del Sur, Australia",
       arValue: "نيو ساوث ويلز، أستراليا",
+      frValue: "Nouvelle-Galles du Sud, Australie",
+      ptValue: "Nova Gales do Sul, Austrália",
     },
     {
       label: "Installed Capacity",
       zhLabel: "装机规模",
       esLabel: "Capacidad instalada",
       arLabel: "السعة المركبة",
+      frLabel: "Capacité installée",
+      ptLabel: "Capacidade instalada",
       value: "5MW solar generation / 11MWh battery energy storage",
       zhValue: "5MW 太阳能发电 / 11MWh 电池储能",
       esValue: "5 MW de generación solar / 11 MWh de almacenamiento en baterías",
       arValue: "5 ميجاواط توليد شمسي / 11 ميجاواط ساعة تخزين بطاريات",
+      frValue: "5 MW de production solaire / 11 MWh de stockage par batterie",
+      ptValue: "5 MW de geração solar / 11 MWh de armazenamento em baterias",
     },
     {
       label: "System Configuration",
       zhLabel: "系统组成",
       esLabel: "Configuración del sistema",
       arLabel: "تكوين النظام",
+      frLabel: "Configuration du système",
+      ptLabel: "Configuração do sistema",
       value:
         "Photovoltaic generation, DC-coupled battery storage, inverter system, energy management system and EV charging interface.",
       zhValue:
@@ -207,12 +266,18 @@ const SolarStorageChargingStation: React.FC = () => {
         "Generación fotovoltaica, almacenamiento en baterías acoplado en DC, sistema inversor, sistema de gestión energética e interfaz de carga EV.",
       arValue:
         "توليد كهروضوئي، وتخزين بطاريات مقترن بالتيار المستمر، ونظام عاكس، ونظام إدارة الطاقة، وواجهة شحن للمركبات الكهربائية.",
+      frValue:
+        "Production photovoltaïque, stockage par batterie couplé en DC, système d'onduleur, système de gestion énergétique et interface de recharge VE.",
+      ptValue:
+        "Geração fotovoltaica, armazenamento em baterias acoplado em DC, sistema inversor, sistema de gestão de energia e interface de recarga VE.",
     },
     {
       label: "Application Scenario",
       zhLabel: "应用场景",
       esLabel: "Escenario de aplicación",
       arLabel: "سيناريو التطبيق",
+      frLabel: "Scénario d'application",
+      ptLabel: "Cenário de aplicação",
       value:
         "Suitable for EV charging stations, commercial fleet charging, logistics bases, industrial parks and distributed renewable energy projects.",
       zhValue:
@@ -221,12 +286,18 @@ const SolarStorageChargingStation: React.FC = () => {
         "Adecuado para estaciones de carga EV, carga de flotas comerciales, bases logísticas, parques industriales y proyectos distribuidos de energía renovable.",
       arValue:
         "مناسب لمحطات شحن المركبات الكهربائية، وشحن الأساطيل التجارية، والقواعد اللوجستية، والمناطق الصناعية، ومشاريع الطاقة المتجددة الموزعة.",
+      frValue:
+        "Adapté aux stations de recharge VE, à la recharge de flottes commerciales, aux bases logistiques, aux parcs industriels et aux projets d'énergie renouvelable distribuée.",
+      ptValue:
+        "Adequado para estações de recarga VE, recarga de frotas comerciais, bases logísticas, parques industriais e projetos distribuídos de energia renovável.",
     },
     {
       label: "Project Positioning",
       zhLabel: "项目定位",
       esLabel: "Posicionamiento del proyecto",
       arLabel: "تموضع المشروع",
+      frLabel: "Positionnement du projet",
+      ptLabel: "Posicionamento do projeto",
       value:
         "A clean energy infrastructure project connecting renewable generation, storage flexibility and electric transport support.",
       zhValue:
@@ -235,6 +306,10 @@ const SolarStorageChargingStation: React.FC = () => {
         "Un proyecto de infraestructura de energía limpia que conecta generación renovable, flexibilidad de almacenamiento y apoyo al transporte eléctrico.",
       arValue:
         "مشروع بنية تحتية للطاقة النظيفة يربط توليد الطاقة المتجددة بمرونة التخزين ودعم النقل الكهربائي.",
+      frValue:
+        "Un projet d'infrastructure d'énergie propre reliant la production renouvelable, la flexibilité du stockage et le soutien au transport électrique.",
+      ptValue:
+        "Um projeto de infraestrutura de energia limpa que conecta geração renovável, flexibilidade de armazenamento e apoio ao transporte elétrico.",
     },
   ];
 
@@ -244,6 +319,8 @@ const SolarStorageChargingStation: React.FC = () => {
       zhTitle: "太阳能发电",
       esTitle: "Generación solar",
       arTitle: "توليد الطاقة الشمسية",
+      frTitle: "Production solaire",
+      ptTitle: "Geração solar",
       text: "Photovoltaic generation supplies renewable electricity for charging demand, battery storage and daily site operation.",
       zhText:
         "光伏系统为充电需求、电池储能和场站日常运行提供可再生电力来源。",
@@ -251,12 +328,18 @@ const SolarStorageChargingStation: React.FC = () => {
         "La generación fotovoltaica suministra electricidad renovable para la carga, el almacenamiento en baterías y la operación diaria del sitio.",
       arText:
         "يوفر التوليد الكهروضوئي كهرباء متجددة لتلبية طلب الشحن وتخزين البطاريات والتشغيل اليومي للموقع.",
+      frText:
+        "La production photovoltaïque fournit de l'électricité renouvelable pour la recharge, le stockage par batterie et l'exploitation quotidienne du site.",
+      ptText:
+        "A geração fotovoltaica fornece eletricidade renovável para demanda de recarga, armazenamento em baterias e operação diária do local.",
     },
     {
       title: "Battery Energy Storage",
       zhTitle: "电池储能系统",
       esTitle: "Almacenamiento en baterías",
       arTitle: "تخزين الطاقة بالبطاريات",
+      frTitle: "Stockage par batterie",
+      ptTitle: "Armazenamento em baterias",
       text: "The battery system improves power flexibility and helps balance energy demand during peak load or low-solar periods.",
       zhText:
         "电池储能系统提升场站用电灵活性，并在高负荷或低日照时段平衡能源需求。",
@@ -264,12 +347,18 @@ const SolarStorageChargingStation: React.FC = () => {
         "El sistema de baterías mejora la flexibilidad energética y ayuda a equilibrar la demanda durante picos de carga o periodos de baja radiación solar.",
       arText:
         "يحسن نظام البطاريات مرونة الطاقة ويساعد على موازنة الطلب خلال فترات الحمل المرتفع أو انخفاض التوليد الشمسي.",
+      frText:
+        "Le système de batterie améliore la flexibilité énergétique et aide à équilibrer la demande lors des pics de charge ou des périodes de faible ensoleillement.",
+      ptText:
+        "O sistema de baterias melhora a flexibilidade energética e ajuda a equilibrar a demanda durante picos de carga ou períodos de baixa geração solar.",
     },
     {
       title: "EV Charging Integration",
       zhTitle: "电动车充电接入",
       esTitle: "Integración de carga EV",
       arTitle: "تكامل شحن المركبات الكهربائية",
+      frTitle: "Intégration de recharge VE",
+      ptTitle: "Integração de recarga VE",
       text: "The station can support EV charging demand and can be expanded for commercial fleet charging scenarios.",
       zhText:
         "场站可支持电动车补能需求，并可根据运营需要扩展至商用车队充电场景。",
@@ -277,12 +366,18 @@ const SolarStorageChargingStation: React.FC = () => {
         "La estación puede cubrir la demanda de carga EV y ampliarse para escenarios de carga de flotas comerciales.",
       arText:
         "يمكن للمحطة دعم طلب شحن المركبات الكهربائية ويمكن توسيعها لسيناريوهات شحن الأساطيل التجارية.",
+      frText:
+        "La station peut répondre aux besoins de recharge VE et être étendue aux scénarios de recharge de flottes commerciales.",
+      ptText:
+        "A estação pode apoiar a demanda de recarga VE e ser expandida para cenários de recarga de frotas comerciais.",
     },
     {
       title: "Energy Management System",
       zhTitle: "能源管理系统",
       esTitle: "Sistema de gestión energética",
       arTitle: "نظام إدارة الطاقة",
+      frTitle: "Système de gestion énergétique",
+      ptTitle: "Sistema de gestão de energia",
       text: "The control system coordinates solar generation, storage capacity, charging demand and grid interaction.",
       zhText:
         "能源管理系统协调光伏发电、储能容量、充电负荷和电网交互。",
@@ -290,6 +385,10 @@ const SolarStorageChargingStation: React.FC = () => {
         "El sistema de control coordina la generación solar, la capacidad de almacenamiento, la demanda de carga y la interacción con la red.",
       arText:
         "ينسق نظام التحكم بين التوليد الشمسي وسعة التخزين وطلب الشحن والتفاعل مع الشبكة.",
+      frText:
+        "Le système de contrôle coordonne la production solaire, la capacité de stockage, la demande de recharge et l'interaction avec le réseau.",
+      ptText:
+        "O sistema de controle coordena geração solar, capacidade de armazenamento, demanda de recarga e interação com a rede.",
     },
   ];
 
@@ -724,7 +823,9 @@ const SolarStorageChargingStation: React.FC = () => {
             "Solar storage charging integrated station",
             "光储充一体化站",
             "Estación integrada solar, almacenamiento y carga",
-            "محطة متكاملة للطاقة الشمسية والتخزين والشحن"
+            "محطة متكاملة للطاقة الشمسية والتخزين والشحن",
+            "Station intégrée solaire, stockage et recharge",
+            "Estação integrada solar, armazenamento e recarga"
           )}
           style={styles.heroImage}
         />
@@ -760,7 +861,9 @@ const SolarStorageChargingStation: React.FC = () => {
               "An energy infrastructure concept combining solar generation, battery storage and EV charging for transport and commercial sites.",
               "面向交通和商业场站的能源基础设施方案，结合太阳能发电、电池储能与电动车充电能力。",
               "Un concepto de infraestructura energética que combina generación solar, almacenamiento en baterías y carga EV para sitios de transporte y comerciales.",
-              "مفهوم بنية تحتية للطاقة يجمع بين توليد الطاقة الشمسية وتخزين البطاريات وشحن المركبات الكهربائية لمواقع النقل والمواقع التجارية."
+              "مفهوم بنية تحتية للطاقة يجمع بين توليد الطاقة الشمسية وتخزين البطاريات وشحن المركبات الكهربائية لمواقع النقل والمواقع التجارية.",
+              "Un concept d'infrastructure énergétique combinant production solaire, stockage par batterie et recharge de véhicules électriques pour les sites de transport et commerciaux.",
+              "Um conceito de infraestrutura energética que combina geração solar, armazenamento em baterias e recarga de veículos elétricos para locais de transporte e comerciais."
             )}
           </p>
         </div>
@@ -769,7 +872,7 @@ const SolarStorageChargingStation: React.FC = () => {
       <main style={styles.main}>
         <section style={styles.section}>
           <p style={styles.sectionLabel}>
-            {getLabel("Key Numbers", "关键数据", "Datos clave", "الأرقام الرئيسية")}
+            {getLabel("Key Numbers", "关键数据", "Datos clave", "الأرقام الرئيسية", "Chiffres clés", "Números-chave")}
           </p>
 
           <div style={styles.divider} />
@@ -778,10 +881,24 @@ const SolarStorageChargingStation: React.FC = () => {
             {keyNumbers.map((item, index) => (
               <div key={index} style={styles.keyItem}>
                 <h3 style={styles.keyNumber}>
-                  {getLabel(item.number, item.zhNumber, item.esNumber, item.arNumber)}
+                  {getLabel(
+                    item.number,
+                    item.zhNumber,
+                    item.esNumber,
+                    item.arNumber,
+                    item.frNumber,
+                    item.ptNumber
+                  )}
                 </h3>
                 <p style={styles.keyLabel}>
-                  {getLabel(item.label, item.zhLabel, item.esLabel, item.arLabel)}
+                  {getLabel(
+                    item.label,
+                    item.zhLabel,
+                    item.esLabel,
+                    item.arLabel,
+                    item.frLabel,
+                    item.ptLabel
+                  )}
                 </p>
               </div>
             ))}
@@ -790,7 +907,7 @@ const SolarStorageChargingStation: React.FC = () => {
 
         <section style={styles.section}>
           <p style={styles.sectionLabel}>
-            {getLabel("Current Status", "当前进展", "Estado actual", "الحالة الحالية")}
+            {getLabel("Current Status", "当前进展", "Estado actual", "الحالة الحالية", "État actuel", "Status atual")}
           </p>
 
           <div style={styles.divider} />
@@ -824,7 +941,14 @@ const SolarStorageChargingStation: React.FC = () => {
                       : "rgba(255,255,255,0.46)",
                   }}
                 >
-                  {getLabel(step.title, step.zhTitle, step.esTitle, step.arTitle)}
+                  {getLabel(
+                    step.title,
+                    step.zhTitle,
+                    step.esTitle,
+                    step.arTitle,
+                    step.frTitle,
+                    step.ptTitle
+                  )}
                 </p>
               </div>
             ))}
@@ -835,7 +959,9 @@ const SolarStorageChargingStation: React.FC = () => {
               "The project is currently in the early communication stage. The current focus is to confirm the project concept, application scenario, site feasibility, energy demand and preliminary system configuration.",
               "项目目前处于前期沟通阶段，当前重点是确认项目概念、应用场景、选址可行性、能源需求和初步系统配置。",
               "El proyecto se encuentra actualmente en una etapa temprana de comunicación. El foco actual es confirmar el concepto, el escenario de aplicación, la viabilidad del sitio, la demanda energética y la configuración preliminar del sistema.",
-              "المشروع حاليًا في مرحلة التواصل الأولي. يتركز العمل الحالي على تأكيد مفهوم المشروع وسيناريو التطبيق وجدوى الموقع واحتياجات الطاقة والتكوين الأولي للنظام."
+              "المشروع حاليًا في مرحلة التواصل الأولي. يتركز العمل الحالي على تأكيد مفهوم المشروع وسيناريو التطبيق وجدوى الموقع واحتياجات الطاقة والتكوين الأولي للنظام.",
+              "Le projet est actuellement en phase de communication initiale. L'objectif est de confirmer le concept, le scénario d'application, la faisabilité du site, la demande énergétique et la configuration préliminaire du système.",
+              "O projeto está atualmente na etapa inicial de comunicação. O foco é confirmar o conceito, o cenário de aplicação, a viabilidade do local, a demanda de energia e a configuração preliminar do sistema."
             )}
           </p>
         </section>
@@ -847,7 +973,9 @@ const SolarStorageChargingStation: React.FC = () => {
                 "Technical Parameters",
                 "技术参数",
                 "Parámetros técnicos",
-                "المعايير الفنية"
+                "المعايير الفنية",
+                "Paramètres techniques",
+                "Parâmetros técnicos"
               )}
             </p>
 
@@ -856,7 +984,9 @@ const SolarStorageChargingStation: React.FC = () => {
                 "5MW / 11MWh Solar + Storage + Charging Project",
                 "5MW / 11MWh 光储充项目",
                 "Proyecto solar + almacenamiento + carga de 5MW / 11MWh",
-                "مشروع شمسي + تخزين + شحن بقدرة 5MW / 11MWh"
+                "مشروع شمسي + تخزين + شحن بقدرة 5MW / 11MWh",
+                "Projet solaire + stockage + recharge 5MW / 11MWh",
+                "Projeto solar + armazenamento + recarga de 5MW / 11MWh"
               )}
             </h2>
           </div>
@@ -865,10 +995,24 @@ const SolarStorageChargingStation: React.FC = () => {
             {technicalParameters.map((item, index) => (
               <div key={index} style={styles.parameterRow}>
                 <div style={styles.parameterLabel}>
-                  {getLabel(item.label, item.zhLabel, item.esLabel, item.arLabel)}
+                  {getLabel(
+                    item.label,
+                    item.zhLabel,
+                    item.esLabel,
+                    item.arLabel,
+                    item.frLabel,
+                    item.ptLabel
+                  )}
                 </div>
                 <div style={styles.parameterValue}>
-                  {getLabel(item.value, item.zhValue, item.esValue, item.arValue)}
+                  {getLabel(
+                    item.value,
+                    item.zhValue,
+                    item.esValue,
+                    item.arValue,
+                    item.frValue,
+                    item.ptValue
+                  )}
                 </div>
               </div>
             ))}
@@ -878,7 +1022,7 @@ const SolarStorageChargingStation: React.FC = () => {
         <section style={styles.overviewSection}>
           <div style={styles.overviewContent}>
             <p style={styles.sectionLabel}>
-              {getLabel("Project Overview", "项目概述", "Resumen del proyecto", "نظرة عامة على المشروع")}
+              {getLabel("Project Overview", "项目概述", "Resumen del proyecto", "نظرة عامة على المشروع", "Aperçu du projet", "Visão geral do projeto")}
             </p>
 
             <h2 style={styles.sectionTitle}>
@@ -886,7 +1030,9 @@ const SolarStorageChargingStation: React.FC = () => {
                 "Solar, Storage and Charging in One Energy Platform",
                 "集成发电、储能与充电的一体化能源平台",
                 "Solar, almacenamiento y carga en una sola plataforma energética",
-                "الطاقة الشمسية والتخزين والشحن في منصة طاقة واحدة"
+                "الطاقة الشمسية والتخزين والشحن في منصة طاقة واحدة",
+                "Solaire, stockage et recharge dans une seule plateforme énergétique",
+                "Solar, armazenamento e recarga em uma única plataforma de energia"
               )}
             </h2>
 
@@ -895,7 +1041,9 @@ const SolarStorageChargingStation: React.FC = () => {
                 "The Solar-Storage-Charging Integrated Station is designed as a distributed clean energy platform for commercial sites and transport operations. It combines photovoltaic generation, battery storage and charging infrastructure into a coordinated system.",
                 "光储充一体化站面向商业场站和交通运营场景设计，是一种分布式清洁能源平台。项目将光伏发电、电池储能和充电基础设施整合为协同运行的系统。",
                 "La estación integrada solar-almacenamiento-carga está diseñada como una plataforma distribuida de energía limpia para sitios comerciales y operaciones de transporte. Combina generación fotovoltaica, almacenamiento en baterías e infraestructura de carga en un sistema coordinado.",
-                "تم تصميم المحطة المتكاملة للطاقة الشمسية والتخزين والشحن كمنصة طاقة نظيفة موزعة للمواقع التجارية وعمليات النقل. وهي تجمع بين التوليد الكهروضوئي وتخزين البطاريات وبنية الشحن في نظام منسق."
+                "تم تصميم المحطة المتكاملة للطاقة الشمسية والتخزين والشحن كمنصة طاقة نظيفة موزعة للمواقع التجارية وعمليات النقل. وهي تجمع بين التوليد الكهروضوئي وتخزين البطاريات وبنية الشحن في نظام منسق.",
+                "La station intégrée solaire-stockage-recharge est conçue comme une plateforme d'énergie propre distribuée pour les sites commerciaux et les opérations de transport. Elle combine production photovoltaïque, stockage par batterie et infrastructure de recharge dans un système coordonné.",
+                "A estação integrada solar-armazenamento-recarga é projetada como uma plataforma distribuída de energia limpa para locais comerciais e operações de transporte. Ela combina geração fotovoltaica, armazenamento em baterias e infraestrutura de recarga em um sistema coordenado."
               )}
             </p>
 
@@ -904,7 +1052,9 @@ const SolarStorageChargingStation: React.FC = () => {
                 "The system can use solar generation for direct charging or store electricity for later use, helping improve renewable energy utilisation and site-level energy flexibility.",
                 "系统可将太阳能发电用于直接充电，也可将电能储存后在需要时释放，从而提升可再生能源利用率和场站用能灵活性。",
                 "El sistema puede usar la generación solar para carga directa o almacenar electricidad para su uso posterior, ayudando a mejorar el aprovechamiento de energía renovable y la flexibilidad energética del sitio.",
-                "يمكن للنظام استخدام التوليد الشمسي للشحن المباشر أو تخزين الكهرباء لاستخدامها لاحقًا، مما يساعد على تحسين الاستفادة من الطاقة المتجددة ومرونة الطاقة على مستوى الموقع."
+                "يمكن للنظام استخدام التوليد الشمسي للشحن المباشر أو تخزين الكهرباء لاستخدامها لاحقًا، مما يساعد على تحسين الاستفادة من الطاقة المتجددة ومرونة الطاقة على مستوى الموقع.",
+                "Le système peut utiliser la production solaire pour la recharge directe ou stocker l'électricité pour une utilisation ultérieure, améliorant l'utilisation des énergies renouvelables et la flexibilité énergétique du site.",
+                "O sistema pode usar a geração solar para recarga direta ou armazenar eletricidade para uso posterior, ajudando a melhorar o aproveitamento de energia renovável e a flexibilidade energética do local."
               )}
             </p>
           </div>
@@ -916,7 +1066,9 @@ const SolarStorageChargingStation: React.FC = () => {
                 "Solar storage charging project",
                 "光储充项目",
                 "Proyecto solar, almacenamiento y carga",
-                "مشروع الطاقة الشمسية والتخزين والشحن"
+                "مشروع الطاقة الشمسية والتخزين والشحن",
+                "Projet solaire, stockage et recharge",
+                "Projeto solar, armazenamento e recarga"
               )}
               style={styles.overviewImage}
             />
@@ -926,20 +1078,24 @@ const SolarStorageChargingStation: React.FC = () => {
         <section style={styles.moduleSection}>
           <p style={styles.sectionLabel}>
             {getLabel(
-              "Core System Modules",
-              "核心系统模块",
-              "Módulos principales del sistema",
-              "وحدات النظام الأساسية"
-            )}
+            "Core System Modules",
+            "核心系统模块",
+            "Módulos principales del sistema",
+            "وحدات النظام الأساسية",
+            "Modules principaux du système",
+            "Módulos principais do sistema"
+          )}
           </p>
 
           <h2 style={styles.sectionTitle}>
             {getLabel(
-              "Integrated System Architecture",
-              "一体化系统架构",
-              "Arquitectura de sistema integrada",
-              "بنية نظام متكاملة"
-            )}
+            "Integrated System Architecture",
+            "一体化系统架构",
+            "Arquitectura de sistema integrada",
+            "بنية نظام متكاملة",
+            "Architecture système intégrée",
+            "Arquitetura de sistema integrada"
+          )}
           </h2>
 
           <div style={styles.moduleGrid}>
@@ -950,11 +1106,25 @@ const SolarStorageChargingStation: React.FC = () => {
                 </span>
 
                 <h3 style={styles.moduleTitle}>
-                  {getLabel(item.title, item.zhTitle, item.esTitle, item.arTitle)}
+                  {getLabel(
+                    item.title,
+                    item.zhTitle,
+                    item.esTitle,
+                    item.arTitle,
+                    item.frTitle,
+                    item.ptTitle
+                  )}
                 </h3>
 
                 <p style={styles.moduleText}>
-                  {getLabel(item.text, item.zhText, item.esText, item.arText)}
+                  {getLabel(
+                    item.text,
+                    item.zhText,
+                    item.esText,
+                    item.arText,
+                    item.frText,
+                    item.ptText
+                  )}
                 </p>
               </div>
             ))}

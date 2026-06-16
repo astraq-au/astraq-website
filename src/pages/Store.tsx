@@ -2,7 +2,7 @@
  * ASTRAQ Store Page
  * Design: Dark industrial style — warm dark background, white text, gold accent
  * Content: Store enquiry form only
- * English / Chinese / Spanish / Arabic supported
+ * English / Chinese / Spanish / Arabic / French / Portuguese supported
  */
 
 import Footer from "../components/Footer";
@@ -16,12 +16,23 @@ export default function Store() {
   const isZh = language === "zh";
   const isEs = language === "es";
   const isAr = language === "ar";
+  const isFr = language === "fr";
+  const isPt = language === "pt";
   const isRtl = isAr;
 
-  const getLabel = (en: string, zh: string, es: string, ar: string) => {
+  const getLabel = (
+    en: string,
+    zh: string,
+    es: string,
+    ar: string,
+    fr: string,
+    pt: string
+  ) => {
     if (isZh) return zh;
     if (isEs) return es;
     if (isAr) return ar;
+    if (isFr) return fr;
+    if (isPt) return pt;
     return en;
   };
 
@@ -115,7 +126,9 @@ export default function Store() {
                 "Contact Us",
                 "联系我们",
                 "Contáctenos",
-                "تواصل معنا"
+                "تواصل معنا",
+                "Contactez-nous",
+                "Fale Conosco"
               )}
             </h1>
 
@@ -139,7 +152,9 @@ export default function Store() {
                 "Tell us what you are interested in, and our team will get back to you shortly.",
                 "请告诉我们您关注的产品或合作需求，我们的团队会尽快与您联系。",
                 "Cuéntenos qué le interesa y nuestro equipo se pondrá en contacto con usted pronto.",
-                "أخبرنا بما تهتم به، وسيتواصل معك فريقنا قريبًا."
+                "أخبرنا بما تهتم به، وسيتواصل معك فريقنا قريبًا.",
+                "Dites-nous ce qui vous intéresse, et notre équipe vous recontactera rapidement.",
+                "Conte-nos no que você tem interesse, e nossa equipe entrará em contato em breve."
               )}
             </p>
           </div>
@@ -174,7 +189,9 @@ export default function Store() {
                   "Send us a Message",
                   "提交咨询信息",
                   "Envíenos un mensaje",
-                  "أرسل لنا رسالة"
+                  "أرسل لنا رسالة",
+                  "Envoyez-nous un Message",
+                  "Envie-nos uma Mensagem"
                 )}
               </h2>
 
@@ -195,7 +212,9 @@ export default function Store() {
                   "Please leave your details below. We will contact you with product availability and purchase information.",
                   "请在下方留下您的联系信息。我们会根据您的产品兴趣提供后续沟通和采购信息。",
                   "Deje sus datos a continuación. Nos pondremos en contacto con usted con información sobre disponibilidad y compra.",
-                  "يرجى ترك بياناتك أدناه. سنتواصل معك بشأن توفر المنتج ومعلومات الشراء."
+                  "يرجى ترك بياناتك أدناه. سنتواصل معك بشأن توفر المنتج ومعلومات الشراء.",
+                  "Veuillez laisser vos coordonnées ci-dessous. Nous vous contacterons avec les informations de disponibilité et d'achat.",
+                  "Deixe seus dados abaixo. Entraremos em contato com informações sobre disponibilidade e compra."
                 )}
               </p>
 
@@ -203,7 +222,7 @@ export default function Store() {
                 {/* Name */}
                 <div>
                   <label htmlFor="name" className="block mb-3" style={labelStyle}>
-                    {getLabel("Name *", "姓名 *", "Nombre *", "الاسم *")}
+                    {getLabel("Name *", "姓名 *", "Nombre *", "الاسم *", "Nom *", "Nome *")}
                   </label>
 
                   <input
@@ -214,7 +233,9 @@ export default function Store() {
                       "Your full name",
                       "请输入您的姓名",
                       "Su nombre completo",
-                      "اسمك الكامل"
+                      "اسمك الكامل",
+                      "Votre nom complet",
+                      "Seu nome completo"
                     )}
                     required
                     className="w-full rounded-md outline-none transition-all placeholder:text-white/36"
@@ -229,7 +250,7 @@ export default function Store() {
                     className="block mb-3"
                     style={labelStyle}
                   >
-                    {getLabel("Email *", "邮箱 *", "Correo electrónico *", "البريد الإلكتروني *")}
+                    {getLabel("Email *", "邮箱 *", "Correo electrónico *", "البريد الإلكتروني *", "E-mail *", "E-mail *")}
                   </label>
 
                   <input
@@ -240,7 +261,9 @@ export default function Store() {
                       "your.email@company.com",
                       "your.email@company.com",
                       "su.email@empresa.com",
-                      "your.email@company.com"
+                      "your.email@company.com",
+                      "votre.email@entreprise.com",
+                      "seu.email@empresa.com"
                     )}
                     required
                     className="w-full rounded-md outline-none transition-all placeholder:text-white/36"
@@ -255,7 +278,7 @@ export default function Store() {
                     className="block mb-3"
                     style={labelStyle}
                   >
-                    {getLabel("Company", "公司", "Empresa", "الشركة")}
+                    {getLabel("Company", "公司", "Empresa", "الشركة", "Entreprise", "Empresa")}
                   </label>
 
                   <input
@@ -266,7 +289,9 @@ export default function Store() {
                       "Your company name",
                       "请输入公司名称",
                       "Nombre de su empresa",
-                      "اسم شركتك"
+                      "اسم شركتك",
+                      "Nom de votre entreprise",
+                      "Nome da sua empresa"
                     )}
                     className="w-full rounded-md outline-none transition-all placeholder:text-white/36"
                     style={inputStyle}
@@ -284,7 +309,9 @@ export default function Store() {
                       "Product Interest *",
                       "感兴趣的产品 *",
                       "Producto de interés *",
-                      "المنتج محل الاهتمام *"
+                      "المنتج محل الاهتمام *",
+                      "Produit d'intérêt *",
+                      "Produto de interesse *"
                     )}
                   </label>
 
@@ -301,16 +328,18 @@ export default function Store() {
                         "Select a product",
                         "请选择产品",
                         "Seleccione un producto",
-                        "اختر منتجًا"
+                        "اختر منتجًا",
+                        "Sélectionner un produit",
+                        "Selecione um produto"
                       )}
                     </option>
 
                     <option value="diesel-truck" style={{ color: "#111" }}>
-                      {getLabel("Diesel Truck", "柴油卡车", "Camión diésel", "شاحنة ديزل")}
+                      {getLabel("Diesel Truck", "柴油卡车", "Camión diésel", "شاحنة ديزل", "Camion diesel", "Caminhão a diesel")}
                     </option>
 
                     <option value="electric-truck" style={{ color: "#111" }}>
-                      {getLabel("Electric Truck", "电动卡车", "Camión eléctrico", "شاحنة كهربائية")}
+                      {getLabel("Electric Truck", "电动卡车", "Camión eléctrico", "شاحنة كهربائية", "Camion électrique", "Caminhão elétrico")}
                     </option>
 
                     <option value="solar-energy" style={{ color: "#111" }}>
@@ -318,7 +347,9 @@ export default function Store() {
                         "Solar-Storage-Charging Station",
                         "光储充一体化站",
                         "Estación solar-almacenamiento-carga",
-                        "محطة الطاقة الشمسية والتخزين والشحن"
+                        "محطة الطاقة الشمسية والتخزين والشحن",
+                        "Station solaire-stockage-recharge",
+                        "Estação solar-armazenamento-recarga"
                       )}
                     </option>
 
@@ -327,7 +358,9 @@ export default function Store() {
                         "ET-H Humanoid Robot",
                         "ET-H 人形机器人",
                         "Robot humanoide ET-H",
-                        "روبوت بشري الشكل ET-H"
+                        "روبوت بشري الشكل ET-H",
+                        "Robot humanoïde ET-H",
+                        "Robô humanoide ET-H"
                       )}
                     </option>
 
@@ -336,12 +369,14 @@ export default function Store() {
                         "ET-M Massage Robot",
                         "ET-M 按摩机器人",
                         "Robot de masaje ET-M",
-                        "روبوت التدليك ET-M"
+                        "روبوت التدليك ET-M",
+                        "Robot de massage ET-M",
+                        "Robô de massagem ET-M"
                       )}
                     </option>
 
                     <option value="other" style={{ color: "#111" }}>
-                      {getLabel("Other", "其他", "Otro", "أخرى")}
+                      {getLabel("Other", "其他", "Otro", "أخرى", "Autre", "Outro")}
                     </option>
                   </select>
                 </div>
@@ -353,7 +388,7 @@ export default function Store() {
                     className="block mb-3"
                     style={labelStyle}
                   >
-                    {getLabel("Message *", "留言 *", "Mensaje *", "الرسالة *")}
+                    {getLabel("Message *", "留言 *", "Mensaje *", "الرسالة *", "Message *", "Mensagem *")}
                   </label>
 
                   <textarea
@@ -363,7 +398,9 @@ export default function Store() {
                       "Tell us about your enquiry...",
                       "请简单说明您的需求...",
                       "Cuéntenos sobre su consulta...",
-                      "أخبرنا عن استفسارك..."
+                      "أخبرنا عن استفسارك...",
+                      "Parlez-nous de votre demande...",
+                      "Conte-nos sobre sua consulta..."
                     )}
                     required
                     rows={6}
@@ -406,7 +443,9 @@ export default function Store() {
                     "Send Enquiry",
                     "提交咨询",
                     "Enviar consulta",
-                    "إرسال الاستفسار"
+                    "إرسال الاستفسار",
+                    "Envoyer la Demande",
+                    "Enviar Consulta"
                   )}
                 </button>
               </form>

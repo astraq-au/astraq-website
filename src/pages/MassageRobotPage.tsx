@@ -31,6 +31,8 @@ const APPLICATIONS = [
     zhTitle: "康复理疗室",
     esTitle: "Sala de terapia",
     arTitle: "غرفة العلاج",
+    frTitle: "Salle de thérapie",
+    ptTitle: "Sala de terapia",
     description:
       "Support daily treatment work with controlled robotic massage and repeatable therapy settings.",
     zhDescription:
@@ -39,6 +41,10 @@ const APPLICATIONS = [
       "Apoya el trabajo terapéutico diario con masaje robótico controlado y configuraciones repetibles.",
     arDescription:
       "يدعم العمل العلاجي اليومي من خلال تدليك روبوتي مضبوط وإعدادات علاجية قابلة للتكرار.",
+    frDescription:
+      "Soutient le travail thérapeutique quotidien avec un massage robotisé contrôlé et des réglages reproductibles.",
+    ptDescription:
+      "Apoia o trabalho terapêutico diário com massagem robótica controlada e configurações repetíveis.",
   },
   {
     key: "beauty",
@@ -48,6 +54,8 @@ const APPLICATIONS = [
     zhTitle: "康养美容机构",
     esTitle: "Clínica de bienestar y belleza",
     arTitle: "عيادة العافية والتجميل",
+    frTitle: "Clinique bien-être et beauté",
+    ptTitle: "Clínica de bem-estar e beleza",
     description:
       "Add robotic therapy support to wellness services and improve treatment workflow consistency.",
     zhDescription:
@@ -56,6 +64,10 @@ const APPLICATIONS = [
       "Añade apoyo terapéutico robótico a los servicios de bienestar y mejora la consistencia del flujo de tratamiento.",
     arDescription:
       "يضيف دعمًا علاجيًا روبوتيًا إلى خدمات العافية ويحسن اتساق سير العمل العلاجي.",
+    frDescription:
+      "Ajoute un soutien thérapeutique robotisé aux services de bien-être et améliore la cohérence du flux de traitement.",
+    ptDescription:
+      "Adiciona suporte terapêutico robótico aos serviços de bem-estar e melhora a consistência do fluxo de tratamento.",
   },
   {
     key: "sports",
@@ -65,6 +77,8 @@ const APPLICATIONS = [
     zhTitle: "运动恢复中心",
     esTitle: "Centro de recuperación deportiva",
     arTitle: "مركز التعافي الرياضي",
+    frTitle: "Centre de récupération sportive",
+    ptTitle: "Centro de recuperação esportiva",
     description:
       "Assist recovery routines with targeted treatment support for training and rehabilitation settings.",
     zhDescription:
@@ -73,6 +87,10 @@ const APPLICATIONS = [
       "Ayuda a las rutinas de recuperación con soporte terapéutico dirigido para entrenamiento y rehabilitación.",
     arDescription:
       "يدعم برامج التعافي بعلاج موجه مناسب لبيئات التدريب وإعادة التأهيل.",
+    frDescription:
+      "Aide les routines de récupération avec un soutien thérapeutique ciblé pour l'entraînement et la rééducation.",
+    ptDescription:
+      "Auxilia rotinas de recuperação com suporte terapêutico direcionado para treinamento e reabilitação.",
   },
 ] as const;
 
@@ -98,12 +116,16 @@ const FUNCTIONS = [
     zhLabel: "机器人按摩",
     esLabel: "Masaje robótico",
     arLabel: "تدليك روبوتي",
+    frLabel: "Massage robotisé",
+    ptLabel: "Massagem robótica",
     icon: "〰",
     image: FUNCTION_IMAGES.massage,
     imageTitle: "Controlled Robotic Massage",
     zhImageTitle: "可控机器人按摩",
     esImageTitle: "Masaje robótico controlado",
     arImageTitle: "تدليك روبوتي مضبوط",
+    frImageTitle: "Massage robotisé contrôlé",
+    ptImageTitle: "Massagem robótica controlada",
     imageDescription:
       "Provides consistent massage movement to support muscle relaxation and daily recovery routines.",
     zhImageDescription:
@@ -112,6 +134,10 @@ const FUNCTIONS = [
       "Proporciona movimientos de masaje consistentes para apoyar la relajación muscular y la recuperación diaria.",
     arImageDescription:
       "يوفر حركة تدليك ثابتة لدعم استرخاء العضلات وروتين التعافي اليومي.",
+    frImageDescription:
+      "Fournit des mouvements de massage réguliers pour soutenir la relaxation musculaire et les routines de récupération quotidiennes.",
+    ptImageDescription:
+      "Fornece movimentos de massagem consistentes para apoiar o relaxamento muscular e rotinas diárias de recuperação.",
   },
   {
     key: "shockwave",
@@ -119,12 +145,16 @@ const FUNCTIONS = [
     zhLabel: "磁震波理疗",
     esLabel: "Onda de choque magnética",
     arLabel: "موجات صدمية مغناطيسية",
+    frLabel: "Onde de choc magnétique",
+    ptLabel: "Onda de choque magnética",
     icon: "◎",
     image: FUNCTION_IMAGES.shockwave,
     imageTitle: "Deep Tissue Stimulation",
     zhImageTitle: "深层组织刺激",
     esImageTitle: "Estimulación de tejido profundo",
     arImageTitle: "تحفيز الأنسجة العميقة",
+    frImageTitle: "Stimulation des tissus profonds",
+    ptImageTitle: "Estimulação de tecidos profundos",
     imageDescription:
       "High-frequency stimulation supports deeper tissue response under therapist-guided treatment settings.",
     zhImageDescription:
@@ -133,6 +163,10 @@ const FUNCTIONS = [
       "La estimulación de alta frecuencia favorece la respuesta de tejidos profundos bajo la guía del terapeuta.",
     arImageDescription:
       "يدعم التحفيز عالي التردد استجابة الأنسجة العميقة ضمن إعدادات علاجية موجهة من المعالج.",
+    frImageDescription:
+      "La stimulation haute fréquence soutient la réponse des tissus profonds dans des réglages guidés par le thérapeute.",
+    ptImageDescription:
+      "A estimulação de alta frequência apoia a resposta de tecidos profundos sob configurações guiadas pelo terapeuta.",
   },
   {
     key: "heat",
@@ -140,12 +174,16 @@ const FUNCTIONS = [
     zhLabel: "内源热支持",
     esLabel: "Calor endógeno",
     arLabel: "حرارة داخلية",
+    frLabel: "Chaleur endogène",
+    ptLabel: "Calor endógeno",
     icon: "≋",
     image: FUNCTION_IMAGES.heat,
     imageTitle: "Thermal Treatment Support",
     zhImageTitle: "热疗辅助支持",
     esImageTitle: "Soporte de tratamiento térmico",
     arImageTitle: "دعم العلاج الحراري",
+    frImageTitle: "Soutien au traitement thermique",
+    ptImageTitle: "Suporte ao tratamento térmico",
     imageDescription:
       "Controlled thermal support helps improve treatment comfort and supports circulation-focused routines.",
     zhImageDescription:
@@ -154,6 +192,10 @@ const FUNCTIONS = [
       "El soporte térmico controlado ayuda a mejorar la comodidad del tratamiento y las rutinas centradas en la circulación.",
     arImageDescription:
       "يساعد الدعم الحراري المضبوط على تحسين راحة العلاج ودعم البرامج التي تركز على الدورة الدموية.",
+    frImageDescription:
+      "Le soutien thermique contrôlé améliore le confort du traitement et accompagne les routines axées sur la circulation.",
+    ptImageDescription:
+      "O suporte térmico controlado ajuda a melhorar o conforto do tratamento e rotinas focadas na circulação.",
   },
 ] as const;
 
@@ -164,12 +206,16 @@ const FEATURES = [
     zhLabel: "身体点位识别",
     esLabel: "Mapeo de puntos corporales",
     arLabel: "تحديد نقاط الجسم",
+    frLabel: "Cartographie des points corporels",
+    ptLabel: "Mapeamento de pontos corporais",
     icon: "◎",
     image: FEATURE_IMAGES.acupoint,
     title: "AI-Assisted Point Recognition",
     zhTitle: "AI 辅助点位识别",
     esTitle: "Reconocimiento de puntos asistido por IA",
     arTitle: "تعرف على النقاط بمساعدة الذكاء الاصطناعي",
+    frTitle: "Reconnaissance des points assistée par IA",
+    ptTitle: "Reconhecimento de pontos assistido por IA",
     description:
       "AI-assisted body mapping helps identify treatment areas with greater consistency across sessions.",
     zhDescription:
@@ -178,6 +224,10 @@ const FEATURES = [
       "El mapeo corporal asistido por IA ayuda a identificar áreas de tratamiento con mayor consistencia entre sesiones.",
     arDescription:
       "يساعد تخطيط الجسم بمساعدة الذكاء الاصطناعي على تحديد مناطق العلاج بشكل أكثر اتساقًا بين الجلسات.",
+    frDescription:
+      "La cartographie corporelle assistée par IA aide à identifier les zones de traitement avec plus de constance entre les séances.",
+    ptDescription:
+      "O mapeamento corporal assistido por IA ajuda a identificar áreas de tratamento com maior consistência entre sessões.",
   },
   {
     key: "control",
@@ -185,12 +235,16 @@ const FEATURES = [
     zhLabel: "运动控制",
     esLabel: "Control de movimiento",
     arLabel: "التحكم في الحركة",
+    frLabel: "Contrôle du mouvement",
+    ptLabel: "Controle de movimento",
     icon: "⌖",
     image: FEATURE_IMAGES.control,
     title: "Stable Force and Motion Control",
     zhTitle: "稳定的力度与运动控制",
     esTitle: "Control estable de fuerza y movimiento",
     arTitle: "تحكم ثابت في القوة والحركة",
+    frTitle: "Contrôle stable de la force et du mouvement",
+    ptTitle: "Controle estável de força e movimento",
     description:
       "Controlled force and trajectory execution support repeatable massage performance.",
     zhDescription:
@@ -199,6 +253,10 @@ const FEATURES = [
       "La ejecución controlada de fuerza y trayectoria permite un rendimiento de masaje más repetible.",
     arDescription:
       "يدعم التحكم في القوة والمسار أداء تدليك قابلًا للتكرار بدرجة أكبر.",
+    frDescription:
+      "L'exécution contrôlée de la force et de la trajectoire soutient une performance de massage plus reproductible.",
+    ptDescription:
+      "A execução controlada de força e trajetória apoia um desempenho de massagem mais repetível.",
   },
   {
     key: "interaction",
@@ -206,12 +264,16 @@ const FEATURES = [
     zhLabel: "治疗师交互",
     esLabel: "Interacción con terapeuta",
     arLabel: "تفاعل المعالج",
+    frLabel: "Interaction avec le thérapeute",
+    ptLabel: "Interação com terapeuta",
     icon: "☝",
     image: FEATURE_IMAGES.interaction,
     title: "Therapist-Guided Operation",
     zhTitle: "治疗师引导式操作",
     esTitle: "Operación guiada por terapeuta",
     arTitle: "تشغيل موجه من المعالج",
+    frTitle: "Fonctionnement guidé par le thérapeute",
+    ptTitle: "Operação guiada pelo terapeuta",
     description:
       "Touch interface and guided control help integrate the robot into existing treatment workflows.",
     zhDescription:
@@ -220,6 +282,10 @@ const FEATURES = [
       "La interfaz táctil y el control guiado ayudan a integrar el robot en los flujos de tratamiento existentes.",
     arDescription:
       "تساعد الواجهة اللمسية والتحكم الموجه على دمج الروبوت في مسارات العلاج الحالية.",
+    frDescription:
+      "L'interface tactile et le contrôle guidé aident à intégrer le robot dans les flux de traitement existants.",
+    ptDescription:
+      "A interface tátil e o controle guiado ajudam a integrar o robô aos fluxos de tratamento existentes.",
   },
 ] as const;
 
@@ -242,12 +308,23 @@ export default function MassageRobotPage() {
   const isZh = language === "zh";
   const isEs = language === "es";
   const isAr = language === "ar";
+  const isFr = language === "fr";
+  const isPt = language === "pt";
   const isRtl = isAr;
 
-  const getLabel = (en: string, zh: string, es: string, ar: string) => {
+  const getLabel = (
+    en: string,
+    zh: string,
+    es: string,
+    ar: string,
+    fr = en,
+    pt = en
+  ) => {
     if (isZh) return zh;
     if (isEs) return es;
     if (isAr) return ar;
+    if (isFr) return fr;
+    if (isPt) return pt;
     return en;
   };
 
@@ -423,7 +500,9 @@ export default function MassageRobotPage() {
                 "View Specifications",
                 "查看参数",
                 "Ver especificaciones",
-                "عرض المواصفات"
+                "عرض المواصفات",
+                "Voir les spécifications",
+                "Ver especificações"
               )}
             </a>
 
@@ -457,7 +536,7 @@ export default function MassageRobotPage() {
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
-              {getLabel("Buy Now", "立即购买", "Comprar ahora", "اشتر الآن")}
+              {getLabel("Buy Now", "立即购买", "Comprar ahora", "اشتر الآن", "Acheter", "Comprar agora")}
             </a>
           </div>
         </div>
@@ -474,7 +553,14 @@ export default function MassageRobotPage() {
         <img
           key={activeItem.image}
           src={activeItem.image}
-          alt={getLabel(activeItem.label, activeItem.zhLabel, activeItem.esLabel, activeItem.arLabel)}
+          alt={getLabel(
+            activeItem.label,
+            activeItem.zhLabel,
+            activeItem.esLabel,
+            activeItem.arLabel,
+            activeItem.frLabel,
+            activeItem.ptLabel
+          )}
           className="massage-function-bg"
           style={{
             display: "block",
@@ -516,7 +602,9 @@ export default function MassageRobotPage() {
               "Therapy Functions",
               "理疗功能",
               "Funciones terapéuticas",
-              "وظائف العلاج"
+              "وظائف العلاج",
+              "Fonctions thérapeutiques",
+              "Funções terapêuticas"
             )}
           </h2>
 
@@ -610,7 +698,14 @@ export default function MassageRobotPage() {
                       overflowWrap: "break-word",
                     }}
                   >
-                    {getLabel(item.label, item.zhLabel, item.esLabel, item.arLabel)}
+                    {getLabel(
+                      item.label,
+                      item.zhLabel,
+                      item.esLabel,
+                      item.arLabel,
+                      item.frLabel,
+                      item.ptLabel
+                    )}
                   </span>
 
                   {!isRtl && (
@@ -670,7 +765,9 @@ export default function MassageRobotPage() {
               activeItem.imageTitle,
               activeItem.zhImageTitle,
               activeItem.esImageTitle,
-              activeItem.arImageTitle
+              activeItem.arImageTitle,
+              activeItem.frImageTitle,
+              activeItem.ptImageTitle
             )}
           </h3>
 
@@ -692,7 +789,9 @@ export default function MassageRobotPage() {
               activeItem.imageDescription,
               activeItem.zhImageDescription,
               activeItem.esImageDescription,
-              activeItem.arImageDescription
+              activeItem.arImageDescription,
+              activeItem.frImageDescription,
+              activeItem.ptImageDescription
             )}
           </p>
         </div>
@@ -709,7 +808,14 @@ export default function MassageRobotPage() {
         <img
           key={activeFeatureItem.image}
           src={activeFeatureItem.image}
-          alt={getLabel(activeFeatureItem.label, activeFeatureItem.zhLabel, activeFeatureItem.esLabel, activeFeatureItem.arLabel)}
+          alt={getLabel(
+            activeFeatureItem.label,
+            activeFeatureItem.zhLabel,
+            activeFeatureItem.esLabel,
+            activeFeatureItem.arLabel,
+            activeFeatureItem.frLabel,
+            activeFeatureItem.ptLabel
+          )}
           className="massage-feature-bg"
           style={{
             display: "block",
@@ -752,7 +858,9 @@ export default function MassageRobotPage() {
               "Therapy Intelligence and Control",
               "理疗感知与控制能力",
               "Inteligencia y control terapéutico",
-              "ذكاء وتحكم علاجي"
+              "ذكاء وتحكم علاجي",
+              "Intelligence et contrôle thérapeutiques",
+              "Inteligência e controle terapêutico"
             )}
           </h2>
 
@@ -785,7 +893,9 @@ export default function MassageRobotPage() {
               "AI-assisted perception, controlled execution and therapist-guided interaction for structured treatment workflows.",
               "通过 AI 辅助感知、可控执行和治疗师引导式交互，服务结构化理疗流程。",
               "Percepción asistida por IA, ejecución controlada e interacción guiada por terapeuta para flujos de tratamiento estructurados.",
-              "إدراك بمساعدة الذكاء الاصطناعي، وتنفيذ مضبوط، وتفاعل موجه من المعالج لمسارات علاجية منظمة."
+              "إدراك بمساعدة الذكاء الاصطناعي، وتنفيذ مضبوط، وتفاعل موجه من المعالج لمسارات علاجية منظمة.",
+              "Perception assistée par IA, exécution contrôlée et interaction guidée par le thérapeute pour des flux de traitement structurés.",
+              "Percepção assistida por IA, execução controlada e interação orientada pelo terapeuta para fluxos de tratamento estruturados."
             )}
           </p>
 
@@ -854,7 +964,16 @@ export default function MassageRobotPage() {
                   >
                     {item.icon}
                   </span>
-                  <span>{getLabel(item.label, item.zhLabel, item.esLabel, item.arLabel)}</span>
+                  <span>
+                    {getLabel(
+                      item.label,
+                      item.zhLabel,
+                      item.esLabel,
+                      item.arLabel,
+                      item.frLabel,
+                      item.ptLabel
+                    )}
+                  </span>
                 </button>
               );
             })}
@@ -890,7 +1009,9 @@ export default function MassageRobotPage() {
                 activeFeatureItem.title,
                 activeFeatureItem.zhTitle,
                 activeFeatureItem.esTitle,
-                activeFeatureItem.arTitle
+                activeFeatureItem.arTitle,
+                activeFeatureItem.frTitle,
+                activeFeatureItem.ptTitle
               )}
             </h3>
 
@@ -923,7 +1044,9 @@ export default function MassageRobotPage() {
                 activeFeatureItem.description,
                 activeFeatureItem.zhDescription,
                 activeFeatureItem.esDescription,
-                activeFeatureItem.arDescription
+                activeFeatureItem.arDescription,
+                activeFeatureItem.frDescription,
+                activeFeatureItem.ptDescription
               )}
             </p>
           </div>
@@ -975,7 +1098,9 @@ export default function MassageRobotPage() {
                 "Application Scenarios",
                 "应用场景",
                 "Escenarios de aplicación",
-                "سيناريوهات التطبيق"
+                "سيناريوهات التطبيق",
+                "Scénarios d'application",
+                "Cenários de aplicação"
               )}
             </h2>
 
@@ -995,7 +1120,14 @@ export default function MassageRobotPage() {
               <article key={item.key} className="massage-application-card">
                 <img
                   src={item.image}
-                  alt={getLabel(item.title, item.zhTitle, item.esTitle, item.arTitle)}
+                  alt={getLabel(
+                    item.title,
+                    item.zhTitle,
+                    item.esTitle,
+                    item.arTitle,
+                    item.frTitle,
+                    item.ptTitle
+                  )}
                   className="massage-application-image"
                 />
 
@@ -1004,10 +1136,24 @@ export default function MassageRobotPage() {
 
                   <div className="massage-application-text">
                     <h3 className="massage-application-title">
-                      {getLabel(item.title, item.zhTitle, item.esTitle, item.arTitle)}
+                      {getLabel(
+                        item.title,
+                        item.zhTitle,
+                        item.esTitle,
+                        item.arTitle,
+                        item.frTitle,
+                        item.ptTitle
+                      )}
                     </h3>
                     <p className="massage-application-description">
-                      {getLabel(item.description, item.zhDescription, item.esDescription, item.arDescription)}
+                      {getLabel(
+                        item.description,
+                        item.zhDescription,
+                        item.esDescription,
+                        item.arDescription,
+                        item.frDescription,
+                        item.ptDescription
+                      )}
                     </p>
                   </div>
                 </div>

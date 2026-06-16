@@ -2,7 +2,7 @@
  * ASTRAQ News Page
  * Design: Dark industrial style — warm dark background, white text, gold accent
  * Content: News coming soon page
- * English / Chinese / Spanish / Arabic supported
+ * English / Chinese / Spanish / Arabic / French / Portuguese supported
  */
 
 import Footer from "../components/Footer";
@@ -19,12 +19,23 @@ export default function News() {
   const isZh = language === "zh";
   const isEs = language === "es";
   const isAr = language === "ar";
+  const isFr = language === "fr";
+  const isPt = language === "pt";
   const isRtl = isAr;
 
-  const getLabel = (en: string, zh: string, es: string, ar: string) => {
+  const getLabel = (
+    en: string,
+    zh: string,
+    es: string,
+    ar: string,
+    fr: string,
+    pt: string
+  ) => {
     if (isZh) return zh;
     if (isEs) return es;
     if (isAr) return ar;
+    if (isFr) return fr;
+    if (isPt) return pt;
     return en;
   };
 
@@ -93,7 +104,7 @@ export default function News() {
                 color: ACCENT_COLOR,
               }}
             >
-              {getLabel("News", "新闻", "Noticias", "الأخبار")}
+              {getLabel("News", "新闻", "Noticias", "الأخبار", "Actualités", "Notícias")}
             </span>
           </div>
 
@@ -120,7 +131,9 @@ export default function News() {
               "ASTRAQ News Coming Soon",
               "ASTRAQ 新闻即将上线",
               "Noticias de ASTRAQ próximamente",
-              "أخبار ASTRAQ قريبًا"
+              "أخبار ASTRAQ قريبًا",
+              "Actualités ASTRAQ bientôt disponibles",
+              "Notícias da ASTRAQ em breve"
             )}
           </h1>
 
@@ -141,7 +154,9 @@ export default function News() {
               "This page will share ASTRAQ updates, product progress, market expansion, technology development and company milestones.",
               "这里将用于发布 ASTRAQ 的公司动态、产品进展、市场拓展、技术发展和重要里程碑。",
               "Esta página compartirá novedades de ASTRAQ, avances de productos, expansión de mercado, desarrollo tecnológico e hitos de la empresa.",
-              "ستعرض هذه الصفحة تحديثات ASTRAQ وتقدم المنتجات وتوسع الأسواق والتطور التقني والمحطات المهمة للشركة."
+              "ستعرض هذه الصفحة تحديثات ASTRAQ وتقدم المنتجات وتوسع الأسواق والتطور التقني والمحطات المهمة للشركة.",
+              "Cette page présentera les actualités d'ASTRAQ, l'avancement des produits, l'expansion du marché, le développement technologique et les étapes clés de l'entreprise.",
+              "Esta página compartilhará atualizações da ASTRAQ, progresso dos produtos, expansão de mercado, desenvolvimento tecnológico e marcos da empresa."
             )}
           </p>
         </div>

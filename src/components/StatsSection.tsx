@@ -2,13 +2,13 @@
  * ASTRAQ Stats Section — Dark Sci-Fi Design
  * - Key company metrics with animated counters
  * - Horizontal divider layout
- * - English / Chinese / Spanish / Arabic supported
+ * - English / Chinese / Spanish / Arabic / French / Portuguese supported
  */
 
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "../i18n/LanguageContext";
 
-type LangCode = "en" | "zh" | "es" | "ar";
+type LangCode = "en" | "zh" | "es" | "ar" | "fr" | "pt";
 
 const stats: Array<{
   value: string;
@@ -23,6 +23,8 @@ const stats: Array<{
       zh: "产品线",
       es: "Líneas de Producto",
       ar: "خطوط المنتجات",
+      fr: "Gammes de Produits",
+      pt: "Linhas de Produto",
     },
   },
   {
@@ -33,6 +35,8 @@ const stats: Array<{
       zh: "成立年份",
       es: "Fundación",
       ar: "سنة التأسيس",
+      fr: "Fondation",
+      pt: "Fundação",
     },
   },
   {
@@ -43,6 +47,8 @@ const stats: Array<{
       zh: "零排放目标",
       es: "Objetivo de Cero Emisiones",
       ar: "هدف الانبعاثات الصفرية",
+      fr: "Objectif Zéro Émission",
+      pt: "Meta de Emissão Zero",
     },
   },
   {
@@ -53,6 +59,8 @@ const stats: Array<{
       zh: "无限可能",
       es: "Posibilidades",
       ar: "إمكانات بلا حدود",
+      fr: "Possibilités",
+      pt: "Possibilidades",
     },
   },
 ];
@@ -81,7 +89,13 @@ function useInView(threshold = 0.2) {
 }
 
 function normalizeLanguage(language: string): LangCode {
-  if (language === "zh" || language === "es" || language === "ar") {
+  if (
+    language === "zh" ||
+    language === "es" ||
+    language === "ar" ||
+    language === "fr" ||
+    language === "pt"
+  ) {
     return language;
   }
 

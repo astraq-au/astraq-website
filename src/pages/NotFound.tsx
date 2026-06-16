@@ -11,12 +11,23 @@ export default function NotFound() {
   const isZh = language === "zh";
   const isEs = language === "es";
   const isAr = language === "ar";
+  const isFr = language === "fr";
+  const isPt = language === "pt";
   const isRtl = isAr;
 
-  const getLabel = (en: string, zh: string, es: string, ar: string) => {
+  const getLabel = (
+    en: string,
+    zh: string,
+    es: string,
+    ar: string,
+    fr: string,
+    pt: string
+  ) => {
     if (isZh) return zh;
     if (isEs) return es;
     if (isAr) return ar;
+    if (isFr) return fr;
+    if (isPt) return pt;
     return en;
   };
 
@@ -45,7 +56,9 @@ export default function NotFound() {
               "Page Not Found",
               "页面未找到",
               "Página no encontrada",
-              "الصفحة غير موجودة"
+              "الصفحة غير موجودة",
+              "Page Introuvable",
+              "Página Não Encontrada"
             )}
           </h2>
 
@@ -54,14 +67,18 @@ export default function NotFound() {
               "Sorry, the page you are looking for doesn't exist.",
               "抱歉，您访问的页面不存在。",
               "Lo sentimos, la página que busca no existe.",
-              "عذرًا، الصفحة التي تبحث عنها غير موجودة."
+              "عذرًا، الصفحة التي تبحث عنها غير موجودة.",
+              "Désolé, la page que vous recherchez n'existe pas.",
+              "Desculpe, a página que você procura não existe."
             )}
             <br />
             {getLabel(
               "It may have been moved or deleted.",
               "该页面可能已被移动或删除。",
               "Es posible que se haya movido o eliminado.",
-              "ربما تم نقلها أو حذفها."
+              "ربما تم نقلها أو حذفها.",
+              "Elle a peut-être été déplacée ou supprimée.",
+              "Ela pode ter sido movida ou excluída."
             )}
           </p>
 
@@ -75,7 +92,9 @@ export default function NotFound() {
                 "Go Home",
                 "返回首页",
                 "Ir al inicio",
-                "العودة إلى الرئيسية"
+                "العودة إلى الرئيسية",
+                "Retour à l'accueil",
+                "Voltar ao início"
               )}
             </Button>
           </div>

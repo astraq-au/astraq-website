@@ -6,7 +6,20 @@ import React, {
   useState,
 } from "react";
 
-export type Language = "en" | "zh" | "es" | "ar";
+export type Language = "en" | "zh" | "es" | "ar" | "fr" | "pt";
+
+export const languageOptions: {
+  code: Language;
+  label: string;
+  shortLabel: string;
+}[] = [
+  { code: "en", label: "English", shortLabel: "EN" },
+  { code: "zh", label: "中文", shortLabel: "中" },
+  { code: "es", label: "Español", shortLabel: "ES" },
+  { code: "ar", label: "العربية", shortLabel: "AR" },
+  { code: "fr", label: "Français", shortLabel: "FR" },
+  { code: "pt", label: "Português", shortLabel: "PT" },
+];
 
 type TranslationObject = Record<string, any>;
 
@@ -111,22 +124,69 @@ const translations: Record<Language, TranslationObject> = {
       solarChargingStation: "محطة متكاملة للطاقة الشمسية والتخزين والشحن",
     },
   },
+
+  fr: {
+    nav: {
+      home: "ACCUEIL",
+      heavyTruck: "POIDS LOURDS",
+      energySystem: "SYSTÈME ÉNERGÉTIQUE",
+      aiTechnology: "TECHNOLOGIE IA",
+      store: "BOUTIQUE",
+      about: "À PROPOS",
+    },
+    products: {
+      title: "Produits",
+      subtitle: "Découvrez les solutions de mobilité et d'énergie d'ASTRAQ.",
+      heavyTruck: "Poids Lourds",
+      energySystem: "Système Énergétique",
+      aiTechnology: "Technologie IA",
+      dieselTruck: "Camion Diesel",
+      electricTruck: "Camion Électrique",
+      humanoidRobot: "Robot Humanoïde",
+      massageRobot: "Robot de Massage",
+      solarChargingStation:
+        "Station Intégrée Solaire, Stockage et Recharge",
+    },
+  },
+
+  pt: {
+    nav: {
+      home: "INÍCIO",
+      heavyTruck: "CAMINHÕES PESADOS",
+      energySystem: "SISTEMA DE ENERGIA",
+      aiTechnology: "TECNOLOGIA DE IA",
+      store: "LOJA",
+      about: "SOBRE",
+    },
+    products: {
+      title: "Produtos",
+      subtitle: "Explore as soluções de mobilidade e energia da ASTRAQ.",
+      heavyTruck: "Caminhões Pesados",
+      energySystem: "Sistema de Energia",
+      aiTechnology: "Tecnologia de IA",
+      dieselTruck: "Caminhão a Diesel",
+      electricTruck: "Caminhão Elétrico",
+      humanoidRobot: "Robô Humanoide",
+      massageRobot: "Robô de Massagem",
+      solarChargingStation:
+        "Estação Integrada de Energia Solar, Armazenamento e Recarga",
+    },
+  },
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(
   undefined
 );
 
+function isLanguage(value: string | null): value is Language {
+  return languageOptions.some((item) => item.code === value);
+}
+
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>(() => {
     const savedLanguage = localStorage.getItem("astraq-language");
 
-    if (
-      savedLanguage === "en" ||
-      savedLanguage === "zh" ||
-      savedLanguage === "es" ||
-      savedLanguage === "ar"
-    ) {
+    if (isLanguage(savedLanguage)) {
       return savedLanguage;
     }
 

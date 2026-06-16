@@ -45,36 +45,50 @@ const keyHighlights = [
     zhLabel: "驱动形式",
     esLabel: "Configuración de tracción",
     arLabel: "نظام الدفع",
+    frLabel: "Configuration de transmission",
+    ptLabel: "Configuração de tração",
   },
   {
     value: "32T",
     zhValue: "32吨",
     esValue: "32 t",
     arValue: "32 طن",
+    frValue: "32 t",
+    ptValue: "32 t",
     label: "Certified GVM",
     zhLabel: "认证最大总质量",
     esLabel: "GVM certificado",
     arLabel: "الوزن الإجمالي المعتمد",
+    frLabel: "GVM certifié",
+    ptLabel: "GVM certificado",
   },
   {
     value: "265 KW",
     zhValue: "265千瓦",
     esValue: "265 kW",
     arValue: "265 كيلوواط",
+    frValue: "265 kW",
+    ptValue: "265 kW",
     label: "Cummins Engine",
     zhLabel: "康明斯发动机",
     esLabel: "Motor Cummins",
     arLabel: "محرك كمنز",
+    frLabel: "Moteur Cummins",
+    ptLabel: "Motor Cummins",
   },
   {
     value: "12-Speed",
     zhValue: "12挡",
     esValue: "12 marchas",
     arValue: "12 سرعة",
+    frValue: "12 rapports",
+    ptValue: "12 marchas",
     label: "Automated Transmission",
     zhLabel: "自动变速箱",
     esLabel: "Transmisión automatizada",
     arLabel: "ناقل حركة آلي",
+    frLabel: "Transmission automatisée",
+    ptLabel: "Transmissão automatizada",
   },
 ];
 
@@ -206,12 +220,23 @@ export default function DieselTruckDetail() {
   const isZh = language === "zh";
   const isEs = language === "es";
   const isAr = language === "ar";
+  const isFr = language === "fr";
+  const isPt = language === "pt";
   const isRtl = isAr;
 
-  const getLabel = (en: string, zh: string, es: string, ar: string) => {
+  const getLabel = (
+    en: string,
+    zh: string,
+    es: string,
+    ar: string,
+    fr = en,
+    pt = en
+  ) => {
     if (isZh) return zh;
     if (isEs) return es;
     if (isAr) return ar;
+    if (isFr) return fr;
+    if (isPt) return pt;
     return en;
   };
 
@@ -314,7 +339,9 @@ export default function DieselTruckDetail() {
               "DM1 8×4 Mixer",
               "DM1 8×4 柴油搅拌车",
               "DM1 hormigonera 8×4",
-              "DM1 شاحنة خلط 8×4"
+              "DM1 شاحنة خلط 8×4",
+              "DM1 malaxeur 8×4",
+              "DM1 betoneira 8×4"
             )}
           </h1>
 
@@ -333,7 +360,7 @@ export default function DieselTruckDetail() {
               marginBottom: "clamp(2rem, 3vw, 3.8rem)",
             }}
           >
-            {getLabel("Euro 6", "欧六排放", "Euro 6", "يورو 6")}
+            {getLabel("Euro 6", "欧六排放", "Euro 6", "يورو 6", "Euro 6", "Euro 6")}
           </p>
 
           <div
@@ -381,7 +408,9 @@ export default function DieselTruckDetail() {
                 "View Specification",
                 "查看参数",
                 "Ver especificaciones",
-                "عرض المواصفات"
+                "عرض المواصفات",
+                "Voir les spécifications",
+                "Ver especificações"
               )}
             </a>
 
@@ -415,7 +444,7 @@ export default function DieselTruckDetail() {
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
-              {getLabel("Buy Now", "立即购买", "Comprar ahora", "اشتر الآن")}
+              {getLabel("Buy Now", "立即购买", "Comprar ahora", "اشتر الآن", "Acheter", "Comprar agora")}
             </a>
           </div>
         </div>
@@ -468,7 +497,14 @@ export default function DieselTruckDetail() {
                     whiteSpace: "nowrap",
                   }}
                 >
-                  {getLabel(item.value, item.zhValue, item.esValue, item.arValue)}
+                  {getLabel(
+                    item.value,
+                    item.zhValue,
+                    item.esValue,
+                    item.arValue,
+                    item.frValue ?? item.value,
+                    item.ptValue ?? item.value
+                  )}
                 </div>
 
                 <div
@@ -486,7 +522,14 @@ export default function DieselTruckDetail() {
                     overflowWrap: "break-word",
                   }}
                 >
-                  {getLabel(item.label, item.zhLabel, item.esLabel, item.arLabel)}
+                  {getLabel(
+                    item.label,
+                    item.zhLabel,
+                    item.esLabel,
+                    item.arLabel,
+                    item.frLabel,
+                    item.ptLabel
+                  )}
                 </div>
               </div>
             ))}
@@ -537,7 +580,9 @@ export default function DieselTruckDetail() {
                     "Key Specification",
                     "核心参数",
                     "Especificaciones clave",
-                    "المواصفات الرئيسية"
+                    "المواصفات الرئيسية",
+                    "Spécifications clés",
+                    "Especificações principais"
                   )}
                 </span>
               </div>
@@ -567,7 +612,9 @@ export default function DieselTruckDetail() {
                     "Built for Mixer Duty",
                     "为搅拌运输工况打造",
                     "Diseñado para trabajos de hormigonera",
-                    "مصمم لعمليات خلط الخرسانة"
+                    "مصمم لعمليات خلط الخرسانة",
+                    "Conçu pour les opérations de malaxage",
+                    "Construído para operação de betoneira"
                   )}
                 </span>
               </h2>
@@ -736,7 +783,9 @@ export default function DieselTruckDetail() {
                   "View Specification",
                   "查看参数",
                   "Ver especificaciones",
-                  "عرض المواصفات"
+                  "عرض المواصفات",
+                  "Voir les spécifications",
+                  "Ver especificações"
                 )}
               </a>
             </div>
@@ -787,7 +836,9 @@ export default function DieselTruckDetail() {
                     "Safety Systems",
                     "安全系统",
                     "Sistemas de seguridad",
-                    "أنظمة السلامة"
+                    "أنظمة السلامة",
+                    "Systèmes de sécurité",
+                    "Sistemas de segurança"
                   )}
                 </span>
               </div>
@@ -816,7 +867,9 @@ export default function DieselTruckDetail() {
                     "Ready for Modern Fleets",
                     "满足现代车队安全运营需求",
                     "Preparado para flotas modernas",
-                    "جاهز لأساطيل النقل الحديثة"
+                    "جاهز لأساطيل النقل الحديثة",
+                    "Prêt pour les flottes modernes",
+                    "Pronto para frotas modernas"
                   )}
                 </span>
               </h2>

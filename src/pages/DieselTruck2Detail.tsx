@@ -45,36 +45,50 @@ const keyHighlights = [
     zhLabel: "驱动形式",
     esLabel: "Configuración de tracción",
     arLabel: "نظام الدفع",
+    frLabel: "Configuration de transmission",
+    ptLabel: "Configuração de tração",
   },
   {
     value: "90T",
     zhValue: "90吨",
     esValue: "90 t",
     arValue: "90 طن",
+    frValue: "90 t",
+    ptValue: "90 t",
     label: "Gross Combination Mass",
     zhLabel: "最大组合总质量",
     esLabel: "Masa máxima combinada",
     arLabel: "الكتلة الإجمالية المركبة",
+    frLabel: "Masse totale combinée",
+    ptLabel: "Massa bruta combinada",
   },
   {
     value: "400kW",
     zhValue: "400千瓦",
     esValue: "400 kW",
     arValue: "400 كيلوواط",
+    frValue: "400 kW",
+    ptValue: "400 kW",
     label: "MC13 Diesel Engine",
     zhLabel: "MC13 柴油发动机",
     esLabel: "Motor diésel MC13",
     arLabel: "محرك ديزل MC13",
+    frLabel: "Moteur diesel MC13",
+    ptLabel: "Motor diesel MC13",
   },
   {
     value: "12-Speed",
     zhValue: "12挡",
     esValue: "12 marchas",
     arValue: "12 سرعة",
+    frValue: "12 rapports",
+    ptValue: "12 marchas",
     label: "Automated Transmission",
     zhLabel: "自动变速箱",
     esLabel: "Transmisión automatizada",
     arLabel: "ناقل حركة آلي",
+    frLabel: "Transmission automatisée",
+    ptLabel: "Transmissão automatizada",
   },
 ];
 
@@ -269,12 +283,23 @@ export default function DieselTruck2Detail() {
   const isZh = language === "zh";
   const isEs = language === "es";
   const isAr = language === "ar";
+  const isFr = language === "fr";
+  const isPt = language === "pt";
   const isRtl = isAr;
 
-  const getLabel = (en: string, zh: string, es: string, ar: string) => {
+  const getLabel = (
+    en: string,
+    zh: string,
+    es: string,
+    ar: string,
+    fr = en,
+    pt = en
+  ) => {
     if (isZh) return zh;
     if (isEs) return es;
     if (isAr) return ar;
+    if (isFr) return fr;
+    if (isPt) return pt;
     return en;
   };
 
@@ -370,7 +395,9 @@ export default function DieselTruck2Detail() {
               "DPM1 6×4 Prime Mover",
               "DPM1 6×4 柴油牵引车",
               "DPM1 tractocamión 6×4",
-              "DPM1 قاطرة 6×4"
+              "DPM1 قاطرة 6×4",
+              "DPM1 tracteur routier 6×4",
+              "DPM1 cavalo mecânico 6×4"
             )}
           </h1>
 
@@ -389,7 +416,7 @@ export default function DieselTruck2Detail() {
               marginBottom: "clamp(2rem, 3vw, 3.8rem)",
             }}
           >
-            {getLabel("Euro 6", "欧六排放", "Euro 6", "يورو 6")}
+            {getLabel("Euro 6", "欧六排放", "Euro 6", "يورو 6", "Euro 6", "Euro 6")}
           </p>
 
           <div
@@ -434,7 +461,9 @@ export default function DieselTruck2Detail() {
                 "View Specification",
                 "查看参数",
                 "Ver especificaciones",
-                "عرض المواصفات"
+                "عرض المواصفات",
+                "Voir les spécifications",
+                "Ver especificações"
               )}
             </a>
 
@@ -467,7 +496,7 @@ export default function DieselTruck2Detail() {
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
-              {getLabel("Buy Now", "立即购买", "Comprar ahora", "اشتر الآن")}
+              {getLabel("Buy Now", "立即购买", "Comprar ahora", "اشتر الآن", "Acheter", "Comprar agora")}
             </a>
           </div>
         </div>
@@ -519,7 +548,14 @@ export default function DieselTruck2Detail() {
                     whiteSpace: "nowrap",
                   }}
                 >
-                  {getLabel(item.value, item.zhValue, item.esValue, item.arValue)}
+                  {getLabel(
+                    item.value,
+                    item.zhValue,
+                    item.esValue,
+                    item.arValue,
+                    item.frValue ?? item.value,
+                    item.ptValue ?? item.value
+                  )}
                 </div>
 
                 <div
@@ -533,7 +569,14 @@ export default function DieselTruck2Detail() {
                     marginTop: "0.75rem",
                   }}
                 >
-                  {getLabel(item.label, item.zhLabel, item.esLabel, item.arLabel)}
+                  {getLabel(
+                    item.label,
+                    item.zhLabel,
+                    item.esLabel,
+                    item.arLabel,
+                    item.frLabel,
+                    item.ptLabel
+                  )}
                 </div>
               </div>
             ))}
@@ -581,7 +624,9 @@ export default function DieselTruck2Detail() {
                       "Key Specification",
                       "核心参数",
                       "Especificaciones clave",
-                      "المواصفات الرئيسية"
+                      "المواصفات الرئيسية",
+                      "Spécifications clés",
+                      "Especificações principais"
                     )}
                   </span>
                 </div>
@@ -606,7 +651,9 @@ export default function DieselTruck2Detail() {
                     "Built for Trailer Operation",
                     "为牵引运输场景打造",
                     "Diseñado para operaciones con remolque",
-                    "مصمم لعمليات القطر بالمقطورات"
+                    "مصمم لعمليات القطر بالمقطورات",
+                    "Conçu pour les opérations avec remorque",
+                    "Construído para operação com reboque"
                   )}
                 </h2>
               </div>
@@ -759,7 +806,9 @@ export default function DieselTruck2Detail() {
                   "View Specification",
                   "查看参数",
                   "Ver especificaciones",
-                  "عرض المواصفات"
+                  "عرض المواصفات",
+                  "Voir les spécifications",
+                  "Ver especificações"
                 )}
               </a>
             </div>
@@ -801,7 +850,9 @@ export default function DieselTruck2Detail() {
                     "Prime Mover Capability",
                     "牵引车运营能力",
                     "Capacidad del tractocamión",
-                    "قدرات القاطرة"
+                    "قدرات القاطرة",
+                    "Capacité du tracteur routier",
+                    "Capacidade do cavalo mecânico"
                   )}
                 </span>
               </div>
@@ -826,7 +877,9 @@ export default function DieselTruck2Detail() {
                   "Long-Haul Ready Platform",
                   "面向长途干线运输的高效平台",
                   "Plataforma preparada para larga distancia",
-                  "منصة جاهزة للنقل لمسافات طويلة"
+                  "منصة جاهزة للنقل لمسافات طويلة",
+                  "Plateforme prête pour le longue distance",
+                  "Plataforma pronta para longas distâncias"
                 )}
               </h2>
             </div>
@@ -921,7 +974,9 @@ export default function DieselTruck2Detail() {
                     "Safety Systems",
                     "安全系统",
                     "Sistemas de seguridad",
-                    "أنظمة السلامة"
+                    "أنظمة السلامة",
+                    "Systèmes de sécurité",
+                    "Sistemas de segurança"
                   )}
                 </span>
               </div>
@@ -946,7 +1001,9 @@ export default function DieselTruck2Detail() {
                   "Ready for Modern Fleets",
                   "满足现代车队安全运营需求",
                   "Preparado para flotas modernas",
-                  "جاهز لأساطيل النقل الحديثة"
+                  "جاهز لأساطيل النقل الحديثة",
+                  "Prêt pour les flottes modernes",
+                  "Pronto para frotas modernas"
                 )}
               </h2>
             </div>

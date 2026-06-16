@@ -49,16 +49,22 @@ const keyHighlights = [
     zhLabel: "城市配送底盘",
     esLabel: "Chasis para rutas urbanas",
     arLabel: "شاسيه للطرق الحضرية",
+    frLabel: "Châssis pour itinéraires urbains",
+    ptLabel: "Chassi para rotas urbanas",
   },
   {
     value: "EV",
     zhValue: "纯电",
     esValue: "EV",
     arValue: "كهربائي",
+    frValue: "Électrique",
+    ptValue: "Elétrico",
     label: "Battery-Electric Drive",
     zhLabel: "电池电驱平台",
     esLabel: "Propulsión eléctrica a batería",
     arLabel: "دفع كهربائي بالبطارية",
+    frLabel: "Transmission électrique à batterie",
+    ptLabel: "Tração elétrica a bateria",
   },
   {
     value: "AC + DC",
@@ -69,16 +75,22 @@ const keyHighlights = [
     zhLabel: "车队充电适配",
     esLabel: "Soporte de carga para flotas",
     arLabel: "دعم شحن الأساطيل",
+    frLabel: "Prise en charge de recharge flotte",
+    ptLabel: "Suporte de recarga para frotas",
   },
   {
     value: "Urban",
     zhValue: "城市",
     esValue: "Urbano",
     arValue: "حضري",
+    frValue: "Urbain",
+    ptValue: "Urbano",
     label: "Distribution Operation",
     zhLabel: "配送运营场景",
     esLabel: "Operación de distribución",
     arLabel: "عمليات التوزيع",
+    frLabel: "Opération de distribution",
+    ptLabel: "Operação de distribuição",
   },
 ];
 
@@ -90,6 +102,10 @@ const keyFeatures = [
       "Plataforma eléctrica a batería desarrollada para reparto urbano, rutas de servicio y tareas de logística local.",
     arText:
       "منصة كهربائية بالبطارية مطورة للتوصيل داخل المدن، ومسارات الخدمة، ومهام الخدمات اللوجستية المحلية.",
+    frText:
+      "Plateforme électrique à batterie développée pour la livraison urbaine, les itinéraires de service et les tâches de logistique locale.",
+    ptText:
+      "Plataforma elétrica a bateria desenvolvida para entregas urbanas, rotas de serviço e tarefas de logística local.",
   },
   {
     text: "Optimised for predictable daily routes, depot charging and frequent stop-start operation.",
@@ -98,6 +114,10 @@ const keyFeatures = [
       "Optimizada para rutas diarias previsibles, carga en depósito y operaciones urbanas con paradas frecuentes.",
     arText:
       "مهيأة للمسارات اليومية المتوقعة، والشحن في المستودعات، والتشغيل المتكرر بالتوقف والانطلاق.",
+    frText:
+      "Optimisée pour les itinéraires quotidiens prévisibles, la recharge en dépôt et les opérations fréquentes avec arrêts et redémarrages.",
+    ptText:
+      "Otimizada para rotas diárias previsíveis, recarga em depósito e operação frequente de para-e-anda.",
   },
   {
     text: "Body-ready architecture for van, refrigerated, service and utility applications.",
@@ -106,6 +126,10 @@ const keyFeatures = [
       "Arquitectura preparada para carrocerías tipo furgón, refrigeradas, de servicio y utilitarias.",
     arText:
       "بنية جاهزة للتركيب العلوي لتطبيقات الصناديق المغلقة، والتبريد، والخدمة، والمرافق.",
+    frText:
+      "Architecture prête pour carrosseries fourgon, réfrigérées, de service et utilitaires.",
+    ptText:
+      "Arquitetura pronta para carrocerias baú, refrigeradas, de serviço e utilitárias.",
   },
   {
     text: "Driver interface designed around visibility, simple controls and daily fleet usability.",
@@ -114,6 +138,10 @@ const keyFeatures = [
       "Interfaz del conductor diseñada para buena visibilidad, controles simples y uso diario por flotas.",
     arText:
       "واجهة قيادة مصممة حول وضوح الرؤية، وسهولة التحكم، والاستخدام اليومي ضمن الأساطيل.",
+    frText:
+      "Interface conducteur conçue autour de la visibilité, de commandes simples et de l'utilisation quotidienne en flotte.",
+    ptText:
+      "Interface do motorista projetada para visibilidade, controles simples e uso diário por frotas.",
   },
   {
     text: "Electric architecture helps fleets reduce noise and tailpipe emissions on urban routes.",
@@ -122,6 +150,10 @@ const keyFeatures = [
       "La arquitectura eléctrica ayuda a reducir el ruido y las emisiones en rutas urbanas.",
     arText:
       "تساعد البنية الكهربائية الأساطيل على تقليل الضوضاء والانبعاثات في المسارات الحضرية.",
+    frText:
+      "L'architecture électrique aide les flottes à réduire le bruit et les émissions à l'échappement sur les itinéraires urbains.",
+    ptText:
+      "A arquitetura elétrica ajuda frotas a reduzir ruído e emissões de escapamento em rotas urbanas.",
   },
   {
     text: "Compact cab-over layout supports manoeuvrability in streets, depots and loading areas.",
@@ -130,6 +162,10 @@ const keyFeatures = [
       "El diseño compacto de cabina avanzada facilita la maniobrabilidad en calles, depósitos y zonas de carga.",
     arText:
       "يساعد تصميم الكابينة الأمامية المدمج على المناورة في الشوارع والمستودعات ومناطق التحميل.",
+    frText:
+      "La configuration compacte à cabine avancée facilite la maniabilité dans les rues, dépôts et zones de chargement.",
+    ptText:
+      "O layout compacto de cabine avançada favorece a manobrabilidade em ruas, depósitos e áreas de carga.",
   },
   {
     text: "Low-noise operation supports early morning, night-time and residential delivery schedules.",
@@ -138,6 +174,10 @@ const keyFeatures = [
       "El funcionamiento silencioso permite entregas temprano por la mañana, de noche y en zonas residenciales.",
     arText:
       "يدعم التشغيل منخفض الضوضاء جداول التوصيل في الصباح الباكر والليل والمناطق السكنية.",
+    frText:
+      "Le fonctionnement à faible bruit facilite les livraisons tôt le matin, de nuit et dans les zones résidentielles.",
+    ptText:
+      "A operação de baixo ruído apoia entregas de manhã cedo, à noite e em áreas residenciais.",
   },
   {
     text: "Clean body design and ASTRAQ visual identity for commercial electric fleets.",
@@ -146,6 +186,10 @@ const keyFeatures = [
       "Diseño exterior limpio e identidad visual ASTRAQ para flotas eléctricas comerciales.",
     arText:
       "تصميم خارجي نظيف وهوية ASTRAQ بصرية مناسبة للأساطيل الكهربائية التجارية.",
+    frText:
+      "Design de carrosserie épuré et identité visuelle ASTRAQ pour les flottes électriques commerciales.",
+    ptText:
+      "Design limpo da carroceria e identidade visual ASTRAQ para frotas elétricas comerciais.",
   },
 ];
 
@@ -155,60 +199,84 @@ const quickSpecs = [
     zhLabel: "车辆类型",
     esLabel: "Tipo de vehículo",
     arLabel: "نوع المركبة",
+    frLabel: "Type de véhicule",
+    ptLabel: "Tipo de veículo",
     value: "Battery-Electric Light Truck",
     zhValue: "纯电轻型卡车",
     esValue: "Camión ligero eléctrico a batería",
     arValue: "شاحنة خفيفة كهربائية بالبطارية",
+    frValue: "Camion léger électrique à batterie",
+    ptValue: "Caminhão leve elétrico a bateria",
   },
   {
     label: "Application",
     zhLabel: "应用场景",
     esLabel: "Aplicación",
     arLabel: "الاستخدام",
+    frLabel: "Application",
+    ptLabel: "Aplicação",
     value: "City Delivery / Local Logistics",
     zhValue: "城市配送 / 本地物流",
     esValue: "Reparto urbano / logística local",
     arValue: "توصيل حضري / لوجستيات محلية",
+    frValue: "Livraison urbaine / logistique locale",
+    ptValue: "Entrega urbana / logística local",
   },
   {
     label: "Drive System",
     zhLabel: "驱动系统",
     esLabel: "Sistema de propulsión",
     arLabel: "نظام الدفع",
+    frLabel: "Système de transmission",
+    ptLabel: "Sistema de tração",
     value: "Electric Motor Drive",
     zhValue: "电机驱动系统",
     esValue: "Propulsión por motor eléctrico",
     arValue: "دفع بمحرك كهربائي",
+    frValue: "Transmission par moteur électrique",
+    ptValue: "Tração por motor elétrico",
   },
   {
     label: "Charging",
     zhLabel: "充电方式",
     esLabel: "Carga",
     arLabel: "الشحن",
+    frLabel: "Recharge",
+    ptLabel: "Recarga",
     value: "AC Charging + DC Fast Charging",
     zhValue: "交流充电 + 直流快充",
     esValue: "Carga AC + carga rápida DC",
     arValue: "شحن AC + شحن سريع DC",
+    frValue: "Recharge AC + recharge rapide DC",
+    ptValue: "Recarga AC + recarga rápida DC",
   },
   {
     label: "Cabin",
     zhLabel: "驾驶室",
     esLabel: "Cabina",
     arLabel: "الكابينة",
+    frLabel: "Cabine",
+    ptLabel: "Cabine",
     value: "Urban Cab Configuration",
     zhValue: "城市配送驾驶室配置",
     esValue: "Configuración de cabina urbana",
     arValue: "تكوين كابينة حضرية",
+    frValue: "Configuration de cabine urbaine",
+    ptValue: "Configuração de cabine urbana",
   },
   {
     label: "Body Options",
     zhLabel: "上装选择",
     esLabel: "Opciones de carrocería",
     arLabel: "خيارات الهيكل العلوي",
+    frLabel: "Options de carrosserie",
+    ptLabel: "Opções de carroceria",
     value: "Van / Refrigerated / Utility",
     zhValue: "厢式 / 冷链 / 工具车",
     esValue: "Furgón / refrigerado / utilitario",
     arValue: "صندوق مغلق / مبرد / خدمات",
+    frValue: "Fourgon / réfrigéré / utilitaire",
+    ptValue: "Baú / refrigerado / utilitário",
   },
 ];
 
@@ -218,64 +286,96 @@ const powerPullSpecs = [
     zhLabel: "动力系统",
     esLabel: "Tren motriz",
     arLabel: "منظومة الدفع",
+    frLabel: "Groupe motopropulseur",
+    ptLabel: "Trem de força",
     value: "Battery-electric drive",
     zhValue: "电池电驱系统",
     esValue: "Propulsión eléctrica a batería",
     arValue: "دفع كهربائي بالبطارية",
+    frValue: "Transmission électrique à batterie",
+    ptValue: "Tração elétrica a bateria",
     note: "Calibrated for smooth launch and low-speed delivery duty cycles.",
     zhNote: "面向平顺起步和低速配送工况进行匹配，适合城市车辆频繁启停。",
     esNote:
       "Calibrado para arranques suaves y ciclos de reparto a baja velocidad.",
     arNote:
       "تمت معايرته للانطلاق السلس ودورات التوصيل منخفضة السرعة.",
+    frNote:
+      "Calibré pour des démarrages souples et des cycles de livraison à basse vitesse.",
+    ptNote:
+      "Calibrado para partidas suaves e ciclos de entrega em baixa velocidade.",
   },
   {
     label: "Energy Recovery",
     zhLabel: "能量回收",
     esLabel: "Recuperación de energía",
     arLabel: "استعادة الطاقة",
+    frLabel: "Récupération d'énergie",
+    ptLabel: "Recuperação de energia",
     value: "Regenerative braking",
     zhValue: "制动能量回收",
     esValue: "Frenado regenerativo",
     arValue: "فرملة تجديدية",
+    frValue: "Freinage régénératif",
+    ptValue: "Frenagem regenerativa",
     note: "Supports energy recovery during repeated braking on city routes.",
     zhNote: "在城市线路反复制动过程中回收部分能量，提升日常运营效率。",
     esNote:
       "Permite recuperar energía durante frenadas repetidas en rutas urbanas.",
     arNote:
       "يدعم استعادة الطاقة أثناء الكبح المتكرر في المسارات الحضرية.",
+    frNote:
+      "Permet de récupérer de l'énergie lors des freinages répétés sur les itinéraires urbains.",
+    ptNote:
+      "Permite recuperar energia durante frenagens repetidas em rotas urbanas.",
   },
   {
     label: "Payload Use",
     zhLabel: "载货应用",
     esLabel: "Uso de carga",
     arLabel: "استخدام الحمولة",
+    frLabel: "Usage de charge",
+    ptLabel: "Uso de carga",
     value: "Urban distribution bodies",
     zhValue: "城市配送上装",
     esValue: "Carrocerías de distribución urbana",
     arValue: "هياكل توزيع حضرية",
+    frValue: "Carrosseries de distribution urbaine",
+    ptValue: "Carrocerias de distribuição urbana",
     note: "Suitable for delivery body, service body and refrigerated applications.",
     zhNote: "可用于配送厢体、服务保障车体及冷链运输上装。",
     esNote:
       "Adecuado para carrocerías de reparto, servicio y aplicaciones refrigeradas.",
     arNote:
       "مناسب لهياكل التوصيل والخدمة وتطبيقات النقل المبرد.",
+    frNote:
+      "Adapté aux carrosseries de livraison, de service et aux applications réfrigérées.",
+    ptNote:
+      "Adequado para carrocerias de entrega, serviço e aplicações refrigeradas.",
   },
   {
     label: "Charging Pattern",
     zhLabel: "补能模式",
     esLabel: "Patrón de carga",
     arLabel: "نمط الشحن",
+    frLabel: "Mode de recharge",
+    ptLabel: "Padrão de recarga",
     value: "Depot plus fast charge",
     zhValue: "场站充电 + 快充补能",
     esValue: "Depósito más carga rápida",
     arValue: "شحن بالمستودع مع شحن سريع",
+    frValue: "Dépôt plus recharge rapide",
+    ptValue: "Depósito mais recarga rápida",
     note: "Designed around fleet charging plans and predictable route scheduling.",
     zhNote: "适配车队场站充电计划，并支持固定线路中的快速补能需求。",
     esNote:
       "Diseñado para planes de carga de flotas y rutas previsibles.",
     arNote:
       "مصمم لخطط شحن الأساطيل وجدولة المسارات المتوقعة.",
+    frNote:
+      "Conçu pour les plans de recharge de flotte et les itinéraires prévisibles.",
+    ptNote:
+      "Projetado para planos de recarga de frotas e rotas previsíveis.",
   },
 ];
 
@@ -291,6 +391,8 @@ const safetyFeatures = [
       "Frenado autónomo de emergencia para tráfico urbano denso.",
     arDesc:
       "دعم الفرملة الطارئة الذاتية في حركة المرور الحضرية الكثيفة.",
+    frDesc: "Freinage d'urgence autonome pour le trafic urbain dense.",
+    ptDesc: "Frenagem autônoma de emergência para tráfego urbano intenso.",
   },
   {
     title: "LDW",
@@ -303,6 +405,8 @@ const safetyFeatures = [
       "Alerta de salida de carril para la operación diaria de flotas.",
     arDesc:
       "تحذير مغادرة المسار لدعم التشغيل اليومي للأساطيل.",
+    frDesc: "Alerte de franchissement de ligne pour l'exploitation quotidienne des flottes.",
+    ptDesc: "Alerta de saída de faixa para a operação diária de frotas.",
   },
   {
     title: "ESC",
@@ -315,6 +419,8 @@ const safetyFeatures = [
       "Control electrónico de estabilidad para una conducción más predecible.",
     arDesc:
       "تحكم إلكتروني بالثبات لتحسين استقرار القيادة.",
+    frDesc: "Contrôle électronique de stabilité pour une tenue de route plus prévisible.",
+    ptDesc: "Controle eletrônico de estabilidade para condução mais previsível.",
   },
   {
     title: "AVAS",
@@ -327,54 +433,72 @@ const safetyFeatures = [
       "Advertencia acústica a baja velocidad para alertar a peatones.",
     arDesc:
       "تنبيه صوتي منخفض السرعة لزيادة وعي المشاة.",
+    frDesc: "Avertissement sonore à basse vitesse pour mieux signaler le véhicule aux piétons.",
+    ptDesc: "Alerta acústico em baixa velocidade para maior percepção dos pedestres.",
   },
   {
     title: "Camera",
     zhTitle: "倒车影像",
     esTitle: "Cámara",
     arTitle: "كاميرا",
+    frTitle: "Caméra",
+    ptTitle: "Câmera",
     desc: "Reverse camera support for loading areas and depots.",
     zhDesc: "倒车影像辅助，适用于仓库、装卸区和场站调度。",
     esDesc:
       "Cámara de reversa para zonas de carga y depósitos.",
     arDesc:
       "كاميرا خلفية لدعم العمل في مناطق التحميل والمستودعات.",
+    frDesc: "Caméra de recul pour les zones de chargement et les dépôts.",
+    ptDesc: "Câmera de ré para áreas de carga e depósitos.",
   },
   {
     title: "Digital",
     zhTitle: "数字座舱",
     esTitle: "Digital",
     arTitle: "رقمي",
+    frTitle: "Numérique",
+    ptTitle: "Digital",
     desc: "Digital cockpit interface for straightforward driver operation.",
     zhDesc: "数字化驾驶界面，减少驾驶员学习成本并提升操作直观性。",
     esDesc:
       "Interfaz digital de cabina para una operación sencilla.",
     arDesc:
       "واجهة قيادة رقمية لتسهيل تشغيل السائق.",
+    frDesc: "Interface de cabine numérique pour une utilisation simple par le conducteur.",
+    ptDesc: "Interface digital da cabine para operação simples pelo motorista.",
   },
   {
     title: "Battery",
     zhTitle: "电池防护",
     esTitle: "Batería",
     arTitle: "البطارية",
+    frTitle: "Batterie",
+    ptTitle: "Bateria",
     desc: "Battery protection strategy for commercial route use.",
     zhDesc: "面向商用运营工况的电池防护策略。",
     esDesc:
       "Estrategia de protección de batería para rutas comerciales.",
     arDesc:
       "استراتيجية حماية للبطارية مناسبة للاستخدام التجاري.",
+    frDesc: "Stratégie de protection de batterie adaptée aux itinéraires commerciaux.",
+    ptDesc: "Estratégia de proteção da bateria para uso em rotas comerciais.",
   },
   {
     title: "Fleet",
     zhTitle: "车队接口",
     esTitle: "Flota",
     arTitle: "الأسطول",
+    frTitle: "Flotte",
+    ptTitle: "Frota",
     desc: "Connectivity-ready architecture for future fleet management systems.",
     zhDesc: "预留车队管理系统接入能力，便于后续运营数据管理。",
     esDesc:
       "Arquitectura preparada para futuros sistemas de gestión de flotas.",
     arDesc:
       "بنية جاهزة للاتصال بأنظمة إدارة الأساطيل المستقبلية.",
+    frDesc: "Architecture prête pour les futurs systèmes de gestion de flotte.",
+    ptDesc: "Arquitetura preparada para futuros sistemas de gestão de frotas.",
   },
 ];
 
@@ -384,40 +508,56 @@ const configurations = [
     zhLabel: "城市驾驶室",
     esLabel: "Cabina urbana",
     arLabel: "كابينة حضرية",
+    frLabel: "Cabine urbaine",
+    ptLabel: "Cabine urbana",
     value: "Short-wheelbase configuration for urban delivery routes",
     zhValue: "适合城市配送路线的短轴距配置",
     esValue: "Configuración de batalla corta para rutas de reparto urbano",
     arValue: "تكوين بقاعدة عجلات قصيرة لمسارات التوصيل الحضري",
+    frValue: "Configuration à empattement court pour les itinéraires de livraison urbaine",
+    ptValue: "Configuração de entre-eixos curto para rotas de entrega urbana",
   },
   {
     label: "Van Body",
     zhLabel: "厢式上装",
     esLabel: "Carrocería furgón",
     arLabel: "هيكل صندوق مغلق",
+    frLabel: "Carrosserie fourgon",
+    ptLabel: "Carroceria baú",
     value: "Dry freight, parcel delivery and service fleet use",
     zhValue: "适用于干货运输、包裹配送和服务车队",
     esValue: "Carga seca, reparto de paquetes y uso por flotas de servicio",
     arValue: "للشحن الجاف وتوصيل الطرود واستخدام أساطيل الخدمة",
+    frValue: "Fret sec, livraison de colis et utilisation par flottes de service",
+    ptValue: "Carga seca, entrega de encomendas e uso por frotas de serviço",
   },
   {
     label: "Refrigerated Body",
     zhLabel: "冷链上装",
     esLabel: "Carrocería refrigerada",
     arLabel: "هيكل مبرد",
+    frLabel: "Carrosserie réfrigérée",
+    ptLabel: "Carroceria refrigerada",
     value: "Cold-chain logistics and food distribution applications",
     zhValue: "适用于冷链物流和食品配送场景",
     esValue: "Logística de cadena de frío y distribución de alimentos",
     arValue: "لتطبيقات سلسلة التبريد وتوزيع الأغذية",
+    frValue: "Logistique de chaîne du froid et distribution alimentaire",
+    ptValue: "Logística de cadeia fria e distribuição de alimentos",
   },
   {
     label: "Utility Body",
     zhLabel: "工具车上装",
     esLabel: "Carrocería utilitaria",
     arLabel: "هيكل خدمات",
+    frLabel: "Carrosserie utilitaire",
+    ptLabel: "Carroceria utilitária",
     value: "Service, maintenance and municipal operation tasks",
     zhValue: "适用于服务保障、维修维护和市政作业任务",
     esValue: "Tareas de servicio, mantenimiento y operación municipal",
     arValue: "لمهام الخدمة والصيانة والعمليات البلدية",
+    frValue: "Tâches de service, maintenance et opérations municipales",
+    ptValue: "Tarefas de serviço, manutenção e operação municipal",
   },
 ];
 
@@ -427,12 +567,23 @@ export default function ElectricLightTruckDetail() {
   const isZh = language === "zh";
   const isEs = language === "es";
   const isAr = language === "ar";
+  const isFr = language === "fr";
+  const isPt = language === "pt";
   const isRtl = isAr;
 
-  const getLabel = (en: string, zh: string, es: string, ar: string) => {
+  const getLabel = (
+    en: string,
+    zh: string,
+    es: string,
+    ar: string,
+    fr = en,
+    pt = en
+  ) => {
     if (isZh) return zh;
     if (isEs) return es;
     if (isAr) return ar;
+    if (isFr) return fr;
+    if (isPt) return pt;
     return en;
   };
 
@@ -563,7 +714,9 @@ export default function ElectricLightTruckDetail() {
                 "Battery-Electric Light Truck",
                 "纯电轻型卡车",
                 "Camión ligero eléctrico a batería",
-                "شاحنة خفيفة كهربائية بالبطارية"
+                "شاحنة خفيفة كهربائية بالبطارية",
+                "Camion léger électrique à batterie",
+                "Caminhão leve elétrico a bateria"
               )}
             </div>
 
@@ -590,7 +743,9 @@ export default function ElectricLightTruckDetail() {
                 "EL1 Electric City Cab",
                 "EL1 城市纯电轻卡",
                 "EL1 cabina urbana eléctrica",
-                "EL1 كابينة حضرية كهربائية"
+                "EL1 كابينة حضرية كهربائية",
+                "EL1 cabine urbaine électrique",
+                "EL1 cabine urbana elétrica"
               )}
             </h1>
 
@@ -616,7 +771,9 @@ export default function ElectricLightTruckDetail() {
                 "City Delivery · Quiet Operation · Fleet Use",
                 "城市配送 · 低噪运行 · 车队运营",
                 "Reparto urbano · Operación silenciosa · Uso por flotas",
-                "توصيل حضري · تشغيل هادئ · استخدام الأساطيل"
+                "توصيل حضري · تشغيل هادئ · استخدام الأساطيل",
+                "Livraison urbaine · Fonctionnement silencieux · Usage flotte",
+                "Entrega urbana · Operação silenciosa · Uso em frotas"
               )}
             </p>
 
@@ -662,7 +819,9 @@ export default function ElectricLightTruckDetail() {
                   "View Specification",
                   "查看参数",
                   "Ver especificaciones",
-                  "عرض المواصفات"
+                  "عرض المواصفات",
+                  "Voir les spécifications",
+                  "Ver especificações"
                 )}
               </a>
 
@@ -694,7 +853,7 @@ export default function ElectricLightTruckDetail() {
                   e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
-                {getLabel("Buy Now", "立即购买", "Comprar ahora", "اشتر الآن")}
+                {getLabel("Buy Now", "立即购买", "Comprar ahora", "اشتر الآن", "Acheter", "Comprar agora")}
               </a>
             </div>
           </div>
@@ -748,7 +907,14 @@ export default function ElectricLightTruckDetail() {
                     textShadow: "0 0 26px rgba(0,174,239,0.24)",
                   }}
                 >
-                  {getLabel(item.value, item.zhValue, item.esValue, item.arValue)}
+                  {getLabel(
+                    item.value,
+                    item.zhValue,
+                    item.esValue,
+                    item.arValue,
+                    item.frValue,
+                    item.ptValue
+                  )}
                 </div>
 
                 <div
@@ -766,7 +932,14 @@ export default function ElectricLightTruckDetail() {
                     overflowWrap: "break-word",
                   }}
                 >
-                  {getLabel(item.label, item.zhLabel, item.esLabel, item.arLabel)}
+                  {getLabel(
+                    item.label,
+                    item.zhLabel,
+                    item.esLabel,
+                    item.arLabel,
+                    item.frLabel,
+                    item.ptLabel
+                  )}
                 </div>
               </div>
             ))}
@@ -809,7 +982,7 @@ export default function ElectricLightTruckDetail() {
                     color: COLORS.accentLight,
                   }}
                 >
-                  {getLabel("Key Features", "核心特点", "Características clave", "الميزات الرئيسية")}
+                  {getLabel("Key Features", "核心特点", "Características clave", "الميزات الرئيسية", "Caractéristiques clés", "Principais características")}
                 </span>
               </div>
 
@@ -836,7 +1009,9 @@ export default function ElectricLightTruckDetail() {
                   "Built for Urban Electric Distribution",
                   "面向城市电动配送场景打造",
                   "Diseñado para distribución eléctrica urbana",
-                  "مصمم للتوزيع الكهربائي الحضري"
+                  "مصمم للتوزيع الكهربائي الحضري",
+                  "Conçu pour la distribution électrique urbaine",
+                  "Construído para distribuição elétrica urbana"
                 )}
               </h2>
 
@@ -857,7 +1032,9 @@ export default function ElectricLightTruckDetail() {
                   "The EL1 is a city-focused battery-electric light truck for delivery fleets, service operators and body builders that need a quieter and cleaner urban vehicle platform.",
                   "EL1 是面向城市配送车队、服务运营商和上装厂的纯电轻卡平台，适合需要低噪声、低排放城市车辆的商用场景。",
                   "El EL1 es un camión ligero eléctrico a batería enfocado en la ciudad, pensado para flotas de reparto, operadores de servicio y carroceros que necesitan una plataforma urbana más silenciosa y limpia.",
-                  "EL1 شاحنة خفيفة كهربائية بالبطارية موجهة للمدن، مناسبة لأساطيل التوصيل ومشغلي الخدمات ومصنعي الهياكل الذين يحتاجون إلى منصة حضرية أكثر هدوءًا ونظافة."
+                  "EL1 شاحنة خفيفة كهربائية بالبطارية موجهة للمدن، مناسبة لأساطيل التوصيل ومشغلي الخدمات ومصنعي الهياكل الذين يحتاجون إلى منصة حضرية أكثر هدوءًا ونظافة.",
+                  "L'EL1 est un camion léger électrique à batterie conçu pour la ville, destiné aux flottes de livraison, aux opérateurs de services et aux carrossiers qui recherchent une plateforme urbaine plus silencieuse et plus propre.",
+                  "O EL1 é um caminhão leve elétrico a bateria voltado para a cidade, pensado para frotas de entrega, operadores de serviço e implementadores que precisam de uma plataforma urbana mais silenciosa e limpa."
                 )}
               </p>
             </div>
@@ -912,7 +1089,14 @@ export default function ElectricLightTruckDetail() {
                       color: COLORS.textSoft,
                     }}
                   >
-                    {getLabel(feature.text, feature.zhText, feature.esText, feature.arText)}
+                    {getLabel(
+                      feature.text,
+                      feature.zhText,
+                      feature.esText,
+                      feature.arText,
+                      feature.frText,
+                      feature.ptText
+                    )}
                   </div>
                 </div>
               ))}
@@ -956,7 +1140,7 @@ export default function ElectricLightTruckDetail() {
                     color: COLORS.accentLight,
                   }}
                 >
-                  {getLabel("Product Specification", "产品参数", "Especificaciones del producto", "مواصفات المنتج")}
+                  {getLabel("Product Specification", "产品参数", "Especificaciones del producto", "مواصفات المنتج", "Spécifications du produit", "Especificações do produto")}
                 </span>
               </div>
 
@@ -982,7 +1166,9 @@ export default function ElectricLightTruckDetail() {
                   "Practical EV Platform for City Fleets",
                   "适合城市车队运营的电动平台",
                   "Plataforma EV práctica para flotas urbanas",
-                  "منصة كهربائية عملية لأساطيل المدن"
+                  "منصة كهربائية عملية لأساطيل المدن",
+                  "Plateforme électrique pratique pour les flottes urbaines",
+                  "Plataforma elétrica prática para frotas urbanas"
                 )}
               </h2>
 
@@ -1002,7 +1188,9 @@ export default function ElectricLightTruckDetail() {
                   "The configuration focuses on daily usability, body adaptability, charging flexibility and a clean electric fleet image for commercial operators.",
                   "该车型配置重点围绕日常可用性、上装适配、充电灵活性以及商用电动车队形象展开。",
                   "La configuración se centra en la usabilidad diaria, la adaptabilidad de carrocerías, la flexibilidad de carga y una imagen limpia de flota eléctrica para operadores comerciales.",
-                  "يركز التكوين على سهولة الاستخدام اليومي، وتوافق الهياكل، ومرونة الشحن، وصورة الأسطول الكهربائي النظيفة للمشغلين التجاريين."
+                  "يركز التكوين على سهولة الاستخدام اليومي، وتوافق الهياكل، ومرونة الشحن، وصورة الأسطول الكهربائي النظيفة للمشغلين التجاريين.",
+                  "La configuration met l'accent sur l'utilisation quotidienne, l'adaptabilité de la carrosserie, la flexibilité de recharge et une image de flotte électrique propre pour les opérateurs commerciaux.",
+                  "A configuração foca na usabilidade diária, adaptabilidade da carroceria, flexibilidade de recarga e uma imagem limpa de frota elétrica para operadores comerciais."
                 )}
               </p>
             </div>
@@ -1049,7 +1237,14 @@ export default function ElectricLightTruckDetail() {
                         overflowWrap: "break-word",
                       }}
                     >
-                      {getLabel(spec.label, spec.zhLabel, spec.esLabel, spec.arLabel)}
+                      {getLabel(
+                        spec.label,
+                        spec.zhLabel,
+                        spec.esLabel,
+                        spec.arLabel,
+                        spec.frLabel,
+                        spec.ptLabel
+                      )}
                     </div>
 
                     <div
@@ -1064,7 +1259,14 @@ export default function ElectricLightTruckDetail() {
                         wordBreak: "break-word",
                       }}
                     >
-                      {getLabel(spec.value, spec.zhValue, spec.esValue, spec.arValue)}
+                      {getLabel(
+                        spec.value,
+                        spec.zhValue,
+                        spec.esValue,
+                        spec.arValue,
+                        spec.frValue,
+                        spec.ptValue
+                      )}
                     </div>
                   </div>
                 ))}
@@ -1107,7 +1309,9 @@ export default function ElectricLightTruckDetail() {
                   "View Specification",
                   "查看参数",
                   "Ver especificaciones",
-                  "عرض المواصفات"
+                  "عرض المواصفات",
+                  "Voir les spécifications",
+                  "Ver especificações"
                 )}
               </a>
             </div>
@@ -1152,7 +1356,9 @@ export default function ElectricLightTruckDetail() {
                   "Safety Features Included",
                   "安全配置",
                   "Funciones de seguridad incluidas",
-                  "ميزات السلامة المضمنة"
+                  "ميزات السلامة المضمنة",
+                  "Équipements de sécurité inclus",
+                  "Recursos de segurança incluídos"
                 )}
               </span>
 
@@ -1188,7 +1394,9 @@ export default function ElectricLightTruckDetail() {
                 "Confidence for Daily Fleet Operation",
                 "服务车队日常运营的安全支持",
                 "Confianza para la operación diaria de flotas",
-                "ثقة أكبر في التشغيل اليومي للأساطيل"
+                "ثقة أكبر في التشغيل اليومي للأساطيل",
+                "Confiance pour l'exploitation quotidienne des flottes",
+                "Confiança para a operação diária de frotas"
               )}
             </h2>
           </div>
@@ -1231,7 +1439,14 @@ export default function ElectricLightTruckDetail() {
                     marginBottom: "0.55rem",
                   }}
                 >
-                  {getLabel(feature.title, feature.zhTitle, feature.esTitle, feature.arTitle)}
+                  {getLabel(
+                    feature.title,
+                    feature.zhTitle,
+                    feature.esTitle,
+                    feature.arTitle,
+                    feature.frTitle,
+                    feature.ptTitle
+                  )}
                 </div>
 
                 <div
@@ -1246,7 +1461,14 @@ export default function ElectricLightTruckDetail() {
                     overflowWrap: "break-word",
                   }}
                 >
-                  {getLabel(feature.desc, feature.zhDesc, feature.esDesc, feature.arDesc)}
+                  {getLabel(
+                    feature.desc,
+                    feature.zhDesc,
+                    feature.esDesc,
+                    feature.arDesc,
+                    feature.frDesc,
+                    feature.ptDesc
+                  )}
                 </div>
               </div>
             ))}
@@ -1289,7 +1511,7 @@ export default function ElectricLightTruckDetail() {
                     color: COLORS.accentLight,
                   }}
                 >
-                  {getLabel("Power & Control", "动力与控制", "Potencia y control", "القوة والتحكم")}
+                  {getLabel("Power & Control", "动力与控制", "Potencia y control", "القوة والتحكم", "Puissance et contrôle", "Potência e controle")}
                 </span>
               </div>
 
@@ -1315,7 +1537,9 @@ export default function ElectricLightTruckDetail() {
                   "Electric Drive for City Routes",
                   "面向城市路线的电驱系统",
                   "Propulsión eléctrica para rutas urbanas",
-                  "دفع كهربائي للمسارات الحضرية"
+                  "دفع كهربائي للمسارات الحضرية",
+                  "Transmission électrique pour itinéraires urbains",
+                  "Tração elétrica para rotas urbanas"
                 )}
               </h2>
 
@@ -1336,7 +1560,9 @@ export default function ElectricLightTruckDetail() {
                   "Electric drive supports smooth launch, predictable low-speed operation and energy recovery in stop-start city traffic.",
                   "电驱系统支持平顺起步、稳定的低速控制，并可在城市频繁启停工况中进行能量回收。",
                   "La propulsión eléctrica permite arranques suaves, operación predecible a baja velocidad y recuperación de energía en tráfico urbano con paradas frecuentes.",
-                  "يدعم الدفع الكهربائي الانطلاق السلس، والتحكم المتوقع عند السرعات المنخفضة، واستعادة الطاقة في حركة المرور الحضرية المتكررة التوقف والانطلاق."
+                  "يدعم الدفع الكهربائي الانطلاق السلس، والتحكم المتوقع عند السرعات المنخفضة، واستعادة الطاقة في حركة المرور الحضرية المتكررة التوقف والانطلاق.",
+                  "La transmission électrique favorise des démarrages souples, une conduite prévisible à basse vitesse et la récupération d'énergie dans le trafic urbain à arrêts fréquents.",
+                  "A tração elétrica oferece partidas suaves, operação previsível em baixa velocidade e recuperação de energia no tráfego urbano de para-e-anda."
                 )}
               </p>
             </div>
@@ -1393,7 +1619,14 @@ export default function ElectricLightTruckDetail() {
                       overflowWrap: "break-word",
                     }}
                   >
-                    {getLabel(spec.label, spec.zhLabel, spec.esLabel, spec.arLabel)}
+                    {getLabel(
+                      spec.label,
+                      spec.zhLabel,
+                      spec.esLabel,
+                      spec.arLabel,
+                      spec.frLabel,
+                      spec.ptLabel
+                    )}
                   </div>
 
                   <div
@@ -1408,7 +1641,14 @@ export default function ElectricLightTruckDetail() {
                       overflowWrap: "break-word",
                     }}
                   >
-                    {getLabel(spec.value, spec.zhValue, spec.esValue, spec.arValue)}
+                    {getLabel(
+                      spec.value,
+                      spec.zhValue,
+                      spec.esValue,
+                      spec.arValue,
+                      spec.frValue,
+                      spec.ptValue
+                    )}
                   </div>
 
                   <div
@@ -1423,7 +1663,14 @@ export default function ElectricLightTruckDetail() {
                       overflowWrap: "break-word",
                     }}
                   >
-                    {getLabel(spec.note, spec.zhNote, spec.esNote, spec.arNote)}
+                    {getLabel(
+                      spec.note,
+                      spec.zhNote,
+                      spec.esNote,
+                      spec.arNote,
+                      spec.frNote,
+                      spec.ptNote
+                    )}
                   </div>
                 </div>
               ))}
@@ -1467,7 +1714,7 @@ export default function ElectricLightTruckDetail() {
                     color: COLORS.accentLight,
                   }}
                 >
-                  {getLabel("Body Configurations", "上装配置", "Configuraciones de carrocería", "تكوينات الهياكل")}
+                  {getLabel("Body Configurations", "上装配置", "Configuraciones de carrocería", "تكوينات الهياكل", "Configurations de carrosserie", "Configurações de carroceria")}
                 </span>
               </div>
 
@@ -1493,7 +1740,9 @@ export default function ElectricLightTruckDetail() {
                   "One Platform for Multiple Urban Bodies",
                   "一个平台适配多种城市上装",
                   "Una plataforma para múltiples carrocerías urbanas",
-                  "منصة واحدة لهياكل حضرية متعددة"
+                  "منصة واحدة لهياكل حضرية متعددة",
+                  "Une plateforme pour plusieurs carrosseries urbaines",
+                  "Uma plataforma para múltiplas carrocerias urbanas"
                 )}
               </h2>
 
@@ -1513,7 +1762,9 @@ export default function ElectricLightTruckDetail() {
                   "The EL1 platform can support several commercial body styles, helping operators manage different city service tasks with a common electric chassis.",
                   "EL1 平台可支持多种商用上装，帮助运营方用同一电动底盘覆盖不同城市服务任务。",
                   "La plataforma EL1 puede admitir varios tipos de carrocería comercial, ayudando a los operadores a cubrir diferentes tareas urbanas con un chasis eléctrico común.",
-                  "يمكن لمنصة EL1 دعم عدة أنماط من الهياكل التجارية، مما يساعد المشغلين على إدارة مهام حضرية مختلفة باستخدام شاسيه كهربائي مشترك."
+                  "يمكن لمنصة EL1 دعم عدة أنماط من الهياكل التجارية، مما يساعد المشغلين على إدارة مهام حضرية مختلفة باستخدام شاسيه كهربائي مشترك.",
+                  "La plateforme EL1 peut prendre en charge plusieurs types de carrosseries commerciales, aidant les opérateurs à gérer différentes missions urbaines avec un châssis électrique commun.",
+                  "A plataforma EL1 pode suportar vários tipos de carroceria comercial, ajudando operadores a atender diferentes tarefas urbanas com um chassi elétrico comum."
                 )}
               </p>
             </div>
@@ -1550,7 +1801,14 @@ export default function ElectricLightTruckDetail() {
                       overflowWrap: "break-word",
                     }}
                   >
-                    {getLabel(item.label, item.zhLabel, item.esLabel, item.arLabel)}
+                    {getLabel(
+                      item.label,
+                      item.zhLabel,
+                      item.esLabel,
+                      item.arLabel,
+                      item.frLabel,
+                      item.ptLabel
+                    )}
                   </div>
 
                   <div
@@ -1565,7 +1823,14 @@ export default function ElectricLightTruckDetail() {
                       overflowWrap: "break-word",
                     }}
                   >
-                    {getLabel(item.value, item.zhValue, item.esValue, item.arValue)}
+                    {getLabel(
+                      item.value,
+                      item.zhValue,
+                      item.esValue,
+                      item.arValue,
+                      item.frValue,
+                      item.ptValue
+                    )}
                   </div>
                 </div>
               ))}
@@ -1598,7 +1863,7 @@ export default function ElectricLightTruckDetail() {
                   e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
-                {getLabel("Buy Now", "立即购买", "Comprar ahora", "اشتر الآن")}
+                {getLabel("Buy Now", "立即购买", "Comprar ahora", "اشتر الآن", "Acheter", "Comprar agora")}
               </a>
             </div>
           </div>

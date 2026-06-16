@@ -21,7 +21,7 @@ const LIGHT_BG = "#FFFFFF";
 const PRODUCTS_HEADER_BG =
   "linear-gradient(to bottom, #0B0D0F 0%, #1B2024 28%, #EDEBE7 100%)";
 
-type LangCode = "en" | "zh" | "es" | "ar";
+type LangCode = "en" | "zh" | "es" | "ar" | "fr" | "pt";
 
 const commonText: Record<
   LangCode,
@@ -61,6 +61,20 @@ const commonText: Record<
     brandTitle: "مصمم للعصر القادم",
     brandSubtitle: "طاقة نظيفة · تنقل ذكي · أنظمة ذكاء اصطناعي",
   },
+  fr: {
+    learnMore: "En Savoir Plus",
+    buyNow: "Acheter",
+    aboutUs: "À Propos",
+    brandTitle: "Conçu pour la Prochaine Ère",
+    brandSubtitle: "ÉNERGIE PROPRE · MOBILITÉ INTELLIGENTE · SYSTÈMES IA",
+  },
+  pt: {
+    learnMore: "Saiba Mais",
+    buyNow: "Comprar Agora",
+    aboutUs: "Sobre Nós",
+    brandTitle: "Construído para a Próxima Era",
+    brandSubtitle: "ENERGIA LIMPA · MOBILIDADE INTELIGENTE · SISTEMAS DE IA",
+  },
 };
 
 const truckModels = [
@@ -71,6 +85,8 @@ const truckModels = [
       zh: "柴油搅拌车",
       es: "Hormigonera Diésel",
       ar: "خلاطة ديزل",
+      fr: "Malaxeur Diesel",
+      pt: "Betoneira a Diesel",
     },
     image: "/diesel1.png",
     learnLink: "/products/diesel-truck",
@@ -84,6 +100,8 @@ const truckModels = [
       zh: "柴油牵引车",
       es: "Tractocamión Diésel",
       ar: "جرار ديزل",
+      fr: "Tracteur Routier Diesel",
+      pt: "Cavalo Mecânico a Diesel",
     },
     image: "/diesel2.png",
     learnLink: "/products/diesel-truck-2",
@@ -97,6 +115,8 @@ const truckModels = [
       zh: "电动牵引车",
       es: "Tractocamión Eléctrico",
       ar: "جرار كهربائي",
+      fr: "Tracteur Routier Électrique",
+      pt: "Cavalo Mecânico Elétrico",
     },
     image: "/electric1.png",
     learnLink: "/products/electric-truck",
@@ -110,6 +130,8 @@ const truckModels = [
       zh: "电动轻卡",
       es: "Camión Ligero Eléctrico",
       ar: "شاحنة خفيفة كهربائية",
+      fr: "Camion Léger Électrique",
+      pt: "Caminhão Leve Elétrico",
     },
     image: "/electric2.png",
     learnLink: "/products/electric-truck-2",
@@ -124,18 +146,24 @@ const solarStation = {
     zh: "清洁能源基础设施",
     es: "Infraestructura de Energía Limpia",
     ar: "بنية تحتية للطاقة النظيفة",
+    fr: "Infrastructure d'Énergie Propre",
+    pt: "Infraestrutura de Energia Limpa",
   },
   description: {
     en: "Integrated solar generation, battery storage, and charging services for commercial transport.",
     zh: "集成太阳能发电、储能与商用交通充电服务，为未来运输场景提供能源支持。",
     es: "Generación solar, almacenamiento en baterías y servicios de carga integrados para el transporte comercial.",
     ar: "توليد شمسي وتخزين بطاريات وخدمات شحن متكاملة لدعم النقل التجاري.",
+    fr: "Production solaire, stockage par batterie et services de recharge intégrés pour le transport commercial.",
+    pt: "Geração solar, armazenamento em baterias e serviços de recarga integrados para transporte comercial.",
   },
   title: {
     en: "Solar-Storage-Charging Integrated Station",
     zh: "光储充一体化电站",
     es: "Estación Integrada de Energía Solar, Almacenamiento y Carga",
     ar: "محطة متكاملة للطاقة الشمسية والتخزين والشحن",
+    fr: "Station Intégrée Solaire, Stockage et Recharge",
+    pt: "Estação Integrada de Energia Solar, Armazenamento e Recarga",
   },
   image: "/Solar-Charging-Station.png",
   learnLink: "/products/solar-charging-station",
@@ -148,12 +176,16 @@ const solarCards = [
       zh: "5兆瓦",
       es: "5MW",
       ar: "5 ميجاواط",
+      fr: "5MW",
+      pt: "5MW",
     },
     label: {
       en: "Solar Generation Capacity",
       zh: "太阳能发电容量",
       es: "Capacidad de Generación Solar",
       ar: "قدرة التوليد الشمسي",
+      fr: "Capacité de Production Solaire",
+      pt: "Capacidade de Geração Solar",
     },
   },
   {
@@ -162,12 +194,16 @@ const solarCards = [
       zh: "11兆瓦时",
       es: "11MWh",
       ar: "11 ميجاواط ساعة",
+      fr: "11MWh",
+      pt: "11MWh",
     },
     label: {
       en: "Battery Storage Capacity",
       zh: "电池储能容量",
       es: "Capacidad de Almacenamiento",
       ar: "سعة تخزين البطارية",
+      fr: "Capacité de Stockage",
+      pt: "Capacidade de Armazenamento",
     },
   },
   {
@@ -176,12 +212,16 @@ const solarCards = [
       zh: "20年",
       es: "20 años",
       ar: "20 سنة",
+      fr: "20 ans",
+      pt: "20 anos",
     },
     label: {
       en: "Design Life",
       zh: "设计寿命",
       es: "Vida Útil de Diseño",
       ar: "العمر التصميمي",
+      fr: "Durée de Vie Conçue",
+      pt: "Vida Útil de Projeto",
     },
   },
   {
@@ -190,12 +230,16 @@ const solarCards = [
       zh: "光伏 + 储能",
       es: "FV + BESS",
       ar: "PV + BESS",
+      fr: "PV + BESS",
+      pt: "FV + BESS",
     },
     label: {
       en: "Integrated Energy System",
       zh: "光伏 + 储能系统",
       es: "Sistema Energético Integrado",
       ar: "نظام طاقة متكامل",
+      fr: "Système Énergétique Intégré",
+      pt: "Sistema de Energia Integrado",
     },
   },
 ];
@@ -226,7 +270,13 @@ function useInView(threshold = 0.15) {
 }
 
 function normalizeLanguage(language: string): LangCode {
-  if (language === "zh" || language === "es" || language === "ar") {
+  if (
+    language === "zh" ||
+    language === "es" ||
+    language === "ar" ||
+    language === "fr" ||
+    language === "pt"
+  ) {
     return language;
   }
 

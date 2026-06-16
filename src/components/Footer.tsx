@@ -1,7 +1,7 @@
 /**
  * ASTRAQ Footer — Light Premium Design
  * Heavy Truck links directly to Products section
- * English / Chinese / Spanish / Arabic supported
+ * English / Chinese / Spanish / Arabic / French / Portuguese supported
  */
 
 import { useState } from "react";
@@ -19,7 +19,7 @@ const FOOTER_LINE = "rgba(35,35,35,0.14)";
 const FOOTER_DROPDOWN_BG = "rgba(238,233,224,0.96)";
 const ACCENT_COLOR = "#9B7A45";
 
-type LangCode = "en" | "zh" | "es" | "ar";
+type LangCode = "en" | "zh" | "es" | "ar" | "fr" | "pt";
 
 type FooterLink = {
   label: Record<LangCode, string>;
@@ -34,6 +34,8 @@ const footerLinks: FooterLink[] = [
       zh: "首页",
       es: "Inicio",
       ar: "الرئيسية",
+      fr: "Accueil",
+      pt: "Início",
     },
     href: "/",
     active: true,
@@ -44,6 +46,8 @@ const footerLinks: FooterLink[] = [
       zh: "重型卡车",
       es: "Camiones Pesados",
       ar: "الشاحنات الثقيلة",
+      fr: "Poids Lourds",
+      pt: "Caminhões Pesados",
     },
     href: "/#products",
     active: true,
@@ -54,6 +58,8 @@ const footerLinks: FooterLink[] = [
       zh: "能源系统",
       es: "Sistema Energético",
       ar: "نظام الطاقة",
+      fr: "Système Énergétique",
+      pt: "Sistema de Energia",
     },
     href: "/products/solar-charging-station",
     active: true,
@@ -74,6 +80,8 @@ const footerLinks: FooterLink[] = [
       zh: "商店",
       es: "Tienda",
       ar: "المتجر",
+      fr: "Boutique",
+      pt: "Loja",
     },
     href: "/store",
     active: true,
@@ -84,6 +92,8 @@ const footerLinks: FooterLink[] = [
       zh: "关于我们",
       es: "Sobre Nosotros",
       ar: "من نحن",
+      fr: "À Propos",
+      pt: "Sobre",
     },
     href: "/about",
     active: true,
@@ -97,6 +107,8 @@ const aiTechnologyLinks: FooterLink[] = [
       zh: "人形机器人",
       es: "Robot Humanoide",
       ar: "روبوت بشري",
+      fr: "Robot Humanoïde",
+      pt: "Robô Humanoide",
     },
     href: "/products/humanoid-robot",
     active: true,
@@ -107,6 +119,8 @@ const aiTechnologyLinks: FooterLink[] = [
       zh: "按摩机器人",
       es: "Robot de Masaje",
       ar: "روبوت مساج",
+      fr: "Robot de Massage",
+      pt: "Robô de Massagem",
     },
     href: "/massage-ai",
     active: true,
@@ -120,6 +134,8 @@ const aboutLinks: FooterLink[] = [
       zh: "关于我们",
       es: "Sobre Nosotros",
       ar: "من نحن",
+      fr: "À Propos",
+      pt: "Sobre Nós",
     },
     href: "/about",
     active: true,
@@ -130,6 +146,8 @@ const aboutLinks: FooterLink[] = [
       zh: "新闻",
       es: "Noticias",
       ar: "الأخبار",
+      fr: "Actualités",
+      pt: "Notícias",
     },
     href: "/news",
     active: true,
@@ -140,6 +158,8 @@ const aboutLinks: FooterLink[] = [
       zh: "投资者关系",
       es: "Relación con Inversores",
       ar: "علاقات المستثمرين",
+      fr: "Relations Investisseurs",
+      pt: "Relações com Investidores",
     },
     href: "#",
     active: false,
@@ -150,6 +170,8 @@ const aboutLinks: FooterLink[] = [
       zh: "加入我们",
       es: "Únete a Nosotros",
       ar: "انضم إلينا",
+      fr: "Nous Rejoindre",
+      pt: "Junte-se a Nós",
     },
     href: "#",
     active: false,
@@ -181,10 +203,28 @@ const footerText = {
     rights: "جميع الحقوق محفوظة.",
     slogan: "تنقل المستقبل",
   },
+  fr: {
+    comingSoon: "Bientôt disponible",
+    underDevelopment: "page en cours de développement.",
+    rights: "Tous droits réservés.",
+    slogan: "Mobilité du Futur",
+  },
+  pt: {
+    comingSoon: "Em breve",
+    underDevelopment: "página em desenvolvimento.",
+    rights: "Todos os direitos reservados.",
+    slogan: "Mobilidade do Futuro",
+  },
 };
 
 function normalizeLanguage(language: string): LangCode {
-  if (language === "zh" || language === "es" || language === "ar") {
+  if (
+    language === "zh" ||
+    language === "es" ||
+    language === "ar" ||
+    language === "fr" ||
+    language === "pt"
+  ) {
     return language;
   }
 

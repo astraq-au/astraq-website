@@ -9,12 +9,23 @@ const HumanoidRobotPage: React.FC = () => {
   const isZh = language === "zh";
   const isEs = language === "es";
   const isAr = language === "ar";
+  const isFr = language === "fr";
+  const isPt = language === "pt";
   const isRtl = isAr;
 
-  const getLabel = (en: string, zh: string, es: string, ar: string) => {
+  const getLabel = (
+    en: string,
+    zh: string,
+    es: string,
+    ar: string,
+    fr = en,
+    pt = en
+  ) => {
     if (isZh) return zh;
     if (isEs) return es;
     if (isAr) return ar;
+    if (isFr) return fr;
+    if (isPt) return pt;
     return en;
   };
 
@@ -216,7 +227,9 @@ const HumanoidRobotPage: React.FC = () => {
                     "ET-H Robot",
                     "ET-H 人形机器人",
                     "Robot ET-H",
-                    "روبوت ET-H"
+                    "روبوت ET-H",
+                    "Robot ET-H",
+                    "Robô ET-H"
                   )}
                 </span>
 
@@ -239,7 +252,9 @@ const HumanoidRobotPage: React.FC = () => {
                     "Built for Practical Tasks",
                     "面向实际任务场景打造",
                     "Diseñado para tareas prácticas",
-                    "مصمم للمهام العملية"
+                    "مصمم للمهام العملية",
+                    "Conçu pour les tâches pratiques",
+                    "Construído para tarefas práticas"
                   )}
                 </span>
               </h1>
@@ -260,7 +275,9 @@ const HumanoidRobotPage: React.FC = () => {
                     "View Specifications",
                     "查看参数",
                     "Ver especificaciones",
-                    "عرض المواصفات"
+                    "عرض المواصفات",
+                    "Voir les spécifications",
+                    "Ver especificações"
                   )}
                 </a>
 
@@ -273,7 +290,7 @@ const HumanoidRobotPage: React.FC = () => {
                     whiteSpace: "nowrap",
                   }}
                 >
-                  {getLabel("Buy Now", "立即购买", "Comprar ahora", "اشتر الآن")}
+                  {getLabel("Buy Now", "立即购买", "Comprar ahora", "اشتر الآن", "Acheter", "Comprar agora")}
                 </a>
               </div>
             </div>
@@ -302,7 +319,9 @@ const HumanoidRobotPage: React.FC = () => {
                   "Core Capabilities",
                   "核心能力",
                   "Capacidades principales",
-                  "القدرات الأساسية"
+                  "القدرات الأساسية",
+                  "Capacités principales",
+                  "Capacidades principais"
                 )}
               </h2>
             </div>
@@ -440,7 +459,9 @@ const HumanoidRobotPage: React.FC = () => {
                   "Designed for Service and Operational Scenarios",
                   "适配服务与运营场景",
                   "Diseñado para escenarios de servicio y operación",
-                  "مصمم لسيناريوهات الخدمة والتشغيل"
+                  "مصمم لسيناريوهات الخدمة والتشغيل",
+                  "Conçu pour les scénarios de service et d'exploitation",
+                  "Projetado para cenários de serviço e operação"
                 )}
               </h2>
             </div>
@@ -576,7 +597,9 @@ const HumanoidRobotPage: React.FC = () => {
                 "A humanoid robotic platform for real operating environments.",
                 "面向真实运营环境的人形机器人平台。",
                 "Una plataforma robótica humanoide para entornos operativos reales.",
-                "منصة روبوتية بشرية الشكل لبيئات تشغيل واقعية."
+                "منصة روبوتية بشرية الشكل لبيئات تشغيل واقعية.",
+                "Une plateforme robotique humanoïde pour les environnements opérationnels réels.",
+                "Uma plataforma robótica humanoide para ambientes operacionais reais."
               )}
             </h2>
 
@@ -592,7 +615,9 @@ const HumanoidRobotPage: React.FC = () => {
                 "ET-H connects humanoid robotics with service support, mobility infrastructure, logistics workflows and industrial assistance. It focuses on practical task capability, controlled interaction and deployment in structured commercial environments.",
                 "ET-H 将人形机器人能力与服务支持、交通基础设施、物流流程和工业辅助场景结合，重点面向实际任务能力、可控交互和结构化商业环境中的部署应用。",
                 "ET-H conecta la robótica humanoide con el soporte de servicios, la infraestructura de movilidad, los flujos logísticos y la asistencia industrial. Se centra en la capacidad de tareas prácticas, la interacción controlada y el despliegue en entornos comerciales estructurados.",
-                "يربط ET-H الروبوتات بشرية الشكل بدعم الخدمات وبنية التنقل وسير العمل اللوجستي والمساعدة الصناعية. ويركز على القدرة العملية على تنفيذ المهام، والتفاعل المنضبط، والنشر في بيئات تجارية منظمة."
+                "يربط ET-H الروبوتات بشرية الشكل بدعم الخدمات وبنية التنقل وسير العمل اللوجستي والمساعدة الصناعية. ويركز على القدرة العملية على تنفيذ المهام، والتفاعل المنضبط، والنشر في بيئات تجارية منظمة.",
+                "ET-H relie la robotique humanoïde au support de service, aux infrastructures de mobilité, aux flux logistiques et à l'assistance industrielle. Il met l'accent sur les tâches pratiques, l'interaction contrôlée et le déploiement dans des environnements commerciaux structurés.",
+                "O ET-H conecta a robótica humanoide ao suporte de serviços, infraestrutura de mobilidade, fluxos logísticos e assistência industrial. Ele foca na capacidade de tarefas práticas, interação controlada e implantação em ambientes comerciais estruturados."
               )}
             </p>
           </div>

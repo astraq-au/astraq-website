@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { languageOptions } from "../i18n";
-import { useLanguage } from "../LanguageContext";
+import { languageOptions, useLanguage } from "../i18n";
 
 export default function LanguageSwitcher() {
   const [open, setOpen] = useState(false);

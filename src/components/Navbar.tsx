@@ -1,23 +1,19 @@
 /**
  * ASTRAQ Navbar — Dark Sci-Fi Design
- * With globe language selector: English / Chinese / Spanish / Arabic
+ * With globe language selector
  */
 
 import { useEffect, useRef, useState } from "react";
-import { useLanguage } from "../i18n/LanguageContext";
+import {
+  languageOptions,
+  type Language,
+  useLanguage,
+} from "../i18n/LanguageContext";
 
 const FONT_FAMILY =
   "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
 
-type LangCode = "en" | "zh" | "es" | "ar";
-
-const languageOptions: { code: LangCode; label: string; shortLabel: string }[] =
-  [
-    { code: "en", label: "English", shortLabel: "EN" },
-    { code: "zh", label: "中文", shortLabel: "中" },
-    { code: "es", label: "Español", shortLabel: "ES" },
-    { code: "ar", label: "العربية", shortLabel: "AR" },
-  ];
+type LangCode = Language;
 
 const navLinks = [
   {
@@ -27,6 +23,8 @@ const navLinks = [
       zh: "首页",
       es: "INICIO",
       ar: "الرئيسية",
+      fr: "ACCUEIL",
+      pt: "INÍCIO",
     },
     href: "/",
   },
@@ -37,6 +35,8 @@ const navLinks = [
       zh: "重型卡车",
       es: "CAMIONES PESADOS",
       ar: "الشاحنات الثقيلة",
+      fr: "POIDS LOURDS",
+      pt: "CAMINHÕES PESADOS",
     },
     href: "/#products",
   },
@@ -47,6 +47,8 @@ const navLinks = [
       zh: "能源系统",
       es: "SISTEMA ENERGÉTICO",
       ar: "نظام الطاقة",
+      fr: "SYSTÈME ÉNERGÉTIQUE",
+      pt: "SISTEMA DE ENERGIA",
     },
     href: "/products/solar-charging-station",
   },
@@ -67,6 +69,8 @@ const navLinks = [
       zh: "商店",
       es: "TIENDA",
       ar: "المتجر",
+      fr: "BOUTIQUE",
+      pt: "LOJA",
     },
     href: "/store",
   },
@@ -77,6 +81,8 @@ const navLinks = [
       zh: "关于我们",
       es: "SOBRE NOSOTROS",
       ar: "من نحن",
+      fr: "À PROPOS",
+      pt: "SOBRE",
     },
     href: "/about",
   },
@@ -90,6 +96,8 @@ const mobileNavLinks = [
       zh: "首页",
       es: "INICIO",
       ar: "الرئيسية",
+      fr: "ACCUEIL",
+      pt: "INÍCIO",
     },
     href: "/",
   },
@@ -100,6 +108,8 @@ const mobileNavLinks = [
       zh: "重型卡车",
       es: "CAMIONES PESADOS",
       ar: "الشاحنات الثقيلة",
+      fr: "POIDS LOURDS",
+      pt: "CAMINHÕES PESADOS",
     },
     href: "/#products",
   },
@@ -110,6 +120,8 @@ const mobileNavLinks = [
       zh: "能源系统",
       es: "SISTEMA ENERGÉTICO",
       ar: "نظام الطاقة",
+      fr: "SYSTÈME ÉNERGÉTIQUE",
+      pt: "SISTEMA DE ENERGIA",
     },
     href: "/products/solar-charging-station",
   },
@@ -140,6 +152,8 @@ const mobileNavLinks = [
       zh: "商店",
       es: "TIENDA",
       ar: "المتجر",
+      fr: "BOUTIQUE",
+      pt: "LOJA",
     },
     href: "/store",
   },
@@ -150,6 +164,8 @@ const mobileNavLinks = [
       zh: "关于我们",
       es: "SOBRE NOSOTROS",
       ar: "من نحن",
+      fr: "À PROPOS",
+      pt: "SOBRE",
     },
     href: "/about",
   },
@@ -162,6 +178,8 @@ const aboutLinks = [
       zh: "关于我们",
       es: "SOBRE NOSOTROS",
       ar: "من نحن",
+      fr: "À PROPOS",
+      pt: "SOBRE",
     },
     href: "/about",
   },
@@ -171,6 +189,8 @@ const aboutLinks = [
       zh: "新闻",
       es: "NOTICIAS",
       ar: "الأخبار",
+      fr: "ACTUALITÉS",
+      pt: "NOTÍCIAS",
     },
     href: "/news",
   },
@@ -180,6 +200,8 @@ const aboutLinks = [
       zh: "投资者关系",
       es: "RELACIÓN CON INVERSORES",
       ar: "علاقات المستثمرين",
+      fr: "RELATIONS INVESTISSEURS",
+      pt: "RELAÇÕES COM INVESTIDORES",
     },
     href: "#",
   },
@@ -189,6 +211,8 @@ const aboutLinks = [
       zh: "加入我们",
       es: "ÚNETE A NOSOTROS",
       ar: "انضم إلينا",
+      fr: "NOUS REJOINDRE",
+      pt: "JUNTE-SE A NÓS",
     },
     href: "#",
   },
@@ -201,6 +225,8 @@ const heavyTruckGroups = [
       zh: "柴油卡车",
       es: "CAMIÓN DIÉSEL",
       ar: "شاحنة ديزل",
+      fr: "CAMION DIESEL",
+      pt: "CAMINHÃO A DIESEL",
     },
     typeKey: "diesel",
     href: "/products/diesel-truck",
@@ -227,6 +253,8 @@ const heavyTruckGroups = [
       zh: "电动卡车",
       es: "CAMIÓN ELÉCTRICO",
       ar: "شاحنة كهربائية",
+      fr: "CAMION ÉLECTRIQUE",
+      pt: "CAMINHÃO ELÉTRICO",
     },
     typeKey: "electric",
     href: "/products/electric-truck",
@@ -256,6 +284,8 @@ const aiTechnologyGroups = [
       zh: "机器人",
       es: "ROBOT",
       ar: "روبوت",
+      fr: "ROBOT",
+      pt: "ROBÔ",
     },
     typeKey: "robot",
     href: "/products/humanoid-robot",
@@ -266,6 +296,8 @@ const aiTechnologyGroups = [
           zh: "人形机器人",
           es: "Robot Humanoide",
           ar: "روبوت بشري",
+          fr: "Robot Humanoïde",
+          pt: "Robô Humanoide",
         },
         href: "/products/humanoid-robot",
         image: "/robot1.png",
@@ -276,6 +308,8 @@ const aiTechnologyGroups = [
           zh: "按摩机器人",
           es: "Robot de Masaje",
           ar: "روبوت مساج",
+          fr: "Robot de Massage",
+          pt: "Robô de Massagem",
         },
         href: "/products/massage-robot",
         image: "/robot2.png",
@@ -320,10 +354,7 @@ const modelNameTextStyle = {
 export default function Navbar() {
   const { language, setLanguage } = useLanguage();
 
-  const currentLanguage: LangCode =
-    language === "zh" || language === "es" || language === "ar"
-      ? language
-      : "en";
+  const currentLanguage: LangCode = language;
 
   const currentLanguageOption =
     languageOptions.find((item) => item.code === currentLanguage) ||
