@@ -52,16 +52,18 @@ const navLinks = [
     },
     href: "/products/solar-charging-station",
   },
-  // {
-//   key: "aiTechnology",
-//   labels: {
-//     en: "AI TECHNOLOGY",
-//     zh: "AI 科技",
-//     es: "TECNOLOGÍA IA",
-//     ar: "تقنية الذكاء الاصطناعي",
-//   },
-//   href: "/products/humanoid-robot",
-// },
+  {
+    key: "humanoidRobot",
+    labels: {
+      en: "ROBOT",
+      zh: "机器人",
+      es: "ROBOT",
+      ar: "روبوت",
+      fr: "ROBOT",
+      pt: "ROBÔ",
+    },
+    href: "/products/humanoid-robot",
+  },
   {
     key: "store",
     labels: {
@@ -125,16 +127,18 @@ const mobileNavLinks = [
     },
     href: "/products/solar-charging-station",
   },
-  // {
-//   key: "humanoidRobot",
-//   labels: {
-//     en: "HUMANOID ROBOT",
-//     zh: "人形机器人",
-//     es: "ROBOT HUMANOIDE",
-//     ar: "روبوت بشري",
-//   },
-//   href: "/products/humanoid-robot",
-// },
+  {
+    key: "humanoidRobot",
+    labels: {
+      en: "ROBOT",
+      zh: "机器人",
+      es: "ROBOT",
+      ar: "روبوت",
+      fr: "ROBOT",
+      pt: "ROBÔ",
+    },
+    href: "/products/humanoid-robot",
+  },
 // {
 //   key: "massageRobot",
 //   labels: {
@@ -292,12 +296,12 @@ const aiTechnologyGroups = [
     models: [
       {
         labels: {
-          en: "Humanoid Robot",
-          zh: "人形机器人",
-          es: "Robot Humanoide",
-          ar: "روبوت بشري",
-          fr: "Robot Humanoïde",
-          pt: "Robô Humanoide",
+          en: "Robot",
+          zh: "机器人",
+          es: "Robot",
+          ar: "روبوت",
+          fr: "Robot",
+          pt: "Robô",
         },
         href: "/products/humanoid-robot",
         image: "/robot1.png",
@@ -490,7 +494,7 @@ export default function Navbar() {
           </a>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-[clamp(0.9rem,1.55vw,3rem)] ml-auto h-[44px]">
+          <div className="hidden md:flex items-center gap-[clamp(0.75rem,1.25vw,2.4rem)] ml-auto h-[44px]">
             {navLinks.map((link) => {
               if (link.key === "heavyTruck") {
                 return (

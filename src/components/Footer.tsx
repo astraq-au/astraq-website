@@ -64,16 +64,18 @@ const footerLinks: FooterLink[] = [
     href: "/products/solar-charging-station",
     active: true,
   },
-  // {
-//   label: {
-//     en: "AI Technology",
-//     zh: "AI 科技",
-//     es: "Tecnología IA",
-//     ar: "تقنية الذكاء الاصطناعي",
-//   },
-//   href: "/products/humanoid-robot",
-//   active: true,
-// },
+  {
+    label: {
+      en: "Robot",
+      zh: "机器人",
+      es: "Robot",
+      ar: "روبوت",
+      fr: "Robot",
+      pt: "Robô",
+    },
+    href: "/products/humanoid-robot",
+    active: true,
+  },
   {
     label: {
       en: "Store",
@@ -103,12 +105,12 @@ const footerLinks: FooterLink[] = [
 const aiTechnologyLinks: FooterLink[] = [
   {
     label: {
-      en: "Humanoid Robot",
-      zh: "人形机器人",
-      es: "Robot Humanoide",
-      ar: "روبوت بشري",
-      fr: "Robot Humanoïde",
-      pt: "Robô Humanoide",
+      en: "Robot",
+      zh: "机器人",
+      es: "Robot",
+      ar: "روبوت",
+      fr: "Robot",
+      pt: "Robô",
     },
     href: "/products/humanoid-robot",
     active: true,
