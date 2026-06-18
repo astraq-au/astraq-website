@@ -19,10 +19,10 @@ const FOOTER_LINE = "rgba(35,35,35,0.14)";
 const FOOTER_DROPDOWN_BG = "rgba(238,233,224,0.96)";
 const ACCENT_COLOR = "#9B7A45";
 
-type LangCode = "en" | "zh" | "es" | "ar" | "fr" | "pt";
+type LangCode = "en" | "zh" | "es" | "ar" | "fr" | "pt" | "vi";
 
 type FooterLink = {
-  label: Record<LangCode, string>;
+  label: Partial<Record<LangCode, string>> & { en: string };
   href: string;
   active?: boolean;
 };
@@ -36,6 +36,7 @@ const footerLinks: FooterLink[] = [
       ar: "الرئيسية",
       fr: "Accueil",
       pt: "Início",
+      vi: "Trang chủ",
     },
     href: "/",
     active: true,
@@ -48,6 +49,7 @@ const footerLinks: FooterLink[] = [
       ar: "الشاحنات الثقيلة",
       fr: "Poids Lourds",
       pt: "Caminhões Pesados",
+      vi: "Xe tải hạng nặng",
     },
     href: "/#products",
     active: true,
@@ -60,18 +62,20 @@ const footerLinks: FooterLink[] = [
       ar: "نظام الطاقة",
       fr: "Système Énergétique",
       pt: "Sistema de Energia",
+      vi: "Hệ thống năng lượng",
     },
     href: "/products/solar-charging-station",
     active: true,
   },
   {
     label: {
-      en: "Robot",
-      zh: "机器人",
-      es: "Robot",
-      ar: "روبوت",
-      fr: "Robot",
-      pt: "Robô",
+      en: "AI",
+      zh: "AI",
+      es: "AI",
+      ar: "AI",
+      fr: "AI",
+      pt: "AI",
+      vi: "AI",
     },
     href: "/products/humanoid-robot",
     active: true,
@@ -84,6 +88,7 @@ const footerLinks: FooterLink[] = [
       ar: "المتجر",
       fr: "Boutique",
       pt: "Loja",
+      vi: "Cửa hàng",
     },
     href: "/store",
     active: true,
@@ -96,6 +101,7 @@ const footerLinks: FooterLink[] = [
       ar: "من نحن",
       fr: "À Propos",
       pt: "Sobre",
+      vi: "Giới thiệu",
     },
     href: "/about",
     active: true,
@@ -105,12 +111,13 @@ const footerLinks: FooterLink[] = [
 const aiTechnologyLinks: FooterLink[] = [
   {
     label: {
-      en: "Robot",
-      zh: "机器人",
-      es: "Robot",
-      ar: "روبوت",
-      fr: "Robot",
-      pt: "Robô",
+      en: "AI",
+      zh: "AI",
+      es: "AI",
+      ar: "AI",
+      fr: "AI",
+      pt: "AI",
+      vi: "AI",
     },
     href: "/products/humanoid-robot",
     active: true,
@@ -217,6 +224,12 @@ const footerText = {
     rights: "Todos os direitos reservados.",
     slogan: "Mobilidade do Futuro",
   },
+  vi: {
+    comingSoon: "Sắp ra mắt",
+    underDevelopment: "trang đang được phát triển.",
+    rights: "Đã đăng ký bản quyền.",
+    slogan: "Di chuyển Tương lai",
+  },
 };
 
 function normalizeLanguage(language: string): LangCode {
@@ -225,7 +238,8 @@ function normalizeLanguage(language: string): LangCode {
     language === "es" ||
     language === "ar" ||
     language === "fr" ||
-    language === "pt"
+    language === "pt" ||
+    language === "vi"
   ) {
     return language;
   }
@@ -243,7 +257,9 @@ export default function Footer() {
   const isZh = currentLanguage === "zh";
   const isAr = currentLanguage === "ar";
 
-  const getLabel = (label: Record<LangCode, string>) => {
+  const getLabel = (
+    label: Partial<Record<LangCode, string>> & { en: string }
+  ) => {
     return label[currentLanguage] || label.en;
   };
 

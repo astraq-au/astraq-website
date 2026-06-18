@@ -6,7 +6,7 @@ import React, {
   useState,
 } from "react";
 
-export type Language = "en" | "zh" | "es" | "ar" | "fr" | "pt";
+export type Language = "en" | "zh" | "es" | "ar" | "fr" | "pt" | "vi";
 
 export const languageOptions: {
   code: Language;
@@ -19,6 +19,7 @@ export const languageOptions: {
   { code: "ar", label: "العربية", shortLabel: "AR" },
   { code: "fr", label: "Français", shortLabel: "FR" },
   { code: "pt", label: "Português", shortLabel: "PT" },
+  { code: "vi", label: "Tiếng Việt", shortLabel: "VI" },
 ];
 
 type TranslationObject = Record<string, any>;
@@ -170,6 +171,30 @@ const translations: Record<Language, TranslationObject> = {
       massageRobot: "Robô de Massagem",
       solarChargingStation:
         "Estação Integrada de Energia Solar, Armazenamento e Recarga",
+    },
+  },
+
+  vi: {
+    nav: {
+      home: "TRANG CHỦ",
+      heavyTruck: "XE TẢI HẠNG NẶNG",
+      energySystem: "HỆ THỐNG NĂNG LƯỢNG",
+      aiTechnology: "AI",
+      store: "CỬA HÀNG",
+      about: "GIỚI THIỆU",
+    },
+    products: {
+      title: "Sản phẩm",
+      subtitle: "Khám phá các giải pháp di chuyển và năng lượng của ASTRAQ.",
+      heavyTruck: "Xe tải hạng nặng",
+      energySystem: "Hệ thống năng lượng",
+      aiTechnology: "AI",
+      dieselTruck: "Xe tải diesel",
+      electricTruck: "Xe tải điện",
+      humanoidRobot: "AI",
+      massageRobot: "Robot massage",
+      solarChargingStation:
+        "Trạm tích hợp năng lượng mặt trời, lưu trữ và sạc",
     },
   },
 };

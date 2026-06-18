@@ -10,6 +10,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "../i18n/LanguageContext";
+import { translateVi } from "../i18n/vietnameseFallback";
 
 const FONT_FAMILY =
   "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
@@ -21,7 +22,7 @@ const LIGHT_BG = "#FFFFFF";
 const PRODUCTS_HEADER_BG =
   "linear-gradient(to bottom, #0B0D0F 0%, #1B2024 28%, #EDEBE7 100%)";
 
-type LangCode = "en" | "zh" | "es" | "ar" | "fr" | "pt";
+type LangCode = "en" | "zh" | "es" | "ar" | "fr" | "pt" | "vi";
 
 const commonText: Record<
   LangCode,
@@ -75,6 +76,13 @@ const commonText: Record<
     brandTitle: "Construído para a Próxima Era",
     brandSubtitle: "ENERGIA LIMPA · MOBILIDADE INTELIGENTE · SISTEMAS DE IA",
   },
+  vi: {
+    learnMore: "Tìm Hiểu Thêm",
+    buyNow: "Mua Ngay",
+    aboutUs: "Giới Thiệu",
+    brandTitle: "Kiến Tạo Kỷ Nguyên Tiếp Theo",
+    brandSubtitle: "NĂNG LƯỢNG SẠCH · DI CHUYỂN THÔNG MINH · HỆ THỐNG AI",
+  },
 };
 
 const truckModels = [
@@ -87,6 +95,7 @@ const truckModels = [
       ar: "خلاطة ديزل",
       fr: "Malaxeur Diesel",
       pt: "Betoneira a Diesel",
+      vi: "Xe trộn diesel",
     },
     image: "/diesel1.png",
     learnLink: "/products/diesel-truck",
@@ -102,6 +111,7 @@ const truckModels = [
       ar: "جرار ديزل",
       fr: "Tracteur Routier Diesel",
       pt: "Cavalo Mecânico a Diesel",
+      vi: "Đầu kéo diesel",
     },
     image: "/diesel2.png",
     learnLink: "/products/diesel-truck-2",
@@ -117,6 +127,7 @@ const truckModels = [
       ar: "جرار كهربائي",
       fr: "Tracteur Routier Électrique",
       pt: "Cavalo Mecânico Elétrico",
+      vi: "Đầu kéo điện",
     },
     image: "/electric1.png",
     learnLink: "/products/electric-truck",
@@ -132,6 +143,7 @@ const truckModels = [
       ar: "شاحنة خفيفة كهربائية",
       fr: "Camion Léger Électrique",
       pt: "Caminhão Leve Elétrico",
+      vi: "Xe tải nhẹ điện",
     },
     image: "/electric2.png",
     learnLink: "/products/electric-truck-2",
@@ -275,12 +287,20 @@ function normalizeLanguage(language: string): LangCode {
     language === "es" ||
     language === "ar" ||
     language === "fr" ||
-    language === "pt"
+    language === "pt" ||
+    language === "vi"
   ) {
     return language;
   }
 
   return "en";
+}
+
+function getLocalizedText(
+  labels: Partial<Record<LangCode, string>> & { en: string },
+  language: LangCode
+) {
+  return labels[language] || (language === "vi" ? translateVi(labels.en) : labels.en);
 }
 
 function ProductSelector() {
@@ -348,7 +368,7 @@ function ProductSelector() {
                       lineHeight: 1.1,
                     }}
                   >
-                    {model.shortName[currentLanguage]}
+                    {getLocalizedText(model.shortName, currentLanguage)}
                   </div>
 
                   <span
@@ -529,7 +549,7 @@ function SolarStationSection() {
               marginBottom: "clamp(0.8rem, 1.2vw, 1.5rem)",
             }}
           >
-            {solarStation.name[currentLanguage]}
+            {getLocalizedText(solarStation.name, currentLanguage)}
           </h3>
 
           <p
@@ -545,7 +565,7 @@ function SolarStationSection() {
               marginBottom: "clamp(2.5rem, 3.5vw, 4rem)",
             }}
           >
-            {solarStation.description[currentLanguage]}
+            {getLocalizedText(solarStation.description, currentLanguage)}
           </p>
         </div>
 
@@ -591,7 +611,7 @@ function SolarStationSection() {
                   maxWidth: "850px",
                 }}
               >
-                {solarStation.title[currentLanguage]}
+                {getLocalizedText(solarStation.title, currentLanguage)}
               </div>
             </div>
           </a>
@@ -635,7 +655,7 @@ function SolarStationSection() {
                         lineHeight: 1.08,
                       }}
                     >
-                      {card.metric[currentLanguage]}
+                      {getLocalizedText(card.metric, currentLanguage)}
                     </div>
 
                     <div
@@ -649,7 +669,7 @@ function SolarStationSection() {
                         lineHeight: 1.35,
                       }}
                     >
-                      {card.label[currentLanguage]}
+                      {getLocalizedText(card.label, currentLanguage)}
                     </div>
                   </div>
                 </a>

@@ -8,7 +8,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "../i18n/LanguageContext";
 
-type LangCode = "en" | "zh" | "es" | "ar" | "fr" | "pt";
+type LangCode = "en" | "zh" | "es" | "ar" | "fr" | "pt" | "vi";
 
 const stats: Array<{
   value: string;
@@ -25,6 +25,7 @@ const stats: Array<{
       ar: "خطوط المنتجات",
       fr: "Gammes de Produits",
       pt: "Linhas de Produto",
+      vi: "Dòng sản phẩm",
     },
   },
   {
@@ -37,6 +38,7 @@ const stats: Array<{
       ar: "سنة التأسيس",
       fr: "Fondation",
       pt: "Fundação",
+      vi: "Thành lập",
     },
   },
   {
@@ -49,6 +51,7 @@ const stats: Array<{
       ar: "هدف الانبعاثات الصفرية",
       fr: "Objectif Zéro Émission",
       pt: "Meta de Emissão Zero",
+      vi: "Mục tiêu không phát thải",
     },
   },
   {
@@ -61,6 +64,7 @@ const stats: Array<{
       ar: "إمكانات بلا حدود",
       fr: "Possibilités",
       pt: "Possibilidades",
+      vi: "Khả năng",
     },
   },
 ];
@@ -94,7 +98,8 @@ function normalizeLanguage(language: string): LangCode {
     language === "es" ||
     language === "ar" ||
     language === "fr" ||
-    language === "pt"
+    language === "pt" ||
+    language === "vi"
   ) {
     return language;
   }

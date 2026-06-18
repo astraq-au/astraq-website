@@ -15,7 +15,7 @@ import { useLanguage } from "../i18n/LanguageContext";
 const FONT_FAMILY =
   "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
 
-type LangCode = "en" | "zh" | "es" | "ar" | "fr" | "pt";
+type LangCode = "en" | "zh" | "es" | "ar" | "fr" | "pt" | "vi";
 
 const heroText: Record<
   LangCode,
@@ -55,6 +55,11 @@ const heroText: Record<
     exploreProducts: "Explorar Produtos",
     learnMore: "Saiba Mais",
   },
+  vi: {
+    title: "Định Nghĩa Lại Tương Lai",
+    exploreProducts: "Khám Phá Sản Phẩm",
+    learnMore: "Tìm Hiểu Thêm",
+  },
 };
 
 const stats: Array<{
@@ -69,6 +74,7 @@ const stats: Array<{
       ar: "الطاقة",
       fr: "ÉNERGIE",
       pt: "ENERGIA",
+      vi: "NĂNG LƯỢNG",
     },
     label: {
       en: "ENERGY",
@@ -77,6 +83,7 @@ const stats: Array<{
       ar: "طاقة نظيفة",
       fr: "ÉNERGIE PROPRE",
       pt: "ENERGIA LIMPA",
+      vi: "NĂNG LƯỢNG SẠCH",
     },
   },
   {
@@ -87,6 +94,7 @@ const stats: Array<{
       ar: "الذكاء",
       fr: "INTELLIGENCE",
       pt: "INTELIGÊNCIA",
+      vi: "TRÍ TUỆ",
     },
     label: {
       en: "AI ROBOT",
@@ -95,6 +103,7 @@ const stats: Array<{
       ar: "روبوت ذكي",
       fr: "ROBOT IA",
       pt: "ROBÔ IA",
+      vi: "ROBOT AI",
     },
   },
   {
@@ -105,6 +114,7 @@ const stats: Array<{
       ar: "الأنظمة",
       fr: "SYSTÈMES",
       pt: "SISTEMAS",
+      vi: "HỆ THỐNG",
     },
     label: {
       en: "INTEGRATION",
@@ -113,6 +123,7 @@ const stats: Array<{
       ar: "حلول متكاملة",
       fr: "INTÉGRATION",
       pt: "INTEGRAÇÃO",
+      vi: "TÍCH HỢP",
     },
   },
   {
@@ -123,6 +134,7 @@ const stats: Array<{
       ar: "المستقبل",
       fr: "AVENIR",
       pt: "FUTURO",
+      vi: "TƯƠNG LAI",
     },
     label: {
       en: "MOBILITY",
@@ -131,6 +143,7 @@ const stats: Array<{
       ar: "التنقل الذكي",
       fr: "MOBILITÉ",
       pt: "MOBILIDADE",
+      vi: "DI CHUYỂN",
     },
   },
 ];
@@ -143,7 +156,8 @@ export default function HeroSection() {
     language === "es" ||
     language === "ar" ||
     language === "fr" ||
-    language === "pt"
+    language === "pt" ||
+    language === "vi"
       ? language
       : "en";
 

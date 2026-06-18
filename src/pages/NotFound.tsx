@@ -3,6 +3,7 @@ import { Card, CardContent } from "../components/ui/card";
 import { AlertCircle, Home } from "lucide-react";
 import { useLocation } from "wouter";
 import { useLanguage } from "../i18n/LanguageContext";
+import { translateVi } from "../i18n/vietnameseFallback";
 
 export default function NotFound() {
   const [, setLocation] = useLocation();
@@ -13,6 +14,7 @@ export default function NotFound() {
   const isAr = language === "ar";
   const isFr = language === "fr";
   const isPt = language === "pt";
+  const isVi = language === "vi";
   const isRtl = isAr;
 
   const getLabel = (
@@ -21,13 +23,15 @@ export default function NotFound() {
     es: string,
     ar: string,
     fr: string,
-    pt: string
+    pt: string,
+    vi = translateVi(en)
   ) => {
     if (isZh) return zh;
     if (isEs) return es;
     if (isAr) return ar;
     if (isFr) return fr;
     if (isPt) return pt;
+    if (isVi) return vi;
     return en;
   };
 

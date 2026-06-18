@@ -1,6 +1,7 @@
 import React from "react";
 import Footer from "../components/Footer";
 import { useLanguage } from "../i18n/LanguageContext";
+import { translateVi } from "../i18n/vietnameseFallback";
 
 const FONT_FAMILY =
   "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
@@ -32,6 +33,7 @@ const SolarStorageChargingStation: React.FC = () => {
   const isAr = language === "ar";
   const isFr = language === "fr";
   const isPt = language === "pt";
+  const isVi = language === "vi";
   const isRtl = isAr;
 
   const getLabel = (
@@ -40,13 +42,15 @@ const SolarStorageChargingStation: React.FC = () => {
     es: string,
     ar: string,
     fr = en,
-    pt = en
+    pt = en,
+    vi = translateVi(en)
   ) => {
     if (isZh) return zh;
     if (isEs) return es;
     if (isAr) return ar;
     if (isFr) return fr;
     if (isPt) return pt;
+    if (isVi) return vi;
     return en;
   };
 

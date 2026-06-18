@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Footer from "../components/Footer";
 import { useLanguage } from "../i18n/LanguageContext";
+import { translateVi } from "../i18n/vietnameseFallback";
 
 const HumanoidRobotPage: React.FC = () => {
   const { language } = useLanguage();
@@ -11,6 +12,7 @@ const HumanoidRobotPage: React.FC = () => {
   const isAr = language === "ar";
   const isFr = language === "fr";
   const isPt = language === "pt";
+  const isVi = language === "vi";
   const isRtl = isAr;
 
   const getLabel = (
@@ -19,13 +21,15 @@ const HumanoidRobotPage: React.FC = () => {
     es: string,
     ar: string,
     fr = en,
-    pt = en
+    pt = en,
+    vi = translateVi(en)
   ) => {
     if (isZh) return zh;
     if (isEs) return es;
     if (isAr) return ar;
     if (isFr) return fr;
     if (isPt) return pt;
+    if (isVi) return vi;
     return en;
   };
 

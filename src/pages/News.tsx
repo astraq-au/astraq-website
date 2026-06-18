@@ -7,6 +7,7 @@
 
 import Footer from "../components/Footer";
 import { useLanguage } from "../i18n/LanguageContext";
+import { translateVi } from "../i18n/vietnameseFallback";
 
 const ACCENT_COLOR = "#C9A46A";
 
@@ -21,6 +22,7 @@ export default function News() {
   const isAr = language === "ar";
   const isFr = language === "fr";
   const isPt = language === "pt";
+  const isVi = language === "vi";
   const isRtl = isAr;
 
   const getLabel = (
@@ -29,13 +31,15 @@ export default function News() {
     es: string,
     ar: string,
     fr: string,
-    pt: string
+    pt: string,
+    vi = translateVi(en)
   ) => {
     if (isZh) return zh;
     if (isEs) return es;
     if (isAr) return ar;
     if (isFr) return fr;
     if (isPt) return pt;
+    if (isVi) return vi;
     return en;
   };
 
