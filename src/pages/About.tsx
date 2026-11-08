@@ -135,16 +135,10 @@ const teamMembers = [
   {
     name: "Lawrence Lee",
     role: "CEO",
-    profile: {
-      portrait: "/images/about/Lawrence-2.png",
-      roleCn: "首席执行官",
-      biography: {
-        en: "Founding member with 20 years of experience in the truck industry.",
-        zh: "创始成员，深耕卡车行业20年。",
-        es: "Miembro fundador con 20 años de experiencia en la industria del camión.",
-        ar: "عضو مؤسس يتمتع بخبرة 20 عاماً في صناعة الشاحنات.",
-      },
-    },
+    image: "/images/about/Lawrence.png",
+    imageCn: "/images/about/Lawrence-cn.png",
+    imageEs: "/images/about/Lawrence-es.png",
+    imageAr: "/images/about/Lawrence-ar.png",
   },
   {
     name: "Wei Zhang",
@@ -595,54 +589,21 @@ export default function About() {
             {teamMembers.map((member) => (
               <div
                 key={member.name}
-                className="@container relative overflow-hidden bg-transparent shadow-2xl xl:first:col-start-2"
+                className="relative overflow-hidden bg-transparent shadow-2xl xl:first:col-start-2"
               >
-                {member.profile ? (
-                  <article
-                    dir="ltr"
-                    className="relative isolate flex flex-col justify-center bg-[#111923] px-[5.75%] py-2 text-white @min-[290px]:py-3"
-                    style={{ aspectRatio: isZh || isEs || isAr ? "4 / 3" : "1385 / 923" }}
-                  >
-                    <div
-                      className="absolute inset-y-0 right-0 -z-10 w-1/2 overflow-hidden"
-                      style={{ maskImage: "linear-gradient(to right, transparent, #000 22%)" }}
-                    >
-                      <img
-                        src={member.profile.portrait}
-                        alt=""
-                        className="absolute left-1/2 top-0 aspect-square h-full max-w-none -translate-x-1/2 object-cover"
-                      />
-                    </div>
-                    <div className="w-[52.5%]">
-                      <h3 className="border-l-2 border-[#28A7FF] pl-1.5 text-sm font-bold leading-tight @min-[290px]:text-lg @min-[430px]:text-2xl">
-                        {member.name}
-                      </h3>
-                      <p className="mt-1 pl-1.5 text-xs font-medium @min-[290px]:text-sm">
-                        {isZh ? member.profile.roleCn : member.role}
-                      </p>
-                      <p
-                        dir={isRtl ? "rtl" : "ltr"}
-                        className="mt-2 border-t border-white/30 pt-2 text-[11px] leading-snug text-[#F5F9FF] @min-[290px]:text-[13px] @min-[430px]:text-base"
-                      >
-                        {member.profile.biography[isZh || isEs || isAr ? language : "en"]}
-                      </p>
-                    </div>
-                  </article>
-                ) : (
-                  <img
-                    src={getTeamImage(
-                      member.image,
-                      member.imageCn,
-                      member.imageEs,
-                      member.imageAr
-                    )}
-                    alt={member.name}
-                    className="block h-auto w-full object-contain object-center"
-                    onError={(e) => {
-                      e.currentTarget.src = member.image;
-                    }}
-                  />
-                )}
+                <img
+                  src={getTeamImage(
+                    member.image,
+                    member.imageCn,
+                    member.imageEs,
+                    member.imageAr
+                  )}
+                  alt={member.name}
+                  className="block h-auto w-full object-contain object-center"
+                  onError={(e) => {
+                    e.currentTarget.src = member.image;
+                  }}
+                />
               </div>
             ))}
           </div>
