@@ -6,6 +6,7 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
+import { SHOW_AI_CONTENT } from "@shared/const";
 import { useLanguage } from "../i18n/LanguageContext";
 
 const FONT_FAMILY =
@@ -421,8 +422,12 @@ export default function Footer() {
           </div>
 
           {/* Nav links */}
-          <div className="flex flex-nowrap items-center gap-x-[clamp(1.2rem,2vw,3rem)] whitespace-nowrap">
+          <div className="flex flex-wrap items-center gap-x-[clamp(1.2rem,2vw,3rem)] gap-y-4 whitespace-nowrap">
             {footerLinks.map((link) => {
+              if (!SHOW_AI_CONTENT && link.href === "/products/humanoid-robot") {
+                return null;
+              }
+
               if (link.label.en === "AI Technology") {
                 return (
                   <div
@@ -522,34 +527,47 @@ export default function Footer() {
             {footerText[currentLanguage].rights}
           </p>
 
-          <div className="flex items-center gap-2">
-            <span
-              className="block w-[clamp(16px,1.5vw,28px)] h-px"
-              style={{ background: "rgba(155,122,69,0.55)" }}
-            />
+          <div className="flex min-w-0 flex-col items-center gap-2 text-center">
+            <div className="flex items-center gap-2">
+              <span
+                className="block h-px w-[clamp(16px,1.5vw,28px)] shrink-0"
+                style={{ background: "rgba(155,122,69,0.55)" }}
+              />
 
-            <span
+              <span
+                style={{
+                  fontFamily: FONT_FAMILY,
+                  fontWeight: 600,
+                  fontSize:
+                    currentLanguage === "ar"
+                      ? "clamp(1.6rem, 1.9vw, 2.25rem)"
+                      : "clamp(2rem, 2.2vw, 2.5rem)",
+                  letterSpacing: isZh || isAr ? "0.05em" : "0.08em",
+                  textTransform:
+                    isZh || isAr ? ("none" as const) : ("uppercase" as const),
+                  color: ACCENT_COLOR,
+                }}
+              >
+                {footerText[currentLanguage].slogan}
+              </span>
+
+              <span
+                className="block h-px w-[clamp(16px,1.5vw,28px)] shrink-0"
+                style={{ background: "rgba(155,122,69,0.55)" }}
+              />
+            </div>
+
+            <address
+              lang="en-AU"
+              className="not-italic"
               style={{
-                fontFamily: FONT_FAMILY,
-                fontWeight: 600,
-                fontSize:
-                  currentLanguage === "ar"
-                    ? "clamp(1.6rem, 1.9vw, 2.25rem)"
-                    : "clamp(2rem, 2.2vw, 2.5rem)",
-                letterSpacing: isZh || isAr ? "0.05em" : "0.08em",
-                textTransform:
-                  isZh || isAr ? ("none" as const) : ("uppercase" as const),
-                color: ACCENT_COLOR,
-                whiteSpace: "nowrap",
+                color: FOOTER_TEXT,
+                fontSize: "clamp(0.75rem, 0.85vw, 1rem)",
+                letterSpacing: "0.04em",
               }}
             >
-              {footerText[currentLanguage].slogan}
-            </span>
-
-            <span
-              className="block w-[clamp(16px,1.5vw,28px)] h-px"
-              style={{ background: "rgba(155,122,69,0.55)" }}
-            />
+              SUITE 2, LEVEL 50, 525 COLLINS ST，MELBOURNE VIC 3000
+            </address>
           </div>
         </div>
       </div>

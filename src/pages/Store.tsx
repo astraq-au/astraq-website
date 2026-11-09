@@ -6,6 +6,7 @@
  */
 
 import Footer from "../components/Footer";
+import { SHOW_AI_CONTENT } from "@shared/const";
 import { useLanguage } from "../i18n/LanguageContext";
 import { translateVi } from "../i18n/vietnameseFallback";
 
@@ -357,27 +358,31 @@ export default function Store() {
                       )}
                     </option>
 
-                    <option value="humanoid-robot" style={{ color: "#111" }}>
-                      {getLabel(
-                        "ET-H Humanoid Robot",
-                        "ET-H 人形机器人",
-                        "Robot humanoide ET-H",
-                        "روبوت بشري الشكل ET-H",
-                        "Robot humanoïde ET-H",
-                        "Robô humanoide ET-H"
-                      )}
-                    </option>
+                    {SHOW_AI_CONTENT && (
+                      <>
+                        <option value="humanoid-robot" style={{ color: "#111" }}>
+                          {getLabel(
+                            "ET-H Humanoid Robot",
+                            "ET-H 人形机器人",
+                            "Robot humanoide ET-H",
+                            "روبوت بشري الشكل ET-H",
+                            "Robot humanoïde ET-H",
+                            "Robô humanoide ET-H"
+                          )}
+                        </option>
 
-                    <option value="massage-robot" style={{ color: "#111" }}>
-                      {getLabel(
-                        "ET-M Massage Robot",
-                        "ET-M 按摩机器人",
-                        "Robot de masaje ET-M",
-                        "روبوت التدليك ET-M",
-                        "Robot de massage ET-M",
-                        "Robô de massagem ET-M"
-                      )}
-                    </option>
+                        <option value="massage-robot" style={{ color: "#111" }}>
+                          {getLabel(
+                            "ET-M Massage Robot",
+                            "ET-M 按摩机器人",
+                            "Robot de masaje ET-M",
+                            "روبوت التدليك ET-M",
+                            "Robot de massage ET-M",
+                            "Robô de massagem ET-M"
+                          )}
+                        </option>
+                      </>
+                    )}
 
                     <option value="other" style={{ color: "#111" }}>
                       {getLabel("Other", "其他", "Otro", "أخرى", "Autre", "Outro")}

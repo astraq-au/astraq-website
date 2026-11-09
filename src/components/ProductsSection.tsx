@@ -9,6 +9,7 @@
  */
 
 import { useEffect, useRef, useState } from "react";
+import { SHOW_AI_CONTENT } from "@shared/const";
 import { useLanguage } from "../i18n/LanguageContext";
 import { translateVi } from "../i18n/vietnameseFallback";
 
@@ -32,6 +33,7 @@ const commonText: Record<
     aboutUs: string;
     brandTitle: string;
     brandSubtitle: string;
+    brandAiSubtitle: string;
   }
 > = {
   en: {
@@ -39,49 +41,56 @@ const commonText: Record<
     buyNow: "Buy Now",
     aboutUs: "About Us",
     brandTitle: "Built for the Next Era",
-    brandSubtitle: "CLEAN ENERGY · INTELLIGENT MOBILITY · AI SYSTEMS",
+    brandSubtitle: "CLEAN ENERGY · INTELLIGENT MOBILITY",
+    brandAiSubtitle: "AI SYSTEMS",
   },
   zh: {
     learnMore: "了解更多",
     buyNow: "立即购买",
     aboutUs: "关于我们",
     brandTitle: "面向下一个时代",
-    brandSubtitle: "清洁能源 · 智能交通 · AI 系统",
+    brandSubtitle: "清洁能源 · 智能交通",
+    brandAiSubtitle: "AI 系统",
   },
   es: {
     learnMore: "Más Información",
     buyNow: "Comprar Ahora",
     aboutUs: "Sobre Nosotros",
     brandTitle: "Diseñado para la Próxima Era",
-    brandSubtitle: "ENERGÍA LIMPIA · MOVILIDAD INTELIGENTE · SISTEMAS IA",
+    brandSubtitle: "ENERGÍA LIMPIA · MOVILIDAD INTELIGENTE",
+    brandAiSubtitle: "SISTEMAS IA",
   },
   ar: {
     learnMore: "اعرف المزيد",
     buyNow: "اشتر الآن",
     aboutUs: "من نحن",
     brandTitle: "مصمم للعصر القادم",
-    brandSubtitle: "طاقة نظيفة · تنقل ذكي · أنظمة ذكاء اصطناعي",
+    brandSubtitle: "طاقة نظيفة · تنقل ذكي",
+    brandAiSubtitle: "أنظمة ذكاء اصطناعي",
   },
   fr: {
     learnMore: "En Savoir Plus",
     buyNow: "Acheter",
     aboutUs: "À Propos",
     brandTitle: "Conçu pour la Prochaine Ère",
-    brandSubtitle: "ÉNERGIE PROPRE · MOBILITÉ INTELLIGENTE · SYSTÈMES IA",
+    brandSubtitle: "ÉNERGIE PROPRE · MOBILITÉ INTELLIGENTE",
+    brandAiSubtitle: "SYSTÈMES IA",
   },
   pt: {
     learnMore: "Saiba Mais",
     buyNow: "Comprar Agora",
     aboutUs: "Sobre Nós",
     brandTitle: "Construído para a Próxima Era",
-    brandSubtitle: "ENERGIA LIMPA · MOBILIDADE INTELIGENTE · SISTEMAS DE IA",
+    brandSubtitle: "ENERGIA LIMPA · MOBILIDADE INTELIGENTE",
+    brandAiSubtitle: "SISTEMAS DE IA",
   },
   vi: {
     learnMore: "Tìm Hiểu Thêm",
     buyNow: "Mua Ngay",
     aboutUs: "Giới Thiệu",
     brandTitle: "Kiến Tạo Kỷ Nguyên Tiếp Theo",
-    brandSubtitle: "NĂNG LƯỢNG SẠCH · DI CHUYỂN THÔNG MINH · HỆ THỐNG AI",
+    brandSubtitle: "NĂNG LƯỢNG SẠCH · DI CHUYỂN THÔNG MINH",
+    brandAiSubtitle: "HỆ THỐNG AI",
   },
 };
 
@@ -256,7 +265,9 @@ const solarCards = [
   },
 ];
 
-const BRAND_BANNER = "/product-below-img.png";
+const BRAND_BANNER = SHOW_AI_CONTENT
+  ? "/product-below-img.png"
+  : "/hero-poster.png";
 
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
@@ -752,7 +763,11 @@ function BrandAboutBanner() {
         >
           <img
             src={BRAND_BANNER}
-            alt="ASTRAQ heavy transport clean energy intelligent robotics"
+            alt={
+              SHOW_AI_CONTENT
+                ? "ASTRAQ heavy transport, clean energy and robotics"
+                : "ASTRAQ truck at a solar-powered charging station"
+            }
             className="w-full h-auto transition-transform duration-700 group-hover:scale-[1.01] brand-about-image"
             style={{
               display: "block",
@@ -764,7 +779,11 @@ function BrandAboutBanner() {
 
           <div className="brand-about-text">
             <h2>{commonText[currentLanguage].brandTitle}</h2>
-            <p>{commonText[currentLanguage].brandSubtitle}</p>
+            <p>
+              {commonText[currentLanguage].brandSubtitle}
+              {SHOW_AI_CONTENT &&
+                ` · ${commonText[currentLanguage].brandAiSubtitle}`}
+            </p>
           </div>
 
           <a href="/about" className="brand-about-button">

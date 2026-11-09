@@ -4,6 +4,7 @@
  */
 
 import { useEffect, useRef, useState } from "react";
+import { SHOW_AI_CONTENT } from "@shared/const";
 import {
   languageOptions,
   type Language,
@@ -94,7 +95,7 @@ const navLinks = [
     },
     href: "/about",
   },
-];
+].filter((link) => SHOW_AI_CONTENT || link.key !== "humanoidRobot");
 
 const mobileNavLinks = [
   {
@@ -185,7 +186,7 @@ const mobileNavLinks = [
     },
     href: "/about",
   },
-];
+].filter((link) => SHOW_AI_CONTENT || link.key !== "humanoidRobot");
 
 const aboutLinks = [
   {

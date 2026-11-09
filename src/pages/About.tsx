@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Footer from "../components/Footer";
 import { Link } from "wouter";
-import { useLanguage } from "../i18n/LanguageContext";
+import { type Language, useLanguage } from "../i18n/LanguageContext";
 import { translateVi } from "../i18n/vietnameseFallback";
 
 const ACCENT_COLOR = "#C9A46A";
@@ -131,32 +131,67 @@ const milestones = [
   },
 ];
 
-const teamMembers = [
+type TeamMember = {
+  name: string;
+  image: string;
+  localizedImages: Partial<Record<Language, string>>;
+  localizedDescriptions?: Record<Language, string>;
+  hidden?: boolean;
+};
+
+const teamMembers: TeamMember[] = [
+  {
+    name: "Faye Wang",
+    image: "/images/about/Faye.png",
+    localizedImages: {
+      zh: "/images/about/Faye-cn.png",
+      es: "/images/about/Faye-es.png",
+      ar: "/images/about/Faye-ar.png",
+      fr: "/images/about/Faye-fr.png",
+      pt: "/images/about/Faye-pt.png",
+      vi: "/images/about/Faye-vi.png",
+    },
+    localizedDescriptions: {
+      en: "Founder. Shaping ASTRAQ’s vision for heavy transport and clean energy.",
+      zh: "创始人。塑造 ASTRAQ 在重型运输与清洁能源领域的愿景。",
+      es: "Fundadora. Da forma a la visión de ASTRAQ para el transporte pesado y la energía limpia.",
+      ar: "المؤسِّسة. ترسم رؤية ASTRAQ للنقل الثقيل والطاقة النظيفة.",
+      fr: "Fondatrice. Façonne la vision d’ASTRAQ pour le transport lourd et l’énergie propre.",
+      pt: "Fundadora. Define a visão da ASTRAQ para o transporte pesado e a energia limpa.",
+      vi: "Nhà sáng lập. Định hình tầm nhìn của ASTRAQ về vận tải hạng nặng và năng lượng sạch.",
+    },
+  },
   {
     name: "Lawrence Lee",
-    role: "CEO",
     image: "/images/about/Lawrence.png",
-    imageCn: "/images/about/Lawrence-cn.png",
-    imageEs: "/images/about/Lawrence-es.png",
-    imageAr: "/images/about/Lawrence-ar.png",
+    localizedImages: {
+      zh: "/images/about/Lawrence-cn.png",
+      es: "/images/about/Lawrence-es.png",
+      ar: "/images/about/Lawrence-ar.png",
+    },
   },
   {
     name: "Wei Zhang",
-    role: "CTO",
     image: "/images/about/Wei.png",
-    imageCn: "/images/about/Wei-cn.png",
-    imageEs: "/images/about/Wei-es.png",
-    imageAr: "/images/about/Wei-ar.png",
+    localizedImages: {
+      zh: "/images/about/Wei-cn.png",
+      es: "/images/about/Wei-es.png",
+      ar: "/images/about/Wei-ar.png",
+    },
   },
   {
     name: "Ming Ng",
-    role: "CFO",
     image: "/images/about/Ming.png",
-    imageCn: "/images/about/Ming-cn.png",
-    imageEs: "/images/about/Ming-es.png",
-    imageAr: "/images/about/Ming-ar.png",
+    localizedImages: {
+      zh: "/images/about/Ming-cn.png",
+      es: "/images/about/Ming-es.png",
+      ar: "/images/about/Ming-ar.png",
+    },
+    hidden: true,
   },
 ];
+
+const visibleTeamMembers = teamMembers.filter((member) => !member.hidden);
 
 export default function About() {
   const { language } = useLanguage();
@@ -189,18 +224,6 @@ export default function About() {
     if (isPt) return pt;
     if (isVi) return vi;
     return en;
-  };
-
-  const getTeamImage = (
-    image: string,
-    imageCn: string,
-    imageEs: string,
-    imageAr: string
-  ) => {
-    if (isZh) return imageCn;
-    if (isEs) return imageEs;
-    if (isAr) return imageAr;
-    return image;
   };
 
   return (
@@ -586,22 +609,23 @@ export default function About() {
 
         <div className="w-full max-w-none px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
           <div className="grid grid-cols-1 items-start gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5 xl:grid-cols-5 xl:gap-6">
-            {teamMembers.map((member) => (
+            {visibleTeamMembers.map((member) => (
               <div
                 key={member.name}
                 className="relative overflow-hidden bg-transparent shadow-2xl xl:first:col-start-2"
               >
                 <img
-                  src={getTeamImage(
-                    member.image,
-                    member.imageCn,
-                    member.imageEs,
-                    member.imageAr
-                  )}
-                  alt={member.name}
+                  src={member.localizedImages[language] ?? member.image}
+                  alt={
+                    member.localizedDescriptions
+                      ? `${member.name}. ${member.localizedDescriptions[language]}`
+                      : member.name
+                  }
                   className="block h-auto w-full object-contain object-center"
                   onError={(e) => {
-                    e.currentTarget.src = member.image;
+                    if (e.currentTarget.getAttribute("src") !== member.image) {
+                      e.currentTarget.src = member.image;
+                    }
                   }}
                 />
               </div>

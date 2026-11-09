@@ -10,6 +10,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
+import { SHOW_AI_CONTENT } from "@shared/const";
 import { useLanguage } from "../i18n/LanguageContext";
 
 const FONT_FAMILY =
@@ -62,10 +63,7 @@ const heroText: Record<
   },
 };
 
-const stats: Array<{
-  value: Record<LangCode, string>;
-  label: Record<LangCode, string>;
-}> = [
+const stats = [
   {
     value: {
       en: "POWER",
@@ -87,6 +85,7 @@ const stats: Array<{
     },
   },
   {
+    requiresAi: true,
     value: {
       en: "INTELLIGENCE",
       zh: "智能",
@@ -146,7 +145,7 @@ const stats: Array<{
       vi: "DI CHUYỂN",
     },
   },
-];
+].filter((stat) => SHOW_AI_CONTENT || !stat.requiresAi);
 
 export default function HeroSection() {
   const { language } = useLanguage();
@@ -264,7 +263,10 @@ export default function HeroSection() {
           transition: "opacity 0.6s ease",
         }}
       >
-        <source src="/hero-video.mp4" type="video/mp4" />
+        <source
+          src={SHOW_AI_CONTENT ? "/hero-video.mp4" : "/hero-video-no-ai.mp4"}
+          type="video/mp4"
+        />
       </video>
 
       {/* Gradient overlays */}
@@ -347,7 +349,7 @@ export default function HeroSection() {
 
         {/* Stats Grid */}
         <div
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 lg:gap-12 w-full max-w-[90vw] 2xl:max-w-[1300px] mx-auto text-center mt-10 sm:mt-14 lg:mt-18"
+          className={`grid grid-cols-2 gap-6 sm:gap-8 lg:gap-12 w-full max-w-[90vw] 2xl:max-w-[1300px] mx-auto text-center mt-10 sm:mt-14 lg:mt-18 ${SHOW_AI_CONTENT ? "md:grid-cols-4" : "md:grid-cols-3"}`}
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? "translateY(0)" : "translateY(20px)",
@@ -357,14 +359,18 @@ export default function HeroSection() {
           {stats.map((stat, i) => (
             <div
               key={stat.label.en}
-              className="relative text-center"
+              className={
+                !SHOW_AI_CONTENT && i === stats.length - 1
+                  ? "relative col-span-2 text-center md:col-span-1"
+                  : "relative text-center"
+              }
               style={{
                 borderRight:
                   i < stats.length - 1
                     ? "1px solid rgba(255,255,255,0.06)"
                     : "none",
                 paddingRight: i < stats.length - 1 ? "1rem" : "0",
-                paddingLeft: i > 0 ? "1rem" : "0",
+                paddingLeft: i > 0 && i < stats.length - 1 ? "1rem" : "0",
               }}
             >
               <div

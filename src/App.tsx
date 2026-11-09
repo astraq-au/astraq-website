@@ -2,6 +2,7 @@ import { Toaster } from "./components/ui/sonner";
 import { TooltipProvider } from "./components/ui/tooltip";
 import NotFound from "./pages/NotFound";
 import { Route, Switch } from "wouter";
+import { SHOW_AI_CONTENT } from "@shared/const";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./i18n/LanguageContext";
@@ -38,10 +39,12 @@ function Router() {
           component={SolarChargingStationDetail}
         />
 
-        <Route
-          path="/products/humanoid-robot"
-          component={HumanoidRobotDetail}
-        />
+        {SHOW_AI_CONTENT && (
+          <Route
+            path="/products/humanoid-robot"
+            component={HumanoidRobotDetail}
+          />
+        )}
 
         {/* AI massage robot page temporarily hidden */}
         {/* 
