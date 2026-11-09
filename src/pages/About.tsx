@@ -141,6 +141,45 @@ type TeamMember = {
 
 const teamMembers: TeamMember[] = [
   {
+    name: "Lawrence Lee",
+    image: "/images/about/Lawrence.png",
+    localizedImages: {
+      zh: "/images/about/Lawrence-cn.png",
+      es: "/images/about/Lawrence-es.png",
+      ar: "/images/about/Lawrence-ar.png",
+    },
+  },
+  {
+    name: "Rayn Chen",
+    image: "/images/about/Rayn.png",
+    localizedImages: {
+      zh: "/images/about/Rayn-cn.png",
+      es: "/images/about/Rayn-es.png",
+      ar: "/images/about/Rayn-ar.png",
+      fr: "/images/about/Rayn-fr.png",
+      pt: "/images/about/Rayn-pt.png",
+      vi: "/images/about/Rayn-vi.png",
+    },
+    localizedDescriptions: {
+      en: "Founder & Chief Brand Operations Officer. Leads ASTRAQ’s brand strategy and operations.",
+      zh: "创始人兼品牌首席运营官。负责 ASTRAQ 的品牌战略与运营。",
+      es: "Fundador y director de operaciones de marca. Dirige la estrategia y las operaciones de marca de ASTRAQ.",
+      ar: "المؤسس والرئيس التنفيذي لعمليات العلامة التجارية. يقود استراتيجية العلامة التجارية وعملياتها في ASTRAQ.",
+      fr: "Fondateur et directeur des opérations de marque. Pilote la stratégie et les opérations de marque d’ASTRAQ.",
+      pt: "Fundador e diretor de operações de marca. Lidera a estratégia e as operações de marca da ASTRAQ.",
+      vi: "Nhà sáng lập kiêm Giám đốc vận hành thương hiệu. Dẫn dắt chiến lược và hoạt động thương hiệu của ASTRAQ.",
+    },
+  },
+  {
+    name: "Wei Zhang",
+    image: "/images/about/Wei.png",
+    localizedImages: {
+      zh: "/images/about/Wei-cn.png",
+      es: "/images/about/Wei-es.png",
+      ar: "/images/about/Wei-ar.png",
+    },
+  },
+  {
     name: "Faye Wang",
     image: "/images/about/Faye.png",
     localizedImages: {
@@ -159,24 +198,6 @@ const teamMembers: TeamMember[] = [
       fr: "Fondatrice. Façonne la vision d’ASTRAQ pour le transport lourd et l’énergie propre.",
       pt: "Fundadora. Define a visão da ASTRAQ para o transporte pesado e a energia limpa.",
       vi: "Nhà sáng lập. Định hình tầm nhìn của ASTRAQ về vận tải hạng nặng và năng lượng sạch.",
-    },
-  },
-  {
-    name: "Lawrence Lee",
-    image: "/images/about/Lawrence.png",
-    localizedImages: {
-      zh: "/images/about/Lawrence-cn.png",
-      es: "/images/about/Lawrence-es.png",
-      ar: "/images/about/Lawrence-ar.png",
-    },
-  },
-  {
-    name: "Wei Zhang",
-    image: "/images/about/Wei.png",
-    localizedImages: {
-      zh: "/images/about/Wei-cn.png",
-      es: "/images/about/Wei-es.png",
-      ar: "/images/about/Wei-ar.png",
     },
   },
   {
@@ -608,11 +629,11 @@ export default function About() {
         </div>
 
         <div className="w-full max-w-none px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
-          <div className="grid grid-cols-1 items-start gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5 xl:grid-cols-5 xl:gap-6">
+          <div className="grid grid-cols-1 items-start gap-4 sm:grid-cols-2 lg:gap-5 xl:grid-cols-4 xl:gap-6">
             {visibleTeamMembers.map((member) => (
               <div
                 key={member.name}
-                className="relative overflow-hidden bg-transparent shadow-2xl xl:first:col-start-2"
+                className="relative overflow-hidden bg-transparent shadow-2xl"
               >
                 <img
                   src={member.localizedImages[language] ?? member.image}
