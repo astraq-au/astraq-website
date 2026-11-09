@@ -4,7 +4,7 @@
  */
 
 import { useEffect, useRef, useState } from "react";
-import { SHOW_AI_CONTENT } from "@shared/const";
+import { SHOW_AI_CONTENT } from "../siteConfig";
 import {
   languageOptions,
   type Language,

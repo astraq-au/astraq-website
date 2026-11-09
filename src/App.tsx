@@ -2,7 +2,7 @@ import { Toaster } from "./components/ui/sonner";
 import { TooltipProvider } from "./components/ui/tooltip";
 import NotFound from "./pages/NotFound";
 import { Route, Switch } from "wouter";
-import { SHOW_AI_CONTENT } from "@shared/const";
+import { SHOW_AI_CONTENT } from "./siteConfig";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./i18n/LanguageContext";

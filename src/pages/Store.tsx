@@ -6,7 +6,7 @@
  */
 
 import Footer from "../components/Footer";
-import { SHOW_AI_CONTENT } from "@shared/const";
+import { SHOW_AI_CONTENT } from "../siteConfig";
 import { useLanguage } from "../i18n/LanguageContext";
 import { translateVi } from "../i18n/vietnameseFallback";
 

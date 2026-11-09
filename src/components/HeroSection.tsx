@@ -10,7 +10,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
-import { SHOW_AI_CONTENT } from "@shared/const";
+import { SHOW_AI_CONTENT } from "../siteConfig";
 import { useLanguage } from "../i18n/LanguageContext";
 
 const FONT_FAMILY =

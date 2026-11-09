@@ -9,7 +9,7 @@
  */
 
 import { useEffect, useRef, useState } from "react";
-import { SHOW_AI_CONTENT } from "@shared/const";
+import { SHOW_AI_CONTENT } from "../siteConfig";
 import { useLanguage } from "../i18n/LanguageContext";
 import { translateVi } from "../i18n/vietnameseFallback";
 
@@ -265,9 +265,7 @@ const solarCards = [
   },
 ];
 
-const BRAND_BANNER = SHOW_AI_CONTENT
-  ? "/product-below-img.png"
-  : "/hero-poster.png";
+const BRAND_BANNER = "/product-below-img.png";
 
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
@@ -763,11 +761,7 @@ function BrandAboutBanner() {
         >
           <img
             src={BRAND_BANNER}
-            alt={
-              SHOW_AI_CONTENT
-                ? "ASTRAQ heavy transport, clean energy and robotics"
-                : "ASTRAQ truck at a solar-powered charging station"
-            }
+            alt="ASTRAQ trucks at a solar-powered charging station"
             className="w-full h-auto transition-transform duration-700 group-hover:scale-[1.01] brand-about-image"
             style={{
               display: "block",
