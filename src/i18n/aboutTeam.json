@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Lawrence Lee",
+    "imageKey": "Lawrence",
+    "profiles": {
+      "en": { "role": "CEO", "bio": "Founding member with 20 years of experience in the truck industry." },
+      "zh": { "role": "首席执行官", "bio": "创始成员，深耕卡车行业20年。" },
+      "es": { "role": "CEO", "bio": "Miembro fundador con 20 años de experiencia en la industria del camión." },
+      "ar": { "role": "الرئيس التنفيذي", "bio": "عضو مؤسس يتمتع بخبرة 20 عامًا في صناعة الشاحنات." },
+      "fr": { "role": "Directeur général", "bio": "Membre fondateur avec 20 ans d’expérience dans le secteur du camion." },
+      "pt": { "role": "Diretor executivo", "bio": "Membro fundador com 20 anos de experiência no setor de caminhões." },
+      "vi": { "role": "Giám đốc điều hành", "bio": "Thành viên sáng lập với 20 năm kinh nghiệm trong ngành xe tải." }
+    }
+  },
+  {
+    "name": "Rayn Chen",
+    "imageKey": "Rayn",
+    "profiles": {
+      "en": { "role": "Founder & Chief Brand Operations Officer", "bio": "Leads ASTRAQ’s brand strategy and operations." },
+      "zh": { "role": "创始人兼品牌首席运营官", "bio": "负责 ASTRAQ 的品牌战略与运营。" },
+      "es": { "role": "Fundador y director de operaciones de marca", "bio": "Dirige la estrategia y las operaciones de marca de ASTRAQ." },
+      "ar": { "role": "المؤسس والرئيس التنفيذي لعمليات العلامة التجارية", "bio": "يقود استراتيجية العلامة التجارية وعملياتها في ASTRAQ." },
+      "fr": { "role": "Fondateur et directeur des opérations de marque", "bio": "Pilote la stratégie et les opérations de marque d’ASTRAQ." },
+      "pt": { "role": "Fundador e diretor de operações de marca", "bio": "Lidera a estratégia e as operações de marca da ASTRAQ." },
+      "vi": { "role": "Nhà sáng lập kiêm Giám đốc vận hành thương hiệu", "bio": "Dẫn dắt chiến lược và hoạt động thương hiệu của ASTRAQ." }
+    }
+  },
+  {
+    "name": "Wei Zhang",
+    "imageKey": "Wei",
+    "profiles": {
+      "en": { "role": "CTO", "bio": "Doctor of Mechanical Engineering leading practical product innovation." },
+      "zh": { "role": "首席技术官", "bio": "机械工程博士，推动务实的产品创新。" },
+      "es": { "role": "CTO", "bio": "Doctor en Ingeniería Mecánica, liderando la innovación práctica de productos." },
+      "ar": { "role": "الرئيس التنفيذي للتكنولوجيا", "bio": "دكتور في الهندسة الميكانيكية يقود الابتكار العملي في المنتجات." },
+      "fr": { "role": "Directeur technique", "bio": "Docteur en génie mécanique, il pilote l’innovation produit axée sur les usages." },
+      "pt": { "role": "Diretor de tecnologia", "bio": "Doutor em engenharia mecânica, lidera a inovação de produtos com foco na aplicação prática." },
+      "vi": { "role": "Giám đốc công nghệ", "bio": "Tiến sĩ kỹ thuật cơ khí, dẫn dắt đổi mới sản phẩm theo hướng thực tiễn." }
+    }
+  },
+  {
+    "name": "Faye Wang",
+    "imageKey": "Faye",
+    "profiles": {
+      "en": { "role": "Founder", "bio": "Shaping ASTRAQ’s vision for heavy transport and clean energy." },
+      "zh": { "role": "创始人", "bio": "塑造 ASTRAQ 在重型运输与清洁能源领域的愿景。" },
+      "es": { "role": "Fundadora", "bio": "Da forma a la visión de ASTRAQ para el transporte pesado y la energía limpia." },
+      "ar": { "role": "المؤسِّسة", "bio": "ترسم رؤية ASTRAQ للنقل الثقيل والطاقة النظيفة." },
+      "fr": { "role": "Fondatrice", "bio": "Façonne la vision d’ASTRAQ pour le transport lourd et l’énergie propre." },
+      "pt": { "role": "Fundadora", "bio": "Define a visão da ASTRAQ para o transporte pesado e a energia limpa." },
+      "vi": { "role": "Nhà sáng lập", "bio": "Định hình tầm nhìn của ASTRAQ về vận tải hạng nặng và năng lượng sạch." }
+    }
+  },
+  {
+    "name": "Marvin Yang",
+    "imageKey": "Marvin",
+    "profiles": {
+      "en": { "role": "Founder & Chief Marketing Officer (CMO)", "bio": "Leads ASTRAQ’s brand promotion and market expansion." },
+      "zh": { "role": "创始人兼首席市场官（CMO）", "bio": "负责 ASTRAQ 的品牌推广与市场拓展。" },
+      "es": { "role": "Fundador y director de marketing (CMO)", "bio": "Impulsa la promoción de ASTRAQ y su expansión en el mercado." },
+      "ar": { "role": "المؤسس والرئيس التنفيذي للتسويق", "bio": "يقود الترويج لعلامة ASTRAQ وتوسّعها في الأسواق." },
+      "fr": { "role": "Fondateur et directeur marketing (CMO)", "bio": "Pilote la promotion d’ASTRAQ et son expansion sur les marchés." },
+      "pt": { "role": "Fundador e diretor de marketing (CMO)", "bio": "Lidera a promoção da ASTRAQ e a expansão de mercado." },
+      "vi": { "role": "Nhà sáng lập kiêm Giám đốc Marketing (CMO)", "bio": "Dẫn dắt hoạt động quảng bá thương hiệu và mở rộng thị trường của ASTRAQ." }
+    }
+  }
+]

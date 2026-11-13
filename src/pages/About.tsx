@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Footer from "../components/Footer";
 import { Link } from "wouter";
-import { type Language, useLanguage } from "../i18n/LanguageContext";
+import { useLanguage } from "../i18n/LanguageContext";
+import teamMembers from "../i18n/aboutTeam.json";
 import { translateVi } from "../i18n/vietnameseFallback";
 
 const ACCENT_COLOR = "#C9A46A";
@@ -131,88 +132,8 @@ const milestones = [
   },
 ];
 
-type TeamMember = {
-  name: string;
-  image: string;
-  localizedImages: Partial<Record<Language, string>>;
-  localizedDescriptions?: Record<Language, string>;
-  hidden?: boolean;
-};
-
-const teamMembers: TeamMember[] = [
-  {
-    name: "Lawrence Lee",
-    image: "/images/about/Lawrence.png",
-    localizedImages: {
-      zh: "/images/about/Lawrence-cn.png",
-      es: "/images/about/Lawrence-es.png",
-      ar: "/images/about/Lawrence-ar.png",
-    },
-  },
-  {
-    name: "Rayn Chen",
-    image: "/images/about/Rayn.png",
-    localizedImages: {
-      zh: "/images/about/Rayn-cn.png",
-      es: "/images/about/Rayn-es.png",
-      ar: "/images/about/Rayn-ar.png",
-      fr: "/images/about/Rayn-fr.png",
-      pt: "/images/about/Rayn-pt.png",
-      vi: "/images/about/Rayn-vi.png",
-    },
-    localizedDescriptions: {
-      en: "Founder & Chief Brand Operations Officer. Leads ASTRAQ’s brand strategy and operations.",
-      zh: "创始人兼品牌首席运营官。负责 ASTRAQ 的品牌战略与运营。",
-      es: "Fundador y director de operaciones de marca. Dirige la estrategia y las operaciones de marca de ASTRAQ.",
-      ar: "المؤسس والرئيس التنفيذي لعمليات العلامة التجارية. يقود استراتيجية العلامة التجارية وعملياتها في ASTRAQ.",
-      fr: "Fondateur et directeur des opérations de marque. Pilote la stratégie et les opérations de marque d’ASTRAQ.",
-      pt: "Fundador e diretor de operações de marca. Lidera a estratégia e as operações de marca da ASTRAQ.",
-      vi: "Nhà sáng lập kiêm Giám đốc vận hành thương hiệu. Dẫn dắt chiến lược và hoạt động thương hiệu của ASTRAQ.",
-    },
-  },
-  {
-    name: "Wei Zhang",
-    image: "/images/about/Wei.png",
-    localizedImages: {
-      zh: "/images/about/Wei-cn.png",
-      es: "/images/about/Wei-es.png",
-      ar: "/images/about/Wei-ar.png",
-    },
-  },
-  {
-    name: "Faye Wang",
-    image: "/images/about/Faye.png",
-    localizedImages: {
-      zh: "/images/about/Faye-cn.png",
-      es: "/images/about/Faye-es.png",
-      ar: "/images/about/Faye-ar.png",
-      fr: "/images/about/Faye-fr.png",
-      pt: "/images/about/Faye-pt.png",
-      vi: "/images/about/Faye-vi.png",
-    },
-    localizedDescriptions: {
-      en: "Founder. Shaping ASTRAQ’s vision for heavy transport and clean energy.",
-      zh: "创始人。塑造 ASTRAQ 在重型运输与清洁能源领域的愿景。",
-      es: "Fundadora. Da forma a la visión de ASTRAQ para el transporte pesado y la energía limpia.",
-      ar: "المؤسِّسة. ترسم رؤية ASTRAQ للنقل الثقيل والطاقة النظيفة.",
-      fr: "Fondatrice. Façonne la vision d’ASTRAQ pour le transport lourd et l’énergie propre.",
-      pt: "Fundadora. Define a visão da ASTRAQ para o transporte pesado e a energia limpa.",
-      vi: "Nhà sáng lập. Định hình tầm nhìn của ASTRAQ về vận tải hạng nặng và năng lượng sạch.",
-    },
-  },
-  {
-    name: "Ming Ng",
-    image: "/images/about/Ming.png",
-    localizedImages: {
-      zh: "/images/about/Ming-cn.png",
-      es: "/images/about/Ming-es.png",
-      ar: "/images/about/Ming-ar.png",
-    },
-    hidden: true,
-  },
-];
-
-const visibleTeamMembers = teamMembers.filter((member) => !member.hidden);
+const TEAM_IMAGES = "/images/about/team";
+const TEAM_IMAGE_SUFFIX = { en: "", zh: "-cn", es: "-es", ar: "-ar", fr: "-fr", pt: "-pt", vi: "-vi" };
 
 export default function About() {
   const { language } = useLanguage();
@@ -591,6 +512,7 @@ export default function About() {
             />
 
             <span
+              id="about-core-team"
               className="font-semibold leading-none tracking-tight text-[#C9A46A]"
               style={{
                 fontSize: "clamp(2.5rem,3.8vw,5rem)",
@@ -629,28 +551,31 @@ export default function About() {
         </div>
 
         <div className="w-full max-w-none px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
-          <div className="grid grid-cols-1 items-start gap-4 sm:grid-cols-2 lg:gap-5 xl:grid-cols-4 xl:gap-6">
-            {visibleTeamMembers.map((member) => (
-              <div
-                key={member.name}
-                className="relative overflow-hidden bg-transparent shadow-2xl"
-              >
-                <img
-                  src={member.localizedImages[language] ?? member.image}
-                  alt={
-                    member.localizedDescriptions
-                      ? `${member.name}. ${member.localizedDescriptions[language]}`
-                      : member.name
-                  }
-                  className="block h-auto w-full object-contain object-center"
-                  onError={(e) => {
-                    if (e.currentTarget.getAttribute("src") !== member.image) {
-                      e.currentTarget.src = member.image;
-                    }
-                  }}
-                />
-              </div>
-            ))}
+          <div
+            role="region"
+            aria-labelledby="about-core-team"
+            tabIndex={0}
+            className="snap-x snap-proximity overflow-x-auto pb-3 [scrollbar-color:#668b9b_#162023] [scrollbar-width:thin] focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-sky-400"
+          >
+            <ul className="grid grid-flow-col auto-cols-[minmax(min(19rem,85%),1fr)] gap-4 lg:gap-5">
+              {teamMembers.map(({ name, imageKey, profiles }) => (
+                <li key={name} className="snap-start overflow-hidden rounded-lg bg-[#151820]">
+                  <img
+                    src={`${TEAM_IMAGES}/${imageKey}${TEAM_IMAGE_SUFFIX[language]}.png`}
+                    alt={`${name}. ${profiles[language].role}. ${profiles[language].bio}`}
+                    width={900}
+                    height={600}
+                    className="block h-auto w-full"
+                    onError={(e) => {
+                      const fallback = `/images/about/${imageKey}.png`;
+                      if (e.currentTarget.getAttribute("src") !== fallback) {
+                        e.currentTarget.src = fallback;
+                      }
+                    }}
+                  />
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
