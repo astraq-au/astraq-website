@@ -55,13 +55,13 @@
     "name": "Marvin Yang",
     "imageKey": "Marvin",
     "profiles": {
-      "en": { "role": "Founder & Chief Marketing Officer (CMO)", "bio": "Leads ASTRAQ’s brand promotion and market expansion." },
-      "zh": { "role": "创始人兼首席市场官（CMO）", "bio": "负责 ASTRAQ 的品牌推广与市场拓展。" },
-      "es": { "role": "Fundador y director de marketing (CMO)", "bio": "Impulsa la promoción de ASTRAQ y su expansión en el mercado." },
+      "en": { "role": "Founder & Chief Marketing Officer", "bio": "Leads ASTRAQ’s brand promotion and market expansion." },
+      "zh": { "role": "创始人兼首席市场官", "bio": "负责 ASTRAQ 的品牌推广与市场拓展。" },
+      "es": { "role": "Fundador y director de marketing", "bio": "Impulsa la promoción de ASTRAQ y su expansión en el mercado." },
       "ar": { "role": "المؤسس والرئيس التنفيذي للتسويق", "bio": "يقود الترويج لعلامة ASTRAQ وتوسّعها في الأسواق." },
-      "fr": { "role": "Fondateur et directeur marketing (CMO)", "bio": "Pilote la promotion d’ASTRAQ et son expansion sur les marchés." },
-      "pt": { "role": "Fundador e diretor de marketing (CMO)", "bio": "Lidera a promoção da ASTRAQ e a expansão de mercado." },
-      "vi": { "role": "Nhà sáng lập kiêm Giám đốc Marketing (CMO)", "bio": "Dẫn dắt hoạt động quảng bá thương hiệu và mở rộng thị trường của ASTRAQ." }
+      "fr": { "role": "Fondateur et directeur marketing", "bio": "Pilote la promotion d’ASTRAQ et son expansion sur les marchés." },
+      "pt": { "role": "Fundador e diretor de marketing", "bio": "Lidera a promoção da ASTRAQ e a expansão de mercado." },
+      "vi": { "role": "Nhà sáng lập kiêm Giám đốc Marketing", "bio": "Dẫn dắt hoạt động quảng bá thương hiệu và mở rộng thị trường của ASTRAQ." }
     }
   }
 ]
