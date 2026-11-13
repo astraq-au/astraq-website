@@ -12,6 +12,7 @@ import { useEffect, useRef, useState } from "react";
 import { SHOW_AI_CONTENT } from "../siteConfig";
 import { useLanguage } from "../i18n/LanguageContext";
 import { translateVi } from "../i18n/vietnameseFallback";
+import HomeNewsSection from "./HomeNewsSection";
 
 const FONT_FAMILY =
   "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
@@ -962,6 +963,7 @@ export default function ProductsSection() {
       </div>
 
       <ProductSelector />
+      <HomeNewsSection />
       <SolarStationSection />
       <BrandAboutBanner />
     </section>

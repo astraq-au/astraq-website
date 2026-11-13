@@ -186,6 +186,19 @@ const mobileNavLinks = [
     },
     href: "/about",
   },
+  {
+    key: "news",
+    labels: {
+      en: "NEWS",
+      zh: "新闻",
+      es: "NOTICIAS",
+      ar: "الأخبار",
+      fr: "ACTUALITÉS",
+      pt: "NOTÍCIAS",
+      vi: "TIN TỨC",
+    },
+    href: "/news",
+  },
 ].filter((link) => SHOW_AI_CONTENT || link.key !== "humanoidRobot");
 
 const aboutLinks = [

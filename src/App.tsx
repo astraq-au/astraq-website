@@ -59,6 +59,7 @@ function Router() {
         <Route path="/about" component={About} />
         <Route path="/store" component={Store} />
         <Route path="/news" component={News} />
+        <Route path="/news/:id" component={News} />
         <Route path="/" component={Home} />
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />

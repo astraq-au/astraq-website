@@ -1,172 +1,228 @@
-/**
- * ASTRAQ News Page
- * Design: Dark industrial style — warm dark background, white text, gold accent
- * Content: News coming soon page
- * English / Chinese / Spanish / Arabic / French / Portuguese supported
- */
-
+import { useEffect } from "react";
+import { ArrowLeft } from "lucide-react";
+import { Link, useParams } from "wouter";
 import Footer from "../components/Footer";
-import { useLanguage } from "../i18n/LanguageContext";
-import { translateVi } from "../i18n/vietnameseFallback";
+import { useLanguage, type Language } from "../i18n/LanguageContext";
+import {
+  articles,
+  formatPublicationDate,
+  type Article,
+} from "../news/articles";
+import NotFound from "./NotFound";
 
-const ACCENT_COLOR = "#C9A46A";
+const labels: Record<Language, { title: string; back: string }> = {
+  en: { title: "ASTRAQ News", back: "Back to news" },
+  zh: { title: "ASTRAQ 新闻", back: "返回新闻列表" },
+  es: { title: "Noticias de ASTRAQ", back: "Volver a las noticias" },
+  ar: { title: "أخبار ASTRAQ", back: "العودة إلى الأخبار" },
+  fr: { title: "Actualités ASTRAQ", back: "Retour aux actualités" },
+  pt: { title: "Notícias da ASTRAQ", back: "Voltar às notícias" },
+  vi: { title: "Tin tức ASTRAQ", back: "Quay lại tin tức" },
+};
 
-const FONT_FAMILY =
-  "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+const container = "mx-auto w-full max-w-[1200px] px-6 sm:px-10 lg:px-12";
+const titleStyle =
+  "text-balance font-sans font-bold tracking-tight [overflow-wrap:anywhere]";
+function PublishDate({
+  publishedOn,
+  locale,
+}: {
+  publishedOn: string;
+  locale: keyof Article["content"];
+}) {
+  return (
+    <time dateTime={publishedOn} className="mt-2.5 block text-sm text-white/65">
+      {formatPublicationDate(publishedOn, locale)}
+    </time>
+  );
+}
 
-export default function News() {
-  const { language } = useLanguage();
-
-  const isZh = language === "zh";
-  const isEs = language === "es";
-  const isAr = language === "ar";
-  const isFr = language === "fr";
-  const isPt = language === "pt";
-  const isVi = language === "vi";
-  const isRtl = isAr;
-
-  const getLabel = (
-    en: string,
-    zh: string,
-    es: string,
-    ar: string,
-    fr: string,
-    pt: string,
-    vi = translateVi(en)
-  ) => {
-    if (isZh) return zh;
-    if (isEs) return es;
-    if (isAr) return ar;
-    if (isFr) return fr;
-    if (isPt) return pt;
-    if (isVi) return vi;
-    return en;
-  };
-
-  const textTransform =
-    isZh || isAr ? ("none" as const) : ("uppercase" as const);
-
-  const titleLetterSpacing = isZh || isAr ? "-0.04em" : isEs ? "0.01em" : "0.05em";
-  const smallLetterSpacing = isZh || isAr ? "0.08em" : isEs ? "0.14em" : "0.22em";
-  const paragraphLetterSpacing = isZh || isAr ? "0.02em" : "0.03em";
+function NewsPhoto({
+  src,
+  caption,
+  loading,
+}: {
+  src: string | undefined;
+  caption: string;
+  loading?: "lazy";
+}) {
+  if (!src) return null;
 
   return (
-    <main
-      dir={isRtl ? "rtl" : "ltr"}
-      className="min-h-screen text-white"
+    <figure className="mx-auto mt-4 w-full max-w-[26rem]">
+      <img
+        src={src}
+        alt={caption}
+        width={1448}
+        height={1086}
+        loading={loading}
+        decoding="async"
+        className="block h-auto w-full border border-white/10"
+      />
+      <figcaption className="mt-2 text-center text-sm leading-snug text-white/70">
+        {caption}
+      </figcaption>
+    </figure>
+  );
+}
+
+export default function News() {
+  const { id } = useParams<"/news/:id">();
+  const { language, isRTL } = useLanguage();
+  const locale = language === "zh" ? "zh" : "en";
+  const { title, back } = labels[language];
+  const article = articles.find(item => item.id === id);
+  const content = article?.content[locale];
+  const pageTitle = content?.title ?? title;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
+  useEffect(() => {
+    const previousTitle = document.title;
+    document.title = `${pageTitle} | ASTRAQ`;
+    return () => {
+      document.title = previousTitle;
+    };
+  }, [pageTitle]);
+
+  if (id && !article) return <NotFound />;
+
+  return (
+    <div
+      className="min-h-screen bg-[#192326] font-sans text-white"
       style={{
-        background: "#3F3432",
-        fontFamily: FONT_FAMILY,
+        background: "linear-gradient(180deg, #233032 0%, #192326 640px)",
       }}
     >
-      <section
-        className="relative flex items-center overflow-hidden"
-        style={{
-          minHeight: "100vh",
-          paddingTop: "clamp(8rem, 10vw, 12rem)",
-          paddingBottom: "clamp(5rem, 8vw, 9rem)",
-          background:
-            "linear-gradient(180deg, #2E2726 0%, #3F3432 55%, #342B29 100%)",
-        }}
+      <main
+        dir={isRTL ? "rtl" : "ltr"}
+        className="pt-[clamp(7rem,9vw,11rem)] pb-[clamp(4rem,7vw,7rem)]"
       >
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: isRtl
-              ? "radial-gradient(ellipse at 28% 42%, rgba(201,164,106,0.12) 0%, transparent 52%)"
-              : "radial-gradient(ellipse at 72% 42%, rgba(201,164,106,0.12) 0%, transparent 52%)",
-          }}
-        />
-
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.08) 45%, rgba(0,0,0,0.34) 100%)",
-          }}
-        />
-
-        <div className="relative z-10 w-full max-w-[1760px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 2xl:px-24">
-          <div className="flex items-center gap-4 mb-8">
-            <span
-              className="block h-px"
-              style={{
-                width: "clamp(32px, 3vw, 56px)",
-                background: ACCENT_COLOR,
-              }}
-            />
-
-            <span
-              style={{
-                fontFamily: FONT_FAMILY,
-                fontWeight: 700,
-                fontSize: isEs
-                  ? "clamp(0.9rem, 1vw, 1.25rem)"
-                  : "clamp(1rem, 1.15vw, 1.45rem)",
-                letterSpacing: smallLetterSpacing,
-                textTransform,
-                color: ACCENT_COLOR,
-              }}
+        {article && content ? (
+          <div className="mx-auto w-full max-w-[48rem] px-6 sm:px-10">
+            <Link
+              href="/news"
+              className="mb-5 inline-flex items-center gap-2 text-sm font-semibold text-[#C9A46A] transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C9A46A] sm:mb-6"
             >
-              {getLabel("News", "新闻", "Noticias", "الأخبار", "Actualités", "Notícias")}
-            </span>
+              <ArrowLeft aria-hidden="true" className="size-4 rtl:rotate-180" />
+              {back}
+            </Link>
+
+            <article lang={locale} dir="ltr">
+              <header>
+                <h1
+                  className={`${titleStyle} text-[clamp(1.85rem,3.3vw,3rem)] leading-[1.14]`}
+                >
+                  {content.title}
+                </h1>
+                <PublishDate
+                  publishedOn={article.publishedOn}
+                  locale={locale}
+                />
+                <p className="mt-4 hyphens-auto text-justify text-base leading-[1.75] text-white/90 sm:text-lg">
+                  {content.lead}
+                </p>
+              </header>
+
+              <NewsPhoto
+                src={article.images[0]}
+                caption={content.captions[0]}
+              />
+
+              <div className="mt-7 space-y-7 sm:mt-8 sm:space-y-8">
+                {content.sections.map((section, index) => (
+                  <section key={section.heading}>
+                    <h2
+                      className={`${titleStyle} text-lg leading-snug sm:text-xl`}
+                    >
+                      {section.heading}
+                    </h2>
+                    {section.paragraphs.map(paragraph => (
+                      <p
+                        key={paragraph}
+                        className="mt-2 hyphens-auto text-justify text-base leading-[1.75] text-white/80 sm:text-[1.0625rem]"
+                      >
+                        {paragraph}
+                      </p>
+                    ))}
+                    <NewsPhoto
+                      src={article.images[index + 1]}
+                      caption={content.captions[index + 1]}
+                      loading="lazy"
+                    />
+                  </section>
+                ))}
+                {article.images
+                  .slice(content.sections.length + 1)
+                  .map((src, index) => (
+                    <NewsPhoto
+                      key={src}
+                      src={src}
+                      caption={
+                        content.captions[content.sections.length + 1 + index]
+                      }
+                      loading="lazy"
+                    />
+                  ))}
+              </div>
+            </article>
           </div>
+        ) : (
+          <section className={container}>
+            <h1
+              className={`${titleStyle} mb-7 text-[clamp(2.4rem,4.5vw,4rem)] leading-none sm:mb-10`}
+            >
+              {title}
+            </h1>
+            <ul className="divide-y divide-white/15 border-y border-white/15">
+              {articles.map(item => {
+                const story = item.content[locale];
 
-          <h1
-            style={{
-              fontFamily: FONT_FAMILY,
-              fontWeight: 700,
-              fontSize:
-                isZh || isAr
-                  ? "clamp(3rem, 5.6vw, 7.2rem)"
-                  : isEs
-                  ? "clamp(2.8rem, 5.2vw, 7rem)"
-                  : "clamp(3.2rem, 6vw, 8rem)",
-              lineHeight: isZh || isAr ? 1.05 : 0.98,
-              letterSpacing: titleLetterSpacing,
-              textTransform,
-              color: "#FFFFFF",
-              maxWidth: isZh || isAr ? "1300px" : isEs ? "1400px" : "1200px",
-              marginBottom: "clamp(1.5rem, 2.5vw, 3rem)",
-              overflowWrap: "break-word",
-            }}
-          >
-            {getLabel(
-              "ASTRAQ News Coming Soon",
-              "ASTRAQ 新闻即将上线",
-              "Noticias de ASTRAQ próximamente",
-              "أخبار ASTRAQ قريبًا",
-              "Actualités ASTRAQ bientôt disponibles",
-              "Notícias da ASTRAQ em breve"
-            )}
-          </h1>
-
-          <p
-            style={{
-              fontFamily: FONT_FAMILY,
-              fontWeight: 500,
-              fontSize: isEs
-                ? "clamp(1.05rem, 1.18vw, 1.5rem)"
-                : "clamp(1.15rem, 1.3vw, 1.7rem)",
-              lineHeight: 1.65,
-              letterSpacing: paragraphLetterSpacing,
-              color: "rgba(255,255,255,0.68)",
-              maxWidth: isZh || isAr ? "950px" : isEs ? "980px" : "850px",
-            }}
-          >
-            {getLabel(
-              "This page will share ASTRAQ updates, product progress, market expansion, technology development and company milestones.",
-              "这里将用于发布 ASTRAQ 的公司动态、产品进展、市场拓展、技术发展和重要里程碑。",
-              "Esta página compartirá novedades de ASTRAQ, avances de productos, expansión de mercado, desarrollo tecnológico e hitos de la empresa.",
-              "ستعرض هذه الصفحة تحديثات ASTRAQ وتقدم المنتجات وتوسع الأسواق والتطور التقني والمحطات المهمة للشركة.",
-              "Cette page présentera les actualités d'ASTRAQ, l'avancement des produits, l'expansion du marché, le développement technologique et les étapes clés de l'entreprise.",
-              "Esta página compartilhará atualizações da ASTRAQ, progresso dos produtos, expansão de mercado, desenvolvimento tecnológico e marcos da empresa."
-            )}
-          </p>
-        </div>
-      </section>
-
+                return (
+                  <li key={item.id} className="py-6 sm:py-8">
+                    <article
+                      lang={locale}
+                      dir="ltr"
+                      className="grid items-center gap-5 sm:grid-cols-[minmax(0,30%)_minmax(0,1fr)] sm:gap-8 lg:gap-12"
+                    >
+                      <img
+                        src={item.images[0]}
+                        alt=""
+                        width={1448}
+                        height={1086}
+                        decoding="async"
+                        className="block aspect-[4/3] w-full max-w-[22rem] border border-white/10 object-cover"
+                      />
+                      <div>
+                        <h2
+                          className={`${titleStyle} text-[clamp(1.4rem,2.65vw,2.85rem)] leading-tight`}
+                        >
+                          <Link
+                            href={`/news/${item.id}`}
+                            className="underline decoration-[#C9A46A]/65 decoration-1 underline-offset-4 transition-colors hover:text-[#C9A46A] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C9A46A]"
+                          >
+                            {story.title}
+                          </Link>
+                        </h2>
+                        <PublishDate
+                          publishedOn={item.publishedOn}
+                          locale={locale}
+                        />
+                        <p className="mt-3 max-w-[55ch] text-base leading-relaxed text-white/75 sm:text-lg">
+                          {story.summary}
+                        </p>
+                      </div>
+                    </article>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        )}
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 }
