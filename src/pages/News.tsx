@@ -8,6 +8,13 @@ import {
   formatPublicationDate,
   type Article,
 } from "../news/articles";
+import {
+  newsContainer,
+  newsStoryGrid,
+  newsStoryTitle,
+  newsSummary,
+  newsThumbnail,
+} from "../news/layout";
 import NotFound from "./NotFound";
 
 const labels: Record<Language, { title: string; back: string }> = {
@@ -20,9 +27,12 @@ const labels: Record<Language, { title: string; back: string }> = {
   vi: { title: "Tin tức ASTRAQ", back: "Quay lại tin tức" },
 };
 
-const container = "mx-auto w-full max-w-[1200px] px-6 sm:px-10 lg:px-12";
 const titleStyle =
-  "text-balance font-sans font-bold tracking-tight [overflow-wrap:anywhere]";
+  "text-balance font-sans font-bold tracking-normal wrap-anywhere";
+const articleColumn = "mx-auto w-full max-w-[52rem]";
+const linkFocus =
+  "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C9A46A]";
+
 function PublishDate({
   publishedOn,
   locale,
@@ -31,7 +41,10 @@ function PublishDate({
   locale: keyof Article["content"];
 }) {
   return (
-    <time dateTime={publishedOn} className="mt-2.5 block text-sm text-white/65">
+    <time
+      dateTime={publishedOn}
+      className="mt-3 block text-sm text-white/72 sm:text-base"
+    >
       {formatPublicationDate(publishedOn, locale)}
     </time>
   );
@@ -49,7 +62,7 @@ function NewsPhoto({
   if (!src) return null;
 
   return (
-    <figure className="mx-auto mt-4 w-full max-w-[26rem]">
+    <figure className="mx-auto mt-6 w-full max-w-[58rem] sm:mt-8">
       <img
         src={src}
         alt={caption}
@@ -57,9 +70,9 @@ function NewsPhoto({
         height={1086}
         loading={loading}
         decoding="async"
-        className="block h-auto w-full border border-white/10"
+        className="block h-auto w-full rounded-sm border border-white/10"
       />
-      <figcaption className="mt-2 text-center text-sm leading-snug text-white/70">
+      <figcaption className="mt-3 text-sm leading-relaxed text-white/72 sm:text-base">
         {caption}
       </figcaption>
     </figure>
@@ -101,19 +114,24 @@ export default function News() {
         className="pt-[clamp(7rem,9vw,11rem)] pb-[clamp(4rem,7vw,7rem)]"
       >
         {article && content ? (
-          <div className="mx-auto w-full max-w-[48rem] px-6 sm:px-10">
-            <Link
-              href="/news"
-              className="mb-5 inline-flex items-center gap-2 text-sm font-semibold text-[#C9A46A] transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C9A46A] sm:mb-6"
-            >
-              <ArrowLeft aria-hidden="true" className="size-4 rtl:rotate-180" />
-              {back}
-            </Link>
+          <div className={newsContainer}>
+            <div className={articleColumn}>
+              <Link
+                href="/news"
+                className={`mb-5 inline-flex min-h-11 items-center gap-2 text-base font-semibold text-[#C9A46A] transition-colors hover:text-white sm:mb-7 ${linkFocus}`}
+              >
+                <ArrowLeft
+                  aria-hidden="true"
+                  className="size-4 shrink-0 rtl:rotate-180"
+                />
+                {back}
+              </Link>
+            </div>
 
             <article lang={locale} dir="ltr">
-              <header>
+              <header className={articleColumn}>
                 <h1
-                  className={`${titleStyle} text-[clamp(1.85rem,3.3vw,3rem)] leading-[1.14]`}
+                  className={`${titleStyle} text-[2rem] leading-tight sm:text-4xl lg:text-5xl`}
                 >
                   {content.title}
                 </h1>
@@ -121,7 +139,7 @@ export default function News() {
                   publishedOn={article.publishedOn}
                   locale={locale}
                 />
-                <p className="mt-4 hyphens-auto text-justify text-base leading-[1.75] text-white/90 sm:text-lg">
+                <p className="mt-5 text-xl leading-[1.65] text-white/95 sm:mt-6 sm:text-2xl">
                   {content.lead}
                 </p>
               </header>
@@ -131,22 +149,24 @@ export default function News() {
                 caption={content.captions[0]}
               />
 
-              <div className="mt-7 space-y-7 sm:mt-8 sm:space-y-8">
+              <div className="mt-10 space-y-10 sm:mt-14 sm:space-y-14">
                 {content.sections.map((section, index) => (
                   <section key={section.heading}>
-                    <h2
-                      className={`${titleStyle} text-lg leading-snug sm:text-xl`}
-                    >
-                      {section.heading}
-                    </h2>
-                    {section.paragraphs.map(paragraph => (
-                      <p
-                        key={paragraph}
-                        className="mt-2 hyphens-auto text-justify text-base leading-[1.75] text-white/80 sm:text-[1.0625rem]"
+                    <div className={articleColumn}>
+                      <h2
+                        className={`${titleStyle} text-2xl leading-snug sm:text-3xl`}
                       >
-                        {paragraph}
-                      </p>
-                    ))}
+                        {section.heading}
+                      </h2>
+                      {section.paragraphs.map(paragraph => (
+                        <p
+                          key={paragraph}
+                          className="mt-3 text-lg leading-[1.75] text-white/88 sm:mt-4 sm:text-xl"
+                        >
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
                     <NewsPhoto
                       src={article.images[index + 1]}
                       caption={content.captions[index + 1]}
@@ -170,9 +190,9 @@ export default function News() {
             </article>
           </div>
         ) : (
-          <section className={container}>
+          <section className={newsContainer}>
             <h1
-              className={`${titleStyle} mb-7 text-[clamp(2.4rem,4.5vw,4rem)] leading-none sm:mb-10`}
+              className={`${titleStyle} mb-7 text-4xl leading-tight sm:mb-9 sm:text-5xl lg:text-6xl`}
             >
               {title}
             </h1>
@@ -181,39 +201,39 @@ export default function News() {
                 const story = item.content[locale];
 
                 return (
-                  <li key={item.id} className="py-6 sm:py-8">
-                    <article
-                      lang={locale}
-                      dir="ltr"
-                      className="grid items-center gap-5 sm:grid-cols-[minmax(0,30%)_minmax(0,1fr)] sm:gap-8 lg:gap-12"
-                    >
-                      <img
-                        src={item.images[0]}
-                        alt=""
-                        width={1448}
-                        height={1086}
-                        decoding="async"
-                        className="block aspect-[4/3] w-full max-w-[22rem] border border-white/10 object-cover"
-                      />
-                      <div>
-                        <h2
-                          className={`${titleStyle} text-[clamp(1.4rem,2.65vw,2.85rem)] leading-tight`}
-                        >
-                          <Link
-                            href={`/news/${item.id}`}
-                            className="underline decoration-[#C9A46A]/65 decoration-1 underline-offset-4 transition-colors hover:text-[#C9A46A] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C9A46A]"
+                  <li key={item.id} className="py-6 sm:py-8 lg:py-10">
+                    <article lang={locale} dir="ltr">
+                      <Link
+                        href={`/news/${item.id}`}
+                        aria-labelledby={`news-title-${item.id}`}
+                        className={`group ${item.images[0] ? newsStoryGrid : "block"} ${linkFocus}`}
+                      >
+                        {item.images[0] && (
+                          <img
+                            src={item.images[0]}
+                            alt=""
+                            width={1448}
+                            height={1086}
+                            decoding="async"
+                            className={newsThumbnail}
+                          />
+                        )}
+                        <div className="min-w-0">
+                          <h2
+                            id={`news-title-${item.id}`}
+                            className={`${newsStoryTitle} font-sans transition-colors group-hover:text-[#C9A46A] group-hover:underline group-hover:underline-offset-4`}
                           >
                             {story.title}
-                          </Link>
-                        </h2>
-                        <PublishDate
-                          publishedOn={item.publishedOn}
-                          locale={locale}
-                        />
-                        <p className="mt-3 max-w-[55ch] text-base leading-relaxed text-white/75 sm:text-lg">
-                          {story.summary}
-                        </p>
-                      </div>
+                          </h2>
+                          <PublishDate
+                            publishedOn={item.publishedOn}
+                            locale={locale}
+                          />
+                          <p className={`${newsSummary} text-white/85`}>
+                            {story.summary}
+                          </p>
+                        </div>
+                      </Link>
                     </article>
                   </li>
                 );

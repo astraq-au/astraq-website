@@ -2,6 +2,13 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import { useLanguage, type Language } from "../i18n/LanguageContext";
 import { articles, formatPublicationDate } from "../news/articles";
+import {
+  newsContainer,
+  newsStoryGrid,
+  newsStoryTitle,
+  newsSummary,
+  newsThumbnail,
+} from "../news/layout";
 
 const labels: Record<Language, { title: string; all: string }> = {
   en: { title: "Latest News", all: "View all news" },
@@ -35,28 +42,31 @@ export default function HomeNewsSection() {
       dir={isRTL ? "rtl" : "ltr"}
       className="border-t border-black/8 bg-[#F7F6F3] py-10 text-black/88 sm:py-14 lg:py-16"
     >
-      <div className="mx-auto max-w-[1200px] px-6 sm:px-10 lg:px-12">
-        <header className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-b border-black/10 pb-4 sm:pb-5">
+      <div className={newsContainer}>
+        <header className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-b border-black/12 pb-5 sm:pb-6">
           <h2
             id="home-news-heading"
-            className={`text-[clamp(1.75rem,2.3vw,2.6rem)] leading-tight font-semibold tracking-[-0.025em] [font-family:inherit] ${uppercase}`}
+            className={`text-3xl leading-tight font-semibold tracking-normal [font-family:inherit] lg:text-[2.75rem] ${uppercase}`}
           >
             {title}
           </h2>
           <Link
             href="/news"
-            className={`inline-flex min-h-11 items-center gap-2 border border-black/42 px-3.5 text-[clamp(0.8rem,0.8vw,1rem)] font-semibold tracking-[0.04em] transition-colors hover:border-black/75 hover:bg-black/5 ${uppercase} ${focusStyle}`}
+            className={`inline-flex min-h-11 max-w-full items-center gap-2 border border-black/42 px-4 py-2 text-sm font-semibold transition-colors hover:border-black/75 hover:bg-black/5 sm:text-base ${uppercase} ${focusStyle}`}
           >
             {all}
-            <ArrowRight aria-hidden="true" className="size-4 rtl:rotate-180" />
+            <ArrowRight
+              aria-hidden="true"
+              className="size-4 shrink-0 rtl:rotate-180"
+            />
           </Link>
         </header>
 
-        <article lang={locale} dir="ltr" className="mt-5 sm:mt-7">
+        <article lang={locale} dir="ltr" className="mt-6 sm:mt-8">
           <Link
             href={`/news/${latestArticle.id}`}
             aria-labelledby="home-news-article-title"
-            className={`group grid items-center gap-4 sm:grid-cols-[minmax(0,38%)_minmax(0,1fr)] sm:gap-8 lg:grid-cols-[21rem_minmax(0,1fr)] lg:gap-10 ${focusStyle}`}
+            className={`group ${latestArticle.images[0] ? newsStoryGrid : "block"} ${focusStyle}`}
           >
             {latestArticle.images[0] && (
               <img
@@ -66,25 +76,23 @@ export default function HomeNewsSection() {
                 height={1086}
                 loading="lazy"
                 decoding="async"
-                className="block h-auto w-full border border-black/10"
+                className={newsThumbnail}
               />
             )}
             <div className="min-w-0">
               <h3
                 id="home-news-article-title"
-                className="text-[clamp(1.2rem,1.65vw,1.6rem)] leading-snug font-semibold tracking-[-0.02em] underline decoration-[#876635]/55 decoration-1 underline-offset-4 transition-colors [font-family:inherit] [overflow-wrap:anywhere] group-hover:text-[#75582E]"
+                className={`${newsStoryTitle} [font-family:inherit] transition-colors group-hover:text-[#75582E] group-hover:underline group-hover:underline-offset-4`}
               >
                 {story.title}
               </h3>
               <time
                 dateTime={latestArticle.publishedOn}
-                className="mt-2 block text-sm text-black/60"
+                className="mt-3 block text-sm text-black/65 sm:text-base"
               >
                 {formatPublicationDate(latestArticle.publishedOn, locale)}
               </time>
-              <p className="mt-2.5 max-w-[55ch] text-base leading-relaxed text-black/65">
-                {story.summary}
-              </p>
+              <p className={`${newsSummary} text-black/78`}>{story.summary}</p>
             </div>
           </Link>
         </article>
