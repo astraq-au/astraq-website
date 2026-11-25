@@ -557,7 +557,7 @@ export default function About() {
             tabIndex={0}
             className="snap-x snap-proximity overflow-x-auto pb-3 [scrollbar-color:#668b9b_#162023] [scrollbar-width:thin] focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-sky-400"
           >
-            <ul className="grid grid-flow-col auto-cols-[minmax(min(19rem,85%),1fr)] gap-4 lg:gap-5">
+            <ul className="grid grid-flow-col auto-cols-[minmax(min(19rem,85%),1fr)] gap-4 lg:gap-5 2xl:auto-cols-[minmax(min(17.5rem,85%),1fr)]">
               {teamMembers.map(({ name, imageKey, profiles }) => (
                 <li key={name} className="snap-start overflow-hidden rounded-lg bg-[#151820]">
                   <img

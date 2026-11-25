@@ -26,6 +26,19 @@
     }
   },
   {
+    "name": "Kevin Mu",
+    "imageKey": "Kevin",
+    "profiles": {
+      "en": { "role": "Chief Strategy Officer", "bio": "30 years in marketing, specialising in business models and brand strategy." },
+      "zh": { "role": "首席战略官", "bio": "专注商业模式与品牌战略，拥有30年营销经验。" },
+      "es": { "role": "Director de estrategia", "bio": "30 años en marketing, especializado en modelos de negocio y estrategia de marca." },
+      "ar": { "role": "الرئيس التنفيذي للاستراتيجية", "bio": "خبرة 30 عامًا في التسويق، مع التركيز على نماذج الأعمال واستراتيجية العلامة التجارية." },
+      "fr": { "role": "Directeur de la stratégie", "bio": "30 ans en marketing, spécialisé en modèles économiques et stratégie de marque." },
+      "pt": { "role": "Diretor de estratégia", "bio": "30 anos em marketing, com foco em modelos de negócios e estratégia de marca." },
+      "vi": { "role": "Giám đốc chiến lược", "bio": "30 năm kinh nghiệm marketing, chuyên về mô hình kinh doanh và chiến lược thương hiệu." }
+    }
+  },
+  {
     "name": "Wei Zhang",
     "imageKey": "Wei",
     "profiles": {
